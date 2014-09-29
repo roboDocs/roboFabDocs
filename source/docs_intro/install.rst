@@ -1,4 +1,3 @@
-==================
 Installation notes
 ==================
 
@@ -16,31 +15,26 @@ Installation notes
 
 .. note:: from November 2007 on, the 1.1.1 version is now distributed with `The BSD License`_. The license information in the current 1.1.1 package still needs to be updated.
 
--------------
 Which Python?
 -------------
 
 RoboFab works with any Python 2.2.1 and up.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^
 Which Python for FontLab?
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're using RoboFab in conjunction with FontLab, there are some restrictions imposed by FontLab's taste in Python. If you are using FontLab Studio in Mac OS X, you already have the necessary Python. If you are using anything previous to FontLab Studio on a Mac, you will need to install MacPython-OS9 2.3. FontLab on Windows requires at least Python 2.2.1.
 
-------------------------------------
 Installing on Mac OSX for FontLab, 1
 ------------------------------------
 
 If you're on OSX Tiger (10.4) or Leopard (10.5), and you want to install RoboFab and its dependencies (FontTools, Numeric), for use in FontLab 5.0x, then you can use the :doc:`RoboFab Installer for OSX, FontLab 5.0x <download>`. This should work for most current users on OSX.
 
-------------------------------------
 Installing on Mac OSX for FontLab, 2
 ------------------------------------
 
 If the all-in-one installer doesn't do it for you (for instance, you want to use RoboFab outside the context of FontLab) the following instructions show you the individual steps to install RoboFab. Currently Python,org already offers version 2.5. However, on MacOSX FontLab **will only work with the OS installed Python 2.3**. So there's not really much point in installing a newer Python if you don't know what you're doing.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 How do I install Robofab for use with FS5 on mac?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -76,7 +70,6 @@ The easiest way is to do the following:
 
 This will install RoboFab for the system Python, which is what FontLab Studio uses.
 
-----------------
 About install.py
 ----------------
 
@@ -85,7 +78,6 @@ In the package, on the same level as this read me there's a ``install.py`` scrip
 - `Download Python <http://python.org/download>`_
 - `MacOS Python download page <http://homepages.cwi.nl/~jack/macpython/download.html>`_
 
-------------
 Dependencies
 ------------
 
@@ -100,13 +92,11 @@ Some parts of RoboFab depend on other Python modules and packages. These need to
 .. _fonttools.sf.net: http://fonttools.sf.net/
 .. _Numeric 24.2: http://www.robofab.org/download/Numeric-24.2.zip
 
--------------------------------------
 RoboFab bundled with FontLab Studio 5
 -------------------------------------
 
 FontLab Inc. has been granted permission to bundle RoboFab with FontLab-the-application. They have not done so. The reason is not clear.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Installing on Mac OSX MacPython "OS9" 2.3, for FontLab
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -116,13 +106,11 @@ FontLab 4.6 on Mac OSX has to work with MacPython "OS9" 2.3 (available from `Mac
 
 RoboFab has two folders of demo scripts and utilities which can be used in FontLab. Copy the contents of the **Scripts** folder to the ``FontLab/Macros`` folder to make them available to FontLab.
 
-^^^^^^^^^^^
 Permissions
 ^^^^^^^^^^^
 
 Make sure you have admin permissions on the machine when you install the various packages. When installing as a normal priviliged user, it can sometimes happen that certain files can't be written, and the installation remains incomplete. The most common problem is that one or two preference files need to be written, but the current user does not have enough permissions to delete them. Read the traceback, locate the file, delete, install again.
 
----------------------
 Installing on Windows
 ---------------------
 
@@ -138,13 +126,11 @@ Installing RoboFab on windows should be pretty straightforward. RoboFab is backw
 
 .. _here : http://starship.python.net/crew/mhammond/win32/Downloads.html
 
------------------------------
 Installing on other platforms
 -----------------------------
 
 Place the robofab directory in a place where you can leave it for a while. Not on the desktop or a temporary download folder. Run ``install.py`` in a Python interpreter.
 
----------------
 Initial testing
 ---------------
 
@@ -157,7 +143,6 @@ If you don't get an traceback, you're good to go.
 
 In ``Scripts/RoboFabIntro/`` there are some test scripts, simple examples and some utilities. Read the source to learn more about what the examples do and where they want to run.
 
---------------------
 Detailed unittesting
 --------------------
 

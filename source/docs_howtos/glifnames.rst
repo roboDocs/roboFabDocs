@@ -1,16 +1,13 @@
-============================
 Glyphnames versus GLIF-names
 ============================
 
 The names of the GLIF xml files, in the UFO are related to the glyph names. It used to be a 1:1 relationship, but then glyphnames grew really long and some file systems don't support long filenames. So something had to give.
 
-------------------
 GlyphNamingSchemes
 ------------------
 
 The ``objectsFL.RFont.writeUFO()`` method can take a special callback function in order to convert the actual glyphname to a suitable filename. The goal is to create unique filenames so that glyphs won't overwrite each other's exports, also comply to certain filesystems which require filenames to be shorter than a certain number of characters, while retaining a high level of human-readability. Have a look at ``robofab/tools/glyphNameSchemes.py`` for the currently available callbacks. With ``glyphNameSchemes``, the ``glyphName`` and the ``.glif`` filename no longer have a direct relationship.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 glyphNameToShortFileName(glyphName, glyphSet)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

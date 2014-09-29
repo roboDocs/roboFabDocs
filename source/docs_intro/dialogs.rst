@@ -1,5 +1,5 @@
 Dialogs
--------
+=======
 
 Sometimes you need simple dialogs to get scripts to talk to the user. As RoboFab can run in many different environments, this dialog module tries to offer consistent functionality in all worlds. Most of the dialogs work in FontLab Mac/Win and Python IDE Mac. Some dialogs also work in Windows. This module offers the right kind of dialog for the environment you call them in. A bit like ``robofab.world`` helps you out by finding the right objects.
 

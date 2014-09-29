@@ -1,14 +1,11 @@
-==============
 FontLab Remote
 ==============
 
 A neat feature in RoboFab for FontLab on MacOS. RoboFab can install an AppleEvent handler in FontLab to make FontLab respond to calls from other applications. There is code to communicate with FontLab using this AppleEvent and to make it execute code and exchange data such as glyphs. How useful this remote stuff is depends on what you want to do with it. We thought it was cool. The 'remote' relates to one application controlling another. Both applications need to run on the same machine, it does not mean that FontLab is accepting commands over a network for instance. For that we need another tool.
 
-----
 How?
 ----
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Step 1: Start the remote stuff in FontLab
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -20,7 +17,6 @@ The first thing you need to do is start the AppleEvent support in FontLab. That'
 
     FontLabRemote is on.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Step 2: Start the Python IDE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -42,7 +38,6 @@ When FontLab receives and executes a remote command, it will print a note to the
 
 That means that FontLab is doing remote stuff.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Step 3: Teleporting a Glyph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -52,7 +47,6 @@ The remote module has support to send and receive Glyphs. For the next example o
 
 If all went well, you now have the ``n`` from your UFO copied to the right slot in your FontLab font. As noted earlier, if all you want to do is import some glyphs from a UFO into FontLab there is absolutely no need to use all this remote stuff.
 
-----
 Why?
 ----
 
@@ -64,7 +58,6 @@ The remote module only takes care of the communication with FontLab. Possible ap
 
 As noted before, the remote stuff only works on MacOS.
 
-^^^^^^^
 Example
 ^^^^^^^
 

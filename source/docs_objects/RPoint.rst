@@ -1,6 +1,8 @@
 RPoint
 ======
 
+.. image:: ../../images/RPoint.gif
+
 Usage
 -----
 

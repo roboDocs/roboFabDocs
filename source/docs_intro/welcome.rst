@@ -1,4 +1,3 @@
-==================
 Welcome to RoboFab
 ==================
 
@@ -11,7 +10,6 @@ For developers and folks who like to keep their fingers on the pulse of digital 
 .. _UFO font format: http://unifiedfontobject.org
 .. _git repository: http://github.com/robofab-developers/robofab
 
-------------------
 This documentation
 ------------------
 
@@ -25,25 +23,21 @@ This documentation
 - :doc:`RoboFab Tools <tools>`: overview of the tools and miscellaneous code.
 - :doc:`UFO <ufo>`: About the UFO tools
 
-------------
 Object Model
 ------------
 
 Here is a :doc:`handy map <../docs_objects/model>` of the RoboFab objects.
 
---------------
 The Developers
 --------------
 
 RoboFab is developed and maintained by Tal Leming, Erik van Blokland, Just van Rossum (in no particular order)
 
--------
 Contact
 -------
 
 Email the RoboFab Consortium at `info@robofab.org <mailto:info@robofab.org>`_.
 
-----------
 Copyrights
 ----------
 

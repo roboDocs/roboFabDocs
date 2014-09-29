@@ -1,6 +1,8 @@
 bPoint
 ======
 
+.. image:: ../../images/bPoint.gif
+
 Usage
 -----
 

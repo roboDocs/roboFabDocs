@@ -1,6 +1,8 @@
 RFont
 =====
 
+.. image:: ../../images/RFont.gif
+
 Usage
 -----
 

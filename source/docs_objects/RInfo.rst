@@ -1,6 +1,8 @@
 RInfo
 =====
 
+.. image:: ../../images/RInfo.gif
+
 Usage
 -----
 

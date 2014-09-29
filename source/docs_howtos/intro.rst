@@ -1,10 +1,8 @@
-========
 How To's
 ========
 
 This section provides some cases on how to use the RoboFab objects in everyday type design work.
 
--------
 Stories
 -------
 

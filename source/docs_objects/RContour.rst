@@ -1,6 +1,8 @@
 RContour
 ========
 
+.. image:: ../../images/RContour.gif
+
 Usage
 -----
 

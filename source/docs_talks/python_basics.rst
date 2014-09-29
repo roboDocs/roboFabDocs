@@ -1,10 +1,8 @@
-============
 Basic Python
 ============
 
 In these and following examples we'll be using a couple of programming things which are simple enough that, should you not be familiar with them, you might be able to figure out from the contect. While the experienced programmers will tap their feet impatiently for this to finish, and the newbies are struggling to pick their dicts from their strings: a very short overview of the stuff you're missing.
 
-----------------------
 Conditional statements
 ----------------------
 
@@ -16,7 +14,6 @@ If some condition is met: execute a separate block of your script::
     ...     print "oops"
     still true
 
--------------------
 Compound statements
 -------------------
 
@@ -29,7 +26,6 @@ For each item in this list: execute a seperate block of your script::
     3
     "a"
 
-----------
 Assignment
 ----------
 
@@ -41,7 +37,6 @@ This is basically setting something to a new value, or attaching a name to somet
 
 The information that you want to work with in programming comes in different forms and colors: text, numbers, sequences of things. Python offers a nice range of tupperware boxes to stick them in. More things to keep track of, but: useful and these will be your friends.
 
--------
 Strings
 -------
 
@@ -54,7 +49,6 @@ Text, letters, words, are called strings and they live between quotes. In order 
     d = """a triple quoted string - but still just a string."""
     e = '''a triple quoted string - but still just a string.'''
 
--------
 Numbers
 -------
 
@@ -66,7 +60,6 @@ Whole numbers, decimal numbers. You don't need to do anything special to make th
     c = 1.349683
     d = 0
 
------
 Lists
 -----
 
@@ -76,12 +69,11 @@ Sequences can be written between brackets. You've seen one earlier. Lists are po
     >>> aList = [4, "a", 2, 1] 
     >>> aListInAList = [ [1, 2], [3, 4] ]
     >>> print len(aList)
-    4
     >>> sort(aList)
     >>> print aList
+    4
     [1, 2, 4, 'a']
 
-------------
 Dictionaries
 ------------
 
@@ -90,15 +82,14 @@ These are similar to lists, but rather than just store a sequence, a dictionary 
     >>> # examples of dicts
     >>> aDict = {"key": "value", 100: 200}
     >>> print aDict.keys()
-    [100, 'key']
     >>> print aDict.values()
-    [200, 'value']
     >>> print aDict.items()
-    [(100, 200), ('key', 'value')]
     >>> print len(aDict)
+    [100, 'key']
+    [200, 'value']
+    [(100, 200), ('key', 'value')]
     2
 
-------
 Tuples
 ------
 

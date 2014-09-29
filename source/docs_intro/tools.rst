@@ -1,10 +1,8 @@
-=====
 Tools
 =====
 
 The RoboFab Tools directory contains a groups of useful and sometimes stray bit of code which don't fit anywhere else.
 
-----------------------
 robofab.tools.toolsAll
 ----------------------
 
@@ -18,7 +16,6 @@ Read the foundry settings xml file and return a keyed dict. The idea is that a f
 
 Open a font binary pointed to by src, decompile it using fontTools and write a UFO at location dst. If no filetype is given, ``fontToUFO`` attempts to guess the type. Valid types are TTF and "Type 1". While this function does a good job at extracting contours and basic font information, it is possible that not all values are extracted. Please refer to the result UFO for a precise overview.
 
----------------------
 robofab.tools.toolsFL
 ---------------------
 
@@ -51,7 +48,6 @@ Save the current FL Font,
 
 Create a PostScript filename out of a regular PostScript fontname, using the old fashioned macintosh 5:3:3 convention.
 
----------------------
 robofab.tools.toolsRF
 ---------------------
 

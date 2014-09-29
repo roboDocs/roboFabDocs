@@ -1,10 +1,8 @@
-=================================
 How to get to FontLab's internals
 =================================
 
 If you're using RoboFab in FontLab, it can happen that you need to access a method or attribute of a glyph or font object which does not seem to have an equivalent in RoboFab. What to do?
 
----------
 Get Naked
 ---------
 

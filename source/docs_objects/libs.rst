@@ -1,6 +1,8 @@
 RLib
 ====
 
+.. image:: ../../images/fontLib.gif
+
 Usage
 -----
 

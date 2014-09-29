@@ -1,6 +1,8 @@
 RComponent
 ==========
 
+.. image:: ../../images/RComponent.gif
+
 Usage
 -----
 

@@ -1,6 +1,8 @@
 RAnchor
 =======
 
+.. image:: ../../images/RAnchor.gif
+
 Usage
 -----
 

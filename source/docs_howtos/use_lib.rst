@@ -1,10 +1,8 @@
-=============
 Using the lib
 =============
 
 The lib is very much like a plain dictionary: you use keys to store stuff in it. The nice thing about them is that they save their contents in the font and are available (after the font is saved) to scripts the next time you open the file again. In FontLab the libs (because there are several) are stored in the ``.vfb`` source. In UFO-based fonts the ``font.libs`` end up in their own, XML based ``.plist`` files, inside th UFO package. The ``Glyph.libs`` end up in the ``.glif`` files.
 
-----------
 Which lib?
 ----------
 
@@ -22,7 +20,6 @@ The lib is a flat dictionary. For RoboFog users: the RoboFog lib was nested and 
 
     In FontLab version 4.5 and 4.6 there's a nasty bug which causes FontLab to crash after something has been added to the ``font.customdata`` or ``glyph.customdata`` fields. Unfortunately these fields were used to store the ``robofab.font.lib`` and ``robofab.glyph.lib`` data. We hope future versions of FontLab will address this. In UFO files the libs for font and glyphs work fine.
 
-^^^^^^^^^
 aFont.lib
 ^^^^^^^^^
 
@@ -32,7 +29,6 @@ aFont.lib
     # Usethelib howto
     # aFont.lib examples
 
-^^^^^^^^^^^^
 anyGlyph.lib
 ^^^^^^^^^^^^
 

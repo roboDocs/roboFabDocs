@@ -1,4 +1,3 @@
-============
 Step-by-step
 ============
 
@@ -18,7 +17,6 @@ These are chapters about scripting in Python, where and how to make your code an
    session4.rst
    dialogkit.rst
 
---------
 Sections
 --------
 
@@ -32,7 +30,6 @@ Sections
 - :doc:`08: NoneLab <session4>`: Adventures in NoneLab, scripting outside the box.
 - :doc:`09: Dialog Kit <dialogkit>`: Interface toolkit for FontLab.
 
---------------------
 Additional resources
 --------------------
 

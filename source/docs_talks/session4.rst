@@ -1,10 +1,8 @@
-================================================
 Adventures in NoneLab, scripting outside the box
 ================================================
 
 Working with text sources UFO, and GLIFs. FontLab export and import of UFO. Processing UFOs outside FontLab.
 
----
 UFO
 ---
 
@@ -12,13 +10,11 @@ Scripting a font editor without the font editor? RoboFab can export and import t
 
 .. _UFO format: http://unifiedfontobject.org/
 
-------------------------------------
 Scripting with fonts outside FontLab
 ------------------------------------
 
 The nice thing about UFO is that RoboFab can read the files even when it is not running in FontLab. The Python interpreter that you use for FontLab, can run RoboFab scripts and apply them to font and glyphs stored in a UFO rather than a ``.vfb``. That opens possibilities for batch processing, storage in databases or version management systems, archiving or connecting your own tools to your workflow. FontLab specific functionality, such as generating font binaries, and complex path manipulations are not available in the **NoneLab** RoboFab, but you can make fonts, create and move glyphs, generate and manipulate kerning. We've taken great care to make sure that RoboFab based scripts work in both worlds.
 
--------
 NoneLab
 -------
 
@@ -63,35 +59,31 @@ NoneLab is a word we coined to describe RoboFab/Python environments outside Font
 |                           |                             | On OSX: Vanilla.                                          |
 +---------------------------+-----------------------------+-----------------------------------------------------------+
 
--------
 The UFO
 -------
 
 A UFO is not really a single file, but rather a whole folder full of stuff with a ``.ufo`` extension in the name. So you can open up a ``.ufo`` and have a look inside. Some data is stored in ``.plist`` format. This is a flavor of XML and contains kerning, lib and font info. The glyphs are stored level deeper, in the glyphs folder.
 
-*[UFO files and folders]*
+.. image:: ../../images/ufo.jpg
 
 The ``MyFont.ufo/glyphs/`` folder contains a list of ``.glif`` files and a single ``contents.plist`` file. This is the table of contents for the folder, it contains a table of glyph name to file name mappings. So when you start working with a ``.ufo`` and you want a particular glyph, RoboFab can find it faster.
 
---------
 The GLIF
 --------
 
 GLyph Interchange Format, a readable XML based file with all data for a single glyph: width, unicode value, all contours, points and components. The ``glyph.lib`` is also stored here.
 
-*[view of a glif]*
+.. image:: ../../images/cent.gif
 
 These screenshots are taken on an OSX machine, but the data is platform independent. Basically you can take any text editor and mess around with the points. While this is not a very efficient way to design type, it shows that the data is still there, accessible forever.
 
--------------
 Exporting UFO
 -------------
 
 In the FontLab scripts folder that is distributed with RoboFab, you will find a set of scripts for importing and exporting UFO and GLIF. Open a test font and run this script from the Macro menu. It will generate a ``.ufo`` in the same folder as the source font file.
 
-*[export UFO menu]*
+.. image:: ../../images/exportmenu.gif
 
---------------
 FontLab Remote
 --------------
 
@@ -103,30 +95,9 @@ If you happen to be using FontLab in Mac, you can use the FontLab Remote module 
 
 The following script needs to be run in a python IDE. It will ask FontLab for its current glyph, and then it will store this glyph in a new font object outside FontLab.
 
-    >>> # robothon06
-    >>> # demo of executing python in FontLab, MacOS only
-    >>>  
-    >>> # this script runs in the Python IDE
-    >>> # it will send some python code to FontLab
-    >>> # FontLab will execute the python code:
-    >>> # it will find the current glyph and send it to our other script.
-    >>>  
-    >>> from robofab.tools.remote import runFontLabRemote, receiveGlyph
-    >>> from robofab.world import RFont
-    >>>  
-    >>> # this is what we want FontLab to do:
-    >>> pythonCode = """
-    >>> from robofab.world import CurrentGlyph
-    >>> from robofab.tools.remote import transmitGlyph
-    >>> g = CurrentGlyph()
-    >>> transmitGlyph(g)
-    >>> """
-    >>>  
-    >>> # this the font where we'll store the glyph from FontLab
-    >>> destFont = RFont()
-    >>>  
-    >>> result = runFontLabRemote(pythonCode)
-    >>> receiveGlyph(result, destFont)
-    >>> print destFont.keys()
+.. showcode:: ../../Examples/talks/nonelab_00.py
+
+.. code::
+
     <RGlyph for None.parenright>
     ['parenright']

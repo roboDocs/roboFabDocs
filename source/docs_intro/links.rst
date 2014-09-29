@@ -1,8 +1,6 @@
-=====
 Links
 =====
 
-----------------
 Online resources
 ----------------
 
@@ -10,7 +8,6 @@ Online resources
 - `The FontLab Python page <http://fontlab.com/python-scripting/>`_
 - `Unofficial FontLab Python documentation <http://e-font.de/flpydoc/>`_
 
------
 Tools
 -----
 
@@ -22,7 +19,6 @@ Tools
 - `FontForge <http://fontforge.sourceforge.net/>`_: A free font editor with Python and UFO support.
 - `The FontLab home page <http://fontlab.com/>`_
 
-------
 Python
 ------
 

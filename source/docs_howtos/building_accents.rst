@@ -1,4 +1,3 @@
-================
 Building accents
 ================
 
@@ -10,7 +9,6 @@ In this example the script creates a new glyph, ``aacute``, then proceeds to add
 
 This example illustrates the use of the very basic ``appendComponent`` method. But it's not a very useful way to make glyphs. For instance, the string ``aacute`` could easily be made into a variable taken from a list. And dealing with the offsets when placing the accent isn't going to be efficient either when you want to make a large list of accented glyphs. How to go about it that?
 
-------------------------------
 Building accents automagically
 ------------------------------
 
@@ -20,31 +18,28 @@ RoboFab has its own database which connects glyphnames to components. In the Rob
 
 This entry shows that ``Acircumflexdotaccent`` is constructed with components from ``A``, a ``circumflex`` using the ``top`` anchor, and ``dotaccent`` using the ``bottom`` anchor.
 
-----------------
 Generate a glyph
 ----------------
 
 RoboFab's Font object has several ways of starting component glyphs and adding stuff to them. There are different strategies possible for different kinds of problems.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 font.generateGlyph(glyphName, replace, preflight, printErrors)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The easiest method to add an assembled glyph to a font is using the font's ``generateGlyph`` method. This will look for the glyphname in the glyph construction database and attempt to get all the components and place them at the anchors listed in the database. Let's have a look at its parameters:
 
-``glyphName``
+**glyphName**
     The name of the glyph, has to correspond to a name in the glyph construction database.
 
-``replace``
+**replace**
     Default set to ``True``, the new glyph will replace the old one if it exists.
 
-``preflight``
+**preflight**
     Default set to ``False``, preflight gives you the opportunity to run the glyph creation process without actually adding it to the font. This is useful if you're building the characterset and you don't have all the parts yet. Preflight will return a list of missing anchor points, missing accents, components, etc. Note that it can take several iterations of fixing problems and discovering new ones. If for instance a glyph for a component can't be found, it also means that some problems with that glyph are hidden. i.e. when a glyph ``A`` can't be found, preflight can't tell you that this glyph is missing a required anchor point either.
 
-``printErrors``
+**printErrors**
     Default set to ``True``, print any errors and problems to the standard output window.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 font.compileGlyph(glyphName, baseName, accentNames, adjustWidth=False, preflight=False, printErrors=True)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -62,7 +57,6 @@ Compile a glyph with specified components. If you want to assemble accents that 
 **printErrors**
     default set to ``True``, print any errors and problems to the standard output window.
 
--------------
 AccentBuilder
 -------------
 
@@ -70,7 +64,6 @@ RoboFab comes with a versatile accent building tool, ``AccentBuilder``. Have a l
 
 .. showcode:: ../../Examples/howtos/buildingAccents_01.py
 
---------------------------------
 Building your own accentbuilders
 --------------------------------
 

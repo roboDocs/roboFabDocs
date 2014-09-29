@@ -1,4 +1,3 @@
-=================
 How to make a UFO
 =================
 
@@ -13,7 +12,6 @@ The ``.ufo`` will be in the same directory as the original ``.vfb`` file. Have a
 
 .. note:: If you want to export a new FontLab font to UFO, **it is important that you save the font to .vfb first**.
 
-----------------------------
 Importing a UFO into FontLab
 ----------------------------
 
@@ -25,7 +23,6 @@ This script create a new, empty FontLab font, then proceed to ask you for a ``.u
 
 .. note:: Due to some limitations in how FontLab keeps track of new, untitled, unsaved fonts, it is vital to **make sure that there are no other unsaved, untitled fonts open** when you run this script. Because if there are, FontLab will be confused about where to import the glyphs from the ``.ufo`` and none of the fonts will show the new glyphs. It's ok to have other fonts open when importing ``.ufo``, they just to have been saved previously.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Importing a bunch of UFO's into FontLab
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -39,7 +36,6 @@ This script will prompt you for a folder with UFO's. Pick one. The script will p
 
 .. note:: Sometimes, some versions of FontLab can get a bit tired of importing UFO's in a batch. When this happens not all UFO's will be imported and FontLab may crash. When this happens, just import the fonts one by one.
 
--------------------------------
 Making a UFO from a font binary
 -------------------------------
 

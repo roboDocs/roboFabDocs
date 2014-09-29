@@ -1,10 +1,8 @@
-========================
 OpenType features in UFO
 ========================
 
 The UFO specification does not have an explicit place or format for OpenType features. This has lead to some misunderstanding that it is not possible to work with OpenType features in UFO. This is not the case. Feature data can be stored in the ufo and manipulated. For instance, FontLab exports and imports feature data to and from UFO, storing the data in the ``font.lib`` (``font.ufo/lib.plist``) at ``com.robofab.features``. This page describes how the data is currently managed. It's likely this will improve in the future.
 
---------
 Features
 --------
 
@@ -31,7 +29,6 @@ Note that the feature data in the lib is used for storage in UFO. This data won'
     [<TagObject: tag=liga, value=feature ln..., parent: 'MyFont'>,
     <TagObject: tag=dlig, value=feature ln..., parent: 'MyFont'>]
 
-------------
 Kerning data
 ------------
 
@@ -44,7 +41,6 @@ Kerning is stored in ``font.kerning``, an object which behaves like a dictionary
     [('a', 'v'), ('MMK_L_baseserif', 'n')]
     -100
 
-------------------------------------
 Why no RoboFab objects for features?
 ------------------------------------
 

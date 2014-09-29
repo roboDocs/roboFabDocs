@@ -1,6 +1,8 @@
 RGlyph
 ======
 
+.. image:: ../../images/RGlyph.gif
+
 Usage
 -----
 

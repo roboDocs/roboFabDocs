@@ -1,22 +1,18 @@
-===============
 Release History
 ===============
 
 A brief overview of what happened.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 November 30, 2009 - version 1.2 svn rev. 200
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In Python 2.6 ``as`` became a keyword. Some functions and methods in RoboFab used ``as`` as a parameter. This has been fixed.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 March 1, 2009 - version 1.2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This version implements and supports the UFO2 specification. Lots of work in the ``font.info`` area, new attributes. Also some renaming and moving of attributes. The ``objectsFL`` and ``objectsRF`` code takes care and does a lot of re-routing, but also prints warnings when you're using deprecated names.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 January 8, 2006 - version 1.1.2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -30,7 +26,6 @@ RoboFab is now available from a public svn server at ``code.robofab.com``. A cou
 
 - Note: these updates are in the svn version only at the moment. Building the releases and installers is not automatic.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 February 7, 2006 - version 1.1.1
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

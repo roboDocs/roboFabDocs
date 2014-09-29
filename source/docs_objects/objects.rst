@@ -28,6 +28,7 @@ RoboFab Unified Font Objects
 - :doc:`psHints <psHints>`: Part of a Font, contains font level PostScript hinting data.
 
 Scope
+-----
 
 Naming conventions in RoboFab
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

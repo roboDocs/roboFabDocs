@@ -1,4 +1,3 @@
-===================================
 Understanding Contours and Segments
 ===================================
 
@@ -6,7 +5,6 @@ Now, this is an important part of RoboFab so pay attention. In the world of digi
 
 Diagrams by Tal Leming.
 
---------
 Contours
 --------
 
@@ -30,7 +28,6 @@ A glyph can contain one or more contours. Depending on what you want to do, ther
 
     A description of the :doc:`RContour <../docs_objects/RContour>` object.
 
---------
 Segments
 --------
 
@@ -58,7 +55,6 @@ In turn, a segment is made up of a sequence of points. Any number of off-curve p
 
     A description of the :doc:`RSegment <../docs_objects/RSegment>` object.
 
-------
 Points
 ------
 
@@ -80,7 +76,6 @@ Another way to look at a contour is as a sequence of on-curve and off-curve poin
 
 .. seealso:: A description of the :doc:`RPoint <../docs_objects/RPoint>` object.
 
--------
 bPoints
 -------
 

@@ -1,4 +1,3 @@
-================
 Generating Fonts
 ================
 
@@ -8,7 +7,6 @@ A ``RFont`` object in FontLab can call FontLab to generate fonts. Generating fon
 
     The generate method only calls on FontLab to generate the fonts in a particular format. It does not prepare the font data for that specific format, i.e. for example when you're generating for PC Truetype, ``generate()`` won't select the appropriate encodings or special windows flags. You need to do that.
 
--------------------------------------
 RFont.generate(outputType, path=None)
 -------------------------------------
 
@@ -48,7 +46,6 @@ Docs adapted from the `Unofficial FontLab/Python API Reference <http://e-font.de
 
     If no ``path`` is given, the file will be output in the same directory as the ``.vfb`` file. If no file name is given, the generated file name will be the same as the ``.vfb`` file, with the appropriate suffix.
 
---------
 Examples
 --------
 

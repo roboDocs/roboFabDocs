@@ -1,24 +1,20 @@
-=================================
 Python, RoboFab, FontLab, Editors
 =================================
 
-----------
 Scripting?
 ----------
 
-These talks are about scripting. The term **scripting** is loosely defined as "writing small programs" without making it sound as difficult or complicated as "programming". Scripting is programming of course, but you don't have to tell anyone. You're using a programming language, **Python**, to write a script (or whatever you want to call it), which is then acted out by the **Python interpreter**. This is a program which will try to follow your instructions, giving feedback when it runs into problems or finishing the job when it doesn't. Running into problems is not something to be afraid of, Python does it very politely with a **traceback**, Python's way of reporting what went wrong and roughly where it the code it happened. We'll see a lot of these and we'll learn how to read these reports and understand what went wrong.
+These talks are about scripting. The term *scripting* is loosely defined as "writing small programs" without making it sound as difficult or complicated as "programming". Scripting is programming of course, but you don't have to tell anyone. You're using a programming language, *Python*, to write a script (or whatever you want to call it), which is then acted out by the *Python interpreter*. This is a program which will try to follow your instructions, giving feedback when it runs into problems or finishing the job when it doesn't. Running into problems is not something to be afraid of, Python does it very politely with a *traceback*, Python's way of reporting what went wrong and roughly where it the code it happened. We'll see a lot of these and we'll learn how to read these reports and understand what went wrong.
 
-----
 Why?
 ----
 
 Scripting is not type design. Or perhaps better: scripting is everything but typedesign. Scripts won't help you find ideas or draw a better curve. But it might help you make simple tools for things you need to do often. Just like anything, it will get better with some experience, but even a badly written, simple script can save you lots of time. You don't have to be (or become) a professional programmer to make it a useful skill.
 
------
 Where
 -----
 
-Python is a modern, open source, programming language which is relatively easy to work with. There are Pythons for all operating systems and it has many developers building many different tools for it. It is not just for fonts and glyphs, there are networking and scientific tools, games, web applications. Years ago **RoboFog** introduced Python to make tools for typedesign and the idea stuck. Now there is a range of type applications that use Python: FontLab, the Adobe FDK, MetricsMachine, RoboFab. Learning Python means you can use your skills in more than one application.
+Python is a modern, open source, programming language which is relatively easy to work with. There are Pythons for all operating systems and it has many developers building many different tools for it. It is not just for fonts and glyphs, there are networking and scientific tools, games, web applications. Years ago *RoboFog* introduced Python to make tools for typedesign and the idea stuck. Now there is a range of type applications that use Python: FontLab, the Adobe FDK, MetricsMachine, RoboFab. Learning Python means you can use your skills in more than one application.
 
 There are several places where you can write your code. Each with their own purpose and use. We'll look at some of them:
 
@@ -35,18 +31,15 @@ There are several places where you can write your code. Each with their own purp
     A form of Python where you write a line of code at a prompt and it is immediately executed. Useful to test simple problems, but not for anything over a couple of lines of code.
 
 **Command-line Python**
-    Use the installed command-line Python interpreter to execute files. The interpreter is called with the filename as an argument:
-
-    .. code::
+    Use the installed command-line Python interpreter to execute files. The interpreter is called with the filename as an argument::
 
         >>> python myCode.py
         ...does stuff...
 
--------
 Objects
 -------
 
-Perhaps the most useful invention in programming since the paper-punch card is called **object oriented programming**. The term is used to describe a way of programming in which the data you're working on, and the code which belongs to that data are kept together, much like a person holding a handful of balloons on strings, in a single **object**, the cluster of balloons. This may sound a bit abstract. But it's a way to keep all the code and data sorted in a useful way. Otherwise there will be too much stuff very quickly. More terminology:
+Perhaps the most useful invention in programming since the paper-punch card is called **object oriented programming**. The term is used to describe a way of programming in which the data you're working on, and the code which belongs to that data are kept together, much like a person holding a handful of balloons on strings, in a single *object*, the cluster of balloons. This may sound a bit abstract. But it's a way to keep all the code and data sorted in a useful way. Otherwise there will be too much stuff very quickly. More terminology:
 
 **attributes**
     The things an object knows about, its data or value. An object's data is stored in its attributes.
@@ -54,7 +47,7 @@ Perhaps the most useful invention in programming since the paper-punch card is c
 **methods**
     The things an object can do. The code to manipulate an object, its functions.
 
-Risking an example: an object of the class **car** has an attribute **color** (blue) and a method **drive** (slow). Big objects are usually split up into smaller, more specific objects. For instance, a **Font** object offers access to **Glyph** objects. The way the various objects relate, wich object contains what etc. — the way something is abstracted — is called an **object model**. A map of the object model used in RoboFab is in :doc:`the Fab docs <../docs_objects/model>`. An object model is also called **API** for Application Programming Interface.
+Risking an example: an object of the class *car* has an attribute *color* (blue) and a method *drive* (slow). Big objects are usually split up into smaller, more specific objects. For instance, a *Font* object offers access to *Glyph* objects. The way the various objects relate, wich object contains what etc. — the way something is abstracted — is called an *object model*. A map of the object model used in RoboFab is in :doc:`the Fab docs <../docs_objects/model>`. An object model is also called *API* for Application Programming Interface.
 
 FontLab objects? RoboFab objects? Are there different flavors of objects? Doesn't that confuse things? FontLab has its own object model. There are FontLab Font objects and FontLab Glyph objects. But these objects are relatively low-level, that means that while using these objects, you have to keep track of a lot of things yourself and understand some FontLab peculiarities. This makes it difficult to write code efficiently. RoboFab is a layer of objects built on top of the FontLab objects, making it a lot easier to work with the data, fewer things to memorise and that means faster development. FontLab now comes bundled with RoboFab. In this conference we focus mainly on the RoboFab objects, but for some things the FontLab objects are needed.
 
@@ -99,7 +92,6 @@ Did you notice some lines has parentheses after them, and others don't? Writing 
     # it means: take this code and run it.
     font.update()
 
-------------------------------
 Names of variables and methods
 ------------------------------
 
@@ -128,7 +120,6 @@ In Robofab we have a couple of conventions for naming classes, attributes, metho
     - ``bruce`` and ``Bruce`` are different variable names
     - The underscore character ``_`` is legal. ex: ``my_name``
 
-------------------
 Installing RoboFab
 ------------------
 
@@ -136,7 +127,6 @@ Installing RoboFab is usually straightforward. There are quite a few combination
 
 More :doc:`installation notes <../docs_intro/install>` in the RoboFab documentation.
 
--------------
 Documentation
 -------------
 

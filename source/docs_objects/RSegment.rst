@@ -1,6 +1,8 @@
 RSegment
 ========
 
+.. image:: ../../images/RSegment.gif
+
 Usage
 -----
 

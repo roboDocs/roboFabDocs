@@ -1,16 +1,13 @@
-==================
 How to interpolate
 ==================
 
 RoboFab's interpolation is independent of the interpolation tools provided in FontLab. First of all that means that you can interpolate UFO fonts without the help of FontLab. It also means that the interpolation engine works different than the one in FontLab.
 
-------
 Strict
 ------
 
 RoboFab interpolation is very strict. It won't interpolate unless the point structures of both extremes match. It won't mess with the masters, force points or anything. The user has to get it right.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 aGlyph.isCompatible(otherGlyph, report=True)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -31,7 +28,6 @@ Glyph has a method ``isCompatible()`` which reports whether or not the point str
     (False, ["Fatal error: contour 0 in glyph a and
     glyph b don't have the same number of segments."])
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 aFont.interpolate(factor, minFont, maxFont, suppressError=True, analyzeOnly=False)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -54,11 +50,9 @@ Interpolate by factor between ``minFont`` and ``maxFont``. In FontLab the result
 
 :doc:`Kerning objects <../docs_objects/RKerning>` have an interpolation method as well. It is debateable whether an interpolation of two fonts should also automatically interpolate the kerning, so we picked the more explicit approach: in your interpolation script you have to do the interpolation of the kerning objects seperately.
 
---------
 Examples
 --------
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Straight interpolating (either FontLab or UFO)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -66,7 +60,6 @@ Setting a third font to an interpolation of two others:
 
 .. showcode:: ../../Examples/howtos/interpolate_02.py
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Interpolating two glyphs in the same font
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -74,7 +67,6 @@ For any number of reasons you might want to interpolate a glyph within the same 
 
     >>> File cannot be tokenized by tokenize
 
-^^^^^^^^^^^^
 Alternatives
 ^^^^^^^^^^^^
 
