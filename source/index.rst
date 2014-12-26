@@ -29,7 +29,7 @@ Object Model
 
 .. image:: ../images/logo.gif
 
-Here is a :doc:`handy map <../objects/model>` of the RoboFab objects.
+Here is a :doc:`handy map <objects/model>` of the RoboFab objects.
 
 The Developers
 --------------
