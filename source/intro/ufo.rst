@@ -8,6 +8,8 @@ No. The RoboFab developers felt the need for a flexible, text based (XML) format
 
 .. _here: http://unifiedfontobject.org/
 
+.. _glif:
+
 GLIF
 ----
 

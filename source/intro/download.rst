@@ -1,7 +1,16 @@
 Download RoboFab
 ================
 
-`Download RoboFab from Git <http://github.com/robofab-developers/robofab>`_
+`RoboFab on GitHub <https://github.com/robofab-developers/robofab>`_
+
+`download RoboFab zip <https://github.com/robofab-developers/robofab/archive/master.zip>`_
+
+Cloning the repository
+----------------------
+
+If you are familiar with git, you can get the code straight from the repository::
+
+	git clone https://github.com/robofab-developers/robofab.git
 
 
 RoboFab License Agreement

@@ -1,7 +1,7 @@
 RoboFab Intro
 =============
 
-RoboFab is a **library** of Python code for manipulation and storage of font and glyph related data. RoboFab implements a new font file format, the :doc:`Unified Font Objects <ufo>` or .ufo for short. UFO is a format for **font sources** (similar to something like .fog or .vfb) except that UFO is XML based (see :doc:`Glyph Interchange Format <ufo>`), readable, well documented and easily extended to contain different kinds of data.
+RoboFab is a **library** of Python code for manipulation and storage of font and glyph related data. RoboFab implements a new font file format, the :doc:`Unified Font Objects <ufo>` or .ufo for short. UFO is a format for **font sources** (similar to something like .fog or .vfb) except that UFO is XML based (see :ref:`Glyph Interchange Format <glif>`), readable, well documented and easily extended to contain different kinds of data.
 
 Long term sources
 -----------------

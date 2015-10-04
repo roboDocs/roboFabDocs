@@ -35,11 +35,11 @@ Installing RoboFab on Mac OSX
 This will install RoboFab for the system Python, which is what FontLab Studio uses.
 
 Permissions
-^^^^^^^^^^^
+-----------
 
 Make sure you have admin permissions on the machine when you install the various packages. When installing as a normal priviliged user, it can sometimes happen that certain files can't be written, and the installation remains incomplete. The most common problem is that one or two preference files need to be written, but the current user does not have enough permissions to delete them. Read the traceback, locate the file, delete, install again.
 
-About install.py  
+About install.py
 ----------------
 
 In the package, on the same level as this read me there's a ``install.py`` script. Running this script creates a file named ``robofab.pth`` in site-packages. This ``robofab.pth`` file contains the path to the current location of the RoboFab package. It does not copy the RoboFab package to ``site-packages`` itself, you need to keep the RoboFab package. Also: if you *move* the RoboFab folder to some other location (or rename any of the directories the RoboFab folder is nested in), you have to run the ``install.py`` script again to update the path.
@@ -49,14 +49,14 @@ Dependencies
 
 Some parts of RoboFab depend on other Python modules and packages. These need to be installed as well.
 
-**FontTools.**
-    Robofab requires Just van Rossum's FontTools package (not to be confused with Apple Inc's set of tools for fonts with the same name). It is recommended that you use the RoboFab installer with FontTools built in, available at :doc:`the download section <download>`. If you must pick up FontTools separately, download the latest snapshot at `fonttools.sf.net`_.
+**FontTools**
+    Robofab requires Just van Rossum's FontTools package (not to be confused with Apple Inc's set of tools for fonts with the same name). Download the latest snapshot of FontTools at `fonttools.sf.net`_.
 
-**The Numeric Python module.**
-    The version of Numeric for FontTools is available here: `Numeric 24.2`_.
+**dialogKit**
+    Some FontLab scripts in RoboFab require Tal Leming's dialogKit UI package. Download the latest version of dialogKit at `github.com/typesupply/dialogKit`_.
 
 .. _fonttools.sf.net: http://fonttools.sf.net/
-.. _Numeric 24.2: http://www.robofab.org/download/Numeric-24.2.zip
+.. _github.com/typesupply/dialogKit: http://github.com/typesupply/dialogKit
 
 RoboFab bundled with FontLab Studio 5
 -------------------------------------
