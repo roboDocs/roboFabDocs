@@ -1,7 +1,7 @@
 RoboFab Documentation
 =====================
 
-The complete RoboFab documentation:
+The complete RoboFab documentation, ported to Sphinx.
 
 - Introduction
 - Objects
@@ -12,10 +12,8 @@ The complete RoboFab documentation:
 
 To build the documentation, you will need [Sphinx](http://sphinx-doc.org/).
 
-In Terminal, `cd` to the `roboFabDocs` folder, and type::
+In Terminal, `cd` to the `roboFabDocs` folder, and type:
 
 	make html
 
 This will build the documentation in a subfolder named `_build`.
-
-
