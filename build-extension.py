@@ -31,7 +31,7 @@ B.requiresVersionMajor = "1"
 B.requiresVersionMinor = "5"
 B.infoDictionary["html"] = 0
 B.infoDictionary["com.robofontmechanic.Mechanic"] = {
-    "repository" : "roboDocs/roboFabDocsExtension",
+    "repository" : "roboDocs/roboFabDocs",
     "description" : "The RoboFab Documentation as a RoboFont extension",
 }
 B.save(extensionPath, libPath=libPath, resourcesPath=None, pycOnly=False)

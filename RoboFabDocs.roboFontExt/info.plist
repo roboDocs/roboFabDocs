@@ -18,7 +18,7 @@
 		<key>description</key>
 		<string>The RoboFab Documentation as a RoboFont extension</string>
 		<key>repository</key>
-		<string>roboDocs/roboFabDocsExtension</string>
+		<string>roboDocs/roboFabDocs</string>
 	</dict>
 	<key>developer</key>
 	<string>RoboFab Developers</string>
@@ -37,7 +37,7 @@
 	<key>requiresVersionMinor</key>
 	<string>5</string>
 	<key>timeStamp</key>
-	<real>1444050248.820502</real>
+	<real>1444050468.6094429</real>
 	<key>version</key>
 	<string>0.1</string>
 </dict>
