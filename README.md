@@ -1,6 +1,15 @@
 RoboFab Documentation
 =====================
 
+	<WARNING>
+
+	this repository will self-destruct in a few days.
+
+	the updated RoboFab documentation is now where it belongs:
+	in the official RoboFab repository: github.com/robofab-developers/robofab/Docs
+
+	</WARNING>
+
 The complete RoboFab documentation, ported to Sphinx.
 
 - Introduction
