@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ufoLib &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="API Docs" href="index.html" />
+    <link rel="next" title="world" href="world.html" />
+    <link rel="prev" title="plistlib" href="plistlib.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="plistlib.html" title="previous chapter">plistlib</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="world.html" title="next chapter">world</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="ufolib">
+<h1>ufoLib<a class="headerlink" href="#ufolib" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-robofab.ufoLib"></span><p>&#8221;
+A library for importing .ufo files and their descendants.
+Refer to <a class="reference external" href="http://unifiedfontobject.com">http://unifiedfontobject.com</a> for the UFO specification.</p>
+<p>The UFOReader and UFOWriter classes support versions 1 and 2
+of the specification. Up and down conversion functions are also
+supplied in this library. These conversion functions are only
+necessary if conversion without loading the UFO data into
+a set of objects is desired. These functions are:</p>
+<blockquote>
+<div>convertUFOFormatVersion1ToFormatVersion2
+convertUFOFormatVersion2ToFormatVersion1</div></blockquote>
+<p>Two sets that list the font info attribute names for the two
+fontinfo.plist formats are available for external use. These are:</p>
+<blockquote>
+<div>fontInfoAttributesVersion1
+fontInfoAttributesVersion2</div></blockquote>
+<p>A set listing the fontinfo.plist attributes that were deprecated
+in version 2 is available for external use:</p>
+<blockquote>
+<div>deprecatedFontInfoAttributesVersion2</div></blockquote>
+<p>A function, validateFontInfoVersion2ValueForAttribute, that does
+some basic validation on values for a fontinfo.plist value is
+available for external use.</p>
+<p>Two value conversion functions are availble for converting
+fontinfo.plist values between the possible format versions.</p>
+<blockquote>
+<div>convertFontInfoValueForAttributeFromVersion1ToVersion2
+convertFontInfoValueForAttributeFromVersion2ToVersion1</div></blockquote>
+<dl class="function">
+<dt id="robofab.ufoLib.convertUFOFormatVersion1ToFormatVersion2">
+<code class="descclassname">robofab.ufoLib.</code><code class="descname">convertUFOFormatVersion1ToFormatVersion2</code><span class="sig-paren">(</span><em>inPath</em>, <em>outPath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.convertUFOFormatVersion1ToFormatVersion2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for converting a version format 1 UFO
+to version format 2. inPath should be a path
+to a UFO. outPath is the path where the new UFO
+should be written. If outPath is not given, the
+inPath will be used and, therefore, the UFO will
+be converted in place. Otherwise, if outPath is
+specified, nothing must exist at that path.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.ufoLib.convertUFOFormatVersion2ToFormatVersion1">
+<code class="descclassname">robofab.ufoLib.</code><code class="descname">convertUFOFormatVersion2ToFormatVersion1</code><span class="sig-paren">(</span><em>inPath</em>, <em>outPath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.convertUFOFormatVersion2ToFormatVersion1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for converting a version format 2 UFO
+to version format 1. inPath should be a path
+to a UFO. outPath is the path where the new UFO
+should be written. If outPath is not given, the
+inPath will be used and, therefore, the UFO will
+be converted in place. Otherwise, if outPath is
+specified, nothing must exist at that path.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.ufoLib.UFOReader">
+<em class="property">class </em><code class="descclassname">robofab.ufoLib.</code><code class="descname">UFOReader</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the various components of the .ufo.</p>
+<dl class="attribute">
+<dt id="robofab.ufoLib.UFOReader.formatVersion">
+<code class="descname">formatVersion</code><a class="headerlink" href="#robofab.ufoLib.UFOReader.formatVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>The format version of the UFO. This is determined by reading metainfo.plist during __init__.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOReader.readMetaInfo">
+<code class="descname">readMetaInfo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOReader.readMetaInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read metainfo.plist. Only used for internal operations.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOReader.readGroups">
+<code class="descname">readGroups</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOReader.readGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read groups.plist. Returns a dict.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOReader.readInfo">
+<code class="descname">readInfo</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOReader.readInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read fontinfo.plist. It requires an object that allows
+setting attributes with names that follow the fontinfo.plist
+version 2 specification. This will write the attributes
+defined in the file into the object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOReader.readKerning">
+<code class="descname">readKerning</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOReader.readKerning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read kerning.plist. Returns a dict.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOReader.readLib">
+<code class="descname">readLib</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOReader.readLib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read lib.plist. Returns a dict.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOReader.readFeatures">
+<code class="descname">readFeatures</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOReader.readFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read features.fea. Returns a string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOReader.getGlyphSet">
+<code class="descname">getGlyphSet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOReader.getGlyphSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the GlyphSet associated with the
+glyphs directory in the .ufo.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOReader.getCharacterMapping">
+<code class="descname">getCharacterMapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOReader.getCharacterMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary that maps unicode values (ints) to
+lists of glyph names.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.ufoLib.UFOWriter">
+<em class="property">class </em><code class="descclassname">robofab.ufoLib.</code><code class="descname">UFOWriter</code><span class="sig-paren">(</span><em>path</em>, <em>formatVersion=2</em>, <em>fileCreator='org.robofab.ufoLib'</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOWriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the various components of the .ufo.</p>
+<dl class="attribute">
+<dt id="robofab.ufoLib.UFOWriter.formatVersion">
+<code class="descname">formatVersion</code><a class="headerlink" href="#robofab.ufoLib.UFOWriter.formatVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>The format version of the UFO. This is set into metainfo.plist during __init__.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="robofab.ufoLib.UFOWriter.fileCreator">
+<code class="descname">fileCreator</code><a class="headerlink" href="#robofab.ufoLib.UFOWriter.fileCreator" title="Permalink to this definition">¶</a></dt>
+<dd><p>The file creator of the UFO. This is set into metainfo.plist during __init__.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOWriter.writeGroups">
+<code class="descname">writeGroups</code><span class="sig-paren">(</span><em>groups</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOWriter.writeGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write groups.plist. This method requires a
+dict of glyph groups as an argument.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOWriter.writeInfo">
+<code class="descname">writeInfo</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOWriter.writeInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write info.plist. This method requires an object
+that supports getting attributes that follow the
+fontinfo.plist version 2 secification. Attributes
+will be taken from the given object and written
+into the file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOWriter.writeKerning">
+<code class="descname">writeKerning</code><span class="sig-paren">(</span><em>kerning</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOWriter.writeKerning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write kerning.plist. This method requires a
+dict of kerning pairs as an argument.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOWriter.writeLib">
+<code class="descname">writeLib</code><span class="sig-paren">(</span><em>libDict</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOWriter.writeLib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write lib.plist. This method requires a
+lib dict as an argument.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOWriter.writeFeatures">
+<code class="descname">writeFeatures</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOWriter.writeFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write features.fea. This method requires a
+features string as an argument.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOWriter.makeGlyphPath">
+<code class="descname">makeGlyphPath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOWriter.makeGlyphPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make the glyphs directory in the .ufo.
+Returns the path of the directory created.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.ufoLib.UFOWriter.getGlyphSet">
+<code class="descname">getGlyphSet</code><span class="sig-paren">(</span><em>glyphNameToFileNameFunc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.UFOWriter.getGlyphSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the GlyphSet associated with the
+glyphs directory in the .ufo.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.ufoLib.validateFontInfoVersion2ValueForAttribute">
+<code class="descclassname">robofab.ufoLib.</code><code class="descname">validateFontInfoVersion2ValueForAttribute</code><span class="sig-paren">(</span><em>attr</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.validateFontInfoVersion2ValueForAttribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>This performs very basic validation of the value for attribute
+following the UFO fontinfo.plist specification. The results
+of this should not be interpretted as <em>correct</em> for the font
+that they are part of. This merely indicates that the value
+is of the proper type and, where the specification defines
+a set range of possible values for an attribute, that the
+value is in the accepted range.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.ufoLib.convertFontInfoValueForAttributeFromVersion1ToVersion2">
+<code class="descclassname">robofab.ufoLib.</code><code class="descname">convertFontInfoValueForAttributeFromVersion1ToVersion2</code><span class="sig-paren">(</span><em>attr</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.convertFontInfoValueForAttributeFromVersion1ToVersion2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert value from version 1 to version 2 format.
+Returns the new attribute name and the converted value.
+If the value is None, None will be returned for the new value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.ufoLib.convertFontInfoValueForAttributeFromVersion2ToVersion1">
+<code class="descclassname">robofab.ufoLib.</code><code class="descname">convertFontInfoValueForAttributeFromVersion2ToVersion1</code><span class="sig-paren">(</span><em>attr</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.ufoLib.convertFontInfoValueForAttributeFromVersion2ToVersion1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert value from version 2 to version 1 format.
+Returns the new attribute name and the converted value.
+If the value is None, None will be returned for the new value.</p>
+</dd></dl>
+
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

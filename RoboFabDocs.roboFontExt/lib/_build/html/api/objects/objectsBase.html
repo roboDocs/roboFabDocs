@@ -1,0 +1,1120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>objectsBase &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../../index.html" />
+    <link rel="up" title="objects" href="index.html" />
+    <link rel="next" title="objectsFF" href="objectsFF.html" />
+    <link rel="prev" title="objects" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../../index.html">home</a> </li>
+<!--
+<li><a href="../../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../../intro/download.html">download</a></li>
+<li><a href="../../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="index.html" title="previous chapter">objects</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="objectsFF.html" title="next chapter">objectsFF</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="module-robofab.objects.objectsBase">
+<span id="objectsbase"></span><h1>objectsBase<a class="headerlink" href="#module-robofab.objects.objectsBase" title="Permalink to this headline">¶</a></h1>
+<p>Base classes for the Unified Font Objects (UFO),
+a series of classes that deal with fonts, glyphs,
+contours and related things.</p>
+<p>Unified Font Objects are:
+- platform independent
+- application independent</p>
+<p>About Object Inheritance:
+objectsFL and objectsRF objects inherit
+methods and attributes from these objects.
+In other words, if it is in here, you can
+do it with the objectsFL and objectsRF.</p>
+<dl class="function">
+<dt id="robofab.objects.objectsBase.issequence">
+<code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">issequence</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.issequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is x a sequence? We say it is if it has a __getitem__ method.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BasePostScriptHintValues">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BasePostScriptHintValues</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePostScriptHintValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for postscript hinting information.</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BasePostScriptHintValues.getParent">
+<code class="descname">getParent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePostScriptHintValues.getParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>this method will be overwritten with a weakref if there is a parent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BasePostScriptHintValues.isEmpty">
+<code class="descname">isEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePostScriptHintValues.isEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check all attrs and decide if they&#8217;re all empty.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BasePostScriptHintValues.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePostScriptHintValues.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set all attributes to default / empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BasePostScriptHintValues.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>aParent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePostScriptHintValues.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicate this object. Pass an object for parenting if you want.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BasePostScriptGlyphHintValues">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BasePostScriptGlyphHintValues</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePostScriptGlyphHintValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for glyph-level postscript hinting information.
+vStems, hStems</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BasePostScriptGlyphHintValues.round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePostScriptGlyphHintValues.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round the values to reasonable values.
+- stems are rounded to int</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BasePostScriptFontHintValues">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BasePostScriptFontHintValues</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePostScriptFontHintValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for font-level postscript hinting information.
+Blues values, stem values.</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BasePostScriptFontHintValues.round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePostScriptFontHintValues.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round the values to reasonable values.
+- blueScale is not rounded, it is a float
+- forceBold is set to False if -0.5 &lt; value &lt; 0.5. Otherwise it will be True.
+- blueShift, blueFuzz are rounded to int
+- stems are rounded to int
+- blues are rounded to int</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.objects.objectsBase.roundPt">
+<code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">roundPt</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.roundPt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round a vector</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.objects.objectsBase.addPt">
+<code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">addPt</code><span class="sig-paren">(</span><em>ptA</em>, <em>ptB</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.addPt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add two vectors</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.objects.objectsBase.subPt">
+<code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">subPt</code><span class="sig-paren">(</span><em>ptA</em>, <em>ptB</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.subPt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Substract two vectors</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.objects.objectsBase.mulPt">
+<code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">mulPt</code><span class="sig-paren">(</span><em>ptA</em>, <em>scalar</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.mulPt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiply a vector with scalar</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.objects.objectsBase.relativeBCPIn">
+<code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">relativeBCPIn</code><span class="sig-paren">(</span><em>anchor</em>, <em>BCPIn</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.relativeBCPIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert absolute incoming bcp value to a relative value</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.objects.objectsBase.absoluteBCPIn">
+<code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">absoluteBCPIn</code><span class="sig-paren">(</span><em>anchor</em>, <em>BCPIn</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.absoluteBCPIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert relative incoming bcp value to an absolute value</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.objects.objectsBase.relativeBCPOut">
+<code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">relativeBCPOut</code><span class="sig-paren">(</span><em>anchor</em>, <em>BCPOut</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.relativeBCPOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert absolute outgoing bcp value to a relative value</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.objects.objectsBase.absoluteBCPOut">
+<code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">absoluteBCPOut</code><span class="sig-paren">(</span><em>anchor</em>, <em>BCPOut</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.absoluteBCPOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert relative outgoing bcp value to an absolute value</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.RBaseObject">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">RBaseObject</code><a class="headerlink" href="#robofab.objects.objectsBase.RBaseObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for wrapper objects</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.RBaseObject.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>aParent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.RBaseObject.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicate this object. Pass an object for parenting if you want.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.RBaseObject.isRobofab">
+<code class="descname">isRobofab</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.RBaseObject.isRobofab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Presence of this method indicates a Robofab object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.RBaseObject.naked">
+<code class="descname">naked</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.RBaseObject.naked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the wrapped object itself, in case it is needed for direct access.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.RBaseObject.getParent">
+<code class="descname">getParent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.RBaseObject.getParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>this method will be overwritten with a weakref if there is a parent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.RBaseObject.dump">
+<code class="descname">dump</code><span class="sig-paren">(</span><em>private=False</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.RBaseObject.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a dump of this object to the std out.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BaseFont">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BaseFont</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all font objects.</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseFont.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseFont.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>update the font</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseFont.close">
+<code class="descname">close</code><span class="sig-paren">(</span><em>save=1</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseFont.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the font, saving is optional.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseFont.round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseFont.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>round all of the points in all of the glyphs</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseFont.autoUnicodes">
+<code class="descname">autoUnicodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseFont.autoUnicodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Using fontTools.agl, assign Unicode lists to all glyphs in the font</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseFont.getCharacterMapping">
+<code class="descname">getCharacterMapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseFont.getCharacterMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dictionary of unicode -&gt; [glyphname, ...] mappings.
+Note that this dict is created each time this method is called, 
+which can make it expensive for larger fonts. All glyphs are loaded.
+Note that one glyph can have multiple unicode values,
+and a unicode value can have multiple glyphs pointing to it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseFont.getReverseComponentMapping">
+<code class="descname">getReverseComponentMapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseFont.getReverseComponentMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a reversed map of component references in the font.
+{
+&#8216;A&#8217; : [&#8216;Aacute&#8217;, &#8216;Aring&#8217;]
+&#8216;acute&#8217; : [&#8216;Aacute&#8217;]
+&#8216;ring&#8217; : [&#8216;Aring&#8217;]
+etc.
+}</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseFont.compileGlyph">
+<code class="descname">compileGlyph</code><span class="sig-paren">(</span><em>glyphName</em>, <em>baseName</em>, <em>accentNames</em>, <em>adjustWidth=False</em>, <em>preflight=False</em>, <em>printErrors=True</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseFont.compileGlyph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compile components into a new glyph using components and anchorpoints.
+glyphName: the name of the glyph where it all needs to go
+baseName: the name of the base glyph
+accentNames: a list of accentName, anchorName tuples, [(&#8216;acute&#8217;, &#8216;top&#8217;), etc]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseFont.generateGlyph">
+<code class="descname">generateGlyph</code><span class="sig-paren">(</span><em>glyphName</em>, <em>replace=1</em>, <em>preflight=False</em>, <em>printErrors=True</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseFont.generateGlyph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a glyph and return it. Assembled from GlyphConstruction.txt</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseFont.interpolate">
+<code class="descname">interpolate</code><span class="sig-paren">(</span><em>factor</em>, <em>minFont</em>, <em>maxFont</em>, <em>suppressError=True</em>, <em>analyzeOnly=False</em>, <em>doProgress=False</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseFont.interpolate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Traditional interpolation method. Interpolates by factor between minFont and maxFont.
+suppressError will supress all tracebacks and analyze only will not perform the interpolation
+but it will analyze all glyphs and return a dict of problems.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BaseGlyph">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BaseGlyph</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all glyph objects.</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.interpolate">
+<code class="descname">interpolate</code><span class="sig-paren">(</span><em>factor</em>, <em>minGlyph</em>, <em>maxGlyph</em>, <em>suppressError=True</em>, <em>analyzeOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.interpolate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Traditional interpolation method. Interpolates by factor between minGlyph and maxGlyph.
+suppressError will supress all tracebacks and analyze only will not perform the interpolation
+but it will analyze all glyphs and return a dict of problems.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.isCompatible">
+<code class="descname">isCompatible</code><span class="sig-paren">(</span><em>otherGlyph</em>, <em>report=True</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.isCompatible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a bool value if the glyph is compatible with otherGlyph.
+With report = True, isCompatible will return a report of what&#8217;s wrong.
+The interpolate method requires absolute equality between contour data.
+Absolute equality is preferred among component and anchor data, but
+it is NOT required. Interpolation between components and anchors
+will only deal with compatible data and incompatible data will be
+ignored. This method reflects this system.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="robofab.objects.objectsBase.BaseGlyph.box">
+<code class="descname">box</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.box" title="Permalink to this definition">¶</a></dt>
+<dd><p>the bounding box of the glyph: (xMin, yMin, xMax, yMax)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="robofab.objects.objectsBase.BaseGlyph.leftMargin">
+<code class="descname">leftMargin</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.leftMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>the left margin</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="robofab.objects.objectsBase.BaseGlyph.rightMargin">
+<code class="descname">rightMargin</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.rightMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>the right margin</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>aParent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicate this glyph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.getGlyph">
+<code class="descname">getGlyph</code><span class="sig-paren">(</span><em>glyphName</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.getGlyph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provided there is a font parent for this glyph, return a sibling glyph.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.getPen">
+<code class="descname">getPen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.getPen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Pen object for creating an outline in this glyph.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.getPointPen">
+<code class="descname">getPointPen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.getPointPen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a PointPen object for creating an outline in this glyph.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.deSelect">
+<code class="descname">deSelect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.deSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set all selected attrs in glyph to False: for the glyph, components, anchors, points.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.isEmpty">
+<code class="descname">isEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.isEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><p>return true if the glyph has no contours or components</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>update the glyph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>pen</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw the object with a RoboFab segment pen</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.drawPoints">
+<code class="descname">drawPoints</code><span class="sig-paren">(</span><em>pen</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.drawPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw the object with a point pen</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.appendContour">
+<code class="descname">appendContour</code><span class="sig-paren">(</span><em>aContour</em>, <em>offset=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.appendContour" title="Permalink to this definition">¶</a></dt>
+<dd><p>append a contour to the glyph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.appendGlyph">
+<code class="descname">appendGlyph</code><span class="sig-paren">(</span><em>aGlyph</em>, <em>offset=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.appendGlyph" title="Permalink to this definition">¶</a></dt>
+<dd><p>append another glyph to the glyph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>round all coordinates in all contours, components and anchors</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.autoUnicodes">
+<code class="descname">autoUnicodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.autoUnicodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Using fontTools.agl, assign Unicode list to the glyph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.pointInside">
+<code class="descname">pointInside</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>evenOdd=0</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.pointInside" title="Permalink to this definition">¶</a></dt>
+<dd><p>determine if the point is in the black or white of the glyph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.correctDirection">
+<code class="descname">correctDirection</code><span class="sig-paren">(</span><em>trueType=False</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.correctDirection" title="Permalink to this definition">¶</a></dt>
+<dd><p>corect the direction of the contours in the glyph.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.autoContourOrder">
+<code class="descname">autoContourOrder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.autoContourOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>attempt to sort the contours based on their centers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.rasterize">
+<code class="descname">rasterize</code><span class="sig-paren">(</span><em>cellSize=50</em>, <em>xMin=None</em>, <em>yMin=None</em>, <em>xMax=None</em>, <em>yMax=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.rasterize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice the glyph into a grid based on the cell size.
+It returns a list of lists containing bool values
+that indicate the black (True) or white (False)
+value of that particular cell.  These lists are
+arranged from top to bottom of the glyph and
+proceed from left to right.
+This is an expensive operation!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>contours=True</em>, <em>components=True</em>, <em>anchors=True</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move a glyph&#8217;s items that are flagged as True</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>scale the glyph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform this glyph.
+Use a Transform matrix object from
+robofab.transform</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>rotate the glyph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGlyph.skew">
+<code class="descname">skew</code><span class="sig-paren">(</span><em>angle</em>, <em>offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGlyph.skew" title="Permalink to this definition">¶</a></dt>
+<dd><p>skew the glyph</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BaseContour">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BaseContour</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all contour objects.</p>
+<dl class="attribute">
+<dt id="robofab.objects.objectsBase.BaseContour.box">
+<code class="descname">box</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.box" title="Permalink to this definition">¶</a></dt>
+<dd><p>the bounding box for the contour</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="robofab.objects.objectsBase.BaseContour.clockwise">
+<code class="descname">clockwise</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.clockwise" title="Permalink to this definition">¶</a></dt>
+<dd><p>direction of contour: 1=clockwise 0=counterclockwise</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>aParent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicate this contour</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>round the value of all points in the contour</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>pen</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw the object with a fontTools pen</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.drawPoints">
+<code class="descname">drawPoints</code><span class="sig-paren">(</span><em>pen</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.drawPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw the object with a point pen</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>move the contour</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>scale the contour</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform this contour.
+Use a Transform matrix object from
+robofab.transform</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>rotate the contour</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.skew">
+<code class="descname">skew</code><span class="sig-paren">(</span><em>angle</em>, <em>offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.skew" title="Permalink to this definition">¶</a></dt>
+<dd><p>skew the contour</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.pointInside">
+<code class="descname">pointInside</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>evenOdd=0</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.pointInside" title="Permalink to this definition">¶</a></dt>
+<dd><p>determine if the point is inside or ouside of the contour</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.autoStartSegment">
+<code class="descname">autoStartSegment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.autoStartSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>automatically set the lower left point of the contour as the first point.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.appendBPoint">
+<code class="descname">appendBPoint</code><span class="sig-paren">(</span><em>pointType</em>, <em>anchor</em>, <em>bcpIn=(0</em>, <em>0)</em>, <em>bcpOut=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.appendBPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>append a bPoint to the contour</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseContour.insertBPoint">
+<code class="descname">insertBPoint</code><span class="sig-paren">(</span><em>index</em>, <em>pointType</em>, <em>anchor</em>, <em>bcpIn=(0</em>, <em>0)</em>, <em>bcpOut=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseContour.insertBPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>insert a bPoint at index on the contour</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BaseSegment">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BaseSegment</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all segment objects</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseSegment.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>aParent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseSegment.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicate this segment</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseSegment.round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseSegment.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>round all points in the segment</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseSegment.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseSegment.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>move the segment</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseSegment.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseSegment.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>scale the segment</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseSegment.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseSegment.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform this segment.
+Use a Transform matrix object from
+robofab.transform</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="robofab.objects.objectsBase.BaseSegment.offCurve">
+<code class="descname">offCurve</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseSegment.offCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>on curve point for the segment</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="robofab.objects.objectsBase.BaseSegment.onCurve">
+<code class="descname">onCurve</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseSegment.onCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of off curve points for the segment</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BasePoint">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BasePoint</code><a class="headerlink" href="#robofab.objects.objectsBase.BasePoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for point objects.</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BasePoint.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>aParent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePoint.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicate this point</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BasePoint.select">
+<code class="descname">select</code><span class="sig-paren">(</span><em>state=True</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePoint.select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the selection of this point.
+XXXX This method should be a lot more versatile, dealing with
+different kinds of selection, select the bcp&#8217;s seperately etc.
+But that&#8217;s for later when we need it more. For now it&#8217;s just 
+one flag for the entire thing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BasePoint.round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePoint.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>round the values in the point</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BasePoint.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePoint.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the point</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BasePoint.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePoint.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>scale the point</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BasePoint.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BasePoint.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform this point. Use a Transform matrix
+object from fontTools.misc.transform</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BaseBPoint">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BaseBPoint</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseBPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for bPoints objects.</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseBPoint.select">
+<code class="descname">select</code><span class="sig-paren">(</span><em>state=True</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseBPoint.select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the selection of this point.
+XXXX This method should be a lot more versatile, dealing with
+different kinds of selection, select the bcp&#8217;s seperately etc.
+But that&#8217;s for later when we need it more. For now it&#8217;s just 
+one flag for the entire thing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseBPoint.round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseBPoint.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round the coordinates to integers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseBPoint.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseBPoint.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>move the bPoint</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseBPoint.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseBPoint.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>scale the bPoint</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseBPoint.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseBPoint.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform this point. Use a Transform matrix
+object from fontTools.misc.transform</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="robofab.objects.objectsBase.BaseBPoint.anchor">
+<code class="descname">anchor</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseBPoint.anchor" title="Permalink to this definition">¶</a></dt>
+<dd><p>the position of the anchor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="robofab.objects.objectsBase.BaseBPoint.bcpIn">
+<code class="descname">bcpIn</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseBPoint.bcpIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>the (x,y) for the incoming bcp</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="robofab.objects.objectsBase.BaseBPoint.bcpOut">
+<code class="descname">bcpOut</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseBPoint.bcpOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>the (x,y) for the outgoing bcp</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="robofab.objects.objectsBase.BaseBPoint.type">
+<code class="descname">type</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseBPoint.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>the type of bPoint, either &#8216;corner&#8217; or &#8216;curve&#8217;</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BaseComponent">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BaseComponent</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all component objects.</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseComponent.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>aParent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseComponent.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicate this component.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="robofab.objects.objectsBase.BaseComponent.box">
+<code class="descname">box</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseComponent.box" title="Permalink to this definition">¶</a></dt>
+<dd><p>the bounding box of the component: (xMin, yMin, xMax, yMax)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseComponent.round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseComponent.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>round the offset values</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseComponent.draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>pen</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseComponent.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Segment pen drawing method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseComponent.drawPoints">
+<code class="descname">drawPoints</code><span class="sig-paren">(</span><em>pen</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseComponent.drawPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw the object with a point pen</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BaseAnchor">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BaseAnchor</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseAnchor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all anchor point objects.</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseAnchor.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>aParent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseAnchor.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicate this anchor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseAnchor.round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseAnchor.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>round the values in the anchor</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseAnchor.draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>pen</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseAnchor.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the object onto a segment pen</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseAnchor.drawPoints">
+<code class="descname">drawPoints</code><span class="sig-paren">(</span><em>pen</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseAnchor.drawPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw the object with a point pen</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseAnchor.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseAnchor.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the anchor</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseAnchor.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseAnchor.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>scale the anchor</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseAnchor.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseAnchor.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform this anchor. Use a Transform matrix
+object from fontTools.misc.transform</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BaseGuide">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BaseGuide</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseGuide" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all guide objects.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BaseGroups">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BaseGroups</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all RFont.groups objects</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGroups.getParent">
+<code class="descname">getParent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGroups.getParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>this method will be overwritten with a weakref if there is a parent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseGroups.findGlyph">
+<code class="descname">findGlyph</code><span class="sig-paren">(</span><em>glyphName</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseGroups.findGlyph" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a list of all groups contianing glyphName</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BaseLib">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BaseLib</code><a class="headerlink" href="#robofab.objects.objectsBase.BaseLib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all lib objects</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseLib.getParent">
+<code class="descname">getParent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseLib.getParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>this method will be overwritten with a weakref if there is a parent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseLib.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>aParent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseLib.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicate this lib.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsBase.BaseKerning">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsBase.</code><code class="descname">BaseKerning</code><span class="sig-paren">(</span><em>kerningDict=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all kerning objects. Object behaves like a dict but has
+some special kerning specific tricks.</p>
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.keys">
+<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>return list of kerning pairs</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.values">
+<code class="descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.values" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a list of kerning values</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.items">
+<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a list of kerning items</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>pair</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>get a value. return None if the pair does not exist</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>pair</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>remove a kerning pair</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.getAverage">
+<code class="descname">getAverage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.getAverage" title="Permalink to this definition">¶</a></dt>
+<dd><p>return average of all kerning pairs</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.getExtremes">
+<code class="descname">getExtremes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.getExtremes" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the lowest and highest kerning values</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>kerningDict</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>replace kerning data with the data in the given kerningDict</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>clear all kerning</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>add value to all kerning pairs</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>scale all kernng pairs by value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.minimize">
+<code class="descname">minimize</code><span class="sig-paren">(</span><em>minimum=10</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.minimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>eliminate pairs with value less than minimum</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.eliminate">
+<code class="descname">eliminate</code><span class="sig-paren">(</span><em>leftGlyphsToEliminate=None</em>, <em>rightGlyphsToEliminate=None</em>, <em>analyzeOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.eliminate" title="Permalink to this definition">¶</a></dt>
+<dd><p>eliminate pairs containing a left glyph that is in the leftGlyphsToEliminate list
+or a right glyph that is in the rightGlyphsToELiminate list.
+sideGlyphsToEliminate can be a string: &#8216;a&#8217; or list: [&#8216;a&#8217;, &#8216;b&#8217;].
+analyzeOnly will not remove pairs. it will return a count
+of all pairs that would be removed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.interpolate">
+<code class="descname">interpolate</code><span class="sig-paren">(</span><em>sourceDictOne</em>, <em>sourceDictTwo</em>, <em>value</em>, <em>clearExisting=True</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.interpolate" title="Permalink to this definition">¶</a></dt>
+<dd><p>interpolate the kerning between sourceDictOne
+and sourceDictTwo. clearExisting will clear existing
+kerning first.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.round">
+<code class="descname">round</code><span class="sig-paren">(</span><em>multiple=10</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>round the kerning pair values to increments of multiple</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.occurrenceCount">
+<code class="descname">occurrenceCount</code><span class="sig-paren">(</span><em>glyphsToCount</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.occurrenceCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a dict with glyphs as keys and the number of 
+occurances of that glyph in the kerning pairs as the value
+glyphsToCount can be a string: &#8216;a&#8217; or list: [&#8216;a&#8217;, &#8216;b&#8217;]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.getLeft">
+<code class="descname">getLeft</code><span class="sig-paren">(</span><em>glyphName</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.getLeft" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of kerns with glyphName as left character.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.getRight">
+<code class="descname">getRight</code><span class="sig-paren">(</span><em>glyphName</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.getRight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of kerns with glyphName as left character.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.combine">
+<code class="descname">combine</code><span class="sig-paren">(</span><em>kerningDicts</em>, <em>overwriteExisting=True</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.combine" title="Permalink to this definition">¶</a></dt>
+<dd><p>combine two or more kerning dictionaries.
+overwrite exsisting duplicate pairs if overwriteExisting=True</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.swapNames">
+<code class="descname">swapNames</code><span class="sig-paren">(</span><em>swapTable</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.swapNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>change glyph names in all kerning pairs based on swapTable.
+swapTable = {&#8216;BeforeName&#8217;:&#8217;AfterName&#8217;, ...}</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.explodeClasses">
+<code class="descname">explodeClasses</code><span class="sig-paren">(</span><em>leftClassDict=None</em>, <em>rightClassDict=None</em>, <em>analyzeOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.explodeClasses" title="Permalink to this definition">¶</a></dt>
+<dd><p>turn class kerns into real kerning pairs. classes should
+be defined in dicts: {&#8216;O&#8217;:[&#8216;C&#8217;, &#8216;G&#8217;, &#8216;Q&#8217;], &#8216;H&#8217;:[&#8216;B&#8217;, &#8216;D&#8217;, &#8216;E&#8217;, &#8216;F&#8217;, &#8216;I&#8217;]}.
+analyzeOnly will not remove pairs. it will return a count
+of all pairs that would be added</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.implodeClasses">
+<code class="descname">implodeClasses</code><span class="sig-paren">(</span><em>leftClassDict=None</em>, <em>rightClassDict=None</em>, <em>analyzeOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.implodeClasses" title="Permalink to this definition">¶</a></dt>
+<dd><p>condense the number of kerning pairs by applying classes.
+this will eliminate all pairs containg the classed glyphs leaving
+pairs that contain the key glyphs behind. analyzeOnly will not
+remove pairs. it will return a count of all pairs that would be removed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.importAFM">
+<code class="descname">importAFM</code><span class="sig-paren">(</span><em>path</em>, <em>clearExisting=True</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.importAFM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import kerning pairs from an AFM file. clearExisting=True will
+clear all exising kerning</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsBase.BaseKerning.asDict">
+<code class="descname">asDict</code><span class="sig-paren">(</span><em>returnIntegers=True</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsBase.BaseKerning.asDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the object as a dictionary</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

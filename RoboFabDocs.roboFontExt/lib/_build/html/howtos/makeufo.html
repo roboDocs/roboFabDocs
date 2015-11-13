@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to make a UFO &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="How To’s" href="index.html" />
+    <link rel="next" title="Scripting" href="scripting.html" />
+    <link rel="prev" title="How to interpolate" href="interpolate.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="interpolate.html" title="previous chapter">How to interpolate</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="scripting.html" title="next chapter">Scripting</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="how-to-make-a-ufo">
+<h1>How to make a UFO<a class="headerlink" href="#how-to-make-a-ufo" title="Permalink to this headline">¶</a></h1>
+<p>Exporting a FontLab font to UFO is easy:</p>
+<ol class="arabic simple">
+<li>Open the <code class="docutils literal"><span class="pre">.vfb</span></code>.</li>
+<li>Select the <em>RoboFabUFO</em> menu in the Macro toolbar.</li>
+<li>Select the <em>Export Current Font to UFO Format</em> script.</li>
+<li>Run it.</li>
+</ol>
+<p>The <code class="docutils literal"><span class="pre">.ufo</span></code> will be in the same directory as the original <code class="docutils literal"><span class="pre">.vfb</span></code> file. Have an in-depth look at the <a class="reference internal" href="../intro/ufo.html"><em>ufo format here</em></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you want to export a new FontLab font to UFO, <strong>it is important that you save the font to .vfb first</strong>.</p>
+</div>
+<div class="section" id="importing-a-ufo-into-fontlab">
+<h2>Importing a UFO into FontLab<a class="headerlink" href="#importing-a-ufo-into-fontlab" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Select the <em>RoboFabUFO</em> menu in the Macro toolbar.</li>
+<li>Select the <em>Import .ufo File into FontLab</em> script.</li>
+<li>Run it.</li>
+</ol>
+<p>This script create a new, empty FontLab font, then proceed to ask you for a <code class="docutils literal"><span class="pre">.ufo</span></code> directory.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Due to some limitations in how FontLab keeps track of new, untitled, unsaved fonts, it is vital to <strong>make sure that there are no other unsaved, untitled fonts open</strong> when you run this script. Because if there are, FontLab will be confused about where to import the glyphs from the <code class="docutils literal"><span class="pre">.ufo</span></code> and none of the fonts will show the new glyphs. It&#8217;s ok to have other fonts open when importing <code class="docutils literal"><span class="pre">.ufo</span></code>, they just to have been saved previously.</p>
+</div>
+<div class="section" id="importing-a-bunch-of-ufo-s-into-fontlab">
+<h3>Importing a bunch of UFO&#8217;s into FontLab<a class="headerlink" href="#importing-a-bunch-of-ufo-s-into-fontlab" title="Permalink to this headline">¶</a></h3>
+<p>What if you need to import a whole family of UFO&#8217;s?</p>
+<ol class="arabic simple">
+<li>Select the <em>RoboFabUFO</em> menu in the Macro toolbar.</li>
+<li>Select the <em>Import all UFOs in a folder</em> script.</li>
+<li>Run it.</li>
+</ol>
+<p>This script will prompt you for a folder with UFO&#8217;s. Pick one. The script will proceed to import the UFO&#8217;s one by one.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Sometimes, some versions of FontLab can get a bit tired of importing UFO&#8217;s in a batch. When this happens not all UFO&#8217;s will be imported and FontLab may crash. When this happens, just import the fonts one by one.</p>
+</div>
+</div>
+</div>
+<div class="section" id="making-a-ufo-from-a-font-binary">
+<h2>Making a UFO from a font binary<a class="headerlink" href="#making-a-ufo-from-a-font-binary" title="Permalink to this headline">¶</a></h2>
+<p>Using <code class="docutils literal"><span class="pre">fontTools</span></code> you can make a UFO directly from a font binary. This is very fast, and it works outside of FontLab, but not all data (for instance kerning and apparently metrics) is imported. So your mileage may vary:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Makeufo howto</span>
+<span class="c"># Makeufo from a font binary examples</span>
+ 
+<span class="kn">from</span> <span class="nn">robofab.tools.toolsAll</span> <span class="kn">import</span> <span class="n">fontToUFO</span>
+<span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">GetFile</span><span class="p">,</span> <span class="n">PutFile</span>
+ 
+<span class="n">srcPath</span> <span class="o">=</span> <span class="n">GetFile</span><span class="p">(</span><span class="s">&#39;Select the source&#39;</span><span class="p">)</span>
+<span class="n">dstPath</span> <span class="o">=</span> <span class="n">PutFile</span><span class="p">(</span><span class="s">&#39;Save as...&#39;</span><span class="p">)</span>
+ 
+<span class="n">fontToUFO</span><span class="p">(</span><span class="n">srcPath</span><span class="p">,</span> <span class="n">dstPath</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/makeUFO_00.py">open or download this file: makeUFO_00.py</a></div></div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

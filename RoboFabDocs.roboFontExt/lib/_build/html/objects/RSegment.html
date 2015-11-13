@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RSegment &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Objects" href="index.html" />
+    <link rel="next" title="RAnchor" href="RAnchor.html" />
+    <link rel="prev" title="bPoint" href="bPoint.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="bPoint.html" title="previous chapter">bPoint</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="RAnchor.html" title="next chapter">RAnchor</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="rsegment">
+<h1>RSegment<a class="headerlink" href="#rsegment" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/RSegment.gif" src="../_images/RSegment.gif" />
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Segment object</span>
+<span class="c"># usage examples</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">contour</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">contour</span><span class="p">:</span>
+            <span class="k">print</span> <span class="n">segment</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RSegment_00.py">open or download this file: RSegment_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt; RSegment for RoboFab Demo Font.R[0][0] &gt;
+&lt; RSegment for RoboFab Demo Font.R[0][1] &gt;
+&lt; RSegment for RoboFab Demo Font.R[0][2] &gt;
+&lt; RSegment for RoboFab Demo Font.R[0][3] &gt;
+&lt; RSegment for RoboFab Demo Font.R[0][4] &gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>A Contour object is a list of segments. A segment is a list of points with some special attributes and methods.</p>
+</div>
+<div class="section" id="understanding-contours-and-outlines">
+<h2>Understanding Contours and outlines<a class="headerlink" href="#understanding-contours-and-outlines" title="Permalink to this headline">¶</a></h2>
+<p>The way outline data is organised in RoboFab, and how the various objects relate is described here: <a class="reference internal" href="../howtos/understanding_contours.html"><em>understanding contours</em></a>.</p>
+</div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="type">
+<code class="descname">type</code><a class="headerlink" href="#type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Type of segment.</p>
+<dl class="attribute">
+<dt id="smooth">
+<code class="descname">smooth</code><a class="headerlink" href="#smooth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p><code class="docutils literal"><span class="pre">True</span></code> if the segment is <code class="docutils literal"><span class="pre">smooth</span></code>, <code class="docutils literal"><span class="pre">False</span></code> if not.</p>
+<dl class="attribute">
+<dt id="selected">
+<code class="descname">selected</code><a class="headerlink" href="#selected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns <code class="docutils literal"><span class="pre">True</span></code> if the segment is selected, <code class="docutils literal"><span class="pre">False</span></code> if not.</p>
+<dl class="attribute">
+<dt id="points">
+<code class="descname">points</code><a class="headerlink" href="#points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>List of points in the segment.</p>
+<dl class="attribute">
+<dt id="onCurve">
+<code class="descname">onCurve</code><a class="headerlink" href="#onCurve" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the oncurve point associated with the segment.</p>
+<dl class="attribute">
+<dt id="offCurve">
+<code class="descname">offCurve</code><a class="headerlink" href="#offCurve" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns a list of offcurve points associated with the segment.</p>
+</div>
+<div class="section" id="attribute-examples">
+<h2>Attribute examples<a class="headerlink" href="#attribute-examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Segment object</span>
+<span class="c"># attribute examples</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">contour</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">contour</span><span class="p">:</span>
+            <span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span>
+            <span class="k">print</span> <span class="n">segment</span><span class="o">.</span><span class="n">type</span>
+            <span class="k">print</span> <span class="n">segment</span><span class="o">.</span><span class="n">smooth</span>
+            <span class="k">print</span> <span class="n">segment</span><span class="o">.</span><span class="n">points</span>
+            <span class="k">print</span> <span class="n">segment</span><span class="o">.</span><span class="n">onCurve</span>
+            <span class="k">print</span> <span class="n">segment</span><span class="o">.</span><span class="n">offCurve</span>
+            <span class="k">print</span> <span class="n">segment</span><span class="o">.</span><span class="n">selected</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RSegment_01.py">open or download this file: RSegment_01.py</a></div></div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a deepcopy of the object.</p>
+<dl class="function">
+<dt id="move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em><span class="sig-paren">)</span><a class="headerlink" href="#move" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Move the anchor of the <code class="docutils literal"><span class="pre">bPoint</span></code> to <code class="docutils literal"><span class="pre">(x,y)</span></code>. The relative coordinates of the <code class="docutils literal"><span class="pre">bcpIn</span></code> and <code class="docutils literal"><span class="pre">bcpOut</span></code> will remain the same, which means that in fact, they move the same distance.</p>
+<dl class="function">
+<dt id="round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#round" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Round the coordinates to whole integers.</p>
+<dl class="function">
+<dt id="transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Transform this point. Use a Transform matrix object to mess with the point.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="../howtos/use_transformations.html"><em>how to use transformations</em></a>.</p>
+</div>
+</div>
+<div class="section" id="method-examples">
+<h2>Method examples<a class="headerlink" href="#method-examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Segment object</span>
+<span class="c"># method examples</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">contour</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">contour</span><span class="p">:</span>
+            <span class="n">segment</span><span class="o">.</span><span class="n">move</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RSegment_02.py">open or download this file: RSegment_02.py</a></div></div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

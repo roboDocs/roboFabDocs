@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Kerning and building Glyphs &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Step-by-step" href="index.html" />
+    <link rel="next" title="Scripting for interpolation" href="interpolation.html" />
+    <link rel="prev" title="Glyph, Contour &amp; Pen" href="session2.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="session2.html" title="previous chapter">Glyph, Contour &amp; Pen</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="interpolation.html" title="next chapter">Scripting for interpolation</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="kerning-and-building-glyphs">
+<h1>Kerning and building Glyphs<a class="headerlink" href="#kerning-and-building-glyphs" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/RKerning1.gif" src="../_images/RKerning1.gif" />
+<div class="section" id="the-kerning-object">
+<h2>The Kerning object<a class="headerlink" href="#the-kerning-object" title="Permalink to this headline">¶</a></h2>
+<p>All kerning data of a font is represented by the <code class="docutils literal"><span class="pre">Kerning</span></code> object. This object behaves like a Python dictionary: the key is a tuple of two glyph or groupnames, the dictionary value is the kern distance.</p>
+<p>In FontLab, <code class="docutils literal"><span class="pre">font.kerning</span></code> should not be called repeatedly like a normal attribute. Nothing will go wrong if you do, it will just be slow. The reason for this is that <code class="docutils literal"><span class="pre">font.kerning</span></code> is an attribute which (under the hood) has to do a lot of work to collect the data from the underlying FontLab file. Kerning in FontLab is stored at the glyph level, so to pull it up to the RoboFab level a massive iteration must occur when the kerning object is created. This happens each time you ask for the <code class="docutils literal"><span class="pre">font.kerning</span></code> attribute. But there&#8217;s a simple way to work with that efficiently: cache the kerning object. Like so:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># work with kerning 1 </span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="c"># now the kerning object is generated once</span>
+<span class="n">kerning</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">kerning</span>
+<span class="c"># and ready for your instructions.</span>
+<span class="k">print</span> <span class="n">kerning</span>
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">kerning</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">kerning</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="c"># proceed to work with the myKerning object</span>
+<span class="c"># this happens in the following examples too.</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session3_00.py">open or download this file: session3_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt;RKerning for MyFont Normal&gt;
+3141
+[(&#39;F&#39;, &#39;L&#39;), (&#39;D&#39;, &#39;G&#39;), (&#39;N&#39;, &#39;Eacute&#39;), ..etc.. ]
+</pre></div>
+</div>
+<p>The Kerning object has some useful methods to transform and analyse the data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># work with kerning 2</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">kerning</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">kerning</span>
+
+<span class="c"># calculate the average offset</span>
+<span class="k">print</span> <span class="n">kerning</span><span class="o">.</span><span class="n">getAverage</span><span class="p">()</span>
+
+<span class="c"># count pairs with these glyphs</span>
+<span class="k">print</span> <span class="n">kerning</span><span class="o">.</span><span class="n">occurrenceCount</span><span class="p">([</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">])</span>
+
+<span class="c"># get the maximum values</span>
+<span class="k">print</span> <span class="n">kerning</span><span class="o">.</span><span class="n">getExtremes</span><span class="p">()</span>
+
+<span class="c"># count the pars</span>
+<span class="k">print</span> <span class="s">&quot;font has </span><span class="si">%d</span><span class="s"> kerning pairs&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">kerning</span><span class="p">)</span>
+
+<span class="c"># this prints all the pairs</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">),</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kerning</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span> <span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">),</span> <span class="n">value</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session3_01.py">open or download this file: session3_01.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt;RKerning for MyFont Normal&gt;
+-20.5953517988
+{&#39;a&#39;: 82, &#39;b&#39;: 52}
+(-191, 184)
+font has 3141 kerning pairs
+(&#39;F&#39;, &#39;L&#39;) -7
+(&#39;D&#39;, &#39;G&#39;) 31
+(&#39;N&#39;, &#39;Eacute&#39;) -34
+(&#39;agrave.sc&#39;, &#39;z&#39;) -7
+(&#39;K&#39;, &#39;v&#39;) -111
+(&#39;Z&#39;, &#39;N&#39;) -15
+..etc..
+</pre></div>
+</div>
+<p>In the example above you see the <code class="docutils literal"><span class="pre">Kerning</span></code> object as attribute of a font object, then it is cached by storing it in a new variable. <code class="docutils literal"><span class="pre">len(kerning)</span></code> gives you the length of the kerning dictionary, the number of kern pairs. Have a look at the attributes and methods of the <a class="reference internal" href="../objects/RKerning.html"><em>Kerning object here</em></a>. It has some very useful methods for interpolating, sorting, combining and splitting kern tables. Back to the example, did you note that the kern pairs appear in random order? It&#8217;s that Python dictionary thing again: keys of a dictionary have no particular order. Just like the example of the glyph names in a font object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># work with kerning 3</span>
+<span class="c"># print a specific set of pairs</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">kerning</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">kerning</span>
+
+<span class="k">for</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="ow">in</span> <span class="n">kerning</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">kerning</span><span class="p">[(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">100</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">kerning</span><span class="p">[(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session3_02.py">open or download this file: session3_02.py</a></div><div class="code highlight-python"><div class="highlight"><pre>K v -111
+N Atilde -114
+W o -118
+W odieresis -118
+Acircumflex Y -103
+T e -153
+T adieresis -126
+T odieresis -133
+T aacute -126
+W eacute -141
+..etc..
+</pre></div>
+</div>
+<p>Another example of iterating through the kerning dictionary. This time each kern is tested if the value is less than <code class="docutils literal"><span class="pre">-100</span></code>, and only when this is the case the pair is printed. This shows you how you can write code which responds to particular kinds of kerns:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># work with kerning 4</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">kerning</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">kerning</span>
+
+<span class="k">for</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="ow">in</span> <span class="n">kerning</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">left</span> <span class="o">==</span> <span class="s">&quot;acircumflex&quot;</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">kerning</span><span class="p">[(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session3_03.py">open or download this file: session3_03.py</a></div><div class="code highlight-python"><div class="highlight"><pre>acircumflex k -7
+acircumflex v -38
+acircumflex r -4
+acircumflex u -4
+acircumflex y -31
+acircumflex j -26
+..etc..
+</pre></div>
+</div>
+<p>This script prints all kerns with <code class="docutils literal"><span class="pre">acircumflex</span></code> as first glyph.</p>
+</div>
+<div class="section" id="building-glyphs">
+<h2>Building glyphs<a class="headerlink" href="#building-glyphs" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/RAnchor1.gif" src="../_images/RAnchor1.gif" />
+<img alt="../_images/RComponent1.gif" src="../_images/RComponent1.gif" />
+<p>A particularly interesting topic of scripting is building glyphs out of component parts. If a font already has all the parts, a script can, in many cases, assemble the accented versions. An overview of <a class="reference internal" href="../howtos/building_accents.html"><em>glyph building options is in the how-to section of the Robofab docs</em></a>. The first example takes a look at all necessary ingredients: making a new glyph, adding parts and finishing it. Then we&#8217;ll look at more efficient ways:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># building a glyph from parts</span>
+<span class="c"># the hard way</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="c"># make a new glyph</span>
+<span class="n">f</span><span class="o">.</span><span class="n">newGlyph</span><span class="p">(</span><span class="s">&quot;aacute&quot;</span><span class="p">)</span>
+
+<span class="c"># add the component for the base glyph, a</span>
+<span class="n">f</span><span class="p">[</span><span class="s">&quot;aacute&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">appendComponent</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">)</span>
+
+<span class="c"># add the component for the accent, acute</span>
+<span class="c"># note it has an offset</span>
+<span class="n">f</span><span class="p">[</span><span class="s">&quot;aacute&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">appendComponent</span><span class="p">(</span><span class="s">&quot;acute&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="c"># set the width too</span>
+<span class="n">f</span><span class="p">[</span><span class="s">&quot;aacute&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">width</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session3_04.py">open or download this file: session3_04.py</a></div><p>Let&#8217;s have a look at that line by line. <code class="docutils literal"><span class="pre">f.newGlyph(&quot;aacute&quot;)</span></code>. The <code class="docutils literal"><span class="pre">newGlyph()</span></code> of the <code class="docutils literal"><span class="pre">RFont</span></code> object creates a new glyph and names it <code class="docutils literal"><span class="pre">aacute</span></code>. Then we can get to the new glyph by asking the font. The <code class="docutils literal"><span class="pre">Glyph</span></code> object has a <code class="docutils literal"><span class="pre">appendComponent()</span></code> method, which takes a <code class="docutils literal"><span class="pre">glyphName</span></code> of the glyph you want to add as a component and optionally an offset coordinate. This you can see in the line where the <code class="docutils literal"><span class="pre">acute</span></code> glyph is added. Then the width of the new glyph is set to the width of the original glyph. Finally FontLab is told to update.</p>
+<p>Well, that&#8217;s going to be an awful lot of code if you have to write 4 lines of code for each new letter. There are other ways of going about this, using FontLab&#8217;s <code class="docutils literal"><span class="pre">Anchor</span></code> points.</p>
+</div>
+<div class="section" id="glyph-generateglyph">
+<h2>glyph.generateGlyph()<a class="headerlink" href="#glyph-generateglyph" title="Permalink to this headline">¶</a></h2>
+<p>RoboFab has a database of glyph constructions based on the Adobe Glyph List. Have a look in your RoboFab code folder, <code class="docutils literal"><span class="pre">robofab/Data/GlyphConstruction.txt</span></code>. The RoboFab list contains information about where components should be connected and what the anchor points are called:</p>
+<div class="highlight-python"><div class="highlight"><pre>Acircumflexdotaccent: A circumflex.top dotaccent.bottom
+</pre></div>
+</div>
+<p>This entry shows that <code class="docutils literal"><span class="pre">Acircumflexdotaccent</span></code> is constructed with components from <code class="docutils literal"><span class="pre">A</span></code>, a <code class="docutils literal"><span class="pre">circumflex</span></code> using the <code class="docutils literal"><span class="pre">top</span></code> anchor, and <code class="docutils literal"><span class="pre">dotaccent</span></code> using the <code class="docutils literal"><span class="pre">bottom</span></code> anchor. In order to make this work, you need to add anchor points to your glyphs and accents. Check the FontLab manual for instructions. For instance the <code class="docutils literal"><span class="pre">a</span></code> has an anchor point named <code class="docutils literal"><span class="pre">top</span></code>, the <code class="docutils literal"><span class="pre">acute</span></code> glyph has one named <code class="docutils literal"><span class="pre">_top</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># building a glyph from parts</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">font</span><span class="o">.</span><span class="n">generateGlyph</span><span class="p">(</span><span class="s">&quot;aacute&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This creates a new glyph at <code class="docutils literal"><span class="pre">aacute</span></code>, it puts all the components in the right place and sets the width.</p>
+</div>
+<div class="section" id="glyph-compileglyph">
+<h2>glyph.compileGlyph()<a class="headerlink" href="#glyph-compileglyph" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you want to create glyphs using anchor points, but the glyphs don&#8217;t have entries in Robofab&#8217;s <code class="docutils literal"><span class="pre">GlyphConstruction.txt</span></code> list. What to do? Editing <code class="docutils literal"><span class="pre">GlyphConstruction.txt</span></code> is not recommended because you will loose your changes when you install a new version of RoboFab. <code class="docutils literal"><span class="pre">Glyph</span></code> has another method: <code class="docutils literal"><span class="pre">compileGlyph()</span></code>. This method, like <code class="docutils literal"><span class="pre">generateGlyph</span></code>, builds a new glyph with components, but you get to provide the list and tell which anchor points you want to use. <code class="docutils literal"><span class="pre">compileGlyph</span></code> takes a list of accents and anchors. It will follow the list and allow &#8220;stacking&#8221; of accents:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># Compile a new glyph from a list of accents and required anchors</span>
+<span class="c"># Demo of multiple accents chaining together, or &quot;stacking&quot;.</span>
+<span class="c"># For this example you need to set  up a couple of things</span>
+<span class="c"># in your test font:</span>
+<span class="c"># - base glyph &quot;a&quot;, with anchor &quot;top&quot; and anchor &quot;bottom&quot;</span>
+<span class="c"># - glyph &quot;dieresis&quot; with anchor &quot;_top&quot; and anchor &quot;top&quot;</span>
+<span class="c"># - glyph &quot;acture&quot; with anchor &quot;_top&quot;</span>
+<span class="c"># - glyph &quot;cedilla&quot; with anchor &quot;_bottom&quot;</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="c"># this is a list of tuples</span>
+<span class="c"># each tuple has the name of the accent as first element</span>
+<span class="c"># and the name of the anchor which to use as the second element</span>
+
+<span class="n">accentList</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&quot;dieresis&quot;</span><span class="p">,</span> <span class="s">&quot;top&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">&quot;acute&quot;</span><span class="p">,</span> <span class="s">&quot;top&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">&quot;cedilla&quot;</span><span class="p">,</span> <span class="s">&quot;bottom&quot;</span><span class="p">)]</span>
+
+<span class="c"># The accents are compiled in this order, so first</span>
+<span class="c">#    &quot;dieresis&quot; connects to &quot;a&quot; using &quot;top&quot; anchor</span>
+<span class="c">#    &quot;acute&quot; connects to dieresis, using the next &quot;top&quot; anchor</span>
+
+<span class="n">font</span><span class="o">.</span><span class="n">compileGlyph</span><span class="p">(</span><span class="s">&quot;myCompiledGlyph&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="n">accentList</span><span class="p">)</span>
+<span class="n">font</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session3_05.py">open or download this file: session3_05.py</a></div></div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

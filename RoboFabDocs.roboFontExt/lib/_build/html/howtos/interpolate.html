@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to interpolate &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="How To’s" href="index.html" />
+    <link rel="next" title="How to make a UFO" href="makeufo.html" />
+    <link rel="prev" title="How to get to FontLab’s internals" href="lowlevel.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="lowlevel.html" title="previous chapter">How to get to FontLab&#8217;s internals</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="makeufo.html" title="next chapter">How to make a UFO</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="how-to-interpolate">
+<h1>How to interpolate<a class="headerlink" href="#how-to-interpolate" title="Permalink to this headline">¶</a></h1>
+<p>RoboFab&#8217;s interpolation is independent of the interpolation tools provided in FontLab. First of all that means that you can interpolate UFO fonts without the help of FontLab. It also means that the interpolation engine works different than the one in FontLab.</p>
+<div class="section" id="strict">
+<h2>Strict<a class="headerlink" href="#strict" title="Permalink to this headline">¶</a></h2>
+<p>RoboFab interpolation is very strict. It won&#8217;t interpolate unless the point structures of both extremes match. It won&#8217;t mess with the masters, force points or anything. The user has to get it right.</p>
+<div class="section" id="aglyph-iscompatible-otherglyph-report-true">
+<h3>aGlyph.isCompatible(otherGlyph, report=True)<a class="headerlink" href="#aglyph-iscompatible-otherglyph-report-true" title="Permalink to this headline">¶</a></h3>
+<p>Glyph has a method <code class="docutils literal"><span class="pre">isCompatible()</span></code> which reports whether or not the point structures are capable of interpolating. With this method you can run through your proposed interpolation first and see if all glyphs work, and perhaps send feedback to the user:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">a</span><span class="o">.</span><span class="n">isCompatible</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s">&quot;b&quot;</span><span class="p">],</span> <span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/interpolate_00.py">open or download this file: interpolate_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="bp">False</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">isCompatible</span></code> has a flag report which if set to <code class="docutils literal"><span class="pre">True</span></code> will return a tuple with a report on the incompatibilities:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">a</span><span class="o">.</span><span class="n">isCompatible</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s">&quot;b&quot;</span><span class="p">],</span> <span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/interpolate_01.py">open or download this file: interpolate_01.py</a></div><div class="code highlight-python"><div class="highlight"><pre>(False, [&quot;Fatal error: contour 0 in glyph a and
+glyph b don&#39;t have the same number of segments.&quot;])
+</pre></div>
+</div>
+</div>
+<div class="section" id="afont-interpolate-factor-minfont-maxfont-suppresserror-true-analyzeonly-false">
+<h3>aFont.interpolate(factor, minFont, maxFont, suppressError=True, analyzeOnly=False)<a class="headerlink" href="#afont-interpolate-factor-minfont-maxfont-suppresserror-true-analyzeonly-false" title="Permalink to this headline">¶</a></h3>
+<p>Interpolate by factor between <code class="docutils literal"><span class="pre">minFont</span></code> and <code class="docutils literal"><span class="pre">maxFont</span></code>. In FontLab the result of the interpolation will be rounded to whole integers. In NoneLab (outside FontLab, operating on a UFO), the result of the interpolation is a font with glyphs with floating point coordinates so if you want to use the result of one interpolation as a master in the next you won&#8217;t loose precision to rounding errors. It might mean that for some uses of UFO you need to round the glyphs afterwards. <code class="docutils literal"><span class="pre">aFont.interpolate</span></code> also interpolates the positions of components, anchors, ascender, descender, and glyph widths for the whole font.</p>
+<dl class="docutils">
+<dt><strong>factor</strong></dt>
+<dd>Either a number or a tuple of numbers. Usually factor is a float number between <code class="docutils literal"><span class="pre">0</span></code> and <code class="docutils literal"><span class="pre">1</span></code>. <code class="docutils literal"><span class="pre">0</span></code> produces <code class="docutils literal"><span class="pre">minGlyph</span></code>, <code class="docutils literal"><span class="pre">1</span></code> produces <code class="docutils literal"><span class="pre">maxGlyph</span></code>. Values <code class="docutils literal"><span class="pre">&gt;</span></code> extrapolate beyond <code class="docutils literal"><span class="pre">maxGlyph</span></code>. Values <code class="docutils literal"><span class="pre">&lt;</span></code> extrapolate beyond <code class="docutils literal"><span class="pre">minGlyph</span></code>. If you pass <code class="docutils literal"><span class="pre">(x,</span> <span class="pre">y)</span></code> to <code class="docutils literal"><span class="pre">factor</span></code> it will interpolate horizontal values differently from vertical values. For instance <code class="docutils literal"><span class="pre">(0,</span> <span class="pre">1)</span></code> as factor produces a font (or a glyph) which horizontally looks like the minimum, but vertically it looks like the maximum.</dd>
+<dt><strong>minFont</strong></dt>
+<dd><code class="docutils literal"><span class="pre">RFont</span></code> object, the font for the minimum master.</dd>
+<dt><strong>maxFont</strong></dt>
+<dd><code class="docutils literal"><span class="pre">RFont</span></code> object, the font for the maximum master.</dd>
+<dt><strong>suppressError</strong> (optional)</dt>
+<dd>Will supress all tracebacks it finds on the way. That means that interpolation problems in individual glyphs won&#8217;t stop the rest of the font from getting done. Default set to <code class="docutils literal"><span class="pre">True</span></code>.</dd>
+<dt><strong>analyzeOnly</strong> (optional)</dt>
+<dd>Will do a dry run of the interpolation and do a full analysis of the compatibility and problems. It won&#8217;t produce any outlines in the font. Default set to <code class="docutils literal"><span class="pre">False</span></code>.</dd>
+</dl>
+<p><a class="reference internal" href="../objects/RKerning.html"><em>Kerning objects</em></a> have an interpolation method as well. It is debateable whether an interpolation of two fonts should also automatically interpolate the kerning, so we picked the more explicit approach: in your interpolation script you have to do the interpolation of the kerning objects seperately.</p>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="straight-interpolating-either-fontlab-or-ufo">
+<h3>Straight interpolating (either FontLab or UFO)<a class="headerlink" href="#straight-interpolating-either-fontlab-or-ufo" title="Permalink to this headline">¶</a></h3>
+<p>Setting a third font to an interpolation of two others:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Interpolate howto</span>
+<span class="c"># Straight Interpolating examples</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">OpenFont</span>
+<span class="n">minFont</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">(</span><span class="n">pathToMinFont</span><span class="p">)</span>
+<span class="n">maxFont</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">(</span><span class="n">pathToMaxFont</span><span class="p">)</span>
+<span class="c"># or any other way you like to get two font objects</span>
+ 
+<span class="n">inbetweenFont</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">(</span><span class="n">pathToInbetweenFont</span><span class="p">)</span>
+<span class="c"># so now we have 3 font objects, right?</span>
+ 
+<span class="n">inbetweenFont</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="n">minFont</span><span class="p">,</span> <span class="n">maxFont</span><span class="p">)</span>
+<span class="c"># presto, inbetweenFont is now 50% of one and 50% of the other</span>
+ 
+<span class="n">inbetweenFont</span><span class="o">.</span><span class="n">interpolate</span><span class="p">((</span><span class="o">.</span><span class="mi">92</span><span class="p">,</span> <span class="o">.</span><span class="mi">12</span><span class="p">),</span> <span class="n">minFont</span><span class="p">,</span> <span class="n">maxFont</span><span class="p">)</span>
+<span class="c"># presto, inbetweenFont is now horizontally</span>
+<span class="c"># vertically interpolated in different ways.</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/interpolate_02.py">open or download this file: interpolate_02.py</a></div></div>
+<div class="section" id="interpolating-two-glyphs-in-the-same-font">
+<h3>Interpolating two glyphs in the same font<a class="headerlink" href="#interpolating-two-glyphs-in-the-same-font" title="Permalink to this headline">¶</a></h3>
+<p>For any number of reasons you might want to interpolate a glyph within the same font. Here&#8217;s how to do it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">File</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">tokenized</span> <span class="n">by</span> <span class="n">tokenize</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="alternatives">
+<h3>Alternatives<a class="headerlink" href="#alternatives" title="Permalink to this headline">¶</a></h3>
+<p>These are the conventional ways of doing interpolation. Have a look at <a class="reference internal" href="glyphmath.html"><em>RoboFab&#8217;s GlyphMath</em></a> for alternatives for blending and interpolating glyphs together.</p>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

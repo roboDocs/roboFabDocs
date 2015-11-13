@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>OpenType features in UFO &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="How To’s" href="index.html" />
+    <link rel="next" title="Building accents" href="building_accents.html" />
+    <link rel="prev" title="How To’s" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="index.html" title="previous chapter">How To&#8217;s</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="building_accents.html" title="next chapter">Building accents</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="opentype-features-in-ufo">
+<h1>OpenType features in UFO<a class="headerlink" href="#opentype-features-in-ufo" title="Permalink to this headline">¶</a></h1>
+<p>The UFO specification does not have an explicit place or format for OpenType features. This has lead to some misunderstanding that it is not possible to work with OpenType features in UFO. This is not the case. Feature data can be stored in the ufo and manipulated. For instance, FontLab exports and imports feature data to and from UFO, storing the data in the <code class="docutils literal"><span class="pre">font.lib</span></code> (<code class="docutils literal"><span class="pre">font.ufo/lib.plist</span></code>) at <code class="docutils literal"><span class="pre">com.robofab.features</span></code>. This page describes how the data is currently managed. It&#8217;s likely this will improve in the future.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<p>Feature data in UFO is stored in <code class="docutils literal"><span class="pre">font.lib['com.robofab.features']</span></code>. This is a dictionary with the four-letter feature tag as key and the feature text as value. As of RoboFab version 1.1.2, the order of the features is stored in <code class="docutils literal"><span class="pre">font.lib['com.robofab.featureorder']</span></code>. Older UFO&#8217;s without this entry will get their features imported in alphabetical order. OpenType classes are stored in <code class="docutils literal"><span class="pre">font.groups</span></code> (<code class="docutils literal"><span class="pre">ufo/groups.plist</span></code>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Getting to feature data in a UFO.</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">OpenFont</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s">&quot;A/path/to/font.ufo&quot;</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">lib</span><span class="p">[</span><span class="s">&quot;com.robofab.features&quot;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">lib</span><span class="p">[</span><span class="s">&quot;com.robofab.features&quot;</span><span class="p">][</span><span class="s">&#39;liga&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">lib</span><span class="p">[</span><span class="s">&quot;com.robofab.featureorder&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/otFeatures_00.py">open or download this file: otFeatures_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre>[&quot;com.robofab.features&quot;]
+[&#39;ss01&#39;, &#39;liga&#39;, &#39;dlig&#39;]
+&quot;feature liga {
+    sub f f i by ffi;
+    sub f f l by ffl;
+} liga;&quot;
+[&#39;liga&#39;, &#39;dlig&#39;, &#39;ss01&#39;]
+</pre></div>
+</div>
+<p>Note that the feature data in the lib is used for storage in UFO. This data won&#8217;t be available in robofab font objects in FontLab, where it makes more sense to address the FL objects directly. <a class="reference external" href="http://dev.fontlab.net/flpydoc/">Check the FL docs here</a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Getting to feature data in a FontLab </span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">naked</span><span class="p">()</span><span class="o">.</span><span class="n">features</span>
+
+<span class="c"># these are raw FontLab feature objects.</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/otFeatures_01.py">open or download this file: otFeatures_01.py</a></div><div class="code highlight-python"><div class="highlight"><pre>[&lt;TagObject: tag=liga, value=feature ln..., parent: &#39;MyFont&#39;&gt;,
+&lt;TagObject: tag=dlig, value=feature ln..., parent: &#39;MyFont&#39;&gt;]
+</pre></div>
+</div>
+</div>
+<div class="section" id="kerning-data">
+<h2>Kerning data<a class="headerlink" href="#kerning-data" title="Permalink to this headline">¶</a></h2>
+<p>Kerning is stored in <code class="docutils literal"><span class="pre">font.kerning</span></code>, an object which behaves like a dictionary. A <code class="docutils literal"><span class="pre">(name,</span> <span class="pre">name)</span></code> tuple is the key. This can either be a glyph name or a group name. A number is the value. Can be floating point or integer:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># showing where the data lives in the RoboFab objects.</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="c"># these are pairs</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">kerning</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+<span class="c"># get the value for this pair</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">kerning</span><span class="p">[(</span><span class="s">&#39;MMK_L_baseserif&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/kerning_00.py">open or download this file: kerning_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="p">[(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;v&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;MMK_L_baseserif&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">)]</span>
+<span class="o">-</span><span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="why-no-robofab-objects-for-features">
+<h2>Why no RoboFab objects for features?<a class="headerlink" href="#why-no-robofab-objects-for-features" title="Permalink to this headline">¶</a></h2>
+<p>Features are tricky things. On one level they&#8217;re stored as simple pieces of text. On another level they&#8217;re sets of complex rules which need to be executed. When the RoboFab API and UFO spec started, writing an interpreter for feature language was too far off. So we chose for a loose method of storing the data, just bits of text, which would get the data where it needed to go and back again. And leave the interpreting and executing to other applications.</p>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

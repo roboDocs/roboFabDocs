@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Font &amp; Info objects &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Step-by-step" href="index.html" />
+    <link rel="next" title="Glyph, Contour &amp; Pen" href="session2.html" />
+    <link rel="prev" title="Basic Python" href="python_basics.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="python_basics.html" title="previous chapter">Basic Python</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="session2.html" title="next chapter">Glyph, Contour &amp; Pen</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="font-info-objects">
+<h1>Font &amp; Info objects<a class="headerlink" href="#font-info-objects" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/RFont1.gif" src="../_images/RFont1.gif" />
+<div class="section" id="code">
+<h2>Code!<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<p>So now then, you should have your editor fired up. Your RoboFab installed. Locate the output window as well:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">robofab.world</span>
+</pre></div>
+</div>
+<p>If that runs without problems you&#8217;re good to go. If a new window pops up with a traceback like this it means there&#8217;s something wrong with the installation:</p>
+<div class="highlight-python"><div class="highlight"><pre>Traceback (most recent call last):
+File &quot;&lt;string&gt;&quot;, line 1, in ?
+ImportError: No module named robofab.world
+</pre></div>
+</div>
+<p>In this documentation, stuff in the output window is indicated with a tinted background. Whenever something is printed in Python code it will end up in the output window.</p>
+</div>
+<div class="section" id="huh-import">
+<h2>Huh, import?<a class="headerlink" href="#huh-import" title="Permalink to this headline">¶</a></h2>
+<p>Python can do a lot of different things. Some of its functionality is always available (the <strong>built-in</strong> things) but most of it is stored in separate <strong>modules</strong>. When you want to use code from a different module, you need to <strong>import</strong> it first so that Python knows it needs to look somewhere else for objects, functions and stuff. Most of the Robofab stuff is stored in the <code class="docutils literal"><span class="pre">robofab.world</span></code> module. Notice that dot there? The dot syntax also works for modules and modules within modules. If you want to import a module and Python can&#8217;t find it, you will get a traceback with an <code class="docutils literal"><span class="pre">ImportError</span></code>. You can also import specific things from another module, then you write:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">someModule</span> <span class="kn">import</span> <span class="n">oneSpecificThing</span>
+<span class="kn">from</span> <span class="nn">someModule.subModule</span> <span class="kn">import</span> <span class="n">oneSpecificThing</span>
+<span class="kn">from</span> <span class="nn">someModule</span> <span class="kn">import</span> <span class="n">anotherSpecificThing</span><span class="p">,</span> <span class="n">andAnotherThing</span>
+
+<span class="c"># and these:</span>
+<span class="kn">import</span> <span class="nn">someModule</span>
+<span class="kn">import</span> <span class="nn">someModule.subModule</span>
+</pre></div>
+</div>
+<p>We&#8217;ll need to import a couple of useful functions from the robofab module to get started. To begin with, we&#8217;ll look at <code class="docutils literal"><span class="pre">CurrentFont</span></code> and <code class="docutils literal"><span class="pre">CurrentGlyph</span></code>.</p>
+</div>
+<div class="section" id="currentfont">
+<h2>CurrentFont()<a class="headerlink" href="#currentfont" title="Permalink to this headline">¶</a></h2>
+<p>So, suppose you have FontLab, and a font file open. Make sure it is a font you can trash if you have to, and not the single copy of the production master of your newest bestseller. How do you get started talking to that font in Python? Use <code class="docutils literal"><span class="pre">CurrentFont()</span></code>. This is a special function which will return an object for the font which is at the front. When there are no fonts it will return <code class="docutils literal"><span class="pre">None</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="k">print</span> <span class="n">CurrentFont</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session1_00.py">open or download this file: session1_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt;RFont font for DemoFont Italic&gt;
+</pre></div>
+</div>
+<p>A <a class="reference internal" href="../objects/RFont.html"><em>Font</em></a> object! We&#8217;ll be using <code class="docutils literal"><span class="pre">CurrentFont</span></code> and that font object shortly, but first let&#8217;s have a look at <code class="docutils literal"><span class="pre">CurrentFont</span></code>&#8216;s siblings: <code class="docutils literal"><span class="pre">CurrentGlyph</span></code> and <code class="docutils literal"><span class="pre">AllFonts</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># open a glyph in FL first!</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentGlyph</span>
+<span class="k">print</span> <span class="n">CurrentGlyph</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session1_01.py">open or download this file: session1_01.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt;RGlyph for DemoFont.ograve&gt;
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">CurrentGlyph()</span></code> returns a <a class="reference internal" href="../objects/RGlyph.html"><em>Glyph</em></a> object for the glyph which is at the front. So this is a useful place to start if you want to write a script which manipulates a single glyph and you want an object for that glyph:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># open a couple of fonts in FL first!</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">AllFonts</span>
+<span class="k">print</span> <span class="n">AllFonts</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session1_02.py">open or download this file: session1_02.py</a></div><div class="code highlight-python"><div class="highlight"><pre>[&lt;RFont font for MyDemoFont&gt;,
+&lt;RFont font for AnotherFont Plain&gt;,
+&lt;RFont font for AnotherFont Italic&gt;]
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">AllFonts()</span></code> returns a list with Font objects, one object for each open font. <code class="docutils literal"><span class="pre">CurrentFont</span></code>, <code class="docutils literal"><span class="pre">CurrentGlyph</span></code> and <code class="docutils literal"><span class="pre">AllFonts</span></code> are three very useful functions, and they all live in the <code class="docutils literal"><span class="pre">robofab.world</span></code> module. We&#8217;ll be using them a lot.</p>
+</div>
+<div class="section" id="some-font-attributes">
+<h2>Some Font attributes<a class="headerlink" href="#some-font-attributes" title="Permalink to this headline">¶</a></h2>
+<p>So what are attributes of fonts objects? Let&#8217;s have a look (at the documentation!):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># open a couple of fonts in FL first!</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">path</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">kerning</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session1_03.py">open or download this file: session1_03.py</a></div><div class="code highlight-python"><div class="highlight"><pre>/aFolder/anotherFolder/demoStuff/myFont.vfb
+&lt;RKerning for MyFont Plain&gt;
+&lt;RInfo for MyFont Plain&gt;
+</pre></div>
+</div>
+<p>Hang on! that didn&#8217;t print anything that looks like kerning, and what&#8217;s that <code class="docutils literal"><span class="pre">font.info</span></code> thing? Remember that objects can contain objects? The object model splits all font related data into smaller, easier to manage pieces. So a <code class="docutils literal"><span class="pre">Font</span></code> object has one single <code class="docutils literal"><span class="pre">Info</span></code> object which in turn stores all of the naming and dimensions. Same for <code class="docutils literal"><span class="pre">font.kerning</span></code>, it&#8217;s an object which represents all kerning data of the font. We&#8217;ll get back to the <a class="reference internal" href="../objects/RKerning.html"><em>kerning object</em></a> later.</p>
+</div>
+<div class="section" id="some-info-attributes">
+<h2>Some Info attributes<a class="headerlink" href="#some-info-attributes" title="Permalink to this headline">¶</a></h2>
+<p>The Info object stores all of the <a class="reference internal" href="../objects/RInfo.html"><em>font&#8217;s names, key dimensions</em></a> etc:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># getting data from the info object</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="c"># naming attributes</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">familyName</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">styleName</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">fullName</span>
+
+<span class="c"># dimension attributes</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">unitsPerEm</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">ascender</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">descender</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session1_04.py">open or download this file: session1_04.py</a></div><div class="code highlight-python"><div class="highlight"><pre>MyDemo
+Plain
+MyDemo Plain
+1000
+720
+-280
+</pre></div>
+</div>
+<p>Almost all attributes can also be set to new values. This is when it starts getting interesting. But it also opens new ways of messing your font up:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># setting data in the info object</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="c"># naming attributes</span>
+<span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">familyName</span> <span class="o">=</span> <span class="s">&quot;MyFamily&quot;</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">familyName</span>
+<span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">styleName</span> <span class="o">=</span> <span class="s">&quot;Roman&quot;</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">styleName</span>
+<span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">fullName</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">familyName</span> <span class="o">+</span> <span class="s">&#39;-&#39;</span> <span class="o">+</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">styleName</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">fullName</span>
+
+<span class="c"># dimension attributes</span>
+<span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">ascender</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">ascender</span>
+<span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">descender</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">descender</span>
+
+<span class="n">font</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session1_05.py">open or download this file: session1_05.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="n">MyFamily</span>
+<span class="n">Roman</span>
+<span class="n">MyFamily</span><span class="o">-</span><span class="n">Roman</span>
+<span class="mi">600</span>
+<span class="o">-</span><span class="mi">400</span>
+</pre></div>
+</div>
+<p>A useful method of the Info object is <code class="docutils literal"><span class="pre">autoNaming()</span></code>. It assumes you have entered correct data for <code class="docutils literal"><span class="pre">familyName</span></code> and <code class="docutils literal"><span class="pre">styleName</span></code>. Based on these two values, a bunch of variations and permutations are generated and stored in the appropriate fields. These are the basic names, no fancy OpenType stuff:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># get a particular glyph</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">familyName</span> <span class="o">=</span> <span class="s">&quot;myFamilyName&quot;</span>
+<span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">styleName</span> <span class="o">=</span> <span class="s">&quot;myStyleName&quot;</span>
+<span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">autoNaming</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">fullName</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">fontName</span>
+<span class="k">print</span> <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">fondName</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session1_06.py">open or download this file: session1_06.py</a></div><div class="code highlight-python"><div class="highlight"><pre>myFamilyName myStyleName
+myFamilyName-myStyleName
+myFamilyName
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-to-glyphs">
+<h2>Getting to glyphs<a class="headerlink" href="#getting-to-glyphs" title="Permalink to this headline">¶</a></h2>
+<p>We&#8217;ve seen <code class="docutils literal"><span class="pre">CurrentGlyph</span></code> and <code class="docutils literal"><span class="pre">CurrentFont</span></code>, but how do you we get to other glyphs in a font? A <code class="docutils literal"><span class="pre">Font</span></code> object contains glyphs and this is what you do to get to them:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># get a particular glyph</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="n">font</span><span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">font</span><span class="p">[</span><span class="s">&#39;Adieresis&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">font</span><span class="p">[</span><span class="s">&#39;two&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">font</span><span class="p">[</span><span class="s">&#39;afii12934&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session1_07.py">open or download this file: session1_07.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt;RGlyph for MyFamily-Roman.A&gt;
+&lt;RGlyph for MyFamily-Roman.Adieresis&gt;
+&lt;RGlyph for MyFamily-Roman.two&gt;
+&lt;RGlyph for MyFamily-Roman.afii12934&gt;
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">Font</span></code> object in this case behaves like a Python dictionary object. Between the <code class="docutils literal"><span class="pre">[</span></code> square brackets <code class="docutils literal"><span class="pre">]</span></code> you can ask for a glyph by its (PostScript) name. In Python speak:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">value</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If you want to look at all glyphs in a font, one at a time, you can loop or iterate through the font. It&#8217;s written like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># iteration through glyphs in a font</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="s">&quot;font has </span><span class="si">%d</span><span class="s"> glyphs&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">glyph</span> <span class="ow">in</span> <span class="n">font</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">glyph</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session1_08.py">open or download this file: session1_08.py</a></div><div class="code highlight-python"><div class="highlight"><pre>font has 201 glyphs
+&lt;RGlyph for MyFamily-Roman.aring&gt;
+&lt;RGlyph for MyFamily-Roman.ordfeminine&gt;
+&lt;RGlyph for MyFamily-Roman.less&gt;
+&lt;RGlyph for MyFamily-Roman.ograve&gt;
+&lt;RGlyph for MyFamily-Roman.V&gt;
+&lt;RGlyph for MyFamily-Roman.dollar&gt;
+&lt;RGlyph for MyFamily-Roman.circumflex&gt;
+..etc..
+</pre></div>
+</div>
+<p>A couple of things to look for in the example above:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">len(font)</span></code> shows Python&#8217;s built-in <code class="docutils literal"><span class="pre">len()</span></code> function, which will try to count the thing its given and it will return the number. Fonts like to be counted and they respond with the number of glyphs. In this case the font has 201 glyphs.</li>
+<li>All the glyphs are mixed up! there is no particular order! chaos! In Python dictionaries there is no standard order in which the keys appear. It will iterate through all the glyphs though.</li>
+<li>Notice the indentation at the beginning of the line under <code class="docutils literal"><span class="pre">for</span> <span class="pre">glyph</span> <span class="pre">in</span> <span class="pre">font</span></code>: This is Python&#8217;s way of showing that all of the code that&#8217;s indented belongs to the same loop. When the code is <em>dedented</em> again that&#8217;s where Python will continue when it is done with the loop.</li>
+</ul>
+<p>When you want to be sure about the order in which the glyphs are looked at, you need to sort them first. Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># iteration through alphabetically sorted glyphnames</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="k">print</span> <span class="s">&quot;font has </span><span class="si">%d</span><span class="s"> glyphs&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+
+<span class="c"># names is now a list of strings, the names of the glyphs</span>
+<span class="c"># not the glyphs themselves!</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+<span class="c"># the list of names is sorted</span>
+<span class="n">names</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+<span class="c"># now we iterate through the list of names</span>
+<span class="k">for</span> <span class="n">glyphName</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="c"># now we ask for the glyph with glyphName</span>
+    <span class="k">print</span> <span class="n">font</span><span class="p">[</span><span class="n">glyphName</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session1_09.py">open or download this file: session1_09.py</a></div><div class="code highlight-python"><div class="highlight"><pre>font has 201 glyphs
+&lt;RGlyph for MyFamily-Roman.A&gt;
+&lt;RGlyph for MyFamily-Roman.AE&gt;
+&lt;RGlyph for MyFamily-Roman.Aacute&gt;
+&lt;RGlyph for MyFamily-Roman.Acircumflex&gt;
+&lt;RGlyph for MyFamily-Roman.Adieresis&gt;
+&lt;RGlyph for MyFamily-Roman.Agrave&gt;
+&lt;RGlyph for MyFamily-Roman.Aring&gt;
+&lt;RGlyph for MyFamily-Roman.Atilde&gt;
+&lt;RGlyph for MyFamily-Roman.B&gt;
+..etc..
+</pre></div>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

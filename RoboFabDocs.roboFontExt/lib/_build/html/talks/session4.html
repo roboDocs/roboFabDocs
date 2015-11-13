@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Adventures in NoneLab, scripting outside the box &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Step-by-step" href="index.html" />
+    <link rel="next" title="DialogKit" href="dialogkit.html" />
+    <link rel="prev" title="Scripting for production" href="session6.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="session6.html" title="previous chapter">Scripting for production</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="dialogkit.html" title="next chapter">DialogKit</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="adventures-in-nonelab-scripting-outside-the-box">
+<h1>Adventures in NoneLab, scripting outside the box<a class="headerlink" href="#adventures-in-nonelab-scripting-outside-the-box" title="Permalink to this headline">¶</a></h1>
+<p>Working with text sources UFO, and GLIFs. FontLab export and import of UFO. Processing UFOs outside FontLab.</p>
+<div class="section" id="ufo">
+<h2>UFO<a class="headerlink" href="#ufo" title="Permalink to this headline">¶</a></h2>
+<p>Scripting a font editor without the font editor? RoboFab can export and import to the text based <a class="reference external" href="http://unifiedfontobject.org/">UFO format</a> for font sources. You can export a FontLab font to <code class="docutils literal"><span class="pre">.ufo</span></code>, and you can import a <code class="docutils literal"><span class="pre">.ufo</span></code> to FontLab easily. Read the <a class="reference internal" href="../howtos/makeufo.html"><em>how-to</em></a>. UFO export and import scripts are available from the RoboFab Scripts menu. But what do you do with ufos then?</p>
+</div>
+<div class="section" id="scripting-with-fonts-outside-fontlab">
+<h2>Scripting with fonts outside FontLab<a class="headerlink" href="#scripting-with-fonts-outside-fontlab" title="Permalink to this headline">¶</a></h2>
+<p>The nice thing about UFO is that RoboFab can read the files even when it is not running in FontLab. The Python interpreter that you use for FontLab, can run RoboFab scripts and apply them to font and glyphs stored in a UFO rather than a <code class="docutils literal"><span class="pre">.vfb</span></code>. That opens possibilities for batch processing, storage in databases or version management systems, archiving or connecting your own tools to your workflow. FontLab specific functionality, such as generating font binaries, and complex path manipulations are not available in the <strong>NoneLab</strong> RoboFab, but you can make fonts, create and move glyphs, generate and manipulate kerning. We&#8217;ve taken great care to make sure that RoboFab based scripts work in both worlds.</p>
+</div>
+<div class="section" id="nonelab">
+<h2>NoneLab<a class="headerlink" href="#nonelab" title="Permalink to this headline">¶</a></h2>
+<p>NoneLab is a word we coined to describe RoboFab/Python environments outside FontLab. Let&#8217;s have a look at main the differences.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="25%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head">FontLab</th>
+<th class="head">NoneLab</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Font binary generation</td>
+<td>All formats. Import,
+export UFO.</td>
+<td>Read, write UFO. Read TT, OTF, PS T1 (through
+<code class="docutils literal"><span class="pre">fontTools</span></code>). Experimental support for SVG fonts.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CurrentFont</span></code>,
+<code class="docutils literal"><span class="pre">CurrentGlyph</span></code>,
+<code class="docutils literal"><span class="pre">AllFonts</span></code></td>
+<td>Yes.</td>
+<td>No. Use <code class="docutils literal"><span class="pre">OpenFont(aPathToUFO)</span></code> instead, or open the
+<code class="docutils literal"><span class="pre">.ufo</span></code> fonts with <code class="docutils literal"><span class="pre">RFont(aPathToUFO)</span></code>.</td>
+</tr>
+<tr class="row-even"><td>Interpolation</td>
+<td>Yes.</td>
+<td>Yes &#8211; quite a bit faster too.</td>
+</tr>
+<tr class="row-odd"><td>Make new fonts, move
+glyphs, merge, split
+files</td>
+<td>Yes.</td>
+<td>Yes.</td>
+</tr>
+<tr class="row-even"><td>Build accented glyphs</td>
+<td>Yes.</td>
+<td>Yes.</td>
+</tr>
+<tr class="row-odd"><td>Manipulate kerning</td>
+<td>Yes.</td>
+<td>Yes.</td>
+</tr>
+<tr class="row-even"><td>Remove overlap</td>
+<td>Yes.</td>
+<td>No.</td>
+</tr>
+<tr class="row-odd"><td>API</td>
+<td>All RoboFab objects.
+Plus the underlying
+FontLab objects.</td>
+<td>All RoboFab objects.</td>
+</tr>
+<tr class="row-even"><td>Platform</td>
+<td>Mac OSX, Windows,
+within FontLab</td>
+<td>All platforms which support Python, Mac OSX, Windows,
+Linux, Unix.</td>
+</tr>
+<tr class="row-odd"><td>Open file format</td>
+<td>No, <code class="docutils literal"><span class="pre">.vfb</span></code> is a
+proprietary, binary
+file format.</td>
+<td>Yes. UFO and GLIF formats are XML based, open and
+documented. You can build your own tools and use
+these formats.</td>
+</tr>
+<tr class="row-even"><td>Widgets, UI toolkit</td>
+<td>DialogKit, plus the
+set of basic windows
+from <code class="docutils literal"><span class="pre">robofab.interface</span></code>.</td>
+<td>When run as a window-less user in OSX or linux the
+interface things are disabled. In some Python IDE&#8217;s:
+the set of basic windows from <code class="docutils literal"><span class="pre">robofab.interface</span></code>.
+On OSX: Vanilla.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="the-ufo">
+<h2>The UFO<a class="headerlink" href="#the-ufo" title="Permalink to this headline">¶</a></h2>
+<p>A UFO is not really a single file, but rather a whole folder full of stuff with a <code class="docutils literal"><span class="pre">.ufo</span></code> extension in the name. So you can open up a <code class="docutils literal"><span class="pre">.ufo</span></code> and have a look inside. Some data is stored in <code class="docutils literal"><span class="pre">.plist</span></code> format. This is a flavor of XML and contains kerning, lib and font info. The glyphs are stored level deeper, in the glyphs folder.</p>
+<img alt="../_images/ufo.jpg" src="../_images/ufo.jpg" />
+<p>The <code class="docutils literal"><span class="pre">MyFont.ufo/glyphs/</span></code> folder contains a list of <code class="docutils literal"><span class="pre">.glif</span></code> files and a single <code class="docutils literal"><span class="pre">contents.plist</span></code> file. This is the table of contents for the folder, it contains a table of glyph name to file name mappings. So when you start working with a <code class="docutils literal"><span class="pre">.ufo</span></code> and you want a particular glyph, RoboFab can find it faster.</p>
+</div>
+<div class="section" id="the-glif">
+<h2>The GLIF<a class="headerlink" href="#the-glif" title="Permalink to this headline">¶</a></h2>
+<p>GLyph Interchange Format, a readable XML based file with all data for a single glyph: width, unicode value, all contours, points and components. The <code class="docutils literal"><span class="pre">glyph.lib</span></code> is also stored here.</p>
+<img alt="../_images/cent.gif" src="../_images/cent.gif" />
+<p>These screenshots are taken on an OSX machine, but the data is platform independent. Basically you can take any text editor and mess around with the points. While this is not a very efficient way to design type, it shows that the data is still there, accessible forever.</p>
+</div>
+<div class="section" id="exporting-ufo">
+<h2>Exporting UFO<a class="headerlink" href="#exporting-ufo" title="Permalink to this headline">¶</a></h2>
+<p>In the FontLab scripts folder that is distributed with RoboFab, you will find a set of scripts for importing and exporting UFO and GLIF. Open a test font and run this script from the Macro menu. It will generate a <code class="docutils literal"><span class="pre">.ufo</span></code> in the same folder as the source font file.</p>
+<img alt="../_images/exportmenu.gif" src="../_images/exportmenu.gif" />
+</div>
+<div class="section" id="fontlab-remote">
+<h2>FontLab Remote<a class="headerlink" href="#fontlab-remote" title="Permalink to this headline">¶</a></h2>
+<p>If you happen to be using FontLab in Mac, you can use the FontLab Remote module to make FontLab receive Python instructions and data by <strong>AppleEvents</strong>. You need to start the AppleEvent handler by importing the <code class="docutils literal"><span class="pre">robofab.tools.remote</span></code> module. After importing it, FontLab can receive instructions by AppleEvent. You need to call remote once after starting FontLab. Now external scripts running outside FontLab can call the FontLab application, send it glyphs, get results back:</p>
+<div class="highlight-python"><div class="highlight"><pre># start the AppleEvent handler
+import robofab.tools.remote
+FontLabRemote is on.
+</pre></div>
+</div>
+<p>The following script needs to be run in a python IDE. It will ask FontLab for its current glyph, and then it will store this glyph in a new font object outside FontLab.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># demo of executing python in FontLab, MacOS only</span>
+ 
+<span class="c"># this script runs in the Python IDE</span>
+<span class="c"># it will send some python code to FontLab</span>
+<span class="c"># FontLab will execute the python code:</span>
+<span class="c"># it will find the current glyph and send it to our other script.</span>
+ 
+<span class="kn">from</span> <span class="nn">robofab.tools.remote</span> <span class="kn">import</span> <span class="n">runFontLabRemote</span><span class="p">,</span> <span class="n">receiveGlyph</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">RFont</span>
+ 
+<span class="c"># this is what we want FontLab to do:</span>
+<span class="n">pythonCode</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">from robofab.world import CurrentGlyph</span>
+<span class="s">from robofab.tools.remote import transmitGlyph</span>
+<span class="s">g = CurrentGlyph()</span>
+<span class="s">transmitGlyph(g)</span>
+<span class="s">&quot;&quot;&quot;</span>
+ 
+<span class="c"># this the font where we&#39;ll store the glyph from FontLab</span>
+<span class="n">destFont</span> <span class="o">=</span> <span class="n">RFont</span><span class="p">()</span>
+ 
+<span class="n">result</span> <span class="o">=</span> <span class="n">runFontLabRemote</span><span class="p">(</span><span class="n">pythonCode</span><span class="p">)</span>
+<span class="n">receiveGlyph</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">destFont</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">destFont</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/nonelab_00.py">open or download this file: nonelab_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt;RGlyph for None.parenright&gt;
+[&#39;parenright&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

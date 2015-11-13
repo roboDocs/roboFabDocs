@@ -1,0 +1,475 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PostScript font hint values &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Objects" href="index.html" />
+    <link rel="next" title="PostScript glyph hint values" href="psHintsGlyph.html" />
+    <link rel="prev" title="RLib" href="libs.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="libs.html" title="previous chapter">RLib</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="psHintsGlyph.html" title="next chapter">PostScript glyph hint values</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="postscript-font-hint-values">
+<h1>PostScript font hint values<a class="headerlink" href="#postscript-font-hint-values" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal"><span class="pre">font.psHints</span></code> object, introduced in RoboFab 1.1.3 rev.89 showed it was useful to have access to the various PostScript blues values. But it also proved it was necessary to store them elsewhere. So in RoboFab 1.2 rev.172, the blues values found a permanent home in the new <code class="docutils literal"><span class="pre">RInfo</span></code> object. The <code class="docutils literal"><span class="pre">font.psHints</span></code> object is still functional, all fields are rerouted to their new places. The <code class="docutils literal"><span class="pre">font.psHint</span></code> attribute might be deprecated in the future.</p>
+<div class="section" id="note-on-accessing-blues-data-in-fontlab-studio">
+<h2>Note on accessing blues data in FontLab Studio<a class="headerlink" href="#note-on-accessing-blues-data-in-fontlab-studio" title="Permalink to this headline">¶</a></h2>
+<p>A bug in FontLab&#8217;s own Python attributes relating to blues, <code class="docutils literal"><span class="pre">otherBlues</span></code>, <code class="docutils literal"><span class="pre">familyBlues</span></code> and <code class="docutils literal"><span class="pre">familyOtherBlues</span></code> fields, makes it impossible to set the full number of zones using Python. The actual number of zones which can be set from Python is one less than the number in the Adobe specification. A warning will be printed when a zone will be dropped. Using the FontLab font info dialog, all zones can be set.</p>
+</div>
+<div class="section" id="the-font-info-attributes-since-robofab-1-2">
+<h2>The font.info attributes (since RoboFab 1.2)<a class="headerlink" href="#the-font-info-attributes-since-robofab-1-2" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="font.info.postscriptBlueValues">
+<code class="descclassname">font.info.</code><code class="descname">postscriptBlueValues</code><a class="headerlink" href="#font.info.postscriptBlueValues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>(number list) A list of up to 14 integers or floats specifying the values that should be in the Type 1/CFF <code class="docutils literal"><span class="pre">BlueValues</span></code> field. This list must contain an even number of integers following the rules defined in the Type 1/CFF specification.</p>
+<dl class="attribute">
+<dt id="font.info.postscriptOtherBlues">
+<code class="descclassname">font.info.</code><code class="descname">postscriptOtherBlues</code><a class="headerlink" href="#font.info.postscriptOtherBlues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>(number list) A list of up to 10 integers or floats specifying the values that should be in the Type 1/CFF <code class="docutils literal"><span class="pre">OtherBlues</span></code> field. This list must contain an even number of integers following the rules defined in the Type 1/CFF specification.</p>
+<dl class="attribute">
+<dt id="font.info.postscriptFamilyBlues">
+<code class="descclassname">font.info.</code><code class="descname">postscriptFamilyBlues</code><a class="headerlink" href="#font.info.postscriptFamilyBlues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>(number list) A list of up to 14 integers or floats specifying the values that should be in the Type 1/CFF <code class="docutils literal"><span class="pre">FamilyBlues</span></code> field. This list must contain an even number of integers following the rules defined in the Type 1/CFF specification.</p>
+<dl class="attribute">
+<dt id="font.info.postscriptFamilyOtherBlues">
+<code class="descclassname">font.info.</code><code class="descname">postscriptFamilyOtherBlues</code><a class="headerlink" href="#font.info.postscriptFamilyOtherBlues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>(number list) A list of up to 10 integers or floats specifying the values that should be in the Type 1/CFF <code class="docutils literal"><span class="pre">FamilyOtherBlues</span></code> field. This list must contain an even number of integers following the rules defined in the Type 1/CFF specification.</p>
+<dl class="attribute">
+<dt id="font.info.postscriptStemSnapH">
+<code class="descclassname">font.info.</code><code class="descname">postscriptStemSnapH</code><a class="headerlink" href="#font.info.postscriptStemSnapH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>(number list) List of horizontal stems sorted in increasing order. Up to 12 integers or floats are possible. This corresponds to the Type 1/CFF <code class="docutils literal"><span class="pre">StemSnapH</span></code> field.</p>
+<dl class="attribute">
+<dt id="font.info.postscriptStemSnapV">
+<code class="descclassname">font.info.</code><code class="descname">postscriptStemSnapV</code><a class="headerlink" href="#font.info.postscriptStemSnapV" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>(number list) List of vertical stems sorted in increasing order. Up to 12 integers or floats are possible. This corresponds to the Type 1/CFF <code class="docutils literal"><span class="pre">StemSnapV</span></code> field.</p>
+<dl class="attribute">
+<dt id="font.info.postscriptBlueFuzz">
+<code class="descclassname">font.info.</code><code class="descname">postscriptBlueFuzz</code><a class="headerlink" href="#font.info.postscriptBlueFuzz" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>(integer or float) BlueFuzz value. This corresponds to the Type 1/CFF <code class="docutils literal"><span class="pre">BlueFuzz</span></code> field.</p>
+<dl class="attribute">
+<dt id="font.info.postscriptBlueShift">
+<code class="descclassname">font.info.</code><code class="descname">postscriptBlueShift</code><a class="headerlink" href="#font.info.postscriptBlueShift" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>(integer or float) BlueShift value. This corresponds to the Type 1/CFF <code class="docutils literal"><span class="pre">BlueShift</span></code> field.</p>
+<dl class="attribute">
+<dt id="font.info.postscriptBlueScale">
+<code class="descclassname">font.info.</code><code class="descname">postscriptBlueScale</code><a class="headerlink" href="#font.info.postscriptBlueScale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>(float) BlueScale value. This corresponds to the Type 1/CFF <code class="docutils literal"><span class="pre">BlueScale</span></code> field.</p>
+<dl class="attribute">
+<dt id="font.info.postscriptForceBold">
+<code class="descclassname">font.info.</code><code class="descname">postscriptForceBold</code><a class="headerlink" href="#font.info.postscriptForceBold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>(boolean) Indicates how the Type 1/CFF <code class="docutils literal"><span class="pre">ForceBold</span></code> field should be set.</p>
+</div>
+<div class="section" id="example-some-font-info-blues-attrs-usage">
+<h2>Example, some font.info blues attrs, usage<a class="headerlink" href="#example-some-font-info-blues-attrs-usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># example of accessing the postscript blues</span>
+<span class="c"># data using the font.info attributes.</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">postscriptBlueValues</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">postscriptOtherBlues</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">postscriptFamilyBlues</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">postscriptFamilyOtherBlues</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/psHints_00.py">open or download this file: psHints_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">208</span><span class="p">,</span> <span class="mi">214</span><span class="p">,</span> <span class="mi">114</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">136</span><span class="p">,</span> <span class="o">-</span><span class="mi">128</span><span class="p">,</span> <span class="o">-</span><span class="mi">86</span><span class="p">,</span> <span class="o">-</span><span class="mi">84</span><span class="p">,</span> <span class="mi">376</span><span class="p">,</span> <span class="mi">386</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">208</span><span class="p">,</span> <span class="mi">214</span><span class="p">,</span> <span class="mi">224</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">136</span><span class="p">,</span> <span class="o">-</span><span class="mi">128</span><span class="p">,</span> <span class="o">-</span><span class="mi">86</span><span class="p">,</span> <span class="o">-</span><span class="mi">84</span><span class="p">,</span> <span class="mi">376</span><span class="p">,</span> <span class="mi">386</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description-of-the-font-pshint-object">
+<h2>Description of the font.psHint object<a class="headerlink" href="#description-of-the-font-pshint-object" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">PostScriptFontHintValues</span></code> is the class of the object found at <code class="docutils literal"><span class="pre">font.psHints</span></code>. It has a couple of attributes of its own which give you access to the font level PostScript hinting information. For exact information on the meaning and usage of these values, please refer to the developer resources at <a class="reference external" href="&lt;http://adobe.com&gt;">adobe.com</a>.</p>
+<p>The <code class="docutils literal"><span class="pre">PostScriptFontHintValues</span></code> objects, in FontLab and NoneLab flavor, can respond to <code class="docutils literal"><span class="pre">add</span></code>, <code class="docutils literal"><span class="pre">sub</span></code>, <code class="docutils literal"><span class="pre">mul</span></code>, <code class="docutils literal"><span class="pre">rmul</span></code>, <code class="docutils literal"><span class="pre">div</span></code> and <code class="docutils literal"><span class="pre">rdiv</span></code>, so you can do math with them, for instance interpolations. Available since <a class="reference external" href="http://code.robofab.com/changeset/44">ChangeSet 44</a>.</p>
+</div>
+<div class="section" id="example-the-font-pshints-object-usage">
+<h2>Example, the font.psHints object, usage<a class="headerlink" href="#example-the-font-pshints-object-usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># example of accessing the hint data,</span>
+<span class="c"># using the font.psHints object.</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">asDict</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/psHints_01.py">open or download this file: psHints_01.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="p">{</span> <span class="s">&#39;forceBold&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;blueScale&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="s">&#39;blueFuzz&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="s">&#39;blueShift&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;hStems&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="s">&#39;vStems&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">66</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+<span class="s">&#39;blueValues&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">208</span><span class="p">],</span> <span class="p">[</span><span class="mi">214</span><span class="p">,</span> <span class="mi">224</span><span class="p">]],</span>
+<span class="s">&#39;otherBlues&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="o">-</span><span class="mi">136</span><span class="p">,</span> <span class="o">-</span><span class="mi">128</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">86</span><span class="p">,</span> <span class="o">-</span><span class="mi">84</span><span class="p">],</span> <span class="p">[</span><span class="mi">376</span><span class="p">,</span> <span class="mi">386</span><span class="p">]],</span>
+<span class="s">&#39;familyOtherBlues&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="o">-</span><span class="mi">136</span><span class="p">,</span> <span class="o">-</span><span class="mi">128</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">86</span><span class="p">,</span> <span class="o">-</span><span class="mi">84</span><span class="p">],</span> <span class="p">[</span><span class="mi">376</span><span class="p">,</span> <span class="mi">386</span><span class="p">]],</span>
+<span class="s">&#39;familyBlues&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">208</span><span class="p">],</span> <span class="p">[</span><span class="mi">214</span><span class="p">,</span> <span class="mi">224</span><span class="p">]],</span> <span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># example of scaling the hint data.</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">asDict</span><span class="p">()</span>
+
+<span class="c"># a math operation returns a new, unbound object</span>
+<span class="n">ps2</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span> <span class="o">*</span> <span class="o">.</span><span class="mi">5</span>       
+
+<span class="c"># it needs to be rounded first</span>
+<span class="n">ps2</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+
+<span class="c"># now you can add the values to the FL object</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">ps2</span><span class="p">)</span>
+
+<span class="c"># see those zones skip!</span>
+<span class="n">f</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/psHints_02.py">open or download this file: psHints_02.py</a></div></div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="blueShift">
+<code class="descname">blueShift</code><a class="headerlink" href="#blueShift" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Value for blue shift. Integer in FontLab, float or int in NoneLab.</p>
+<dl class="attribute">
+<dt id="blueScale">
+<code class="descname">blueScale</code><a class="headerlink" href="#blueScale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Value for blue scale. Float in FontLab and NoneLab.</p>
+<dl class="attribute">
+<dt id="blueFuzz">
+<code class="descname">blueFuzz</code><a class="headerlink" href="#blueFuzz" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Value for blue fuzz. Integer in FontLab, float or int in NoneLab.</p>
+<dl class="attribute">
+<dt id="forceBold">
+<code class="descname">forceBold</code><a class="headerlink" href="#forceBold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Value for force bold. Boolean in FontLab and NoneLab.</p>
+<dl class="attribute">
+<dt id="blueValues">
+<code class="descname">blueValues</code><a class="headerlink" href="#blueValues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>List of pairs of numbers indicating the primary alignment zones. Integers in FontLab, floats or ints in NoneLab.</p>
+<dl class="attribute">
+<dt id="otherBlues">
+<code class="descname">otherBlues</code><a class="headerlink" href="#otherBlues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>List of pairs of numbers indicating the secondary alignment zones. Integers in FontLab, floats or ints in NoneLab.</p>
+<dl class="attribute">
+<dt id="familyBlues">
+<code class="descname">familyBlues</code><a class="headerlink" href="#familyBlues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>List of pairs of numbers indicating the primary family alignment zones. Integers in FontLab, floats or ints in NoneLab.</p>
+<dl class="attribute">
+<dt id="familyOtherBlues">
+<code class="descname">familyOtherBlues</code><a class="headerlink" href="#familyOtherBlues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>List of pairs of numbers indicating the secondary family alignment zones. Integers in FontLab, floats or ints in NoneLab.</p>
+<dl class="attribute">
+<dt id="vStems">
+<code class="descname">vStems</code><a class="headerlink" href="#vStems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>List of numbers for the vertical stems. Integers in FontLab, floats or ints in NoneLab.</p>
+<dl class="attribute">
+<dt id="hStems">
+<code class="descname">hStems</code><a class="headerlink" href="#hStems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>List of numbers for the horizontal stems. Integers in FontLab, floats or ints in NoneLab.</p>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns a copy of the object. Both in FontLab and NoneLab the copy will be an <code class="docutils literal"><span class="pre">objectsRF.PostScriptFontHintValues</span></code>.</p>
+<dl class="function">
+<dt id="round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#round" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Round the values to ints as much as the nature of the values allows. Note: <code class="docutils literal"><span class="pre">blueScale</span></code> is not rounded, it is a <code class="docutils literal"><span class="pre">float</span></code>, <code class="docutils literal"><span class="pre">forceBold</span></code> is set to <code class="docutils literal"><span class="pre">False</span></code> if <code class="docutils literal"><span class="pre">-0.5</span> <span class="pre">&lt;</span> <span class="pre">value</span> <span class="pre">&lt;</span> <span class="pre">0.5</span></code>. Otherwise it will be <code class="docutils literal"><span class="pre">True</span></code>, <code class="docutils literal"><span class="pre">blueShift</span></code>, <code class="docutils literal"><span class="pre">blueFuzz</span></code> are rounded to <code class="docutils literal"><span class="pre">int</span></code>, stems are rounded to <code class="docutils literal"><span class="pre">int</span></code>, blues are rounded to <code class="docutils literal"><span class="pre">int</span></code>.</p>
+<dl class="function">
+<dt id="asDict">
+<code class="descname">asDict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asDict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns a dictionary with all attributes and values of this object.</p>
+<dl class="function">
+<dt id="fromDict">
+<code class="descname">fromDict</code><span class="sig-paren">(</span><em>aDict</em><span class="sig-paren">)</span><a class="headerlink" href="#fromDict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This will look for familiar attributes in <code class="docutils literal"><span class="pre">aDict</span></code> and assign the value to the object.</p>
+<dl class="function">
+<dt id="update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>anotherPSHintsObject</em><span class="sig-paren">)</span><a class="headerlink" href="#update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This will copy values from the other object.</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#FLM: Get and set font level PostScript hint data.</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This script shows the way to get to the font level postscript hint values.</span>
+<span class="sd">These values were available from the fl layer, but not in RoboFab.</span>
+<span class="sd">Now they&#39;re available in RoboFab in a slightly easier to use format.</span>
+<span class="sd">The values also export to UFO and import from UFO.</span>
+
+<span class="sd">Check the FontLab FontInfo panel / Hinting Settings</span>
+<span class="sd"> </span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="c"># the fontlevel postscript hint data is accessible through the psHints attribute</span>
+
+<span class="k">print</span>
+<span class="k">print</span> <span class="s">&quot;This script shows the attributes of psHints:&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span>
+ 
+<span class="c"># now let&#39;s have a look at the values</span>
+<span class="c"># blueScale, blueShift, blueFuzz and forceBold are all single values.</span>
+ 
+<span class="k">print</span> <span class="s">&quot;blueScale&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueScale</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueScale</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
+<span class="k">print</span> <span class="s">&quot;blueScale changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueScale</span>
+ 
+<span class="k">print</span> <span class="s">&quot;blueShift&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueShift</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueShift</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">print</span> <span class="s">&quot;blueShift changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueShift</span>
+ 
+<span class="k">print</span> <span class="s">&quot;blueFuzz&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueFuzz</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueFuzz</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">print</span> <span class="s">&quot;blueFuzz changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueFuzz</span>
+ 
+<span class="k">print</span> <span class="s">&quot;forceBold&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">forceBold</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">forceBold</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">print</span> <span class="s">&quot;forceBold changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">forceBold</span>
+ 
+<span class="c"># the following values are represented as lists.</span>
+<span class="c"># Important Note: you can only set the whole list, not individual items.</span>
+<span class="c"># So get the list, make changes to it, then set the list</span>
+<span class="c"># Zones are represented as tuples of integers, so it&#39;s easier to</span>
+<span class="c"># see which values belong together. FL stores the values as</span>
+<span class="c"># a single list of numbers.</span>
+ 
+<span class="c"># T1 spec says blueValues, FL says Primary Alignment Zones, under &quot;Set Local Alignment Zones&quot;.</span>
+<span class="k">print</span> <span class="s">&quot;blueValues&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueValues</span>
+<span class="c"># remove the last zone</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueValues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueValues</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">&quot;blueValues changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueValues</span>
+<span class="c"># add a new zone</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueValues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueValues</span> <span class="o">+</span> <span class="p">[(</span><span class="mi">750</span><span class="p">,</span> <span class="mi">770</span><span class="p">)]</span>
+<span class="k">print</span> <span class="s">&quot;blueValues changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueValues</span>
+ 
+<span class="c"># T1 spec says otherBlues, FL says Secondary Alignment Zones, under &quot;Set Local Alignment Zones&quot;.</span>
+<span class="k">print</span> <span class="s">&quot;otherBlues&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">otherBlues</span>
+<span class="c"># remove the last zone</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">otherBlues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">otherBlues</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">&quot;otherBlues changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">otherBlues</span>
+<span class="c"># add a new zone</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">otherBlues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">otherBlues</span> <span class="o">+</span> <span class="p">[(</span><span class="mi">750</span><span class="p">,</span> <span class="mi">770</span><span class="p">)]</span>
+<span class="k">print</span> <span class="s">&quot;otherBlues changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">otherBlues</span>
+ 
+<span class="c"># T1 spec says familyBlues, FL says Primary Alignment Zones, under &quot;Set Family Alignment Zones&quot;.</span>
+<span class="k">print</span> <span class="s">&quot;familyBlues&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyBlues</span>
+<span class="c"># remove the last zone</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyBlues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyBlues</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">&quot;familyBlues changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyBlues</span>
+<span class="c"># add a new zone</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyBlues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyBlues</span> <span class="o">+</span> <span class="p">[(</span><span class="mi">750</span><span class="p">,</span> <span class="mi">770</span><span class="p">)]</span>
+<span class="k">print</span> <span class="s">&quot;familyBlues changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyBlues</span>
+ 
+<span class="c"># T1 spec says familyOtherBlues, FL says Seconday Alignment Zones, under &quot;Set Family Alignment Zones&quot;.</span>
+<span class="k">print</span> <span class="s">&quot;familyOtherBlues&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyOtherBlues</span>
+<span class="c"># remove the last zone</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyOtherBlues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyOtherBlues</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">&quot;familyOtherBlues changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyOtherBlues</span>
+<span class="c"># add a new zone</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyOtherBlues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyOtherBlues</span> <span class="o">+</span> <span class="p">[(</span><span class="mi">750</span><span class="p">,</span> <span class="mi">770</span><span class="p">)]</span>
+<span class="k">print</span> <span class="s">&quot;familyOtherBlues changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">familyOtherBlues</span>
+ 
+<span class="c"># The horizontal stems are represented as a list of single values.</span>
+<span class="k">print</span> <span class="s">&quot;hStems&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">hStems</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">hStems</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">hStems</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">&quot;hStems changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">hStems</span>
+<span class="c"># add a new stem</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">hStems</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">hStems</span> <span class="o">+</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">&quot;hStems changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">hStems</span>
+ 
+<span class="c"># The vertical stems are represented as a list of single values.</span>
+<span class="k">print</span> <span class="s">&quot;vStems&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">vStems</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">vStems</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">vStems</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">&quot;vStems changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">vStems</span>
+<span class="c"># add a new stem</span>
+<span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">vStems</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">vStems</span> <span class="o">+</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">&quot;vStems changed&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">vStems</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/psHints_03.py">open or download this file: psHints_03.py</a></div></div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

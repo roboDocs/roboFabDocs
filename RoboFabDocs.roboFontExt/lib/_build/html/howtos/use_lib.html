@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using the lib &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="How To’s" href="index.html" />
+    <link rel="next" title="Using transformations" href="use_transformations.html" />
+    <link rel="prev" title="How to use pens" href="use_pens.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="use_pens.html" title="previous chapter">How to use pens</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="use_transformations.html" title="next chapter">Using transformations</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="using-the-lib">
+<h1>Using the lib<a class="headerlink" href="#using-the-lib" title="Permalink to this headline">¶</a></h1>
+<p>The lib is very much like a plain dictionary: you use keys to store stuff in it. The nice thing about them is that they save their contents in the font and are available (after the font is saved) to scripts the next time you open the file again. In FontLab the libs (because there are several) are stored in the <code class="docutils literal"><span class="pre">.vfb</span></code> source. In UFO-based fonts the <code class="docutils literal"><span class="pre">font.libs</span></code> end up in their own, XML based <code class="docutils literal"><span class="pre">.plist</span></code> files, inside th UFO package. The <code class="docutils literal"><span class="pre">Glyph.libs</span></code> end up in the <code class="docutils literal"><span class="pre">.glif</span></code> files.</p>
+<div class="section" id="which-lib">
+<h2>Which lib?<a class="headerlink" href="#which-lib" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes it is handy to store values directly in the font that needs them. Rather than saving something in a seperate file (which could easily get lost), you can store data like this in the lib. A <code class="docutils literal"><span class="pre">RFont</span></code> has a lib and each single <code class="docutils literal"><span class="pre">RGlyph</span></code> has a lib as well. RoboFog users might remember the various applications. It is likely that stuff will collect in the font and glyph libs, so it is wise to pay some attention to naming the entries. If you use undescriptive or generic names like <code class="docutils literal"><span class="pre">a</span></code> or <code class="docutils literal"><span class="pre">mydata</span></code>, there&#8217;s a chance that another script will overwrite the data. So the RoboFab developers propose to use the &#8216;reverse domain name scheme&#8217; which works out something like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># storing something that belongs to a letterror script</span>
+<span class="n">aFont</span><span class="o">.</span><span class="n">lib</span><span class="p">[</span><span class="s">&#39;com.letterror.develop.markers&#39;</span><span class="p">]</span>
+
+<span class="c"># storing something that belongs to a aFoundry script</span>
+<span class="n">aFont</span><span class="o">.</span><span class="n">lib</span><span class="p">[</span><span class="s">&#39;com.aFoundry.bud.notes&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The lib is a flat dictionary. For RoboFog users: the RoboFog lib was nested and tried to be very clever. Unfortunately it meant that sometimes data would get lost in confusing situations. A flat dictionary solves that.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In FontLab version 4.5 and 4.6 there&#8217;s a nasty bug which causes FontLab to crash after something has been added to the <code class="docutils literal"><span class="pre">font.customdata</span></code> or <code class="docutils literal"><span class="pre">glyph.customdata</span></code> fields. Unfortunately these fields were used to store the <code class="docutils literal"><span class="pre">robofab.font.lib</span></code> and <code class="docutils literal"><span class="pre">robofab.glyph.lib</span></code> data. We hope future versions of FontLab will address this. In UFO files the libs for font and glyphs work fine.</p>
+</div>
+<div class="section" id="afont-lib">
+<h3>aFont.lib<a class="headerlink" href="#afont-lib" title="Permalink to this headline">¶</a></h3>
+<div class="code highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Usethelib howto</span>
+<span class="c"># aFont.lib examples</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="anyglyph-lib">
+<h3>anyGlyph.lib<a class="headerlink" href="#anyglyph-lib" title="Permalink to this headline">¶</a></h3>
+<div class="code highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Usethelib howto</span>
+<span class="c"># anyGlyph.lib examples</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

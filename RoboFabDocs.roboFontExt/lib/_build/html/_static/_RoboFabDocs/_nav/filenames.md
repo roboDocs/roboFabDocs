@@ -1,0 +1,3 @@
+- [handleClash1](#)
+- [handleClash2](#)
+- [userNameToFileName](#)

@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>arrayTools &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../../index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../../index.html">home</a> </li>
+<!--
+<li><a href="../../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../../intro/download.html">download</a></li>
+<li><a href="../../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">API Docs</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="module-robofab.misc.arrayTools">
+<span id="arraytools"></span><h1>arrayTools<a class="headerlink" href="#module-robofab.misc.arrayTools" title="Permalink to this headline">¶</a></h1>
+<p>Rewritten to elimate the numpy dependency</p>
+<dl class="function">
+<dt id="robofab.misc.arrayTools.calcBounds">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">calcBounds</code><span class="sig-paren">(</span><em>array</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.calcBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the bounding rectangle of a 2D points array as a tuple:
+(xMin, yMin, xMax, yMax)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.updateBounds">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">updateBounds</code><span class="sig-paren">(</span><em>bounds</em>, <em>(x</em>, <em>y)</em>, <em>min=&lt;built-in function min&gt;</em>, <em>max=&lt;built-in function max&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.updateBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the bounding recangle of rectangle bounds and point (x, y).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.pointInRect">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">pointInRect</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>rect</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.pointInRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True when point (x, y) is inside rect.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.pointsInRect">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">pointsInRect</code><span class="sig-paren">(</span><em>array</em>, <em>rect</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.pointsInRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find out which points or array are inside rect. 
+Returns an array with a boolean for each point.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.vectorLength">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">vectorLength</code><span class="sig-paren">(</span><em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.vectorLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the length of the given vector.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.asInt16">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">asInt16</code><span class="sig-paren">(</span><em>array</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.asInt16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round and cast to 16 bit integer.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.normRect">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">normRect</code><span class="sig-paren">(</span><em>(xMin</em>, <em>yMin</em>, <em>xMax</em>, <em>yMax)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.normRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize the rectangle so that the following holds:
+xMin &lt;= xMax and yMin &lt;= yMax</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.scaleRect">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">scaleRect</code><span class="sig-paren">(</span><em>(xMin</em>, <em>yMin</em>, <em>xMax</em>, <em>yMax)</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.scaleRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scale the rectangle by x, y.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.offsetRect">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">offsetRect</code><span class="sig-paren">(</span><em>(xMin</em>, <em>yMin</em>, <em>xMax</em>, <em>yMax)</em>, <em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.offsetRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Offset the rectangle by dx, dy.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.insetRect">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">insetRect</code><span class="sig-paren">(</span><em>(xMin</em>, <em>yMin</em>, <em>xMax</em>, <em>yMax)</em>, <em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.insetRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inset the rectangle by dx, dy on all sides.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.sectRect">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">sectRect</code><span class="sig-paren">(</span><em>(xMin1</em>, <em>yMin1</em>, <em>xMax1</em>, <em>yMax1)</em>, <em>(xMin2</em>, <em>yMin2</em>, <em>xMax2</em>, <em>yMax2)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.sectRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a boolean and a rectangle. If the input rectangles intersect, return
+True and the intersecting rectangle. Return False and (0, 0, 0, 0) if the input
+rectangles don&#8217;t intersect.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.unionRect">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">unionRect</code><span class="sig-paren">(</span><em>(xMin1</em>, <em>yMin1</em>, <em>xMax1</em>, <em>yMax1)</em>, <em>(xMin2</em>, <em>yMin2</em>, <em>xMax2</em>, <em>yMax2)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.unionRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the smallest rectangle in which both input rectangles are fully
+enclosed. In other words, return the total bounding rectangle of both input
+rectangles.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.rectCenter">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">rectCenter</code><span class="sig-paren">(</span><em>(xMin</em>, <em>yMin</em>, <em>xMax</em>, <em>yMax)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.rectCenter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the center of the rectangle as an (x, y) coordinate.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.arrayTools.intRect">
+<code class="descclassname">robofab.misc.arrayTools.</code><code class="descname">intRect</code><span class="sig-paren">(</span><em>(xMin</em>, <em>yMin</em>, <em>xMax</em>, <em>yMax)</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.arrayTools.intRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the rectangle, rounded off to integer values, but guaranteeing that
+the resulting rectangle is NOT smaller than the original.</p>
+</dd></dl>
+
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>objectsRF &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../../index.html" />
+    <link rel="up" title="objects" href="index.html" />
+    <link rel="next" title="pens" href="../pens/pens.html" />
+    <link rel="prev" title="objectsFL" href="objectsFL.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../../index.html">home</a> </li>
+<!--
+<li><a href="../../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../../intro/download.html">download</a></li>
+<li><a href="../../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="objectsFL.html" title="previous chapter">objectsFL</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="../pens/pens.html" title="next chapter">pens</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="module-robofab.objects.objectsRF">
+<span id="objectsrf"></span><h1>objectsRF<a class="headerlink" href="#module-robofab.objects.objectsRF" title="Permalink to this headline">¶</a></h1>
+<p>UFO for GlifLib</p>
+<dl class="function">
+<dt id="robofab.objects.objectsRF.OpenFont">
+<code class="descclassname">robofab.objects.objectsRF.</code><code class="descname">OpenFont</code><span class="sig-paren">(</span><em>path=None</em>, <em>note=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsRF.OpenFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a font from a path. If path is not given, present the user with a dialog.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.objects.objectsRF.RFont">
+<em class="property">class </em><code class="descclassname">robofab.objects.objectsRF.</code><code class="descname">RFont</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsRF.RFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>UFO font object which reads and writes glif, and keeps the data in memory in between.
+Bahviour:</p>
+<blockquote>
+<div><ul class="simple">
+<li>comparable to Font</li>
+<li>comparable to GlyphSet so that it can be passed to Glif widgets</li>
+</ul>
+</div></blockquote>
+<dl class="attribute">
+<dt id="robofab.objects.objectsRF.RFont.path">
+<code class="descname">path</code><a class="headerlink" href="#robofab.objects.objectsRF.RFont.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>path of the font</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsRF.RFont.getReverseComponentMapping">
+<code class="descname">getReverseComponentMapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsRF.RFont.getReverseComponentMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a reversed map of component references in the font.
+{
+&#8216;A&#8217; : [&#8216;Aacute&#8217;, &#8216;Aring&#8217;]
+&#8216;acute&#8217; : [&#8216;Aacute&#8217;]
+&#8216;ring&#8217; : [&#8216;Aring&#8217;]
+etc.
+}</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsRF.RFont.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>destDir=None</em>, <em>doProgress=False</em>, <em>formatVersion=2</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsRF.RFont.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the Font in UFO format.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsRF.RFont.newGlyph">
+<code class="descname">newGlyph</code><span class="sig-paren">(</span><em>glyphName</em>, <em>clear=True</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsRF.RFont.newGlyph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a new glyph with glyphName
+if the glyph exists and clear=True clear the glyph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsRF.RFont.insertGlyph">
+<code class="descname">insertGlyph</code><span class="sig-paren">(</span><em>glyph</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsRF.RFont.insertGlyph" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns a new glyph that has been inserted into the font</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.objects.objectsRF.RFont.removeGlyph">
+<code class="descname">removeGlyph</code><span class="sig-paren">(</span><em>glyphName</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.objects.objectsRF.RFont.removeGlyph" title="Permalink to this definition">¶</a></dt>
+<dd><p>remove a glyph from the font</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

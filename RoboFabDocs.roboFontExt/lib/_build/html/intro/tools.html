@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tools &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Introduction" href="index.html" />
+    <link rel="next" title="Dialogs" href="dialogs.html" />
+    <link rel="prev" title="Links" href="links.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="links.html" title="previous chapter">Links</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="dialogs.html" title="next chapter">Dialogs</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="tools">
+<h1>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h1>
+<p>The RoboFab Tools directory contains a groups of useful and sometimes stray bit of code which don&#8217;t fit anywhere else.</p>
+<div class="section" id="robofab-tools-toolsall">
+<h2>robofab.tools.toolsAll<a class="headerlink" href="#robofab-tools-toolsall" title="Permalink to this headline">¶</a></h2>
+<p>ToolsAll contains useful functions for any and all implementation of RoboFab. It does (or should not) contain any platform or version specific code. Some of this code is used by other parts of RoboFab. The user serviceable parts are discussed here.</p>
+<dl class="function">
+<dt id="toolsAll.readFoundrySettings">
+<code class="descclassname">toolsAll.</code><code class="descname">readFoundrySettings</code><span class="sig-paren">(</span><em>dstPath</em><span class="sig-paren">)</span><a class="headerlink" href="#toolsAll.readFoundrySettings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Read the foundry settings xml file and return a keyed dict. The idea is that a foundry will have certain, ofter recurring preferences for some fields in fonts. For instance foundry names, codes etc. These can be stored in <code class="docutils literal"><span class="pre">.plist</span></code> format, at a particular location. It&#8217;s up to the user to make sure the values make sense and to keep track of the file.</p>
+<dl class="function">
+<dt id="toolsAll.fontToUFO">
+<code class="descclassname">toolsAll.</code><code class="descname">fontToUFO</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em>, <em>fileType=None</em><span class="sig-paren">)</span><a class="headerlink" href="#toolsAll.fontToUFO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Open a font binary pointed to by src, decompile it using fontTools and write a UFO at location dst. If no filetype is given, <code class="docutils literal"><span class="pre">fontToUFO</span></code> attempts to guess the type. Valid types are TTF and &#8220;Type 1&#8221;. While this function does a good job at extracting contours and basic font information, it is possible that not all values are extracted. Please refer to the result UFO for a precise overview.</p>
+</div>
+<div class="section" id="robofab-tools-toolsfl">
+<h2>robofab.tools.toolsFL<a class="headerlink" href="#robofab-tools-toolsfl" title="Permalink to this headline">¶</a></h2>
+<p>Tools for use within FontLab. Some of the functions in <code class="docutils literal"><span class="pre">toolsFL</span></code> are available through <code class="docutils literal"><span class="pre">robofab.world</span></code>. The user serviceable parts are discussed here.</p>
+<dl class="function">
+<dt id="toolsFL.AppFolderRenamer">
+<code class="descclassname">toolsFL.</code><code class="descname">AppFolderRenamer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#toolsFL.AppFolderRenamer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p><code class="docutils literal"><span class="pre">AppFolderRenamer</span></code> renames the directory the FontLab application is in. It attempts to add the version number of the application to the folder name. This can be helpful to keep different versions of FontLab separated.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">It messes with the paths of your app, if you have items that hardwired to this path you&#8217;d be in trouble.</p>
+</div>
+<dl class="function">
+<dt id="toolsFL.MakeTempFont">
+<code class="descclassname">toolsFL.</code><code class="descname">MakeTempFont</code><span class="sig-paren">(</span><em>font</em>, <em>dupemark=None</em>, <em>removeOverlap=True</em>, <em>decompose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#toolsFL.MakeTempFont" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Save the current FL Font,</p>
+<ul class="simple">
+<li>close the file</li>
+<li>duplicate the file in the Finder (icon looks weird, but it works)</li>
+<li>open the duplicate</li>
+<li>decompose the glyphs</li>
+<li>remove overlaps</li>
+<li>return the <code class="docutils literal"><span class="pre">Font</span></code> object</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">font</span></code> is either a FL <code class="docutils literal"><span class="pre">Font</span></code> or RF <code class="docutils literal"><span class="pre">RFont</span></code> object.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It will overwrite older files with the same name.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Doesn&#8217;t check if the filename is getting too long.</p>
+</div>
+<dl class="function">
+<dt id="toolsFL.makePSFontName">
+<code class="descclassname">toolsFL.</code><code class="descname">makePSFontName</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#toolsFL.makePSFontName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Create a PostScript filename out of a regular PostScript fontname, using the old fashioned macintosh 5:3:3 convention.</p>
+</div>
+<div class="section" id="robofab-tools-toolsrf">
+<h2>robofab.tools.toolsRF<a class="headerlink" href="#robofab-tools-toolsrf" title="Permalink to this headline">¶</a></h2>
+<p>These are no special tools for RF or NoneLab use at the moment.</p>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

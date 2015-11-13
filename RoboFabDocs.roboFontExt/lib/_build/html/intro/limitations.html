@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Limitations &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Introduction" href="index.html" />
+    <link rel="next" title="Links" href="links.html" />
+    <link rel="prev" title="Release History" href="history.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="history.html" title="previous chapter">Release History</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="links.html" title="next chapter">Links</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="limitations">
+<h1>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h1>
+<p>An overview of known problems, bugs and implementation limits. These are issues we are aware of. Some of them are things we have to fix in RoboFab, others are limitations that are just part of the world we have to work in.</p>
+<div class="section" id="fontlab">
+<h2>FontLab<a class="headerlink" href="#fontlab" title="Permalink to this headline">¶</a></h2>
+<p>Known problems in FontLab 4.6.1</p>
+<div class="section" id="flfont-customdata-flglyph-customdata">
+<h3>flfont.customdata, flglyph.customdata<a class="headerlink" href="#flfont-customdata-flglyph-customdata" title="Permalink to this headline">¶</a></h3>
+<p>There is a bug in FontLab which caused FontLab to crash shortly after Python has written something in the <code class="docutils literal"><span class="pre">flfont.customdata</span></code> or <code class="docutils literal"><span class="pre">flglyph.customdata</span></code> fields. RoboFab uses the customdata fields to store the <code class="docutils literal"><span class="pre">font.lib</span></code> and <code class="docutils literal"><span class="pre">glyph.lib</span></code>. RoboFab is just using the functionality of these fields in FontLab, there&#8217;s nothing we can do to fix it in RoboFab. The problem has been reported to the FontLab developers.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">FontLab Studio 5 probably has a new attribute for font and glyph objects to store arbitrary Python data. This attribute will replace the customdata attribute. At the time of the 1.1.1 release we have not tested this attribute. We expect a future release to make use of them.</p>
+</div>
+</div>
+<div class="section" id="multiple-master">
+<h3>Multiple Master<a class="headerlink" href="#multiple-master" title="Permalink to this headline">¶</a></h3>
+<p>RoboFab glyphs do not offer direct access to FontLab&#8217;s Multiple Master-masters. If you need access to that data, use the <code class="docutils literal"><span class="pre">glyph.naked()</span></code> method to get to the FontLab glyph object which have access.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you&#8217;re considering scripting complex interpolation systems, have a look at <a class="reference external" href="http://superpolator.com/">Superpolation</a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="ufo-format">
+<h2>UFO format<a class="headerlink" href="#ufo-format" title="Permalink to this headline">¶</a></h2>
+<p>Known problems or limitations in the UFO format, RoboFab version 1.0b1 and 1.0.</p>
+<div class="section" id="export-of-ot-features">
+<h3>Export of OT features<a class="headerlink" href="#export-of-ot-features" title="Permalink to this headline">¶</a></h3>
+<p>RoboFab does not automatically export the feature descriptions from FontLab to UFO. The <code class="docutils literal"><span class="pre">featureLib.py</span></code> offers some tools to export the feature text to the <code class="docutils literal"><span class="pre">font.lib</span></code> and import them from the lib as well, but this needs to be called separately after reading and before writing the UFO. Or export all features to a separate <code class="docutils literal"><span class="pre">.fea</span></code> file.</p>
+</div>
+<div class="section" id="macroman-encoded-xml-files-from-ufo-exporter-in-robofog">
+<h3>Macroman encoded XML files from UFO Exporter in RoboFog<a class="headerlink" href="#macroman-encoded-xml-files-from-ufo-exporter-in-robofog" title="Permalink to this headline">¶</a></h3>
+<p>Not a problem, but just something to be aware of: UFO files exported from the UFO Exporter scripts in <strong>RoboFog</strong> are text files with macroman text encoding. The XML files identify the encoding as such and XML interpreters seem to respect and understand this. UFO files exported written by the UFO writers in RoboFab use UTF-8 as default encoding for the XML text. The macroman export is necessary because encodings are not supported in Python 1.5.2.</p>
+</div>
+</div>
+<div class="section" id="objects">
+<h2>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h2>
+<p>Known problems with Objects.</p>
+<div class="section" id="glypmath-on-contour-segment-point-in-fontlab">
+<h3>GlypMath on Contour, Segment, Point in FontLab<a class="headerlink" href="#glypmath-on-contour-segment-point-in-fontlab" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">Contour</span></code>, <code class="docutils literal"><span class="pre">Segment</span></code>, <code class="docutils literal"><span class="pre">Point</span></code> and <code class="docutils literal"><span class="pre">BPoint</span></code> objects in <code class="docutils literal"><span class="pre">objectsFL</span></code> (the objects you get when you use RoboFab in FontLab) do not have GlyphMath operators. All GlyphMath operations in FontLab are handled by the <code class="docutils literal"><span class="pre">Glyph</span></code> object and then quickly deferred to objects from <code class="docutils literal"><span class="pre">objectsRF</span></code> which do know how to handle GlyphMath operations. This is not necessarily a bug, but an effect of differences between the way RoboFab objects work in FontLab and how they work in plain Python.</p>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

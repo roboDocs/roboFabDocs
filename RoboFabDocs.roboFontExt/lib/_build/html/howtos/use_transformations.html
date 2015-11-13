@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using transformations &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="How To’s" href="index.html" />
+    <link rel="next" title="Step-by-step" href="../talks/index.html" />
+    <link rel="prev" title="Using the lib" href="use_lib.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="use_lib.html" title="previous chapter">Using the lib</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="../talks/index.html" title="next chapter">Step-by-step</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="using-transformations">
+<h1>Using transformations<a class="headerlink" href="#using-transformations" title="Permalink to this headline">¶</a></h1>
+<p>Matrix transformations in RoboFab are done with the help of the matrix module from <code class="docutils literal"><span class="pre">fontTools</span></code>. <code class="docutils literal"><span class="pre">RContour</span></code>, <code class="docutils literal"><span class="pre">RPoint</span></code>, <code class="docutils literal"><span class="pre">bPoint</span></code>, <code class="docutils literal"><span class="pre">RGlyph</span></code> all have <code class="docutils literal"><span class="pre">transform()</span></code> methods which accept a matrix object.</p>
+<div class="section" id="transform-objects-and-the-identity-transform">
+<h2>Transform objects and the Identity transform<a class="headerlink" href="#transform-objects-and-the-identity-transform" title="Permalink to this headline">¶</a></h2>
+<p>A Transform object from fontTools is a 2×2 transformation matrix plus offset, a.k.a. Affine transform. Transform instances are &#8220;immutable&#8221;: all transforming methods, eg. <code class="docutils literal"><span class="pre">rotate()</span></code>, return a new <code class="docutils literal"><span class="pre">Transform</span></code> instance. One way to make a new transform object is by importing the <strong>Identity</strong> transform from <code class="docutils literal"><span class="pre">fontTools.misc.transform</span></code>. Identity is an instance of <code class="docutils literal"><span class="pre">Transform</span></code> and it is initialised to transform to itself (i.e. no visible transformation). The you modify the Identity object: each method (such as <code class="docutils literal"><span class="pre">rotate()</span></code>, <code class="docutils literal"><span class="pre">translate()</span></code> etc) returns a new <code class="docutils literal"><span class="pre">Transform</span></code> object with the last transformation added to it.</p>
+<div class="section" id="oh-no-math">
+<h3>Oh no! Math!<a class="headerlink" href="#oh-no-math" title="Permalink to this headline">¶</a></h3>
+<p>Transform objects are a fast and powerful way to do math with matrices. If you don&#8217;t know what that means don&#8217;t worry. If you follow the examples you can build Transform objects that rotate, translate and skew. Of course you can look up <strong>affine transform</strong> on google for some more in depth explanation of transformations.</p>
+</div>
+<div class="section" id="angles">
+<h3>Angles<a class="headerlink" href="#angles" title="Permalink to this headline">¶</a></h3>
+<p>Angles in all Python&#8217;s math modules are measured in <strong>radians</strong> by default. A radian is a (perhaps) more scientific unit for angles than the regular &#8220;degrees&#8221;, measuring the &#8220;distance travelled&#8221; over the circle rather than the angle. The length of a full circle (with radius 1) is 2 * pi. 90 degrees = 1/2 pi radians. One can easily be converted to the other using conversion methods from the math module:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span>
+<span class="c"># example of a conversion of degrees to radians</span>
+<span class="k">print</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="c"># example of a conversion from radians to degrees</span>
+<span class="k">print</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Usetransformations howto</span>
+<span class="c"># usage examples</span>
+
+<span class="kn">from</span> <span class="nn">fontTools.misc.transform</span> <span class="kn">import</span> <span class="n">Identity</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+ 
+<span class="n">m</span> <span class="o">=</span> <span class="n">Identity</span>
+<span class="k">print</span> <span class="n">m</span>
+ 
+<span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="k">print</span> <span class="n">m</span>
+ 
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/transformations_00.py">open or download this file: transformations_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt; Transform [1 0 0 1 0 0] &gt;
+&lt; Transform [0.939692620786 0.342020143326 -0.342020143326 0.939692620786 0 0] &gt;
+</pre></div>
+</div>
+<div class="section" id="methods-of-transform-object">
+<h4>Methods of Transform object<a class="headerlink" href="#methods-of-transform-object" title="Permalink to this headline">¶</a></h4>
+<p>See the source code of <code class="docutils literal"><span class="pre">fontTools.misc.transform</span></code> for detailed descriptions and examples.</p>
+<dl class="function">
+<dt id="reverseTransform">
+<code class="descname">reverseTransform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#reverseTransform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a new transformation, which is the other transformation transformed by <code class="docutils literal"><span class="pre">self</span></code>. <code class="docutils literal"><span class="pre">self.reverseTransform(other)</span></code> is equivalent to <code class="docutils literal"><span class="pre">other.transform(self)</span></code>.</p>
+<dl class="function">
+<dt id="rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em><span class="sig-paren">)</span><a class="headerlink" href="#rotate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a new transformation, rotated by <code class="docutils literal"><span class="pre">angle</span></code> (in radians).</p>
+<dl class="function">
+<dt id="skew">
+<code class="descname">skew</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#skew" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a new transformation, skewed by <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> (in radians).</p>
+<dl class="function">
+<dt id="scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>x=1</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a new transformation, scaled by <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>. The <code class="docutils literal"><span class="pre">y</span></code> argument may be <code class="docutils literal"><span class="pre">None</span></code>, which implies to use the <code class="docutils literal"><span class="pre">x</span></code> value for <code class="docutils literal"><span class="pre">y</span></code> as well.</p>
+<dl class="function">
+<dt id="toPS">
+<code class="descname">toPS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#toPS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a string with the values of the transform written out in the PostScript manner: <code class="docutils literal"><span class="pre">[1</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">1</span> <span class="pre">0</span> <span class="pre">0]</span></code>.</p>
+<dl class="function">
+<dt id="transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a new transformation, transformed by another transformation.</p>
+<dl class="function">
+<dt id="inverse">
+<code class="descname">inverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inverse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return the inverse transformation.</p>
+<dl class="function">
+<dt id="transformPoint">
+<code class="descname">transformPoint</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em><span class="sig-paren">)</span><a class="headerlink" href="#transformPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Transform a point, i.e. apply the transformation to the point.</p>
+<dl class="function">
+<dt id="transformPoints">
+<code class="descname">transformPoints</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#transformPoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Transform a list of points.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Scripting &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="How To’s" href="index.html" />
+    <link rel="next" title="What is this robofab.world thing?" href="world.html" />
+    <link rel="prev" title="How to make a UFO" href="makeufo.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="makeufo.html" title="previous chapter">How to make a UFO</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="world.html" title="next chapter">What is this robofab.world thing?</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="scripting">
+<h1>Scripting<a class="headerlink" href="#scripting" title="Permalink to this headline">¶</a></h1>
+<p>Scripting with RoboFab is programming in Python. Everything is possible, it&#8217;s just that some things are easier than others.</p>
+<div class="section" id="for-python-newbies">
+<h2>For Python Newbies<a class="headerlink" href="#for-python-newbies" title="Permalink to this headline">¶</a></h2>
+<p>If you don&#8217;t have much programming experience, or you&#8217;re not familiar with Python, have a look at Just van Rossum&#8217;s <a class="reference external" href="http://drawbot.com/">Drawbot</a> (if you&#8217;re on OSX that is). Drawbot is a low threshold app to play with python code and get awarded with nice eye candy. Learn the princples of programming, loops, variables, by building with graphic shapes, paths, colors.</p>
+<p>RoboFab uses objects to address the various things you find in a font. Objects are a useful way to think about code. A font is an <strong>object</strong>. It has some <strong>attributes</strong>, values that belong to that object. A font object is also capable of doing stuff by calling its <strong>methods</strong>. None of this is specific to RoboFab, a lot of programming languages use objects, and Python does as well. Objects can contain other objects. Have a look at the <a class="reference internal" href="../objects/model.html"><em>RoboFab object model</em></a> to see how they are structured and what other objects there are besides Font.</p>
+<div class="section" id="other-resources">
+<h3>Other resources<a class="headerlink" href="#other-resources" title="Permalink to this headline">¶</a></h3>
+<p>This is an interesting introduction into programming with Python as well: <a class="reference external" href="http://openbookproject.net/thinkcs/python/english2e/">How to think like a computer scientist</a>. A full introduction into programming goes beyond the scope of this manual. Then there are tons of books, websites, stuff. Do some googling.</p>
+</div>
+</div>
+<div class="section" id="for-robofog-converts">
+<h2>For RoboFog Converts<a class="headerlink" href="#for-robofog-converts" title="Permalink to this headline">¶</a></h2>
+<p>For those of you joining us from the cohorts of RoboFog users, here some some of the main points of difference. Maybe others will find this part interesting too.</p>
+<div class="section" id="packages-and-modules">
+<h3>Packages and modules<a class="headerlink" href="#packages-and-modules" title="Permalink to this headline">¶</a></h3>
+<p>Robofab is set up with packages. This is to organise the large volume of code into smaller, easier to manage modules. RoboFab does not have any builtins anymore, so you have to import the stuff you want to work with. Look at <a class="reference internal" href="world.html"><em>the use of the world module</em></a> which is where a lot of stuff is made available for you.</p>
+</div>
+<div class="section" id="currentfont-currentglyph">
+<h3>CurrentFont(), CurrentGlyph()<a class="headerlink" href="#currentfont-currentglyph" title="Permalink to this headline">¶</a></h3>
+<p>We&#8217;ve kept the <code class="docutils literal"><span class="pre">CurrentFont</span></code> function to provide a font object for the front most font. And we&#8217;ve renamed <code class="docutils literal"><span class="pre">CurrentChar</span></code> into <code class="docutils literal"><span class="pre">CurrentGlyph</span></code> as RoboFab is fully unicode aware and we&#8217;re dealing with glyphs, not characters. <code class="docutils literal"><span class="pre">CurrentGlyph()</span></code> returns a glyph object for the front most glyph.</p>
+</div>
+<div class="section" id="segments-bpoints">
+<h3>Segments, bPoints<a class="headerlink" href="#segments-bpoints" title="Permalink to this headline">¶</a></h3>
+<p>Fonts store <a class="reference internal" href="../objects/RGlyph.html"><em>glyphs</em></a>, glyphs store <a class="reference internal" href="../objects/RContour.html"><em>contours</em></a>, just like RoboFog. Contours however have a few more tricks than their RoboFog counterparts. Contours have <a class="reference internal" href="../objects/RSegment.html"><em>segments</em></a>, a kind of cluster of a series of offcurve points and one on curve point (see <a class="reference internal" href="understanding_contours.html"><em>Understanding contours</em></a>). Contours also have lists of <a class="reference internal" href="../objects/RPoint.html"><em>points</em></a> and <a class="reference internal" href="../objects/bPoint.html"><em>bpoints</em></a>. Depending on what you need to do you can iterate through the segments or points or bpoints.</p>
+</div>
+<div class="section" id="conversion-drawing">
+<h3>Conversion, drawing<a class="headerlink" href="#conversion-drawing" title="Permalink to this headline">¶</a></h3>
+<p>For scripts which convert or transform outline data in some way, consider writing a <code class="xref doc docutils literal"><span class="pre">Pen</span></code> object for that conversion. These are also handy for drawing in glyphs.</p>
+</div>
+</div>
+<div class="section" id="where-to-start">
+<h2>Where to start<a class="headerlink" href="#where-to-start" title="Permalink to this headline">¶</a></h2>
+<p>You&#8217;ve seen that a lot of the examples in this manual start by importing some objects or functions from <code class="docutils literal"><span class="pre">robofab.world</span></code>. This is an easy way to get to a font, and through the font you can get access to the glyphs and all other values that are associated with them.</p>
+<div class="section" id="open-a-font-from-any-file">
+<h3>Open a font from any file<a class="headerlink" href="#open-a-font-from-any-file" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">OpenFont</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">()</span>
+<span class="c"># hey look! an open font dialog!</span>
+<span class="k">print</span> <span class="n">f</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/scripting_00.py">open or download this file: scripting_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="bp">None</span> <span class="c"># or a font object, depending on what you select</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="open-a-font-from-a-specific-file">
+<h3>Open a font from a specific file<a class="headerlink" href="#open-a-font-from-a-specific-file" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">OpenFont</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s">&quot;MyDrive/Folder1/Work/somefile&quot;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="c"># hey look! it opens the file without asking..</span>
+<span class="k">print</span> <span class="n">f</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/scripting_01.py">open or download this file: scripting_01.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="c"># a font object</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="do-something-with-the-font-that-s-open">
+<h3>Do something with the font that&#8217;s open<a class="headerlink" href="#do-something-with-the-font-that-s-open" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># in Fontlab:</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">f</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/scripting_02.py">open or download this file: scripting_02.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="c"># a font object for the font that&#39;s on top.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-proceed">
+<h2>How to proceed?<a class="headerlink" href="#how-to-proceed" title="Permalink to this headline">¶</a></h2>
+<p>Programming is for a large part the art of picking one seemingly single problem apart and make a lot of smaller, solveable problems from it. Some random thoughts on the subject:</p>
+<div class="section" id="first-think-about-where-to-start">
+<h3>First think about where to start:<a class="headerlink" href="#first-think-about-where-to-start" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Does your problem have something to do with the entire font?</li>
+<li>Or the metrics? The widths? Sidebearings? Kerning?</li>
+<li>Or one single glyph? Or perhaps a group of glyph while excluding others?</li>
+<li>Do you need to move stuff around?</li>
+<li>Do you need to create new glyphs?</li>
+</ul>
+</div>
+<div class="section" id="can-you-describe-each-step-of-the-process">
+<h3>Can you describe each step of the process<a class="headerlink" href="#can-you-describe-each-step-of-the-process" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>RoboFab can&#8217;t be instructed to make judgements on aesthetics.</li>
+<li>You have to formulate small steps, first do this, then compare that.</li>
+<li>Use approaches and tricks you learned before to get ahead.</li>
+<li>Start with the simplest possible loop and test.</li>
+<li>Play around &#8211; pick and object and try to make it do tricks. Use this documentation to see what methods and attributes each one has.</li>
+</ul>
+</div>
+<div class="section" id="be-patient">
+<h3>Be patient<a class="headerlink" href="#be-patient" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Programming and scripting is a skill just like any other.</li>
+<li>Eventhough some folks pick it up faster, anyone clever enough to understand typedesign can learn scripting.</li>
+<li>Read the documentation, try the examples, try the demos. Are there scripts that do something like what you want to do? Pick them apart, see how they work. Learn from the source.</li>
+<li>If you think that scripting is nothing like design consider this: it&#8217;s certainly a nicer intellectual challenge to try to write some code, then it is to manually do repetitive, stupid production things for hours or days on end. Make the computers work for you, instead of the other way round. Scripting is control.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

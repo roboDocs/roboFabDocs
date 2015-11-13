@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Glyph Math &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="How To’s" href="index.html" />
+    <link rel="next" title="How to use pens" href="use_pens.html" />
+    <link rel="prev" title="Understanding Contours and Segments" href="understanding_contours.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="understanding_contours.html" title="previous chapter">Understanding Contours and Segments</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="use_pens.html" title="next chapter">How to use pens</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="glyph-math">
+<h1>Glyph Math<a class="headerlink" href="#glyph-math" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">RGlyph</span></code> objects have methods that allow the objects to behave a bit like variables in simple math. These methods do not do additions or substractions of the surface area of the glyphs, like layering two glyphs on top of each other and than doing &#8220;remove overlap&#8221;. Instead, they return new glyph objects in which each coordinate in each contour is the product of the two glyphs.</p>
+<div class="section" id="objects">
+<h2>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h2>
+<p>All glyph math operations in have new, orphaned, objects as result. For instance a substraction of two FontLab RoboFab glyphs will result in a new glyph object, but it won&#8217;t be part of the font. If you want the result to be part of the font you have to add it explicitly, see the example at the bottom of this page. There are several reasons for this:</p>
+<ul class="simple">
+<li>The result might not even come from glyphs in the same font, i.e. you can substract a glyph in one font from a glyph in another font. Where should the result live? You decide.</li>
+<li>You might not want the result to be part of your font when you&#8217;re using it for further calculations. So: results from glyphmath operations are orphan glyphs that do not belong to any font.</li>
+<li>The results need to use floating point (<code class="docutils literal"><span class="pre">19.234943</span></code>) numbers for precision, FontLab only stores integer numbers (<code class="docutils literal"><span class="pre">19</span></code>).</li>
+</ul>
+<p>If you want to add a glyph (of any flavor, FontLab or UFO) to a font use the appendGlyph method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">someNewGlyph</span> <span class="o">=</span> <span class="n">aFont</span><span class="o">.</span><span class="n">newGlyph</span><span class="p">(</span><span class="s">&quot;someNewGlyph&quot;</span><span class="p">)</span>
+<span class="n">someNewGlyph</span><span class="o">.</span><span class="n">appendGlyph</span><span class="p">(</span><span class="n">restultFromGlyphMath</span><span class="p">)</span>
+
+<span class="c"># note you have to set the width,</span>
+<span class="c"># appendGlyph does not automatically take the value.</span>
+<span class="n">someNewGlyph</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">restultFromGlyphMath</span><span class="o">.</span><span class="n">width</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="subtraction">
+<h2>Subtraction<a class="headerlink" href="#subtraction" title="Permalink to this headline">¶</a></h2>
+<p>Substraction returns a new glyph object with contours which represent the <strong>difference</strong> between the two previous glyphs. As a glyph itself, it&#8217;s not much to look at. If you draw the result of a substraction it will probably look like a crumpled outline.</p>
+<div class="section" id="example-subtraction">
+<h3>Example Subtraction<a class="headerlink" href="#example-subtraction" title="Permalink to this headline">¶</a></h3>
+<div class="code highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">]</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;b&quot;</span><span class="p">]</span>
+<span class="c"># suppose g and h have compatible point structures</span>
+<span class="n">myRelativeGlyph</span> <span class="o">=</span> <span class="n">g</span> <span class="o">-</span> <span class="n">h</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="addition">
+<h2>Addition<a class="headerlink" href="#addition" title="Permalink to this headline">¶</a></h2>
+<p>Addition returns a new glyph object with the contours which is the product of the two previous glyphs. If you just add two &#8220;normal&#8221; glyphs from a font (or multiple fonts for that matter) it will look odd. But you can also easily add a relative glyph (a result of substracting one glyph from another), which effectively means you&#8217;re applying the difference between two glyphs to a third. And that can be a very useful action.</p>
+<div class="section" id="example-addition">
+<h3>Example Addition<a class="headerlink" href="#example-addition" title="Permalink to this headline">¶</a></h3>
+<div class="code highlight-python"><div class="highlight"><pre><span class="c"># continue with myRelativeGlyph from the previous example</span>
+<span class="n">newglyph</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">myRelativeGlyph</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="multiplication">
+<h2>Multiplication<a class="headerlink" href="#multiplication" title="Permalink to this headline">¶</a></h2>
+<p>When a normal glyph is multiplied it looks as if the glyph has been scaled. For instance multiplying a glyph with <code class="docutils literal"><span class="pre">0.5</span></code> scales the shapes 50%.</p>
+<div class="section" id="example-multiplication">
+<h3>Example Multiplication<a class="headerlink" href="#example-multiplication" title="Permalink to this headline">¶</a></h3>
+<div class="code highlight-python"><div class="highlight"><pre><span class="c"># continue with myRelativeGlyph from the previous example</span>
+<span class="n">newglyph</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">myRelativeGlyph</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="division">
+<h2>Division<a class="headerlink" href="#division" title="Permalink to this headline">¶</a></h2>
+<p>Divisions works just like multiplications, you just need to make sure not to divide by zero.</p>
+<div class="section" id="example-division">
+<h3>Example Division<a class="headerlink" href="#example-division" title="Permalink to this headline">¶</a></h3>
+<div class="code highlight-python"><div class="highlight"><pre><span class="c"># continue with myRelativeGlyph from the previous example</span>
+<span class="n">newglyph</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">myRelativeGlyph</span> <span class="o">/</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="combinations">
+<h2>Combinations<a class="headerlink" href="#combinations" title="Permalink to this headline">¶</a></h2>
+<p>These examples are simple enough, but when you combine them the operations can become really powerful. You could recreate font interpolation using GlyphMath, or construct new networks of interpolations, additions, shifts, deltas that were impossible to build.</p>
+<div class="section" id="all-together-now">
+<h3>All together now<a class="headerlink" href="#all-together-now" title="Permalink to this headline">¶</a></h3>
+<p>This is from the <code class="docutils literal"><span class="pre">demo_GlyphMath.py</span></code> which should be in the <code class="docutils literal"><span class="pre">Scripts/RoboFabIntro</span></code> folder:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Glyphmath howto</span>
+<span class="c"># Fun examples</span>
+
+<span class="c">#FLM: Fun with GlyphMath</span>
+ 
+<span class="c"># this example is meant to run with the RoboFab Demo Font</span>
+<span class="c"># as the Current Font. So, if you&#39;re doing this in FontLab</span>
+<span class="c"># import the Demo Font UFO first.</span>
+ 
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>
+ 
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">condensedLight</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;a#condensed_light&quot;</span><span class="p">]</span>
+<span class="n">wideLight</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;a#wide_light&quot;</span><span class="p">]</span>
+<span class="n">wideBold</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;a#wide_bold&quot;</span><span class="p">]</span>
+ 
+<span class="n">diff</span> <span class="o">=</span> <span class="n">wideLight</span> <span class="o">-</span> <span class="n">condensedLight</span>
+ 
+<span class="n">destination</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">newGlyph</span><span class="p">(</span><span class="s">&quot;a#deltaexperiment&quot;</span><span class="p">)</span>
+<span class="n">destination</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">wideBold</span> <span class="o">+</span> <span class="p">(</span><span class="n">condensedLight</span><span class="o">-</span><span class="n">wideLight</span><span class="p">)</span><span class="o">*</span><span class="n">random</span><span class="p">()</span>
+ 
+<span class="n">destination</span><span class="o">.</span><span class="n">appendGlyph</span><span class="p">(</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">destination</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">width</span>
+ 
+<span class="n">f</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/glyphMath_00.py">open or download this file: glyphMath_00.py</a></div></div>
+</div>
+<div class="section" id="implementation-limits">
+<h2>Implementation limits<a class="headerlink" href="#implementation-limits" title="Permalink to this headline">¶</a></h2>
+<p>In <code class="docutils literal"><span class="pre">objectsFL</span></code> (for use in FontLab), only <code class="docutils literal"><span class="pre">RGlyph</span></code> has glyphmath operators implemented. The result of a glyphmath operation in FontLab is <strong>always</strong> an object from <code class="docutils literal"><span class="pre">objectsRF</span></code>. In <code class="docutils literal"><span class="pre">ObjectsRF</span></code> most objects have <code class="docutils literal"><span class="pre">*</span></code>, <code class="docutils literal"><span class="pre">+</span></code> and <code class="docutils literal"><span class="pre">-</span></code> implemented. But considering the operators are mainly used for Glyph stuff, the <code class="docutils literal"><span class="pre">RGlyph</span></code> object is a bit more kitted out with division as well.</p>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

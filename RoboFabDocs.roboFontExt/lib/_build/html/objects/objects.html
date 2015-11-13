@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Overview &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Objects" href="index.html" />
+    <link rel="next" title="RoboFab Object Model" href="model.html" />
+    <link rel="prev" title="Objects" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="index.html" title="previous chapter">Objects</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="model.html" title="next chapter">RoboFab Object Model</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="model">
+<h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/logo1.gif" src="../_images/logo1.gif" />
+<p>Here is a <a class="reference internal" href="model.html"><em>handy map</em></a> of the RoboFab objects.</p>
+</div>
+<div class="section" id="robofab-unified-font-objects">
+<h2>RoboFab Unified Font Objects<a class="headerlink" href="#robofab-unified-font-objects" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="model.html"><em>Map</em></a>: The objects and their relations.</li>
+<li><a class="reference internal" href="pens.html"><em>Pen objects</em></a>: About Pen objects.</li>
+<li><a class="reference internal" href="psHintsGlyph.html"><em>PostScript Glyph Hints</em></a>: Glyph attribute, contains glyph level PostScript hint data.</li>
+<li><a class="reference internal" href="RAnchor.html"><em>RAnchor</em></a>: A connection point for Components.</li>
+<li><a class="reference internal" href="RComponent.html"><em>RComponent</em></a>: Belongs to a Glyph, refers to other Glyphs.</li>
+<li><a class="reference internal" href="RContour.html"><em>RContour</em></a>: Belongs to a Glyph, contains Segments.</li>
+<li><a class="reference internal" href="RFont.html"><em>RFont</em></a>: Contains Glyphs, names, kerning, data.</li>
+<li><a class="reference internal" href="RGlyph.html"><em>RGlyph</em></a>: Belongs to a Font, contains contours, components etc.</li>
+<li><a class="reference internal" href="RInfo.html"><em>RInfo</em></a>: Part of a Font, contains all names, dimensions.</li>
+<li><a class="reference internal" href="RKerning.html"><em>RKerning</em></a>: Part of a Font, contains all kerning data.</li>
+<li><a class="reference internal" href="libs.html"><em>RLib</em></a>: Part of a Font, contains all arbitrary data.</li>
+<li><a class="reference internal" href="RPoint.html"><em>RPoint</em></a>: A point on a Contour.</li>
+<li><a class="reference internal" href="RSegment.html"><em>RSegment</em></a>: A part of a Contour, a series of severall off and one oncurve Points.</li>
+<li><a class="reference internal" href="bPoint.html"><em>bPoint</em></a>: A point on a Contour with attributes for <code class="docutils literal"><span class="pre">bcpIn</span></code>, <code class="docutils literal"><span class="pre">bcpOut</span></code> and <code class="docutils literal"><span class="pre">anchor</span></code>.</li>
+<li><a class="reference internal" href="psHints.html"><em>psHints</em></a>: Part of a Font, contains font level PostScript hinting data.</li>
+</ul>
+</div>
+<div class="section" id="scope">
+<h2>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="naming-conventions-in-robofab">
+<h3>Naming conventions in RoboFab<a class="headerlink" href="#naming-conventions-in-robofab" title="Permalink to this headline">¶</a></h3>
+<p>Attributes and method names follow a couple of consistent rules which make it easier to remember what they&#8217;re called.</p>
+<ul class="simple">
+<li>Class names start with a capital: <code class="docutils literal"><span class="pre">RGlyph</span></code>, <code class="docutils literal"><span class="pre">BasePen</span></code> etc.</li>
+<li>Method and attribute names start with lowercase: <code class="docutils literal"><span class="pre">glyph.center()</span></code>, <code class="docutils literal"><span class="pre">glyph.width</span></code>.</li>
+<li>Private attributes and methods start with underscore: <code class="docutils literal"><span class="pre">point._index</span></code>.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Private methods and attributes are needed to make the objects work, but they&#8217;re not intended for users to mess with, that&#8217;s why they&#8217;re called private. The description of the objects in this manual then do not list them.</p>
+</div>
+<ul class="simple">
+<li>All names follow <code class="docutils literal"><span class="pre">camelCaseNaming</span></code> as much as possible. So &#8216;glyph name&#8217; becomes <code class="docutils literal"><span class="pre">glyphName</span></code></li>
+</ul>
+</div>
+<div class="section" id="availability-of-methods-attributes">
+<h3>Availability of methods, attributes<a class="headerlink" href="#availability-of-methods-attributes" title="Permalink to this headline">¶</a></h3>
+<p>Unless noted otherwise, the examples, methods and attributes should work in all implementations of RoboFab, so within FontLab as well as NoneLab. These reference pages are written by an experienced RoboFab user, not a robot. All the objects have more attributes and methods than listed here. But these are the most important ones to get started with. For a full list refer to the <strong>robofabDocs</strong> in the RoboFab distribution.</p>
+</div>
+<div class="section" id="perhaps-not-documented-yet">
+<h3>Perhaps not documented yet<a class="headerlink" href="#perhaps-not-documented-yet" title="Permalink to this headline">¶</a></h3>
+<p>As noted earlier, this documentation is written by a person, not a machine. So it is possible attributes, objects, methods are missing. Drop us a line if you&#8217;re missing something.</p>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

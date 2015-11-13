@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Building accents &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="How To’s" href="index.html" />
+    <link rel="next" title="FontLab Remote" href="fontlab_remote.html" />
+    <link rel="prev" title="OpenType features in UFO" href="ot_features.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="ot_features.html" title="previous chapter">OpenType features in UFO</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="fontlab_remote.html" title="next chapter">FontLab Remote</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="building-accents">
+<h1>Building accents<a class="headerlink" href="#building-accents" title="Permalink to this headline">¶</a></h1>
+<p>Making accented glyphs is a job where scripting can help save some time. When you have prepared all the parts, the base glyphs and the accents, a script can help to assemble the combinations. There are various ways of doing it, let&#8217;s start with a simple one:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Buildingaccents howto</span>
+<span class="c"># usage examples</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span> 
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">newGlyph</span><span class="p">(</span><span class="s">&quot;aacute&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="p">[</span><span class="s">&quot;aacute&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">appendComponent</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="p">[</span><span class="s">&quot;aacute&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">appendComponent</span><span class="p">(</span><span class="s">&quot;acute&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">f</span><span class="p">[</span><span class="s">&quot;aacute&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">width</span>
+<span class="n">f</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/buildingAccents_00.py">open or download this file: buildingAccents_00.py</a></div><p>In this example the script creates a new glyph, <code class="docutils literal"><span class="pre">aacute</span></code>, then proceeds to add components, references to other glyphs rather than the glyphs themselves. The glyph method <code class="docutils literal"><span class="pre">appendComponent</span></code> is used to do this. See how the acute component has an extra argument, <code class="docutils literal"><span class="pre">(200,</span> <span class="pre">0)</span></code> &#8211; this the offset for the accent. Finally the new glyph is given the width of the base <code class="docutils literal"><span class="pre">a</span></code>.</p>
+<p>This example illustrates the use of the very basic <code class="docutils literal"><span class="pre">appendComponent</span></code> method. But it&#8217;s not a very useful way to make glyphs. For instance, the string <code class="docutils literal"><span class="pre">aacute</span></code> could easily be made into a variable taken from a list. And dealing with the offsets when placing the accent isn&#8217;t going to be efficient either when you want to make a large list of accented glyphs. How to go about it that?</p>
+<div class="section" id="building-accents-automagically">
+<h2>Building accents automagically<a class="headerlink" href="#building-accents-automagically" title="Permalink to this headline">¶</a></h2>
+<p>RoboFab has its own database which connects glyphnames to components. In the RoboFab distribution folder, go to <code class="docutils literal"><span class="pre">Data/GlyphConstruction.txt</span></code>. This text file contains a list of glyphnames and from which components they should be built. The RoboFab Glyph Construction database was based on FontLab&#8217;s glyph list. This list contains information about where components should be connected:</p>
+<div class="highlight-python"><div class="highlight"><pre>Acircumflexdotaccent: A circumflex.top dotaccent.bottom
+</pre></div>
+</div>
+<p>This entry shows that <code class="docutils literal"><span class="pre">Acircumflexdotaccent</span></code> is constructed with components from <code class="docutils literal"><span class="pre">A</span></code>, a <code class="docutils literal"><span class="pre">circumflex</span></code> using the <code class="docutils literal"><span class="pre">top</span></code> anchor, and <code class="docutils literal"><span class="pre">dotaccent</span></code> using the <code class="docutils literal"><span class="pre">bottom</span></code> anchor.</p>
+</div>
+<div class="section" id="generate-a-glyph">
+<h2>Generate a glyph<a class="headerlink" href="#generate-a-glyph" title="Permalink to this headline">¶</a></h2>
+<p>RoboFab&#8217;s Font object has several ways of starting component glyphs and adding stuff to them. There are different strategies possible for different kinds of problems.</p>
+<div class="section" id="font-generateglyph-glyphname-replace-preflight-printerrors">
+<h3>font.generateGlyph(glyphName, replace, preflight, printErrors)<a class="headerlink" href="#font-generateglyph-glyphname-replace-preflight-printerrors" title="Permalink to this headline">¶</a></h3>
+<p>The easiest method to add an assembled glyph to a font is using the font&#8217;s <code class="docutils literal"><span class="pre">generateGlyph</span></code> method. This will look for the glyphname in the glyph construction database and attempt to get all the components and place them at the anchors listed in the database. Let&#8217;s have a look at its parameters:</p>
+<dl class="docutils">
+<dt><strong>glyphName</strong></dt>
+<dd>The name of the glyph, has to correspond to a name in the glyph construction database.</dd>
+<dt><strong>replace</strong></dt>
+<dd>Default set to <code class="docutils literal"><span class="pre">True</span></code>, the new glyph will replace the old one if it exists.</dd>
+<dt><strong>preflight</strong></dt>
+<dd>Default set to <code class="docutils literal"><span class="pre">False</span></code>, preflight gives you the opportunity to run the glyph creation process without actually adding it to the font. This is useful if you&#8217;re building the characterset and you don&#8217;t have all the parts yet. Preflight will return a list of missing anchor points, missing accents, components, etc. Note that it can take several iterations of fixing problems and discovering new ones. If for instance a glyph for a component can&#8217;t be found, it also means that some problems with that glyph are hidden. i.e. when a glyph <code class="docutils literal"><span class="pre">A</span></code> can&#8217;t be found, preflight can&#8217;t tell you that this glyph is missing a required anchor point either.</dd>
+<dt><strong>printErrors</strong></dt>
+<dd>Default set to <code class="docutils literal"><span class="pre">True</span></code>, print any errors and problems to the standard output window.</dd>
+</dl>
+</div>
+<div class="section" id="font-compileglyph-glyphname-basename-accentnames-adjustwidth-false-preflight-false-printerrors-true">
+<h3>font.compileGlyph(glyphName, baseName, accentNames, adjustWidth=False, preflight=False, printErrors=True)<a class="headerlink" href="#font-compileglyph-glyphname-basename-accentnames-adjustwidth-false-preflight-false-printerrors-true" title="Permalink to this headline">¶</a></h3>
+<p>Compile a glyph with specified components. If you want to assemble accents that are not the glyph construction database, using compileGlyph.</p>
+<dl class="docutils">
+<dt><strong>glyphName</strong></dt>
+<dd>the name of the glyph where it all needs to go.</dd>
+<dt><strong>baseName</strong></dt>
+<dd>the name of the base glyph. <code class="docutils literal"><span class="pre">accentNames</span></code>: a list of <code class="docutils literal"><span class="pre">accentName</span></code>, <code class="docutils literal"><span class="pre">anchorName</span></code> tuples: <code class="docutils literal"><span class="pre">[('acute',</span> <span class="pre">'top'),</span> <span class="pre">etc]</span></code></dd>
+<dt><strong>preflight</strong></dt>
+<dd>default set to <code class="docutils literal"><span class="pre">False</span></code>, preflight gives you the opportunity to run the glyph creation process without actually adding it to the font. This is useful if you&#8217;re building the characterset and you don&#8217;t have all the parts yet. Preflight will return a list of missing anchor points, missing accents, components, etc.</dd>
+<dt><strong>printErrors</strong></dt>
+<dd>default set to <code class="docutils literal"><span class="pre">True</span></code>, print any errors and problems to the standard output window.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="accentbuilder">
+<h2>AccentBuilder<a class="headerlink" href="#accentbuilder" title="Permalink to this headline">¶</a></h2>
+<p>RoboFab comes with a versatile accent building tool, <code class="docutils literal"><span class="pre">AccentBuilder</span></code>. Have a look at <code class="xref py py-mod docutils literal"><span class="pre">robofab.tools.accentbuilder</span></code>. <code class="docutils literal"><span class="pre">AccentBuilder</span></code> deals with components, anchorpoints:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Buildingaccents howto</span>
+<span class="c"># AccentBuilder examples</span>
+ 
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="kn">from</span> <span class="nn">robofab.accentBuilder</span> <span class="kn">import</span> <span class="n">AccentTools</span><span class="p">,</span> <span class="n">buildRelatedAccentList</span>
+ 
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+ 
+<span class="c"># a list of accented glyphs that you want to build</span>
+<span class="n">myList</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Aacute&#39;</span><span class="p">,</span> <span class="s">&#39;aacute&#39;</span><span class="p">]</span>
+ 
+<span class="c"># search for glyphs related to glyphs in myList and add them to myList</span>
+<span class="n">myList</span> <span class="o">=</span> <span class="n">buildRelatedAccentList</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">myList</span><span class="p">)</span><span class="o">+</span><span class="n">myList</span>
+ 
+<span class="c"># start the class</span>
+<span class="n">at</span> <span class="o">=</span> <span class="n">AccentTools</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">myList</span><span class="p">)</span>
+ 
+<span class="c"># clear away any anchors that exist (this is optional)</span>
+<span class="n">at</span><span class="o">.</span><span class="n">clearAnchors</span><span class="p">()</span>
+ 
+<span class="c"># add necessary anchors if you want to</span>
+<span class="n">at</span><span class="o">.</span><span class="n">buildAnchors</span><span class="p">(</span><span class="n">ucXOffset</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">ucYOffset</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">lcXOffset</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">lcYOffset</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+ 
+<span class="c"># print a report of any errors that occured</span>
+<span class="n">at</span><span class="o">.</span><span class="n">printAnchorErrors</span><span class="p">()</span>
+ 
+<span class="c"># build the accented glyphs if you want to</span>
+<span class="n">at</span><span class="o">.</span><span class="n">buildAccents</span><span class="p">()</span>
+ 
+<span class="c"># print a report of any errors that occured</span>
+<span class="n">at</span><span class="o">.</span><span class="n">printAccentErrors</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/buildingAccents_01.py">open or download this file: buildingAccents_01.py</a></div></div>
+<div class="section" id="building-your-own-accentbuilders">
+<h2>Building your own accentbuilders<a class="headerlink" href="#building-your-own-accentbuilders" title="Permalink to this headline">¶</a></h2>
+<p>For typeface production it is a good idea to build a set of standardised tools with which you finalise the font data. Here&#8217;s an example of a script which adds a standardised list of accents to a font. It does not do automatic anchor placement because the scripter wanted to do this manually. But the rest is done automatically. The script also deals correctly with smallcap glyphnames with <code class="docutils literal"><span class="pre">.sc</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Buildingaccents howto</span>
+<span class="c"># attribute examples</span>
+
+<span class="c"># a script to generate all necessary accented characters.</span>
+<span class="c"># this assumes all anchor points are set correctly.</span>
+<span class="c"># including doublelayer accents. so, add anchorpoints </span>
+<span class="c"># on the accents too!</span>
+<span class="c"># (c) evb</span>
+ 
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="kn">from</span> <span class="nn">robofab.tools.toolsAll</span> <span class="kn">import</span> <span class="n">readGlyphConstructions</span>
+ 
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+ 
+<span class="kn">import</span> <span class="nn">string</span>
+ 
+<span class="n">theList</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c"># caps</span>
+    <span class="s">&#39;AEacute&#39;</span><span class="p">,</span>
+    <span class="s">&#39;AEmacron&#39;</span><span class="p">,</span>
+    <span class="s">&#39;Aacute&#39;</span><span class="p">,</span>
+    <span class="s">&#39;Abreve&#39;</span><span class="p">,</span>
+    <span class="c"># add all the accents you want in this list</span>
+<span class="p">]</span>
+
+<span class="n">con</span> <span class="o">=</span> <span class="n">readGlyphConstructions</span><span class="p">()</span>
+<span class="n">theList</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+ 
+<span class="k">def</span> <span class="nf">accentify</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">preflight</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;start accentification&#39;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">fullName</span>
+    <span class="n">slots</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">slots</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">theList</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">k</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&quot;.sc&quot;</span><span class="p">]:</span>
+            <span class="n">isSpecial</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">tag</span> <span class="o">=</span> <span class="n">k</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">k</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">isSpecial</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="n">tag</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">parts</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span> <span class="n">k</span><span class="p">,</span> <span class="s">&quot;not defined?&quot;</span>
+            <span class="k">continue</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">accents</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">generateGlyph</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">preflight</span><span class="o">=</span><span class="n">preflight</span><span class="p">)</span>
+        <span class="n">f</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">mark</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="n">f</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">autoUnicodes</span><span class="p">()</span>
+        <span class="n">f</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+ 
+<span class="n">accentify</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;done&#39;</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/buildingAccents_02.py">open or download this file: buildingAccents_02.py</a></div></div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

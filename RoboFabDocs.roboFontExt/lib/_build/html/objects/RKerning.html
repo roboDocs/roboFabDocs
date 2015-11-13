@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RKerning &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Objects" href="index.html" />
+    <link rel="next" title="Pen objects" href="pens.html" />
+    <link rel="prev" title="RComponent" href="RComponent.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="RComponent.html" title="previous chapter">RComponent</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="pens.html" title="next chapter">Pen objects</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="rkerning">
+<h1>RKerning<a class="headerlink" href="#rkerning" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/RKerning.gif" src="../_images/RKerning.gif" />
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Kerning object</span>
+<span class="c"># usage examples</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">kerning</span>
+
+<span class="c"># getting a value from the kerning dictionary</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">kerning</span><span class="p">[(</span><span class="s">&#39;V&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">)]</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">kerning</span><span class="p">[(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="s">&#39;X&#39;</span><span class="p">)]</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">kerning</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RKerning_00.py">open or download this file: RKerning_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt; RKerning for Mailer-Regular &gt;
+ -123
+ None
+ [(&#39;X&#39;, &#39;emdash&#39;),
+    (&#39;K&#39;, &#39;v&#39;),
+    (&#39;two&#39;, &#39;perthousand&#39;),
+    (&#39;guilsinglleft&#39;, &#39;a&#39;),
+    ... etc.]
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">RKerning</span></code> is a dictionary of kerning values. <code class="docutils literal"><span class="pre">RFont</span></code> makes a <code class="docutils literal"><span class="pre">RKerning</span></code> object when it is created and makes available as <code class="docutils literal"><span class="pre">aFont.kerning</span></code> attribute. The keys are tuples of the glyphs listed by their names: <code class="docutils literal"><span class="pre">('T',</span> <span class="pre">'e')</span></code>, <code class="docutils literal"><span class="pre">('V',</span> <span class="pre">'A')</span></code> etc. <code class="docutils literal"><span class="pre">None</span></code> is returned if the pair does not exist, rather than raising an <code class="docutils literal"><span class="pre">IndexError</span></code>. The parent of a kerning object is usually a Font.</p>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Add value to all kerning pairs.</p>
+<dl class="function">
+<dt id="asDict">
+<code class="descname">asDict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asDict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return the object as a plain dictionary.</p>
+<dl class="function">
+<dt id="clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Clear all the kerning (why would you want to do that?).</p>
+<dl class="function">
+<dt id="combine">
+<code class="descname">combine</code><span class="sig-paren">(</span><em>kerningDicts</em>, <em>overwriteExisting=True</em><span class="sig-paren">)</span><a class="headerlink" href="#combine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Combine two or more kerning dictionaries. Overwrite exsisting duplicate pairs if <code class="docutils literal"><span class="pre">overwriteExisting=True</span></code>.</p>
+<dl class="function">
+<dt id="eliminate">
+<code class="descname">eliminate</code><span class="sig-paren">(</span><em>leftGlyphsToEliminate=None</em>, <em>rightGlyphsToEliminate=None</em>, <em>analyzeOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#eliminate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Eliminate pairs containing a left glyph that is in the <code class="docutils literal"><span class="pre">leftGlyphsToEliminate</span></code> list or a right glyph that is in the <code class="docutils literal"><span class="pre">rightGlyphsToELiminate</span></code> list. sideGlyphsToEliminate can be a string: <code class="docutils literal"><span class="pre">'a'</span></code> or list: <code class="docutils literal"><span class="pre">['a',</span> <span class="pre">'b']</span></code>. <code class="docutils literal"><span class="pre">analyzeOnly</span></code> will not remove pairs. it will return a count of all pairs that would be removed.</p>
+<dl class="function">
+<dt id="explodeClasses">
+<code class="descname">explodeClasses</code><span class="sig-paren">(</span><em>leftClassDict=None</em>, <em>rightClassDict=None</em>, <em>analyzeOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#explodeClasses" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Turn class kerns into real kerning pairs. Classes should be defined in dicts: <code class="docutils literal"><span class="pre">{'O':['C',</span> <span class="pre">'G',</span> <span class="pre">'Q'],</span> <span class="pre">'H':['B',</span> <span class="pre">'D',</span> <span class="pre">'E',</span> <span class="pre">'F',</span> <span class="pre">'I']}</span></code>. <code class="docutils literal"><span class="pre">analyzeOnly</span></code> will not remove pairs. it will return a count of all pairs that would be added.</p>
+<dl class="function">
+<dt id="get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>aPair</em><span class="sig-paren">)</span><a class="headerlink" href="#get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Get a value. Return <code class="docutils literal"><span class="pre">None</span></code> if the pair does not exist.</p>
+<dl class="function">
+<dt id="getAverage">
+<code class="descname">getAverage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#getAverage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return average of all kerning pairs.</p>
+<dl class="function">
+<dt id="getExtremes">
+<code class="descname">getExtremes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#getExtremes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return the lowest and highest kerning values.</p>
+<dl class="function">
+<dt id="getLeft">
+<code class="descname">getLeft</code><span class="sig-paren">(</span><em>glyphName</em><span class="sig-paren">)</span><a class="headerlink" href="#getLeft" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a list of kerns with <code class="docutils literal"><span class="pre">glyphName</span></code> as left character.</p>
+<dl class="function">
+<dt id="getRight">
+<code class="descname">getRight</code><span class="sig-paren">(</span><em>glyphName</em><span class="sig-paren">)</span><a class="headerlink" href="#getRight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a list of kerns with <code class="docutils literal"><span class="pre">glyphName</span></code> as right character.</p>
+<dl class="function">
+<dt id="has_key">
+<code class="descname">has_key</code><span class="sig-paren">(</span><em>pair</em><span class="sig-paren">)</span><a class="headerlink" href="#has_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns True if it has the pair.</p>
+<dl class="function">
+<dt id="implodeClasses">
+<code class="descname">implodeClasses</code><span class="sig-paren">(</span><em>leftClassDict=None</em>, <em>rightClassDict=None</em>, <em>analyzeOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#implodeClasses" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Condense the number of kerning pairs by applying classes. This will eliminate all pairs containg the classed glyphs leaving pairs that contain the key glyphs behind. <code class="docutils literal"><span class="pre">analyzeOnly</span></code> will not remove pairs. It will return a count of all pairs that would be removed.</p>
+<dl class="function">
+<dt id="importAFM">
+<code class="descname">importAFM</code><span class="sig-paren">(</span><em>path</em>, <em>clearExisting=True</em><span class="sig-paren">)</span><a class="headerlink" href="#importAFM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Import kerning pairs from an AFM file. <code class="docutils literal"><span class="pre">clearExisting=True</span></code> will clear all exising kerning.</p>
+<dl class="function">
+<dt id="interpolate">
+<code class="descname">interpolate</code><span class="sig-paren">(</span><em>sourceDictOne</em>, <em>sourceDictTwo</em>, <em>value</em>, <em>clearExisting=True</em><span class="sig-paren">)</span><a class="headerlink" href="#interpolate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Interpolate the kerning between <code class="docutils literal"><span class="pre">sourceDictOne</span></code> and <code class="docutils literal"><span class="pre">sourceDictTwo</span></code>. <code class="docutils literal"><span class="pre">clearExisting</span></code> will clear existing kerning first.</p>
+<dl class="function">
+<dt id="items">
+<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a list of <code class="docutils literal"><span class="pre">(pair,</span> <span class="pre">value)</span></code> tuples.</p>
+<dl class="function">
+<dt id="keys">
+<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns a lust of available pairs.</p>
+<dl class="function">
+<dt id="minimize">
+<code class="descname">minimize</code><span class="sig-paren">(</span><em>minimum=10</em><span class="sig-paren">)</span><a class="headerlink" href="#minimize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Eliminate pairs with value less than minimum.</p>
+<dl class="function">
+<dt id="occurrenceCount">
+<code class="descname">occurrenceCount</code><span class="sig-paren">(</span><em>glyphsToCount</em><span class="sig-paren">)</span><a class="headerlink" href="#occurrenceCount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a dict with glyphs as keys and the number of occurances of that glyph in the kerning pairs as the value <code class="docutils literal"><span class="pre">glyphsToCount</span></code> can be a string: <code class="docutils literal"><span class="pre">'a'</span></code> or list: <code class="docutils literal"><span class="pre">['a',</span> <span class="pre">'b']</span></code></p>
+<dl class="function">
+<dt id="remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>pair</em><span class="sig-paren">)</span><a class="headerlink" href="#remove" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Remove a kerning pair.</p>
+<dl class="function">
+<dt id="round">
+<code class="descname">round</code><span class="sig-paren">(</span><em>multiple=10</em><span class="sig-paren">)</span><a class="headerlink" href="#round" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Round the kerning pair values to increments of multiple.</p>
+<dl class="function">
+<dt id="scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Scale all kernng pairs by value.</p>
+<dl class="function">
+<dt id="swapNames">
+<code class="descname">swapNames</code><span class="sig-paren">(</span><em>swapTable</em><span class="sig-paren">)</span><a class="headerlink" href="#swapNames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Change glyph names in all kerning pairs based on <code class="docutils literal"><span class="pre">swapTable</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">swapTable</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;BeforeName&#39;</span><span class="p">:</span><span class="s">&#39;AfterName&#39;</span><span class="p">,</span> <span class="p">}</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>kerningDict</em><span class="sig-paren">)</span><a class="headerlink" href="#update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Replace kerning data with the data in the given <code class="docutils literal"><span class="pre">kerningDict</span></code>.</p>
+<dl class="function">
+<dt id="values">
+<code class="descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a list of kerning values.</p>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

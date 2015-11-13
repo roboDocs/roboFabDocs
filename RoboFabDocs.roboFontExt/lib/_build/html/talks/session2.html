@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Glyph, Contour &amp; Pen &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Step-by-step" href="index.html" />
+    <link rel="next" title="Kerning and building Glyphs" href="session3.html" />
+    <link rel="prev" title="Font &amp; Info objects" href="session1.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="session1.html" title="previous chapter">Font &amp; Info objects</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="session3.html" title="next chapter">Kerning and building Glyphs</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="glyph-contour-pen">
+<h1>Glyph, Contour &amp; Pen<a class="headerlink" href="#glyph-contour-pen" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/RGlyph1.gif" src="../_images/RGlyph1.gif" />
+<p>Working with <a class="reference internal" href="../objects/RGlyph.html"><em>Glyph</em></a>, <a class="reference internal" href="../objects/RContour.html"><em>Contour</em></a>, <a class="reference internal" href="../objects/pens.html"><em>Pen</em></a> objects. Deep in the font live the glyphs. Inside the glyphs are contours, components. Inside a contour are segments and points!</p>
+<div class="section" id="some-glyph-attributes">
+<h2>Some Glyph attributes<a class="headerlink" href="#some-glyph-attributes" title="Permalink to this headline">¶</a></h2>
+<p>In the previous talk we saw ways of getting fonts and glyph objects. Now we&#8217;re going to see what <code class="docutils literal"><span class="pre">Glyph</span></code> objects can do for us. Glyphs are perhaps the most interesting object in the whole API. Some basic attributes of a glyph object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon 2009</span>
+<span class="c"># set basic attributes in a glyph</span>
+ 
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+ 
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">glyph</span> <span class="o">=</span> <span class="n">font</span><span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">]</span>
+
+<span class="k">print</span> <span class="n">glyph</span><span class="o">.</span><span class="n">name</span>
+<span class="k">print</span> <span class="n">glyph</span><span class="o">.</span><span class="n">width</span>
+<span class="k">print</span> <span class="n">glyph</span><span class="o">.</span><span class="n">leftMargin</span>
+<span class="k">print</span> <span class="n">glyph</span><span class="o">.</span><span class="n">rightMargin</span>
+<span class="k">print</span> <span class="n">glyph</span><span class="o">.</span><span class="n">box</span>
+<span class="k">print</span> <span class="n">glyph</span><span class="o">.</span><span class="n">unicode</span>
+
+<span class="n">glyph</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session2_00.py">open or download this file: session2_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="n">A</span>
+<span class="mi">812</span>
+<span class="mi">0</span>
+<span class="mi">0</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">812</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+<span class="mi">65</span>
+</pre></div>
+</div>
+<p>Some of these attributes can also be set, you can put new values in them. Why not all of them? For instance, the bounding box of a glyph is an attribute, it is useful information. But it depends entirely on the size of the contours in the glyph. There&#8217;s no way in which you could set this attribute other than by changing the actual paths. Useful attributes you <em>can</em> set are things like the width, left and right margin:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># set basic attributes in a glyph</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">glyph</span> <span class="o">=</span> <span class="n">font</span><span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">]</span>
+
+<span class="n">glyph</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="k">print</span> <span class="n">glyph</span><span class="o">.</span><span class="n">width</span>
+
+<span class="n">glyph</span><span class="o">.</span><span class="n">leftMargin</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="k">print</span> <span class="n">glyph</span><span class="o">.</span><span class="n">leftMargin</span>
+
+<span class="n">glyph</span><span class="o">.</span><span class="n">rightMargin</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="k">print</span> <span class="n">glyph</span><span class="o">.</span><span class="n">rightMargin</span>
+
+<span class="n">glyph</span><span class="o">.</span><span class="n">unicode</span> <span class="o">=</span> <span class="mi">666</span>
+<span class="k">print</span> <span class="n">glyph</span><span class="o">.</span><span class="n">unicode</span>
+
+<span class="n">glyph</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session2_01.py">open or download this file: session2_01.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="mi">200</span>
+<span class="mi">50</span>
+<span class="mi">50</span>
+<span class="mi">666</span>
+</pre></div>
+</div>
+<p>Notice the <code class="docutils literal"><span class="pre">glyph.update()</span></code> statement at the end. After setting the attributes to new values, the glyph data will be changed. But the FontLab interface will not have noticed your changes. For instance, the little preview in the font window might still show the old version. The <code class="docutils literal"><span class="pre">update()</span></code> method of the glyph object is a wakeup call for the application to refresh all glyph drawings with the new data. Note that it is just the <strong>representation</strong> that&#8217;s being updated. The data itself was changed when the script was executed. Saving the file and opening it again will have the same effect in this respect.</p>
+<p>Have a look at the RoboFab documentation on the <a class="reference internal" href="../objects/RGlyph.html"><em>Glyph</em></a> object for more attributes and methods.</p>
+</div>
+<div class="section" id="some-glyph-methods">
+<h2>Some Glyph methods<a class="headerlink" href="#some-glyph-methods" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># use some methods to transform a glyph</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="c"># ask a font for a glyph by name</span>
+<span class="n">glyph</span> <span class="o">=</span> <span class="n">font</span><span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">]</span>
+
+<span class="c"># now you have a glyph object</span>
+<span class="c"># make it do stuff by calling some of its methods</span>
+<span class="n">glyph</span><span class="o">.</span><span class="n">move</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">75</span><span class="p">))</span>
+<span class="n">glyph</span><span class="o">.</span><span class="n">scale</span><span class="p">((</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">))</span>
+<span class="n">glyph</span><span class="o">.</span><span class="n">appendGlyph</span><span class="p">(</span><span class="n">font</span><span class="p">[</span><span class="s">&#39;B&#39;</span><span class="p">])</span>
+<span class="n">glyph</span><span class="o">.</span><span class="n">removeOverlap</span><span class="p">()</span>
+<span class="n">glyph</span><span class="o">.</span><span class="n">correctDirection</span><span class="p">()</span>
+<span class="n">glyph</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session2_02.py">open or download this file: session2_02.py</a></div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These will really screw up your glyph if you don&#8217;t want it to be moved 100 units horizontally and 75 units vertically, then scaled 50% horizontally and 150% vertically. Then the glyph <code class="docutils literal"><span class="pre">B</span></code> is added, the overlap is removed, the path directions are corrected and finally the app is told something was changed.</p>
+</div>
+</div>
+<div class="section" id="getparent">
+<h2>getParent()<a class="headerlink" href="#getparent" title="Permalink to this headline">¶</a></h2>
+<p>The Glyph object has a <code class="docutils literal"><span class="pre">glyph.getParent()</span></code> method. When called it will return the <strong>Font</strong> object the glyph belongs to. If it has one: &#8220;orphan&#8221; glyphs are objects which don&#8217;t belong to any particular font like the result of a GlyphMath operation or glyph level interpolation. When there is no parent, <code class="docutils literal"><span class="pre">getParent()</span></code> returns <code class="docutils literal"><span class="pre">None</span></code>. You need to test for this result:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># iterate through a glyph&#39;s contours</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="n">glyph</span> <span class="o">=</span> <span class="n">font</span><span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">glyph</span><span class="o">.</span><span class="n">getParent</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session2_03.py">open or download this file: session2_03.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt;RFont font for SomeFont&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-stuff-glyphs-are-made-of">
+<h2>The stuff glyphs are made of<a class="headerlink" href="#the-stuff-glyphs-are-made-of" title="Permalink to this headline">¶</a></h2>
+<p>A glyph consists of contours, which in turn consist of points, right? If only it were that easy. There are all sorts of points conspiring to become all sorts of shapes. Bezier curves, Quadratic curves, open, closed, components. Sometimes it is just the point of view that&#8217;s different. The <a class="reference internal" href="../howtos/understanding_contours.html"><em>Understanding Contours and Segments</em></a> section of the RoboFab documentation has a couple of diagrams of the different ways of looking at the vectors in a glyph. Let&#8217;s have a look at <a class="reference internal" href="../objects/RContour.html"><em>Contour</em></a> objects first:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># iterate through a glyph&#39;s contours</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">glyph</span> <span class="o">=</span> <span class="n">font</span><span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">&quot;glyph has </span><span class="si">%d</span><span class="s"> contours&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">glyph</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">contour</span> <span class="ow">in</span> <span class="n">glyph</span><span class="o">.</span><span class="n">contours</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">contour</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session2_04.py">open or download this file: session2_04.py</a></div><div class="code highlight-python"><div class="highlight"><pre>glyph has 2 contours
+&lt;RContour for MyDemo Italic.A[0]&gt;
+&lt;RContour for MyDemo Italic.A[1]&gt;
+</pre></div>
+</div>
+<p>So a <code class="docutils literal"><span class="pre">Glyph</span></code> object contains zero, one or more <code class="docutils literal"><span class="pre">Contour</span></code> objects. Let&#8217;s see what secrets a <code class="docutils literal"><span class="pre">Contour</span></code> has:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># get a specific contour and view it</span>
+<span class="c"># through point, segment and bPoint structures</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">glyph</span> <span class="o">=</span> <span class="n">font</span><span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">]</span>
+<span class="n">contour</span> <span class="o">=</span> <span class="n">glyph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">contour</span><span class="o">.</span><span class="n">points</span>
+<span class="k">print</span> <span class="n">countours</span><span class="o">.</span><span class="n">segments</span>
+<span class="k">print</span> <span class="n">contour</span><span class="o">.</span><span class="n">bPoints</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session2_05.py">open or download this file: session2_05.py</a></div><div class="code highlight-python"><div class="highlight"><pre>[&lt;RPoint for Plinc01 Plinc01.A[0][0]&gt;,
+&lt;RPoint for Plinc01 Plinc01.A[0][1]&gt;,
+...
+&lt;RPoint for Plinc01 Plinc01.A[0][4]&gt;]
+[&lt;RSegment for Plinc01 Plinc01.A[0][0]&gt;,
+&lt;RSegment for Plinc01 Plinc01.A[0][1]&gt;,
+...
+&lt;RSegment for Plinc01 Plinc01.A[0][4]&gt;]
+[&lt;RBPoint for unnamed_font.unnamed_glyph[7][0][0]&gt;,
+&lt;RBPoint for unnamed_font.unnamed_glyph[7][0][1]&gt;,
+...
+&lt;RBPoint for unnamed_font.unnamed_glyph[7][0][4]&gt;]
+</pre></div>
+</div>
+<p>Let&#8217;s have a look at these different attributes. In the end, they&#8217;re all describing the same shape, the same actual points. It&#8217;s just sorted in different ways for different purposes.</p>
+<dl class="docutils">
+<dt><strong>contour.points</strong></dt>
+<dd>This is a list of all points on a contour. off-curve and on-curve points are presented as <code class="docutils literal"><span class="pre">RPoint</span></code> objects. Each <code class="docutils literal"><span class="pre">RPoint</span></code> has <code class="docutils literal"><span class="pre">x</span></code>, <code class="docutils literal"><span class="pre">y</span></code>, <code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">smooth</span></code> attributes. On-cuve and off-curve points are treated as equals.</dd>
+<dt><strong>contour.segments</strong></dt>
+<dd>A segment is an object which represents a series of off-curve points and finally one on-curve point. Though kind of abstract, segments are needed to deal with quadratic curves which can have several off-curves on a row.</dd>
+<dt><strong>contour.bPoints</strong></dt>
+<dd>bPoints are objects which look more or less like the curve points you know from editing Beziers. One main on-curve point and two satellite off-curve points or <em>bcps</em>: an incoming one and an outgoing one. This is more or less the kind of point that was used in RoboFog code.</dd>
+</dl>
+<p>Again, please refer to the <a class="reference internal" href="../howtos/understanding_contours.html"><em>Understanding Contours and Segments</em></a> to make sense of these things visually.</p>
+<p>Finally, when you iterate through the <code class="docutils literal"><span class="pre">contour.points</span></code>, you get to see <a class="reference internal" href="../objects/RPoint.html"><em>RPoint</em></a> objects with familiar things like <code class="docutils literal"><span class="pre">x</span></code>, <code class="docutils literal"><span class="pre">y</span></code>, and <code class="docutils literal"><span class="pre">type</span></code> attributes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># iterate through points</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">glyph</span> <span class="o">=</span> <span class="n">font</span><span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">glyph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">points</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">type</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session2_06.py">open or download this file: session2_06.py</a></div><div class="code highlight-python"><div class="highlight"><pre>37 509 move
+37 407 offcurve
+119 325 offcurve
+221 325 curve
+323 325 offcurve
+405 407 offcurve
+405 509 curve
+405 611 offcurve
+323 693 offcurve
+221 693 curve
+119 693 offcurve
+37 611 offcurve
+37 509 curve
+</pre></div>
+</div>
+<p>That looks interesting! Finally we&#8217;re dealing with the stuff that letters are made of. You can now find the coordinates of every single point in the font, and change them if you want. But it looks very cumbersome to actually add shapes like this, all these contour objects, point objects. That&#8217;s going to hurt, no? Yes. So, if you want to draw new forms there is a solution.</p>
+</div>
+<div class="section" id="the-pen-and-draw-model">
+<h2>The Pen and Draw model<a class="headerlink" href="#the-pen-and-draw-model" title="Permalink to this headline">¶</a></h2>
+<p>The pen/draw model is a very powerful concept, but it might seem a bit abstract to begin with. If you&#8217;re interested in building filters, shape manipulating scripts, or programmatically draw glyphs, this is good to study. Otherwise, if you&#8217;re here for the first time, just remember that there are ways to get paths into glyphs and that this is where you saw the examples for later reference.</p>
+<p>Glyph objects have a <code class="docutils literal"><span class="pre">draw()</span></code> method which takes a <code class="docutils literal"><span class="pre">Pen</span></code> object as a parameter. All glyphs know how to draw and all pen objects have the same methods (see below). When <code class="docutils literal"><span class="pre">draw()</span></code> is called, the glyph instructs the pen to recreate the shapes using <code class="docutils literal"><span class="pre">moveTo()</span></code>, <code class="docutils literal"><span class="pre">lineTo()</span></code>, <code class="docutils literal"><span class="pre">curveTo()</span></code> commands. The <code class="docutils literal"><span class="pre">pen</span></code>/<code class="docutils literal"><span class="pre">draw()</span></code> model is a standardised way of getting to the point data in a glyph. It is also a standardised way of getting data into a glyph. The glyph doesn&#8217;t have to know what the pen is doing with its information and the pen doesn&#8217;t have to know where the glyph gets its data from. That&#8217;s how we like things in the object-oriented world.</p>
+<p>There is a wide range of pen objects available for different things. Some pens just print the coordinates of a glyph. Some pens draw contours in a glyph, some manipulate the data, others can draw on screen under certain conditions.</p>
+<p>How to get a pen object? A bunch of them are stored in the <code class="docutils literal"><span class="pre">robofab.pens</span></code> module, have a look in the source! But one of the first things you&#8217;ll want to use a pen for is to construct paths in a glyph. A <code class="docutils literal"><span class="pre">Glyph</span></code> object has a <code class="docutils literal"><span class="pre">glyph.getPen()</span></code> method which will return the right Pen object for drawing in that glyph. Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># get a pen and draw something in the current glyph</span>
+<span class="c"># what will it draw? ha! run the script and find out!</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentGlyph</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">CurrentGlyph</span><span class="p">()</span>
+<span class="n">myPen</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">getPen</span><span class="p">()</span>
+
+<span class="c"># myPen is a pen object of a type meant for</span>
+<span class="c"># constructing paths in a glyph.</span>
+<span class="c"># So rather than use this pen with the glyph&#39;s</span>
+<span class="c"># own draw() method, we&#39;re going to tell it </span>
+<span class="c"># to do things ourselves. (Just like DrawBot!)</span>
+<span class="k">print</span> <span class="n">myPen</span>
+
+<span class="n">myPen</span><span class="o">.</span><span class="n">moveTo</span><span class="p">((</span><span class="mi">344</span><span class="p">,</span> <span class="mi">645</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="mi">647</span><span class="p">,</span> <span class="mi">261</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="mi">662</span><span class="p">,</span> <span class="o">-</span><span class="mi">32</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="mi">648</span><span class="p">,</span> <span class="o">-</span><span class="mi">61</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="mi">619</span><span class="p">,</span> <span class="o">-</span><span class="mi">61</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="mi">352</span><span class="p">,</span> <span class="mi">54</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="mi">72</span><span class="p">,</span> <span class="mi">446</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="mi">117</span><span class="p">,</span> <span class="mi">590</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="mi">228</span><span class="p">,</span> <span class="mi">665</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">closePath</span><span class="p">()</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">moveTo</span><span class="p">((</span><span class="mi">99</span><span class="p">,</span> <span class="mi">451</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="mi">365</span><span class="p">,</span> <span class="mi">74</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">curveTo</span><span class="p">((</span><span class="mi">359</span><span class="p">,</span> <span class="mi">122</span><span class="p">),</span> <span class="p">(</span><span class="mi">376</span><span class="p">,</span> <span class="mi">178</span><span class="p">),</span> <span class="p">(</span><span class="mi">420</span><span class="p">,</span> <span class="mi">206</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">curveTo</span><span class="p">((</span><span class="mi">422</span><span class="p">,</span> <span class="mi">203</span><span class="p">),</span> <span class="p">(</span><span class="mi">142</span><span class="p">,</span> <span class="mi">579</span><span class="p">),</span> <span class="p">(</span><span class="mi">142</span><span class="p">,</span> <span class="mi">579</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">closePath</span><span class="p">()</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">moveTo</span><span class="p">((</span><span class="mi">631</span><span class="p">,</span> <span class="o">-</span><span class="mi">32</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="mi">629</span><span class="p">,</span> <span class="mi">103</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">curveTo</span><span class="p">((</span><span class="mi">556</span><span class="p">,</span> <span class="mi">111</span><span class="p">),</span> <span class="p">(</span><span class="mi">524</span><span class="p">,</span> <span class="mi">71</span><span class="p">),</span> <span class="p">(</span><span class="mi">508</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">myPen</span><span class="o">.</span><span class="n">closePath</span><span class="p">()</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session2_07.py">open or download this file: session2_07.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt;robofab.pens.adapterPens.SegmentToPointPen instance at 0x65d2558&gt;
+</pre></div>
+</div>
+<p>The next example will show the use of a Pen object which doesn&#8217;t construct any path, but rather it prints the instructions the glyph is calling to draw itself. Note: the stuff printed out by <code class="docutils literal"><span class="pre">PrintingSegmentPen</span></code> is Python code too. You can use this snippet to convert a shape into Python code, if for whatever reason you want to draw stuff programmatically. That&#8217;s how the previous example was created: draw a shape in a glyph, print the draw instructions, write the rest of the code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># get a pen and use it to print the coordinates</span>
+<span class="c"># to the output window. This is actually almost-python</span>
+<span class="c"># code which you can use it other scripts!</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="kn">from</span> <span class="nn">robofab.pens.pointPen</span> <span class="kn">import</span> <span class="n">PrintingSegmentPen</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">glyph</span> <span class="o">=</span> <span class="n">font</span><span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">]</span>
+
+<span class="c"># PrintingSegmentPen won&#39;t actually draw anything</span>
+<span class="c"># just print the coordinates to the output:</span>
+<span class="n">pen</span> <span class="o">=</span> <span class="n">PrintingSegmentPen</span><span class="p">()</span>
+<span class="n">glyph</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">pen</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session2_08.py">open or download this file: session2_08.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="n">pen</span><span class="o">.</span><span class="n">moveTo</span><span class="p">((</span><span class="mi">37</span><span class="p">,</span> <span class="mi">509</span><span class="p">))</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">curveTo</span><span class="p">((</span><span class="mi">37</span><span class="p">,</span> <span class="mi">407</span><span class="p">),</span> <span class="p">(</span><span class="mi">119</span><span class="p">,</span> <span class="mi">325</span><span class="p">),</span> <span class="p">(</span><span class="mi">221</span><span class="p">,</span> <span class="mi">325</span><span class="p">))</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">curveTo</span><span class="p">((</span><span class="mi">323</span><span class="p">,</span> <span class="mi">325</span><span class="p">),</span> <span class="p">(</span><span class="mi">405</span><span class="p">,</span> <span class="mi">407</span><span class="p">),</span> <span class="p">(</span><span class="mi">405</span><span class="p">,</span> <span class="mi">509</span><span class="p">))</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">curveTo</span><span class="p">((</span><span class="mi">405</span><span class="p">,</span> <span class="mi">611</span><span class="p">),</span> <span class="p">(</span><span class="mi">323</span><span class="p">,</span> <span class="mi">693</span><span class="p">),</span> <span class="p">(</span><span class="mi">221</span><span class="p">,</span> <span class="mi">693</span><span class="p">))</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">curveTo</span><span class="p">((</span><span class="mi">119</span><span class="p">,</span> <span class="mi">693</span><span class="p">),</span> <span class="p">(</span><span class="mi">37</span><span class="p">,</span> <span class="mi">611</span><span class="p">),</span> <span class="p">(</span><span class="mi">37</span><span class="p">,</span> <span class="mi">509</span><span class="p">))</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">closePath</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The following example uses a <code class="docutils literal"><span class="pre">Pen</span></code> to draw boxes as a simple rasteriser. Perhaps a bit overboard, but it illustrates what you can do with pens and creating paths in RoboFab:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># rasterise the shape in glyph &quot;A&quot;</span>
+<span class="c"># and draw boxes in a new glyph named &quot;A.silly&quot;</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span><span class="p">,</span> <span class="n">CurrentGlyph</span>
+
+<span class="n">sourceGlyph</span> <span class="o">=</span> <span class="s">&quot;a&quot;</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">sourceGlyph</span><span class="p">]</span>
+
+<span class="c"># find out how big the shape is from the glyph.box attribute</span>
+<span class="n">xMin</span><span class="p">,</span> <span class="n">yMin</span><span class="p">,</span> <span class="n">xMax</span><span class="p">,</span> <span class="n">yMax</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">box</span>
+
+<span class="c"># create a new glyph</span>
+<span class="n">dest</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">newGlyph</span><span class="p">(</span><span class="n">sourceGlyph</span><span class="o">+</span><span class="s">&quot;.silly&quot;</span><span class="p">)</span>
+<span class="n">dest</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">width</span>
+
+<span class="c"># get a pen to draw in the new glyph</span>
+<span class="n">myPen</span> <span class="o">=</span> <span class="n">dest</span><span class="o">.</span><span class="n">getPen</span><span class="p">()</span>
+
+<span class="c"># a function which draws a rectangle at a specified place</span>
+<span class="k">def</span> <span class="nf">drawRect</span><span class="p">(</span><span class="n">pen</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">pen</span><span class="o">.</span><span class="n">moveTo</span><span class="p">((</span><span class="n">x</span><span class="o">-.</span><span class="mi">5</span><span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="n">y</span><span class="o">-.</span><span class="mi">5</span><span class="o">*</span><span class="n">size</span><span class="p">))</span>
+    <span class="n">pen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="n">x</span><span class="o">+.</span><span class="mi">5</span><span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="n">y</span><span class="o">-.</span><span class="mi">5</span><span class="o">*</span><span class="n">size</span><span class="p">))</span>
+    <span class="n">pen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="n">x</span><span class="o">+.</span><span class="mi">5</span><span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="n">y</span><span class="o">+.</span><span class="mi">5</span><span class="o">*</span><span class="n">size</span><span class="p">))</span>
+    <span class="n">pen</span><span class="o">.</span><span class="n">lineTo</span><span class="p">((</span><span class="n">x</span><span class="o">-.</span><span class="mi">5</span><span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="n">y</span><span class="o">+.</span><span class="mi">5</span><span class="o">*</span><span class="n">size</span><span class="p">))</span>
+    <span class="n">pen</span><span class="o">.</span><span class="n">closePath</span><span class="p">()</span>
+
+<span class="c"># the size of the raster unit</span>
+<span class="n">resolution</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="c"># draw from top to bottom</span>
+<span class="n">yValues</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">yMin</span><span class="p">,</span> <span class="n">yMax</span><span class="p">,</span> <span class="n">resolution</span><span class="p">)</span>
+<span class="n">yValues</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+
+<span class="c"># go for it!</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">yValues</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span> <span class="n">xMax</span><span class="p">,</span> <span class="n">resolution</span><span class="p">):</span>
+        <span class="c"># check the source glyph is white or black at x,y</span>
+        <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">pointInside</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)):</span>
+            <span class="n">drawRect</span><span class="p">(</span><span class="n">myPen</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">resolution</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+    <span class="c"># update for each line if you like the animation</span>
+    <span class="c"># otherwise move the update() out of the loop</span>
+    <span class="n">dest</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session2_09.py">open or download this file: session2_09.py</a></div><p>This is what it looks like.</p>
+<img alt="../_images/rasteriser.gif" src="../_images/rasteriser.gif" />
+<p>A more in-depth discussion of the Pen protocol, more examples of using pens, and some samples using pens to filter letterforms in the <a class="reference internal" href="../howtos/use_pens.html"><em>RoboFab docs</em></a>.</p>
+</div>
+<div class="section" id="another-kind-of-pen">
+<h2>Another kind of pen<a class="headerlink" href="#another-kind-of-pen" title="Permalink to this headline">¶</a></h2>
+<p>Well, it wouldn&#8217;t be Python if there weren&#8217;t at least two ways of doing things. The <code class="docutils literal"><span class="pre">pen</span></code>/<code class="docutils literal"><span class="pre">draw()</span></code> model draws on-curve points and only accepts off-curves as part of the <code class="docutils literal"><span class="pre">curveTo()</span></code> and <code class="docutils literal"><span class="pre">qCurveTo()</span></code> methods, there&#8217;s no room for additional information. For instance a <code class="docutils literal"><span class="pre">smooth</span></code> flag or a name for a point (and there are good reasons to want to do that). That&#8217;s where <code class="docutils literal"><span class="pre">glyph.drawPoints()</span></code> comes in handy. This method is similar to <code class="docutils literal"><span class="pre">glyph.draw()</span></code> but it takes a different pen, a <code class="docutils literal"><span class="pre">PointPen</span></code>. All points are drawn one by one. <code class="docutils literal"><span class="pre">PointPen</span></code> objects are useful when you want to exactly address all information of each point in a shape. Compare the output of this example with the previous one. It&#8217;s the same shape. Chances are you won&#8217;t need <code class="docutils literal"><span class="pre">PointPen</span></code> for some time, but if you start working with pens it is good to know they exist:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># use a point pen</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="kn">from</span> <span class="nn">robofab.pens.pointPen</span> <span class="kn">import</span> <span class="n">PrintingPointPen</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">glyph</span> <span class="o">=</span> <span class="n">font</span><span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">]</span>
+
+<span class="n">pen</span> <span class="o">=</span> <span class="n">PrintingPointPen</span><span class="p">()</span>
+<span class="n">glyph</span><span class="o">.</span><span class="n">drawPoints</span><span class="p">(</span><span class="n">pen</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session2_10.py">open or download this file: session2_10.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="n">pen</span><span class="o">.</span><span class="n">beginPath</span><span class="p">()</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">addPoint</span><span class="p">((</span><span class="mi">37</span><span class="p">,</span> <span class="mi">509</span><span class="p">),</span> <span class="n">segmentType</span><span class="o">=</span><span class="s">&#39;curve&#39;</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">addPoint</span><span class="p">((</span><span class="mi">37</span><span class="p">,</span> <span class="mi">407</span><span class="p">),</span> <span class="o">**</span><span class="p">{</span><span class="s">&#39;selected&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">})</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">addPoint</span><span class="p">((</span><span class="mi">119</span><span class="p">,</span> <span class="mi">325</span><span class="p">),</span> <span class="o">**</span><span class="p">{</span><span class="s">&#39;selected&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">})</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">addPoint</span><span class="p">((</span><span class="mi">221</span><span class="p">,</span> <span class="mi">325</span><span class="p">),</span> <span class="n">segmentType</span><span class="o">=</span><span class="s">&#39;curve&#39;</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s">&#39;selected&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">addPoint</span><span class="p">((</span><span class="mi">323</span><span class="p">,</span> <span class="mi">325</span><span class="p">),</span> <span class="o">**</span><span class="p">{</span><span class="s">&#39;selected&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">})</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">addPoint</span><span class="p">((</span><span class="mi">405</span><span class="p">,</span> <span class="mi">407</span><span class="p">),</span> <span class="o">**</span><span class="p">{</span><span class="s">&#39;selected&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">})</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">addPoint</span><span class="p">((</span><span class="mi">405</span><span class="p">,</span> <span class="mi">509</span><span class="p">),</span> <span class="n">segmentType</span><span class="o">=</span><span class="s">&#39;curve&#39;</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s">&#39;selected&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">addPoint</span><span class="p">((</span><span class="mi">405</span><span class="p">,</span> <span class="mi">611</span><span class="p">),</span> <span class="o">**</span><span class="p">{</span><span class="s">&#39;selected&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">})</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">addPoint</span><span class="p">((</span><span class="mi">323</span><span class="p">,</span> <span class="mi">693</span><span class="p">),</span> <span class="o">**</span><span class="p">{</span><span class="s">&#39;selected&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">})</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">addPoint</span><span class="p">((</span><span class="mi">221</span><span class="p">,</span> <span class="mi">693</span><span class="p">),</span> <span class="n">segmentType</span><span class="o">=</span><span class="s">&#39;curve&#39;</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s">&#39;selected&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">addPoint</span><span class="p">((</span><span class="mi">119</span><span class="p">,</span> <span class="mi">693</span><span class="p">),</span> <span class="o">**</span><span class="p">{</span><span class="s">&#39;selected&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">})</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">addPoint</span><span class="p">((</span><span class="mi">37</span><span class="p">,</span> <span class="mi">611</span><span class="p">),</span> <span class="o">**</span><span class="p">{</span><span class="s">&#39;selected&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">})</span>
+<span class="n">pen</span><span class="o">.</span><span class="n">endPath</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Notice that a <code class="docutils literal"><span class="pre">PointPen</span></code> only has three methods: <code class="docutils literal"><span class="pre">addPoint</span></code>, <code class="docutils literal"><span class="pre">beginPath</span></code> and <code class="docutils literal"><span class="pre">endPath</span></code>.</p>
+</div>
+<div class="section" id="path-manipulation">
+<h2>Path manipulation<a class="headerlink" href="#path-manipulation" title="Permalink to this headline">¶</a></h2>
+<p>FontLab has path manipulation tools which let you remove overlap and add and subtract shapes. Remove overlap is available: <code class="docutils literal"><span class="pre">glyph.removeOverlap()</span></code>. Here is an example using the FontLab layer to subtract one shape from another to produce a third:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># Use FontLab pathfinder functionality to cut one glyph from another</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">]</span>
+<span class="n">cutter</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;B&quot;</span><span class="p">]</span>
+<span class="n">dest</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;C&quot;</span><span class="p">]</span>
+
+<span class="n">dest</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">dest</span><span class="o">.</span><span class="n">appendGlyph</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+<span class="n">dest</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">width</span>
+<span class="n">dest</span><span class="o">.</span><span class="n">naked</span><span class="p">()</span><span class="o">.</span><span class="n">Bsubtract</span><span class="p">(</span><span class="n">cutter</span><span class="o">.</span><span class="n">naked</span><span class="p">())</span>
+<span class="n">dest</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session2_11.py">open or download this file: session2_11.py</a></div><p>This example also sneakily introduces the <code class="docutils literal"><span class="pre">naked()</span></code> method of the glyph object. This method returns FontLab&#8217;s own object for the glyph. We&#8217;ll look at this in a bit more detail later on.</p>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

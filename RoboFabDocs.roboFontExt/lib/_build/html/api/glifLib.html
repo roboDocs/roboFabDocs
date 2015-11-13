@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>glifLib &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="API Docs" href="index.html" />
+    <link rel="next" title="glifLib2" href="glifLib2.html" />
+    <link rel="prev" title="API Docs" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="index.html" title="previous chapter">API Docs</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="glifLib2.html" title="next chapter">glifLib2</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="module-robofab.glifLib">
+<span id="gliflib"></span><h1>glifLib<a class="headerlink" href="#module-robofab.glifLib" title="Permalink to this headline">¶</a></h1>
+<p>glifLib.py &#8211; Generic module for reading and writing the .glif format.</p>
+<p>More info about the .glif format (GLyphInterchangeFormat) can be found here:</p>
+<blockquote>
+<div><a class="reference external" href="http://robofab.com/ufo/glif.html">http://robofab.com/ufo/glif.html</a></div></blockquote>
+<p>The main class in this module is GlyphSet. It manages a set of .glif files
+in a folder. It offers two ways to read glyph data, and one way to write
+glyph data. See the class doc string for details.</p>
+<dl class="function">
+<dt id="robofab.glifLib.glyphNameToFileName">
+<code class="descclassname">robofab.glifLib.</code><code class="descname">glyphNameToFileName</code><span class="sig-paren">(</span><em>glyphName</em>, <em>glyphSet</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.glifLib.glyphNameToFileName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default algorithm for making a file name out of a glyph name.
+This one has limited support for case insensitive file systems:
+it assumes glyph names are not case sensitive apart from the first
+character:</p>
+<blockquote>
+<div>&#8216;a&#8217;     -&gt; &#8216;a.glif&#8217;
+&#8216;A&#8217;     -&gt; &#8216;<a href="#id1"><span class="problematic" id="id2">A_</span></a>.glif&#8217;
+&#8216;A.alt&#8217; -&gt; &#8216;<a href="#id3"><span class="problematic" id="id4">A_</span></a>.alt.glif&#8217;
+&#8216;A.Alt&#8217; -&gt; &#8216;<a href="#id5"><span class="problematic" id="id6">A_</span></a>.Alt.glif&#8217;
+&#8216;T_H&#8217;   -&gt; &#8216;T__H_.glif&#8217;
+&#8216;T_h&#8217;   -&gt; &#8216;T__h.glif&#8217;
+&#8216;t_h&#8217;   -&gt; &#8216;t_h.glif&#8217;
+&#8216;F_F_I&#8217; -&gt; &#8216;F__F__I_.glif&#8217;
+&#8216;f_f_i&#8217; -&gt; &#8216;f_f_i.glif&#8217;</div></blockquote>
+</dd></dl>
+
+<dl class="class">
+<dt id="robofab.glifLib.GlyphSet">
+<em class="property">class </em><code class="descclassname">robofab.glifLib.</code><code class="descname">GlyphSet</code><span class="sig-paren">(</span><em>dirName</em>, <em>glyphNameToFileNameFunc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.glifLib.GlyphSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>GlyphSet manages a set of .glif files inside one directory.</p>
+<p>GlyphSet&#8217;s constructor takes a path to an existing directory as it&#8217;s
+first argument. Reading glyph data can either be done through the
+readGlyph() method, or by using GlyphSet&#8217;s dictionary interface, where
+the keys are glyph names and the values are (very) simple glyph objects.</p>
+<p>To write a glyph to the glyph set, you use the writeGlyph() method.
+The simple glyph objects returned through the dict interface do not
+support writing, they are just means as a convenient way to get at
+the glyph data.</p>
+<dl class="attribute">
+<dt id="robofab.glifLib.GlyphSet.glyphClass">
+<code class="descname">glyphClass</code><a class="headerlink" href="#robofab.glifLib.GlyphSet.glyphClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Glyph</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.glifLib.GlyphSet.rebuildContents">
+<code class="descname">rebuildContents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.glifLib.GlyphSet.rebuildContents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rebuild the contents dict by checking what glyphs are available
+on disk.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.glifLib.GlyphSet.getReverseContents">
+<code class="descname">getReverseContents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.glifLib.GlyphSet.getReverseContents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a reversed dict of self.contents, mapping file names to
+glyph names. This is primarily an aid for custom glyph name to file
+name schemes that want to make sure they don&#8217;t generate duplicate
+file names. The file names are converted to lowercase so we can
+reliably check for duplicates that only differ in case, which is
+important for case-insensitive file systems.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.glifLib.GlyphSet.writeContents">
+<code class="descname">writeContents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.glifLib.GlyphSet.writeContents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the contents.plist file out to disk. Call this method when
+you&#8217;re done writing glyphs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.glifLib.GlyphSet.readGlyph">
+<code class="descname">readGlyph</code><span class="sig-paren">(</span><em>glyphName</em>, <em>glyphObject=None</em>, <em>pointPen=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.glifLib.GlyphSet.readGlyph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a .glif file for &#8216;glyphName&#8217; from the glyph set. The
+&#8216;glyphObject&#8217; argument can be any kind of object (even None);
+the readGlyph() method will attempt to set the following
+attributes on it:</p>
+<blockquote>
+<div>&#8220;width&#8221;     the advance with of the glyph
+&#8220;unicodes&#8221;  a list of unicode values for this glyph
+&#8220;note&#8221;      a string
+&#8220;lib&#8221;       a dictionary containing custom data</div></blockquote>
+<dl class="docutils">
+<dt>All attributes are optional, in two ways:</dt>
+<dd><ol class="first last arabic simple">
+<li>An attribute <em>won&#8217;t</em> be set if the .glif file doesn&#8217;t
+contain data for it. &#8216;glyphObject&#8217; will have to deal
+with default values itself.</li>
+<li>If setting the attribute fails with an AttributeError
+(for example if the &#8216;glyphObject&#8217; attribute is read-
+only), readGlyph() will not propagate that exception,
+but ignore that attribute.</li>
+</ol>
+</dd>
+</dl>
+<p>To retrieve outline information, you need to pass an object
+conforming to the PointPen protocol as the &#8216;pointPen&#8217; argument.
+This argument may be None if you don&#8217;t need the outline data.</p>
+<p>readGlyph() will raise KeyError if the glyph is not present in
+the glyph set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.glifLib.GlyphSet.writeGlyph">
+<code class="descname">writeGlyph</code><span class="sig-paren">(</span><em>glyphName</em>, <em>glyphObject=None</em>, <em>drawPointsFunc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.glifLib.GlyphSet.writeGlyph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a .glif file for &#8216;glyphName&#8217; to the glyph set. The
+&#8216;glyphObject&#8217; argument can be any kind of object (even None);
+the writeGlyph() method will attempt to get the following
+attributes from it:</p>
+<blockquote>
+<div>&#8220;width&#8221;     the advance with of the glyph
+&#8220;unicodes&#8221;  a list of unicode values for this glyph
+&#8220;note&#8221;      a string
+&#8220;lib&#8221;       a dictionary containing custom data</div></blockquote>
+<p>All attributes are optional: if &#8216;glyphObject&#8217; doesn&#8217;t
+have the attribute, it will simply be skipped.</p>
+<p>To write outline data to the .glif file, writeGlyph() needs
+a function (any callable object actually) that will take one
+argument: an object that conforms to the PointPen protocol.
+The function will be called by writeGlyph(); it has to call the
+proper PointPen methods to transfer the outline to the .glif file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.glifLib.GlyphSet.deleteGlyph">
+<code class="descname">deleteGlyph</code><span class="sig-paren">(</span><em>glyphName</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.glifLib.GlyphSet.deleteGlyph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permanently delete the glyph from the glyph set on disk. Will
+raise KeyError if the glyph is not present in the glyph set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="robofab.glifLib.GlyphSet.getUnicodes">
+<code class="descname">getUnicodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.glifLib.GlyphSet.getUnicodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary that maps all glyph names to lists containing
+the unicode value[s] for that glyph, if any. This parses the .glif
+files partially, so is a lot faster than parsing all files completely.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.glifLib.readGlyphFromString">
+<code class="descclassname">robofab.glifLib.</code><code class="descname">readGlyphFromString</code><span class="sig-paren">(</span><em>aString</em>, <em>glyphObject=None</em>, <em>pointPen=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.glifLib.readGlyphFromString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read .glif data from a string into a glyph object.</p>
+<p>The &#8216;glyphObject&#8217; argument can be any kind of object (even None);
+the readGlyphFromString() method will attempt to set the following
+attributes on it:</p>
+<blockquote>
+<div>&#8220;width&#8221;     the advance with of the glyph
+&#8220;unicodes&#8221;  a list of unicode values for this glyph
+&#8220;note&#8221;      a string
+&#8220;lib&#8221;       a dictionary containing custom data</div></blockquote>
+<dl class="docutils">
+<dt>All attributes are optional, in two ways:</dt>
+<dd><ol class="first last arabic simple">
+<li>An attribute <em>won&#8217;t</em> be set if the .glif file doesn&#8217;t
+contain data for it. &#8216;glyphObject&#8217; will have to deal
+with default values itself.</li>
+<li>If setting the attribute fails with an AttributeError
+(for example if the &#8216;glyphObject&#8217; attribute is read-
+only), readGlyphFromString() will not propagate that
+exception, but ignore that attribute.</li>
+</ol>
+</dd>
+</dl>
+<p>To retrieve outline information, you need to pass an object
+conforming to the PointPen protocol as the &#8216;pointPen&#8217; argument.
+This argument may be None if you don&#8217;t need the outline data.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.glifLib.writeGlyphToString">
+<code class="descclassname">robofab.glifLib.</code><code class="descname">writeGlyphToString</code><span class="sig-paren">(</span><em>glyphName</em>, <em>glyphObject=None</em>, <em>drawPointsFunc=None</em>, <em>writer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.glifLib.writeGlyphToString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return .glif data for a glyph as a UTF-8 encoded string.
+The &#8216;glyphObject&#8217; argument can be any kind of object (even None);
+the writeGlyphToString() method will attempt to get the following
+attributes from it:</p>
+<blockquote>
+<div>&#8220;width&#8221;     the advance with of the glyph
+&#8220;unicodes&#8221;  a list of unicode values for this glyph
+&#8220;note&#8221;      a string
+&#8220;lib&#8221;       a dictionary containing custom data</div></blockquote>
+<p>All attributes are optional: if &#8216;glyphObject&#8217; doesn&#8217;t
+have the attribute, it will simply be skipped.</p>
+<p>To write outline data to the .glif file, writeGlyphToString() needs
+a function (any callable object actually) that will take one
+argument: an object that conforms to the PointPen protocol.
+The function will be called by writeGlyphToString(); it has to call the
+proper PointPen methods to transfer the outline to the .glif file.</p>
+</dd></dl>
+
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

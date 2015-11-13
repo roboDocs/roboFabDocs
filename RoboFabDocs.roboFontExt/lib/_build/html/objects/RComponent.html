@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RComponent &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Objects" href="index.html" />
+    <link rel="next" title="RKerning" href="RKerning.html" />
+    <link rel="prev" title="RAnchor" href="RAnchor.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="RAnchor.html" title="previous chapter">RAnchor</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="RKerning.html" title="next chapter">RKerning</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="rcomponent">
+<h1>RComponent<a class="headerlink" href="#rcomponent" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/RComponent.gif" src="../_images/RComponent.gif" />
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># the easiest way to get to a component</span>
+<span class="c"># is to get one from a glyph</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&#39;adieresis&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">components</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">c</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RComponent_00.py">open or download this file: RComponent_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt; RComponent for Excellent-Regular.adieresis.components[0] &gt;
+&lt; RComponent for Excellent-Regular.adieresis.components[1] &gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>A component can be a part of a glyph and it is a reference to another glyph in the same font. With components you can make glyphs depend on other glyphs. Changes to the <code class="docutils literal"><span class="pre">baseGlyph</span></code> will reflect in the component as well. Fontographer and RoboFog called them <strong>composites</strong>. The <strong>parent</strong> of a component is usually a glyph. Components can be decomposed: they replace themselves with the actual outlines from the <code class="docutils literal"><span class="pre">baseGlyph</span></code>. When that happens the link between the original and the component is broken: changes to the <code class="docutils literal"><span class="pre">baseGlyph</span></code> will no longer reflect in the glyph that had the component.</p>
+</div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="baseGlyph">
+<code class="descname">baseGlyph</code><a class="headerlink" href="#baseGlyph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The name of the glyph the component points to. The glyph is assumed to be present in the same font.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In FontLab this attribute is read-only.</p>
+</div>
+<dl class="attribute">
+<dt id="index">
+<code class="descname">index</code><a class="headerlink" href="#index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The index of the component in the list of components in the parent glyph. i.e. the first component in a glyph has index <code class="docutils literal"><span class="pre">0</span></code>.</p>
+<dl class="attribute">
+<dt id="offset">
+<code class="descname">offset</code><a class="headerlink" href="#offset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The offset vector <code class="docutils literal"><span class="pre">(x,</span> <span class="pre">y)</span></code>. The distance the component has been moved.</p>
+<dl class="attribute">
+<dt id="scale">
+<code class="descname">scale</code><a class="headerlink" href="#scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The scale <code class="docutils literal"><span class="pre">(x,</span> <span class="pre">y)</span></code>. The distance the component has been moved.</p>
+<dl class="attribute">
+<dt id="box">
+<code class="descname">box</code><a class="headerlink" href="#box" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The bounding box for the component. (read only)</p>
+</div>
+<div class="section" id="attribute-examples">
+<h2>Attribute examples<a class="headerlink" href="#attribute-examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Component object</span>
+<span class="c"># attribute examples</span>
+
+<span class="k">print</span> <span class="n">f</span><span class="p">[</span><span class="s">&#39;adieresis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">baseGlyph</span>
+<span class="k">print</span> <span class="n">f</span><span class="p">[</span><span class="s">&#39;adieresis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">baseGlyph</span>
+
+<span class="c"># move the component in the base glyph</span>
+<span class="n">f</span><span class="p">[</span><span class="s">&#39;adieresis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c"># scale the component in the base glyph</span>
+<span class="n">f</span><span class="p">[</span><span class="s">&#39;adieresis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RComponent_01.py">open or download this file: RComponent_01.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="n">a</span>
+<span class="n">dieresis</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="decompose">
+<code class="descname">decompose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#decompose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>In the parent glyph replace this component object with the actual contours. This practically ends the existence of the component object.</p>
+<dl class="function">
+<dt id="move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em><span class="sig-paren">)</span><a class="headerlink" href="#move" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Move the component to position <code class="docutils literal"><span class="pre">(x,</span> <span class="pre">y)</span></code>.</p>
+<dl class="function">
+<dt id="draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>aPen</em><span class="sig-paren">)</span><a class="headerlink" href="#draw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Draw this component with <code class="docutils literal"><span class="pre">aPen</span></code>.</p>
+<dl class="function">
+<dt id="drawPoints">
+<code class="descname">drawPoints</code><span class="sig-paren">(</span><em>aPointPen</em><span class="sig-paren">)</span><a class="headerlink" href="#drawPoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Draw this component with <code class="docutils literal"><span class="pre">aPointPen</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Both these drawing methods are usually called by <code class="docutils literal"><span class="pre">aGlyph.draw()</span></code> and <code class="docutils literal"><span class="pre">aGlyph.drawPoints()</span></code> as part of the drawing process.</p>
+</div>
+<dl class="function">
+<dt id="copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a deep copy of the object.</p>
+<dl class="function">
+<dt id="setChanged">
+<code class="descname">setChanged</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#setChanged" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Call to indicate that something about the component has changed.</p>
+</div>
+<div class="section" id="method-examples">
+<h2>Method examples<a class="headerlink" href="#method-examples" title="Permalink to this headline">¶</a></h2>
+<div class="code highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Component object</span>
+<span class="c"># method examples</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>What is this robofab.world thing? &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="How To’s" href="index.html" />
+    <link rel="next" title="Understanding Contours and Segments" href="understanding_contours.html" />
+    <link rel="prev" title="Scripting" href="scripting.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="scripting.html" title="previous chapter">Scripting</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="understanding_contours.html" title="next chapter">Understanding Contours and Segments</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="what-is-this-robofab-world-thing">
+<h1>What is this robofab.world thing?<a class="headerlink" href="#what-is-this-robofab-world-thing" title="Permalink to this headline">¶</a></h1>
+<p>RoboFab can operate in many different environments. When RoboFab is running in FontLab it needs to do different things than when you&#8217;re using it on for instance Linux or Windows or OSX Python. <code class="docutils literal"><span class="pre">robofab.world</span></code> is a module which helps you by providing the objects and functions which are appropriate for the environment you&#8217;re working in.</p>
+<div class="section" id="portable-code">
+<h2>Portable code<a class="headerlink" href="#portable-code" title="Permalink to this headline">¶</a></h2>
+<p>Rather than include code in your scripts which try to figure out what functionality is available, and what machine, Python version etc. just ask <code class="docutils literal"><span class="pre">roboFab.world</span></code>. Run a script in FontLab and you&#8217;ll get RoboFab objects that interface with the FontLab fonts and glyphs. Run the same script outside FontLab, and you need objects that interface with UFO files. <code class="docutils literal"><span class="pre">robofab.world</span></code> makes the choosing of the right objects a bit more transparent. Just import from the world module and it will pick the right one.</p>
+<p>Using <code class="docutils literal"><span class="pre">robofab.world</span></code> is not compulsory &#8211; you can load the objects from the modules yourself. In some cases <code class="docutils literal"><span class="pre">robofab.world</span></code> doesn&#8217;t even load the objects you might need. But scripts that import from <code class="docutils literal"><span class="pre">robofab.world</span></code> can actually work in FontLab, but also outside of it. With a bit of care, your scripts can work on UFO and FontLab fonts without ever noticing the difference. That saves a lot of time and effort.</p>
+</div>
+<div class="section" id="stuff-in-robofab-world">
+<h2>Stuff in robofab.world<a class="headerlink" href="#stuff-in-robofab-world" title="Permalink to this headline">¶</a></h2>
+<p>Here are the objects and functions you can import from <code class="docutils literal"><span class="pre">robofab.world</span></code>. If you want to see exactly when and which object are selected, have a look in the <code class="docutils literal"><span class="pre">robofab.world</span></code> source.</p>
+<div class="section" id="robofab-world-world">
+<h3>robofab.world.world<a class="headerlink" href="#robofab-world-world" title="Permalink to this headline">¶</a></h3>
+<p>A collection of parameters about the world RoboFab works in. When the <code class="xref py py-mod docutils literal"><span class="pre">robofab.world</span></code> module is loaded, the first time you call for it, it creates an instance of a special object which catalogs as much as possible about the environment it woke up in. This object is also called <code class="docutils literal"><span class="pre">world</span></code>. It&#8217;s simpler than it sounds really, have a look at the examples.</p>
+<p>In the Python IDE it looks like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">world</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">world</span>
+<span class="go">[Robofab is running on darwin.</span>
+<span class="go">Python version: 2.3,</span>
+<span class="go">Mac stuff: X,</span>
+<span class="go">PC stuff: None,</span>
+<span class="go">FontLab stuff: False,</span>
+<span class="go">FLversion: None]</span>
+</pre></div>
+</div>
+<p>In a FontLab macro (Mac FontLab) it looks like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">world</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">world</span>
+<span class="go">[Robofab is running on mac.</span>
+<span class="go">Python version: 2.3,</span>
+<span class="go">Mac stuff: pre-X,</span>
+<span class="go">PC stuff: None,</span>
+<span class="go">FontLab stuff: True,</span>
+<span class="go">FLversion: 4.6.1/Mac]</span>
+</pre></div>
+</div>
+<p>See the difference?</p>
+</div>
+<div class="section" id="openfont-path">
+<h3>OpenFont(path)<a class="headerlink" href="#openfont-path" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">OpenFont</span></code> is a function which opens a font. When called with a path it will open the font at that location. Without a path it will try to offer some appropriate interface to pick a font. In FontLab, <code class="docutils literal"><span class="pre">OpenFont()</span></code> gives you the standard font-opening-interface, and <code class="docutils literal"><span class="pre">OpenFont(path)</span></code> will open a FontLab font window for that font. Outside FontLab, for instance in the Python IDE, you get a file dialog to point at a UFO package. If you look at the source code of OpenFont, you&#8217;ll see that it is not just one function, there are several for different kinds of environments. By importing <code class="docutils literal"><span class="pre">OpenFont</span></code> from <code class="docutils literal"><span class="pre">robofab.world</span></code>, your script always has the right one and you don&#8217;t have to change it when the script moves from one environment to the other:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">OpenFont</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># dialog appears</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">f</span>
+<span class="go">&lt; Font MyFont &gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In places where there is no UI available, for instance when RoboFab is running on a Linux server, <code class="docutils literal"><span class="pre">OpenFont(path)</span></code> might try to import UI parts and fail. If you already know the path of a font, use <code class="docutils literal"><span class="pre">RFont(path)</span></code> instead:</p>
+<div class="code last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">RFont</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">RFont</span><span class="p">(</span><span class="s">&#39;MyFont.ufo&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">f</span>
+<span class="go">&lt; RFont font for MyFontOT-Regular &gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="currentfont">
+<h3>CurrentFont()<a class="headerlink" href="#currentfont" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">CurrentFont</span></code> is an old favorite from RoboFog. It returns a font object for the top most font or the last imported font. It is very useful to write short scripts that manipulate the current font in one way or the other, so you don&#8217;t have to enter the font&#8217;s name:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="go">&lt; RFont font for MyFontOT-Regular &gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="currentglyph">
+<h3>CurrentGlyph()<a class="headerlink" href="#currentglyph" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">CurrentGlyph</span></code> is similar to <code class="docutils literal"><span class="pre">CurrentFont</span></code>, except that it returns the top most glyph. <code class="docutils literal"><span class="pre">CurrentGlyph</span></code> returns <code class="docutils literal"><span class="pre">None</span></code> when there isn&#8217;t a glyph window open:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentGlyph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">CurrentGlyph</span><span class="p">()</span>
+<span class="go">&lt; RGlyph for unnamed_font.L &gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="allfonts">
+<h3>AllFonts()<a class="headerlink" href="#allfonts" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">AllFonts</span></code> returns a list with font objects for all fonts which are &#8216;open&#8217; at the moment. In FontLab that means one <code class="docutils literal"><span class="pre">RFont</span></code> object for each font window. Outside FontLab it means a list of all font objects that exist at the moment.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>It is possible to have more than one font object for the same UFO, so if you use <code class="docutils literal"><span class="pre">AllFonts</span></code> for UFOs you need to take that into account. <code class="docutils literal"><span class="pre">AllFonts</span></code> is easy if you want to do something to all open fonts:</p>
+<div class="code last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">AllFonts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">AllFonts</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">print</span> <span class="n">f</span>
+<span class="go">&lt; RFont for aFont-Plain.00 &gt;</span>
+<span class="go">&lt; RFont for aFont-Italic.00 &gt;</span>
+<span class="go">&lt; RFont for aFont-Bold.00 &gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="rfont-rglyph">
+<h3>RFont, RGlyph<a class="headerlink" href="#rfont-rglyph" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">RFont</span></code> and <code class="docutils literal"><span class="pre">RGlyph</span></code> classes are also loaded by <code class="docutils literal"><span class="pre">robofab.world</span></code>. In FontLab these objects will be imported from <code class="docutils literal"><span class="pre">objectsFL.py</span></code> (the FontLab implementation of the Unified Font Objects), and otherwise from <code class="docutils literal"><span class="pre">objectsRF.py</span></code>, the UFO objects.</p>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

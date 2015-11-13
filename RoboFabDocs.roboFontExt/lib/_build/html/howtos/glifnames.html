@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Glyphnames versus GLIF-names &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="How To’s" href="index.html" />
+    <link rel="next" title="How to get to FontLab’s internals" href="lowlevel.html" />
+    <link rel="prev" title="Generating Fonts" href="generating_fonts.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="generating_fonts.html" title="previous chapter">Generating Fonts</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="lowlevel.html" title="next chapter">How to get to FontLab&#8217;s internals</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="glyphnames-versus-glif-names">
+<h1>Glyphnames versus GLIF-names<a class="headerlink" href="#glyphnames-versus-glif-names" title="Permalink to this headline">¶</a></h1>
+<p>The names of the GLIF xml files, in the UFO are related to the glyph names. It used to be a 1:1 relationship, but then glyphnames grew really long and some file systems don&#8217;t support long filenames. So something had to give.</p>
+<div class="section" id="glyphnamingschemes">
+<h2>GlyphNamingSchemes<a class="headerlink" href="#glyphnamingschemes" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">objectsFL.RFont.writeUFO()</span></code> method can take a special callback function in order to convert the actual glyphname to a suitable filename. The goal is to create unique filenames so that glyphs won&#8217;t overwrite each other&#8217;s exports, also comply to certain filesystems which require filenames to be shorter than a certain number of characters, while retaining a high level of human-readability. Have a look at <code class="docutils literal"><span class="pre">robofab/tools/glyphNameSchemes.py</span></code> for the currently available callbacks. With <code class="docutils literal"><span class="pre">glyphNameSchemes</span></code>, the <code class="docutils literal"><span class="pre">glyphName</span></code> and the <code class="docutils literal"><span class="pre">.glif</span></code> filename no longer have a direct relationship.</p>
+<div class="section" id="glyphnametoshortfilename-glyphname-glyphset">
+<h3>glyphNameToShortFileName(glyphName, glyphSet)<a class="headerlink" href="#glyphnametoshortfilename-glyphname-glyphset" title="Permalink to this headline">¶</a></h3>
+<p>Features a guaranteed maximum filename (default 31 characters) for really long glyphnames, and clash testing.</p>
+<ul class="simple">
+<li>All non-ascii characters are converted to <code class="docutils literal"><span class="pre">_</span></code> (underscore), including <code class="docutils literal"><span class="pre">.</span></code> (period).</li>
+<li>All glyphnames which are too long are truncated and a hash is added at the end.</li>
+<li>The hash is generated from the whole glyphname.</li>
+<li>Finally, the candidate glyphname is checked against the <code class="docutils literal"><span class="pre">contents.plist</span></code> and a incrementing number is added at the end if there is a glyph with that name already.</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">glyphNameToShortFileName</span></code> is the <strong>default naming scheme</strong> for exporting UFOs from FontLab. For most everyday use, this callback does all the work and there is no need to tweak it. Below are some examples to give you an idea of what the callback does:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Glifnames howto</span>
+<span class="c"># glyphNameToShortFileName examples</span>
+
+<span class="c"># examples of glyphname to glif name transformations</span>
+<span class="kn">from</span> <span class="nn">robofab.tools.glyphNameSchemes</span> <span class="kn">import</span> <span class="n">glyphNameToShortFileName</span>
+ 
+<span class="c"># a short name</span>
+<span class="k">print</span> <span class="n">glyphNameToShortFileName</span><span class="p">(</span><span class="s">&quot;accent&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+ 
+<span class="c"># a short name, starting with capital letter</span>
+<span class="k">print</span> <span class="n">glyphNameToShortFileName</span><span class="p">(</span><span class="s">&quot;Accent&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+ 
+<span class="c"># a really long name - note the hexadecimal hash at the end</span>
+<span class="k">print</span> <span class="n">glyphNameToShortFileName</span><span class="p">(</span><span class="s">&quot;this_is_a_very_long_glyph_name.altswash2&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+ 
+<span class="c"># a name with a period in it, 1</span>
+<span class="k">print</span> <span class="n">glyphNameToShortFileName</span><span class="p">(</span><span class="s">&quot;a.alt&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+ 
+<span class="c"># a name with a period in it, 2</span>
+<span class="k">print</span> <span class="n">glyphNameToShortFileName</span><span class="p">(</span><span class="s">&quot;.notdef&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/glifNames_00.py">open or download this file: glifNames_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="s">&quot;accent.glif&quot;</span>
+<span class="s">&quot;A_ccent.glif&quot;</span>
+<span class="s">&quot;this_is_a_very_lon340a8fa5.glif&quot;</span>
+<span class="s">&quot;a_alt.glif&quot;</span>
+<span class="s">&quot;_notdef.glif&quot;</span>
+<span class="s">&quot;_nic_de.glif&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

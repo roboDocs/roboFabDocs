@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RContour &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Objects" href="index.html" />
+    <link rel="next" title="RPoint" href="RPoint.html" />
+    <link rel="prev" title="RGlyph" href="RGlyph.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="RGlyph.html" title="previous chapter">RGlyph</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="RPoint.html" title="next chapter">RPoint</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="rcontour">
+<h1>RContour<a class="headerlink" href="#rcontour" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/RContour.gif" src="../_images/RContour.gif" />
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Contour object</span>
+<span class="c"># usage examples</span>
+
+<span class="c"># take a glyph (one with outlines obviously)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">CurrentGlyph</span><span class="p">()</span>
+
+<span class="c"># get to contours by index:</span>
+<span class="k">print</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RContour_00.py">open or download this file: RContour_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt; RContour for Mailer-Regular.a[0] &gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">RContour</span></code> is an object for, well, contours. A contour is a single path of any number of points and shape. A glyph usually consists of a couple of contours, and this the object that represents each one. The <code class="docutils literal"><span class="pre">RContour</span></code> object offers access to the outline matter in various ways. The parent of <code class="docutils literal"><span class="pre">RContour</span></code> is usually <code class="docutils literal"><span class="pre">RGlyph</span></code>.</p>
+</div>
+<div class="section" id="understanding-contours-and-outlines">
+<h2>Understanding Contours and outlines<a class="headerlink" href="#understanding-contours-and-outlines" title="Permalink to this headline">¶</a></h2>
+<p>The way outline data is organised in RoboFab, and how the various objects relate is described here: <a class="reference internal" href="../howtos/understanding_contours.html"><em>understanding contours</em></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you want to add new contours to a glyph it&#8217;s easier to <a class="reference internal" href="../howtos/use_pens.html"><em>draw them with a pen</em></a> than to construct the shapes from segments.</p>
+</div>
+</div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="index">
+<code class="descname">index</code><a class="headerlink" href="#index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The index of the contour in the Glyph.</p>
+<dl class="attribute">
+<dt id="selected">
+<code class="descname">selected</code><a class="headerlink" href="#selected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns <code class="docutils literal"><span class="pre">1</span></code> if the contour is selected, <code class="docutils literal"><span class="pre">0</span></code> if it isn&#8217;t.</p>
+<dl class="attribute">
+<dt id="box">
+<code class="descname">box</code><a class="headerlink" href="#box" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The bounding box for the contour. (read only)</p>
+<dl class="attribute">
+<dt id="clockwise">
+<code class="descname">clockwise</code><a class="headerlink" href="#clockwise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Direction of contour: <code class="docutils literal"><span class="pre">1=clockwise</span></code>, <code class="docutils literal"><span class="pre">0=counterclockwise</span></code>.</p>
+<dl class="attribute">
+<dt id="points">
+<code class="descname">points</code><a class="headerlink" href="#points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The contour as a list of <a class="reference internal" href="RPoint.html"><em>Point</em></a>&#8216;s.</p>
+<dl class="attribute">
+<dt id="bPoints">
+<code class="descname">bPoints</code><a class="headerlink" href="#bPoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The contour as a list of <a class="reference internal" href="bPoint.html"><em>bPoint</em></a>&#8216;s.</p>
+</div>
+<div class="section" id="attribute-examples">
+<h2>Attribute examples<a class="headerlink" href="#attribute-examples" title="Permalink to this headline">¶</a></h2>
+<p>Examples with contours and points <a class="reference internal" href="../howtos/understanding_contours.html"><em>here</em></a>.</p>
+</div>
+<div class="section" id="methods-for-segments">
+<h2>Methods for segments<a class="headerlink" href="#methods-for-segments" title="Permalink to this headline">¶</a></h2>
+<p>For regular drawing in glyphs: please use <a class="reference internal" href="../howtos/use_pens.html"><em>Pens</em></a>. If you want to mess with segments on a lower level, be our guest:</p>
+<dl class="function">
+<dt id="appendSegment">
+<code class="descname">appendSegment</code><span class="sig-paren">(</span><em>segmentType</em>, <em>points</em>, <em>smooth=False</em><span class="sig-paren">)</span><a class="headerlink" href="#appendSegment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Add a segment to the contour. Parameters?</p>
+<dl class="function">
+<dt>
+<code class="descname">insertSegment(index, segmentType, points, smooth=False):</code></dt>
+<dd></dd></dl>
+
+<p>Insert a segment into the contour.</p>
+<dl class="function">
+<dt>
+<code class="descname">removeSegment(index):</code></dt>
+<dd></dd></dl>
+
+<p>Remove a segment from the contour.</p>
+<dl class="function">
+<dt>
+<code class="descname">setStartSegment(segmentIndex):</code></dt>
+<dd></dd></dl>
+
+<p>Set the first node on the contour.</p>
+</div>
+<div class="section" id="methods-for-points">
+<h2>Methods for points<a class="headerlink" href="#methods-for-points" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="appendBPoint">
+<code class="descname">appendBPoint</code><span class="sig-paren">(</span><em>pointType</em>, <em>anchor</em>, <em>bcpIn=(0</em>, <em>0)</em>, <em>bcpOut=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#appendBPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Append a <code class="docutils literal"><span class="pre">bPoint</span></code> to the contour.</p>
+<dl class="function">
+<dt id="autoStartSegment">
+<code class="descname">autoStartSegment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autoStartSegment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Automatically set the lower left point of the contour as the first point.</p>
+<dl class="function">
+<dt id="insertBPoint">
+<code class="descname">insertBPoint</code><span class="sig-paren">(</span><em>index</em>, <em>pointType</em>, <em>anchor</em>, <em>bcpIn=(0</em>, <em>0)</em>, <em>bcpOut=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#insertBPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Insert a <code class="docutils literal"><span class="pre">bPoint</span></code> at index on the contour.</p>
+</div>
+<div class="section" id="other-methods">
+<h2>Other methods<a class="headerlink" href="#other-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="reverseContour">
+<code class="descname">reverseContour</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#reverseContour" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Reverse contour direction.</p>
+<dl class="function">
+<dt id="copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Duplicate this contour.</p>
+<dl class="function">
+<dt id="draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>aPen</em><span class="sig-paren">)</span><a class="headerlink" href="#draw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Draw the object with a RoboFab segment pen.</p>
+<dl class="function">
+<dt id="drawPoints">
+<code class="descname">drawPoints</code><span class="sig-paren">(</span><em>aPen</em><span class="sig-paren">)</span><a class="headerlink" href="#drawPoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Draw the object with a point pen.</p>
+<dl class="function">
+<dt id="move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em><span class="sig-paren">)</span><a class="headerlink" href="#move" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Move the contour.</p>
+<dl class="function">
+<dt id="pointInside">
+<code class="descname">pointInside</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>evenOdd=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pointInside" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Determine if the point is inside or ouside of the contour.</p>
+<dl class="function">
+<dt id="round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#round" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Round the value of all points in the contour.</p>
+<dl class="function">
+<dt id="scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Scale the contour by <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>. Optionally set the center of the scale.</p>
+<dl class="function">
+<dt id="rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#rotate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Rotate the contour by <code class="docutils literal"><span class="pre">angle</span></code> (in degrees). Optionally set an <code class="docutils literal"><span class="pre">offset</span></code> value.</p>
+<dl class="function">
+<dt id="skew">
+<code class="descname">skew</code><span class="sig-paren">(</span><em>angle</em>, <em>offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skew" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Skew the contour by <code class="docutils literal"><span class="pre">angle</span></code> (in degrees). Optionally set an <code class="docutils literal"><span class="pre">offset</span></code> value.</p>
+<dl class="function">
+<dt id="transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Transform this contour. Use a Transform matrix object to mess with the contour. See also <a class="reference internal" href="../howtos/use_transformations.html"><em>how to use transformations</em></a>.</p>
+</div>
+<div class="section" id="method-examples">
+<h2>Method examples<a class="headerlink" href="#method-examples" title="Permalink to this headline">¶</a></h2>
+<div class="code highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Contour object</span>
+<span class="c"># method examples</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>test_psHints &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../../index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../../index.html">home</a> </li>
+<!--
+<li><a href="../../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../../intro/download.html">download</a></li>
+<li><a href="../../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">API Docs</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="module-robofab.test.test_psHints">
+<span id="test-pshints"></span><h1>test_psHints<a class="headerlink" href="#module-robofab.test.test_psHints" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="robofab.test.test_psHints.test">
+<code class="descclassname">robofab.test.test_psHints.</code><code class="descname">test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robofab.test.test_psHints.test" title="Permalink to this definition">¶</a></dt>
+<dd><p># some tests for the ps Hints operations
+&gt;&gt;&gt; from robofab.world import RFont, RGlyph
+&gt;&gt;&gt; g = RGlyph()
+&gt;&gt;&gt; g.psHints.isEmpty()
+True</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">RGlyph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">g</span> <span class="o">+</span> <span class="n">h</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">g</span> <span class="o">-</span> <span class="n">h</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">g</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">g</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">vHints</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">50</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">hHints</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="ow">not</span> <span class="n">g</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">asDict</span><span class="p">()</span> <span class="o">==</span> <span class="n">g</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">asDict</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p># multiplication
+&gt;&gt;&gt; v = g.psHints * 2
+&gt;&gt;&gt; v.asDict() == {&#8216;vHints&#8217;: [[200, 100], [400, 100]], &#8216;hHints&#8217;: [[200, 100], [400, 10]]}
+True</p>
+<p># division
+&gt;&gt;&gt; v = g.psHints / 2
+&gt;&gt;&gt; v.asDict() == {&#8216;vHints&#8217;: [[50.0, 25.0], [100.0, 25.0]], &#8216;hHints&#8217;: [[50.0, 25.0], [100.0, 2.5]]}
+True</p>
+<p># multiplication with x, y, factor
+# vertically oriented values should respond different
+&gt;&gt;&gt; v = g.psHints * (.5, 10)
+&gt;&gt;&gt; v.asDict() == {&#8216;vHints&#8217;: [[1000, 500], [2000, 500]], &#8216;hHints&#8217;: [[50.0, 25.0], [100.0, 2.5]]}
+True</p>
+<p># division with x, y, factor
+# vertically oriented values should respond different
+&gt;&gt;&gt; v = g.psHints / (.5, 10)
+&gt;&gt;&gt; v.asDict() == {&#8216;vHints&#8217;: [[10.0, 5.0], [20.0, 5.0]], &#8216;hHints&#8217;: [[200.0, 100.0], [400.0, 10.0]]}
+True</p>
+<p># rounding to integer
+&gt;&gt;&gt; v = g.psHints / 2
+&gt;&gt;&gt; v.round()
+&gt;&gt;&gt; v.asDict() == {&#8216;vHints&#8217;: [(50, 25), (100, 25)], &#8216;hHints&#8217;: [(50, 25), (100, 3)]}
+True</p>
+<p># &#8220;ps hint values calculating with a glyph&#8221;
+# ps hint values as part of glyphmath operations.
+# multiplication
+&gt;&gt;&gt; h = g * 10
+&gt;&gt;&gt; h.psHints.asDict() == {&#8216;vHints&#8217;: [[1000, 500], [2000, 500]], &#8216;hHints&#8217;: [[1000, 500], [2000, 50]]}
+True</p>
+<p># division
+&gt;&gt;&gt; h = g / 2
+&gt;&gt;&gt; h.psHints.asDict() == {&#8216;vHints&#8217;: [[50.0, 25.0], [100.0, 25.0]], &#8216;hHints&#8217;: [[50.0, 25.0], [100.0, 2.5]]}
+True</p>
+<p># x, y factor multiplication
+&gt;&gt;&gt; h = g * (.5, 10)
+&gt;&gt;&gt; h.psHints.asDict() == {&#8216;vHints&#8217;: [[1000, 500], [2000, 500]], &#8216;hHints&#8217;: [[50.0, 25.0], [100.0, 2.5]]}
+True</p>
+<p># x, y factor division
+&gt;&gt;&gt; h = g / (.5, 10)
+&gt;&gt;&gt; h.psHints.asDict() == {&#8216;vHints&#8217;: [[10.0, 5.0], [20.0, 5.0]], &#8216;hHints&#8217;: [[200.0, 100.0], [400.0, 10.0]]}
+True</p>
+<p># &#8220;font ps hint values&#8221;
+&gt;&gt;&gt; f = RFont()
+&gt;&gt;&gt; f.psHints.isEmpty()
+True</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueScale</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueShift</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">blueFuzz</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">forceBold</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">hStems</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">vStems</span> <span class="o">=</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="ow">not</span> <span class="n">f</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">insertGlyph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;new&quot;</span><span class="p">)</span>
+<span class="go">&lt;RGlyph for None.new&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">[</span><span class="s">&quot;new&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">asDict</span><span class="p">()</span> <span class="o">==</span> <span class="n">g</span><span class="o">.</span><span class="n">psHints</span><span class="o">.</span><span class="n">asDict</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

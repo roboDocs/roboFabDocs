@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FontLab Remote &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="How To’s" href="index.html" />
+    <link rel="next" title="Generating Fonts" href="generating_fonts.html" />
+    <link rel="prev" title="Building accents" href="building_accents.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="building_accents.html" title="previous chapter">Building accents</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="generating_fonts.html" title="next chapter">Generating Fonts</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="fontlab-remote">
+<h1>FontLab Remote<a class="headerlink" href="#fontlab-remote" title="Permalink to this headline">¶</a></h1>
+<p>A neat feature in RoboFab for FontLab on MacOS. RoboFab can install an AppleEvent handler in FontLab to make FontLab respond to calls from other applications. There is code to communicate with FontLab using this AppleEvent and to make it execute code and exchange data such as glyphs. How useful this remote stuff is depends on what you want to do with it. We thought it was cool. The &#8216;remote&#8217; relates to one application controlling another. Both applications need to run on the same machine, it does not mean that FontLab is accepting commands over a network for instance. For that we need another tool.</p>
+<div class="section" id="how">
+<h2>How?<a class="headerlink" href="#how" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-1-start-the-remote-stuff-in-fontlab">
+<h3>Step 1: Start the remote stuff in FontLab<a class="headerlink" href="#step-1-start-the-remote-stuff-in-fontlab" title="Permalink to this headline">¶</a></h3>
+<p>The first thing you need to do is start the AppleEvent support in FontLab. That&#8217;s done by importing the remote module:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># start the remote stuff in FontLab</span>
+<span class="kn">import</span> <span class="nn">robofab.tools.remote</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/fontlabRemote_00.py">open or download this file: fontlabRemote_00.py</a></div><div class="code highlight-python"><div class="highlight"><pre>FontLabRemote is on.
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-2-start-the-python-ide">
+<h3>Step 2: Start the Python IDE<a class="headerlink" href="#step-2-start-the-python-ide" title="Permalink to this headline">¶</a></h3>
+<p>You can now send commands, bits of code and entire glyphs to FontLab from the Python IDE:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># first, try a bit of python code</span>
+<span class="kn">from</span> <span class="nn">robofab.tools.remote</span> <span class="kn">import</span> <span class="n">runFontLabRemote</span>
+<span class="k">print</span> <span class="n">runFontLabRemote</span><span class="p">(</span><span class="s">&quot;print 1+1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/fontlabRemote_01.py">open or download this file: fontlabRemote_01.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="mi">2</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal"><span class="pre">runFontLabRemote()</span></code> sends a piece of Python code to FontLab&#8217;s python interpreter and has it executed. In this example the code is <code class="docutils literal"><span class="pre">print</span> <span class="pre">1+1</span></code>. The result, the output of FontLab running this piece of code is then returned to the Python IDE. Note that the output is always a string. Depending on the code you throw at FontLab it could even contain tracebacks or other output.</p>
+<p>When FontLab receives and executes a remote command, it will print a note to the FontLab Output window:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt; executing remote command &gt;
+&lt; executing remote command &gt;
+&lt; executing remote command &gt;
+</pre></div>
+</div>
+<p>That means that FontLab is doing remote stuff.</p>
+</div>
+<div class="section" id="step-3-teleporting-a-glyph">
+<h3>Step 3: Teleporting a Glyph<a class="headerlink" href="#step-3-teleporting-a-glyph" title="Permalink to this headline">¶</a></h3>
+<p>The remote module has support to send and receive Glyphs. For the next example open a new font in FontLab first (command N), then run the following code in the Python IDE. Make sure you have a UFO font handy somewhere:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">robofab.tools.remote</span> <span class="kn">import</span> <span class="n">transmitGlyph</span>
+ 
+<span class="c"># Pick a UFO font:</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">()</span>
+ 
+<span class="c"># one to beam up, Scotty!</span>
+<span class="n">transmitGlyph</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s">&#39;n&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/fontlabRemote_02.py">open or download this file: fontlabRemote_02.py</a></div><p>If all went well, you now have the <code class="docutils literal"><span class="pre">n</span></code> from your UFO copied to the right slot in your FontLab font. As noted earlier, if all you want to do is import some glyphs from a UFO into FontLab there is absolutely no need to use all this remote stuff.</p>
+</div>
+</div>
+<div class="section" id="why">
+<h2>Why?<a class="headerlink" href="#why" title="Permalink to this headline">¶</a></h2>
+<p>The remote module only takes care of the communication with FontLab. Possible applications which could be built on top of this are:</p>
+<ul class="simple">
+<li>Use FontLab to perform outline operations such as remove overlap.</li>
+<li>Use FontLab to batch process font generation.</li>
+<li>Build an external editor to augment the functionality of FontLab.</li>
+</ul>
+<p>As noted before, the remote stuff only works on MacOS.</p>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>Example in which a glyph from a UFO opened in plain Python is copied to FontLab. After removing overlap the glyph is returned and inserted in the UFO:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Fontlabremote howto</span>
+<span class="c"># usage examples</span>
+ 
+<span class="c">#FLM: Remove overlap from Remote Glyph.</span>
+ 
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">OpenFont</span>
+<span class="kn">from</span> <span class="nn">robofab.tools.remote</span> <span class="kn">import</span> <span class="n">transmitGlyph</span><span class="p">,</span> <span class="n">receiveGlyph</span><span class="p">,</span> 
+<span class="n">runFontLabRemote</span>
+ 
+<span class="c"># Pick a UFO font:</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">()</span>
+ 
+<span class="k">print</span> <span class="s">&quot;Number of contours before&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">])</span>
+ 
+<span class="c"># call FontLab to make a new font</span>
+<span class="n">startNewFontCode</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;from robofab.world import NewFont</span>
+<span class="s">f = NewFont()</span>
+<span class="s">f.info.fullName = &#39;Temporary Font generated by RoboFab Remote&#39;&quot;&quot;&quot;</span>
+ 
+<span class="k">print</span> <span class="n">runFontLabRemote</span><span class="p">(</span><span class="n">startNewFontCode</span><span class="p">)</span>
+ 
+<span class="c"># send a glyph to FontLab,</span>
+<span class="c"># it will be inserted in the CurrentFont.</span>
+<span class="n">transmitGlyph</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">])</span>
+<span class="n">f</span><span class="o">.</span><span class="n">removeGlyph</span><span class="p">(</span><span class="s">&#39;A&#39;</span><span class="p">)</span>
+ 
+<span class="c"># send instructions to remove overlap for this glyph</span>
+<span class="n">overlapCode</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;from robofab.world import CurrentFont</span>
+<span class="s">from robofab.tools.remote import transmitGlyph</span>
+<span class="s">f = CurrentFont()</span>
+<span class="s">f[&quot;A&quot;].removeOverlap()</span>
+<span class="s">f.update()</span>
+<span class="s">transmitGlyph(f[&#39;A&#39;])</span>
+<span class="s">&quot;&quot;&quot;</span>
+ 
+<span class="c"># send the code and catch the output</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">runFontLabRemote</span><span class="p">(</span><span class="n">overlapCode</span><span class="p">)</span>
+<span class="c"># interpret the output</span>
+<span class="n">receiveGlyph</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Number of contours after: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">])</span>
+ 
+<span class="c"># send instructions to FontLab to close the font again.</span>
+<span class="n">closeFontCode</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;from robofab.world import CurrentFont</span>
+<span class="s">f = CurrentFont()</span>
+<span class="s">f.close(None)</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">print</span> <span class="n">runFontLabRemote</span><span class="p">(</span><span class="n">closeFontCode</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;done!&#39;</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/fontlabRemote_03.py">open or download this file: fontlabRemote_03.py</a></div><p>Possible results:</p>
+<div class="highlight-python"><div class="highlight"><pre>Number of contours before: 6
+Number of contours after:  4
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">While experimenting with <code class="docutils literal"><span class="pre">robofab.tools.remote</span></code> we found that after some time it&#8217;s possible that FontLab grows weary of the remote fussing and the scripts stop working. Restarting FontLab usually solves that situation.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

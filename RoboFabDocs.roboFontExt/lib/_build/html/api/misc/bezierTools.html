@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>bezierTools &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../../index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../../index.html">home</a> </li>
+<!--
+<li><a href="../../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../../intro/download.html">download</a></li>
+<li><a href="../../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">API Docs</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="module-robofab.misc.bezierTools">
+<span id="beziertools"></span><h1>bezierTools<a class="headerlink" href="#module-robofab.misc.bezierTools" title="Permalink to this headline">¶</a></h1>
+<p>fontTools.misc.bezierTools.py &#8211; tools for working with bezier path segments.
+Rewritten to elimate the numpy dependency</p>
+<dl class="function">
+<dt id="robofab.misc.bezierTools.calcQuadraticBounds">
+<code class="descclassname">robofab.misc.bezierTools.</code><code class="descname">calcQuadraticBounds</code><span class="sig-paren">(</span><em>pt1</em>, <em>pt2</em>, <em>pt3</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.bezierTools.calcQuadraticBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the bounding rectangle for a qudratic bezier segment.
+pt1 and pt3 are the &#8220;anchor&#8221; points, pt2 is the &#8220;handle&#8221;.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calcQuadraticBounds</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="go">(0, 0, 100, 50.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcQuadraticBounds</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="go">(0.0, 0.0, 100, 100)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.bezierTools.calcCubicBounds">
+<code class="descclassname">robofab.misc.bezierTools.</code><code class="descname">calcCubicBounds</code><span class="sig-paren">(</span><em>pt1</em>, <em>pt2</em>, <em>pt3</em>, <em>pt4</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.bezierTools.calcCubicBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the bounding rectangle for a cubic bezier segment.
+pt1 and pt4 are the &#8220;anchor&#8221; points, pt2 and pt3 are the &#8220;handles&#8221;.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">calcCubicBounds</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="go">(0, 0, 100, 75.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcCubicBounds</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="go">(0.0, 0.0, 100, 100)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calcCubicBounds</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="go">(35.566243270259356, 0, 64.43375672974068, 75.0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.bezierTools.splitLine">
+<code class="descclassname">robofab.misc.bezierTools.</code><code class="descname">splitLine</code><span class="sig-paren">(</span><em>pt1</em>, <em>pt2</em>, <em>where</em>, <em>isHorizontal</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.bezierTools.splitLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split the line between pt1 and pt2 at position &#8216;where&#8217;, which
+is an x coordinate if isHorizontal is False, a y coordinate if
+isHorizontal is True. Return a list of two line segments if the
+line was successfully split, or a list containing the original
+line.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitLine</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="mi">50</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+<span class="go">((0, 0), (50.0, 100.0))</span>
+<span class="go">((50.0, 100.0), (100, 200))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitLine</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="mi">50</span><span class="p">,</span> <span class="bp">True</span><span class="p">))</span>
+<span class="go">((0, 0), (25.0, 50.0))</span>
+<span class="go">((25.0, 50.0), (100, 200))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitLine</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">50</span><span class="p">,</span> <span class="bp">True</span><span class="p">))</span>
+<span class="go">((0, 0), (50.0, 50.0))</span>
+<span class="go">((50.0, 50.0), (100, 100))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitLine</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">100</span><span class="p">,</span> <span class="bp">True</span><span class="p">))</span>
+<span class="go">((0, 0), (100, 100))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitLine</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">True</span><span class="p">))</span>
+<span class="go">((0, 0), (0.0, 0.0))</span>
+<span class="go">((0.0, 0.0), (100, 100))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitLine</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+<span class="go">((0, 0), (0.0, 0.0))</span>
+<span class="go">((0.0, 0.0), (100, 100))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.bezierTools.splitQuadratic">
+<code class="descclassname">robofab.misc.bezierTools.</code><code class="descname">splitQuadratic</code><span class="sig-paren">(</span><em>pt1</em>, <em>pt2</em>, <em>pt3</em>, <em>where</em>, <em>isHorizontal</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.bezierTools.splitQuadratic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split the quadratic curve between pt1, pt2 and pt3 at position &#8216;where&#8217;,
+which is an x coordinate if isHorizontal is False, a y coordinate if
+isHorizontal is True. Return a list of curve segments.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitQuadratic</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">150</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+<span class="go">((0, 0), (50, 100), (100, 0))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitQuadratic</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">50</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+<span class="go">((0.0, 0.0), (25.0, 50.0), (50.0, 50.0))</span>
+<span class="go">((50.0, 50.0), (75.0, 50.0), (100.0, 0.0))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitQuadratic</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">25</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+<span class="go">((0.0, 0.0), (12.5, 25.0), (25.0, 37.5))</span>
+<span class="go">((25.0, 37.5), (62.5, 75.0), (100.0, 0.0))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitQuadratic</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">25</span><span class="p">,</span> <span class="bp">True</span><span class="p">))</span>
+<span class="go">((0.0, 0.0), (7.32233047034, 14.6446609407), (14.6446609407, 25.0))</span>
+<span class="go">((14.6446609407, 25.0), (50.0, 75.0), (85.3553390593, 25.0))</span>
+<span class="go">((85.3553390593, 25.0), (92.6776695297, 14.6446609407), (100.0, -7.1054273576e-15))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># XXX I&#39;m not at all sure if the following behavior is desirable:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitQuadratic</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">50</span><span class="p">,</span> <span class="bp">True</span><span class="p">))</span>
+<span class="go">((0.0, 0.0), (25.0, 50.0), (50.0, 50.0))</span>
+<span class="go">((50.0, 50.0), (50.0, 50.0), (50.0, 50.0))</span>
+<span class="go">((50.0, 50.0), (75.0, 50.0), (100.0, 0.0))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.bezierTools.splitCubic">
+<code class="descclassname">robofab.misc.bezierTools.</code><code class="descname">splitCubic</code><span class="sig-paren">(</span><em>pt1</em>, <em>pt2</em>, <em>pt3</em>, <em>pt4</em>, <em>where</em>, <em>isHorizontal</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.bezierTools.splitCubic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split the cubic curve between pt1, pt2, pt3 and pt4 at position &#8216;where&#8217;,
+which is an x coordinate if isHorizontal is False, a y coordinate if
+isHorizontal is True. Return a list of curve segments.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitCubic</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">150</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+<span class="go">((0, 0), (25, 100), (75, 100), (100, 0))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitCubic</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">50</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+<span class="go">((0.0, 0.0), (12.5, 50.0), (31.25, 75.0), (50.0, 75.0))</span>
+<span class="go">((50.0, 75.0), (68.75, 75.0), (87.5, 50.0), (100.0, 0.0))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitCubic</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">25</span><span class="p">,</span> <span class="bp">True</span><span class="p">))</span>
+<span class="go">((0.0, 0.0), (2.2937927384, 9.17517095361), (4.79804488188, 17.5085042869), (7.47413641001, 25.0))</span>
+<span class="go">((7.47413641001, 25.0), (31.2886200204, 91.6666666667), (68.7113799796, 91.6666666667), (92.52586359, 25.0))</span>
+<span class="go">((92.52586359, 25.0), (95.2019551181, 17.5085042869), (97.7062072616, 9.17517095361), (100.0, 1.7763568394e-15))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.bezierTools.splitQuadraticAtT">
+<code class="descclassname">robofab.misc.bezierTools.</code><code class="descname">splitQuadraticAtT</code><span class="sig-paren">(</span><em>pt1</em>, <em>pt2</em>, <em>pt3</em>, <em>*ts</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.bezierTools.splitQuadraticAtT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split the quadratic curve between pt1, pt2 and pt3 at one or more
+values of t. Return a list of curve segments.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitQuadraticAtT</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="go">((0.0, 0.0), (25.0, 50.0), (50.0, 50.0))</span>
+<span class="go">((50.0, 50.0), (75.0, 50.0), (100.0, 0.0))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitQuadraticAtT</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">))</span>
+<span class="go">((0.0, 0.0), (25.0, 50.0), (50.0, 50.0))</span>
+<span class="go">((50.0, 50.0), (62.5, 50.0), (75.0, 37.5))</span>
+<span class="go">((75.0, 37.5), (87.5, 25.0), (100.0, 0.0))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.bezierTools.splitCubicAtT">
+<code class="descclassname">robofab.misc.bezierTools.</code><code class="descname">splitCubicAtT</code><span class="sig-paren">(</span><em>pt1</em>, <em>pt2</em>, <em>pt3</em>, <em>pt4</em>, <em>*ts</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.bezierTools.splitCubicAtT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split the cubic curve between pt1, pt2, pt3 and pt4 at one or more
+values of t. Return a list of curve segments.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitCubicAtT</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="go">((0.0, 0.0), (12.5, 50.0), (31.25, 75.0), (50.0, 75.0))</span>
+<span class="go">((50.0, 75.0), (68.75, 75.0), (87.5, 50.0), (100.0, 0.0))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">printSegments</span><span class="p">(</span><span class="n">splitCubicAtT</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">))</span>
+<span class="go">((0.0, 0.0), (12.5, 50.0), (31.25, 75.0), (50.0, 75.0))</span>
+<span class="go">((50.0, 75.0), (59.375, 75.0), (68.75, 68.75), (77.34375, 56.25))</span>
+<span class="go">((77.34375, 56.25), (85.9375, 43.75), (93.75, 25.0), (100.0, 0.0))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.bezierTools.solveQuadratic">
+<code class="descclassname">robofab.misc.bezierTools.</code><code class="descname">solveQuadratic</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em>, <em>sqrt=&lt;built-in function sqrt&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.bezierTools.solveQuadratic" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Solve a quadratic equation where a, b and c are real.</dt>
+<dd>a*x*x + b*x + c = 0</dd>
+</dl>
+<p>This function returns a list of roots. Note that the returned list
+is neither guaranteed to be sorted nor to contain unique values!</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="robofab.misc.bezierTools.solveCubic">
+<code class="descclassname">robofab.misc.bezierTools.</code><code class="descname">solveCubic</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em>, <em>d</em>, <em>abs=&lt;built-in function abs&gt;</em>, <em>pow=&lt;built-in function pow&gt;</em>, <em>sqrt=&lt;built-in function sqrt&gt;</em>, <em>cos=&lt;built-in function cos&gt;</em>, <em>acos=&lt;built-in function acos&gt;</em>, <em>pi=3.141592653589793</em><span class="sig-paren">)</span><a class="headerlink" href="#robofab.misc.bezierTools.solveCubic" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Solve a cubic equation where a, b, c and d are real.</dt>
+<dd>a*x*x*x + b*x*x + c*x + d = 0</dd>
+</dl>
+<p>This function returns a list of roots. Note that the returned list
+is neither guaranteed to be sorted nor to contain unique values!</p>
+</dd></dl>
+
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

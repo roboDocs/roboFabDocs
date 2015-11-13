@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting Started with RoboFab &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Introduction" href="index.html" />
+    <link rel="next" title="Release History" href="history.html" />
+    <link rel="prev" title="Installation notes" href="install.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="install.html" title="previous chapter">Installation notes</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="history.html" title="next chapter">Release History</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="getting-started-with-robofab">
+<h1>Getting Started with RoboFab<a class="headerlink" href="#getting-started-with-robofab" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installing">
+<h2>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h2>
+<p>Installing RoboFab is pretty straightforward as installing Python libraries go. But considering this might be the first time you do this, here are a couple of things to pay attention to. First, have a look at the <a class="reference internal" href="install.html"><em>installation notes</em></a>.</p>
+<div class="section" id="some-remarks-for-fontlab-4-6-users-on-mac-osx">
+<h3>Some remarks for FontLab 4.6 users on Mac OSX<a class="headerlink" href="#some-remarks-for-fontlab-4-6-users-on-mac-osx" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>In MacOSX, you need to have admin permissions to install robofab in MacOS 9 Python.</li>
+<li>If you&#8217;ve downloaded the MacOSX diskimage installer, first copy the entire thing to a nice, accessible place on your harddisk. The <code class="docutils literal"><span class="pre">install.py</span></code> script makes a link to the folder it&#8217;s in, so if you were to run the install script from the mounted diskimage, RoboFab would be gone after you unmount the diskimage.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="fontlab-macros">
+<h2>FontLab Macros<a class="headerlink" href="#fontlab-macros" title="Permalink to this headline">¶</a></h2>
+<p>RoboFab has some example scripts that show how it can be used in FontLab. In the RoboFab folder, there&#8217;s a folder named <code class="docutils literal"><span class="pre">Scripts</span></code>. In it are two folders that you can drag to FontLab&#8217;s <code class="docutils literal"><span class="pre">Macros</span></code> folder. After restarting the application the <code class="docutils literal"><span class="pre">Utils</span></code> and <code class="docutils literal"><span class="pre">RoboFabIntro</span></code> folder will have been added to the macro list.</p>
+<div class="section" id="then-what">
+<h3>Then what?<a class="headerlink" href="#then-what" title="Permalink to this headline">¶</a></h3>
+<p>It depends on your proficiency in scripting and operating fonteditors like FontLab. Some <a class="reference internal" href="../howtos/scripting.html"><em>notes on scripting</em></a> are available in the how to section. There&#8217;s <a class="reference internal" href="../index.html"><em>this manual</em></a> which offers documentation, examples and background. Help with operating your font editor of choice is not available from this site or from the RoboFab developers. Read the manual.</p>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

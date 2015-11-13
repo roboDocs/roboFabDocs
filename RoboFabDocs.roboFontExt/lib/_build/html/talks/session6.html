@@ -1,0 +1,505 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Scripting for production &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Step-by-step" href="index.html" />
+    <link rel="next" title="Adventures in NoneLab, scripting outside the box" href="session4.html" />
+    <link rel="prev" title="Scripting for interpolation" href="interpolation.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="interpolation.html" title="previous chapter">Scripting for interpolation</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="session4.html" title="next chapter">Adventures in NoneLab, scripting outside the box</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="scripting-for-production">
+<h1>Scripting for production<a class="headerlink" href="#scripting-for-production" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="production">
+<h2>Production<a class="headerlink" href="#production" title="Permalink to this headline">¶</a></h2>
+<p>In the production phase of a font it all comes together: moving stuff around, naming, interpolations, quality control, generating, database work, it pays to invest some time (or money) in some really good scripts. Each foundry and designer has their own preferred ways of doing things. It&#8217;s impossible to describe one production process and please everyone. So instead we&#8217;re going to look at some of the things you probably have to do anyway. You will have to match and adapt for your own methods.</p>
+<p>Production scripts can save a lot of time. But be careful: it is costly to make mistakes with your production sources. Make sure to <em>test</em> production scripts first on duplicate data, preferably in a different folder. Doing something &#8220;quickly&#8221; to a massive kerning table only to discover it was your only copy, and the action was wrong &#8211; will not save you any time. Like carpentry: measure twice, cut once.</p>
+</div>
+<div class="section" id="batch-processing">
+<h2>Batch processing<a class="headerlink" href="#batch-processing" title="Permalink to this headline">¶</a></h2>
+<p>Here are some examples of applying changes to several fonts at once using <code class="docutils literal"><span class="pre">AllFonts()</span></code>. Keep in mind that this applies to all fonts you have open in FontLab. So make sure to close any fonts that you don&#8217;t want treated this way before running the script:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># set font info in all fonts</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">AllFonts</span>
+
+<span class="k">for</span> <span class="n">font</span> <span class="ow">in</span> <span class="n">AllFonts</span><span class="p">():</span>
+    <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">familyName</span> <span class="o">=</span> <span class="s">&quot;MyFamily&quot;</span>
+    <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">ascender</span> <span class="o">=</span> <span class="mi">700</span>
+    <span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">descender</span> <span class="o">=</span> <span class="o">-</span><span class="mi">300</span>
+    <span class="n">font</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_00.py">open or download this file: session6_00.py</a></div><p>Obviously you can extend these to do lots more:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon 2006</span>
+<span class="c"># get info attributes for all fonts</span>
+<span class="c"># and dump them to a text file</span>
+ 
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">AllFonts</span>
+<span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">PutFile</span>
+ 
+<span class="n">text</span> <span class="o">=</span> <span class="p">[]</span>
+ 
+<span class="k">for</span> <span class="n">font</span> <span class="ow">in</span> <span class="n">AllFonts</span><span class="p">():</span>
+    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">font</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
+    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">familyName</span><span class="p">))</span>
+    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">styleName</span><span class="p">))</span>
+    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">fullName</span><span class="p">))</span>
+    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">unitsPerEm</span><span class="p">))</span>
+    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">ascender</span><span class="p">))</span>
+    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">descender</span><span class="p">))</span>
+    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+ 
+<span class="n">text</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">PutFile</span><span class="p">(</span><span class="s">&#39;Save file as:&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+    <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+    <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_01.py">open or download this file: session6_01.py</a></div><p>This is a more complex script. It iterates through all open fonts, collects some data in each and finally asks for a place to save all the data in a text file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon 2006</span>
+<span class="c"># batch save as</span>
+ 
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">AllFonts</span>
+<span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">GetFolder</span>
+ 
+<span class="n">path</span> <span class="o">=</span> <span class="n">GetFolder</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">font</span> <span class="ow">in</span> <span class="n">AllFonts</span><span class="p">():</span>
+        <span class="n">fileName</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">font</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">newPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">fileName</span><span class="p">)</span>
+        <span class="n">font</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">newPath</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_02.py">open or download this file: session6_02.py</a></div><p>This asks for a folder, then proceeds to save all open fonts in this folder:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon 2006</span>
+<span class="c"># batch interpolate</span>
+ 
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">SelectFont</span><span class="p">,</span> <span class="n">NewFont</span>
+ 
+<span class="c"># ask for two masters to interpolate:</span>
+<span class="n">font1</span> <span class="o">=</span> <span class="n">SelectFont</span><span class="p">(</span><span class="s">&quot;Select font 1&quot;</span><span class="p">)</span>
+<span class="n">font2</span> <span class="o">=</span> <span class="n">SelectFont</span><span class="p">(</span><span class="s">&quot;Select font 2&quot;</span><span class="p">)</span>
+<span class="c"># these are the interpolation factors:</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="o">.</span><span class="mi">6</span><span class="p">]</span>
+ 
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+    <span class="c"># make a new font</span>
+    <span class="n">destination</span> <span class="o">=</span> <span class="n">NewFont</span><span class="p">()</span>
+    <span class="c"># do the interpolation</span>
+    <span class="n">destination</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">font1</span><span class="p">,</span> <span class="n">font2</span><span class="p">,</span> <span class="n">doProgress</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">destination</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="c"># make a new path + filename for the new font to be saved at:</span>
+    <span class="nb">dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">font1</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">fileName</span> <span class="o">=</span> <span class="s">&quot;Demo_</span><span class="si">%d</span><span class="s">.vfb&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">value</span><span class="p">)</span>
+    <span class="c"># save at this path and close the font </span>
+    <span class="n">destination</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">fileName</span><span class="p">))</span>
+    <span class="n">destination</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_03.py">open or download this file: session6_03.py</a></div><p>Here you can pick two fonts from the open fonts. The script will create a new, third font, and make interpolations with the interpolation factors in the <code class="docutils literal"><span class="pre">values</span> <span class="pre">=</span> <span class="pre">[.3,</span> <span class="pre">.6]</span></code> list. The interpolated font is then saved in the same folder as the first master.</p>
+<p>This touches on a slippery problem which can cause a lot of confusion. Robofab can only tell FontLab fonts apart from their path attribute, the place where each font is saved. A newly created font has not been saved yet, so it has no path. The effect is that when you have more than one new, unsaved font open, Robofab can&#8217;t tell them apart (for a couple of reasons) and will continue to work with the first one. It will look like nothing is happening when you run a script. The way around this is to make sure you save each font you created with a script before creating another one. This is safer anyway.</p>
+<p>Here are some useful bits for batch processing fonts which are not open, but in a file. This script is a way to make python collect all files of a particular kind in a folder or folders within that folder. You can use the <code class="docutils literal"><span class="pre">walker</span></code> function outside of this script too, it&#8217;s a useful thing to know:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># ask for a folder</span>
+<span class="c"># find (nested) fontlab files in the folder</span>
+<span class="c"># open the fonts</span>
+<span class="c"># Demonstrates: recursive function,, dialog, os module</span>
+ 
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">GetFolder</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">OpenFont</span>
+ 
+<span class="c"># this function looks for fontlab files in a folder </span>
+<span class="k">def</span> <span class="nf">walk</span><span class="p">(</span><span class="n">someFolder</span><span class="p">,</span> <span class="n">extension</span><span class="p">):</span>
+    <span class="n">extension</span> <span class="o">=</span> <span class="n">extension</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c"># the os module has tools to deal with</span>
+    <span class="c"># the operating system. This returns a list of names</span>
+    <span class="c"># of stuff in the folder you feed it:</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">someFolder</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">someFolder</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="c"># if this new thing is a folder itself,</span>
+            <span class="c"># call this function again, but now with the</span>
+            <span class="c"># new path to check that as well. This is</span>
+            <span class="c"># called recursion.</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+                <span class="c"># add the results of the other folder</span>
+                <span class="c"># to the list</span>
+                <span class="n">files</span> <span class="o">+=</span> <span class="n">walk</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">extension</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="c"># is it a file with the extension we want?</span>
+            <span class="c"># add it then!</span>
+            <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">extension</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">files</span>
+
+<span class="n">yourFolder</span> <span class="o">=</span> <span class="n">GetFolder</span><span class="p">(</span><span class="s">&quot;Search a folder:&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">yourFolder</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">fontPaths</span> <span class="o">=</span> <span class="n">walk</span><span class="p">(</span><span class="n">yourFolder</span><span class="p">,</span> <span class="s">&quot;.vfb&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">fontPaths</span><span class="p">:</span>
+        <span class="n">OpenFont</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_04.py">open or download this file: session6_04.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&#39;/Applications/FontLab/Samples/FREESANS.VFB&#39;</span><span class="p">,</span> <span class="s">&#39;/Applications/FontLab/Samples/FREESERF.VFB&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="moving-stuff-around">
+<h2>Moving stuff around<a class="headerlink" href="#moving-stuff-around" title="Permalink to this headline">¶</a></h2>
+<p>The moving, merging and splitting of fonts. The first example moves selected glyphs in the same font and renames them. Note that if you remove the line <code class="docutils literal"><span class="pre">f.removeGlyph(g.name)</span></code> the same script effectively <strong>copies</strong> the glyphs. Also new in this script: it iterates through the whole font and checks for each glyph if the <code class="docutils literal"><span class="pre">g.selected</span></code> attribute is <code class="docutils literal"><span class="pre">1</span></code> or <code class="docutils literal"><span class="pre">0</span></code>. If it is <code class="docutils literal"><span class="pre">0</span></code>, the glyph is not selected in the font window. If it is <code class="docutils literal"><span class="pre">1</span></code>, is is selected. It then proceeds to create a new glyph name, and calls <code class="docutils literal"><span class="pre">f.insertGlyph()</span></code> method which takes a glyph as parameter. The optional parameter <code class="docutils literal"><span class="pre">name</span></code> is to be able to insert the glyph under a different name. If you don&#8217;t pass a parameter for <code class="docutils literal"><span class="pre">name</span></code>, the font will insert the glyph under its own name. The glyph can come from the same font, or a different font, or be an orphan glyph:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># rename the selected glyphs</span>
+<span class="c"># in the current font to &lt;glyphname&gt;.sc</span>
+ 
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+ 
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">selected</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">newName</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s">&quot;.sc&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;moving&quot;</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;to&quot;</span><span class="p">,</span> <span class="n">newName</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">insertGlyph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">newName</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">removeGlyph</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_05.py">open or download this file: session6_05.py</a></div><div class="code highlight-python"><div class="highlight"><pre>moving A to A.sc
+moving C to C.sc
+moving B to B.sc
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-font-binaries">
+<h2>Generating font binaries<a class="headerlink" href="#generating-font-binaries" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon 2006</span>
+<span class="c"># batch generate</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">AllFonts</span>
+
+<span class="k">for</span> <span class="n">font</span> <span class="ow">in</span> <span class="n">AllFonts</span><span class="p">():</span>
+    <span class="n">font</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s">&#39;otfcff&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_06.py">open or download this file: session6_06.py</a></div><p>This will generate CFF flavored OpenType fonts for all open files.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon 2006</span>
+<span class="c"># a more robust batch generator that only has one font open at the time.</span>
+
+<span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">GetFolder</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">RFont</span><span class="p">,</span> <span class="n">OpenFont</span>
+<span class="kn">import</span> <span class="nn">os</span>
+ 
+<span class="k">def</span> <span class="nf">collectSources</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ext</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;.vfb&#39;</span><span class="p">]</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">ext</span><span class="p">:</span>
+            <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">files</span>
+ 
+<span class="c"># A little function for making folders. we&#39;ll need it later.</span>
+<span class="k">def</span> <span class="nf">makeFolder</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="c"># if the path doesn&#39;t exist, make it!</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+ 
+<span class="k">def</span> <span class="nf">makeDestination</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="n">macPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s">&#39;FabFonts&#39;</span><span class="p">,</span> <span class="s">&#39;ForMac&#39;</span><span class="p">)</span>
+    <span class="n">makeFolder</span><span class="p">(</span><span class="n">macPath</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">macPath</span>
+ 
+<span class="k">def</span> <span class="nf">generateOne</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">dstDir</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;generating </span><span class="si">%s</span><span class="s">&quot;</span><span class="o">%</span><span class="n">f</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">fullName</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s">&#39;otfcff&#39;</span><span class="p">,</span>  <span class="n">dstDir</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">GetFolder</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">f</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="n">collectSources</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">dstDir</span> <span class="o">=</span> <span class="n">makeDestination</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+        <span class="n">font</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">print</span> <span class="n">f</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">font</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="n">generateOne</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">dstDir</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">font</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">font</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&#39;done&#39;</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_07.py">open or download this file: session6_07.py</a></div><p>The script above generates fonts too, but is a bit more robust. FontLab sometimes crashes when it has to generate a long list of fonts and they&#8217;re all open at the same time. This script asks you for a folder of <code class="docutils literal"><span class="pre">.vfb</span></code> sources (which in itself can be a useful ingredient for your own scripts). Then it will open them one by one and generate the fonts in the flavor indicated in the line <code class="docutils literal"><span class="pre">f.generate('mactype1',</span> <span class="pre">dstDir)</span></code>. A list of types and their names can be found in the robofab documentation how-to page on generating fonts. This script also creates a new folder to store the generated fonts in, sorted by type.</p>
+</div>
+<div class="section" id="merging">
+<h2>Merging<a class="headerlink" href="#merging" title="Permalink to this headline">¶</a></h2>
+<p>Here&#8217;s a script, quite complex, for combining two fonts into one. Maybe not for the newbie, but if you&#8217;re into it try to figure out how it works. It uses a couple of new concepts, like <code class="docutils literal"><span class="pre">Sets</span></code> and <code class="docutils literal"><span class="pre">DigestPens</span></code>. If it is too complicated: don&#8217;t worry:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon 2006</span>
+<span class="c"># merge two fonts</span>
+ 
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">SelectFont</span><span class="p">,</span> <span class="n">NewFont</span>
+<span class="kn">from</span> <span class="nn">robofab.pens.digestPen</span> <span class="kn">import</span> <span class="n">DigestPointPen</span>
+<span class="kn">from</span> <span class="nn">sets</span> <span class="kn">import</span> <span class="n">Set</span>
+ 
+<span class="n">font1</span> <span class="o">=</span> <span class="n">SelectFont</span><span class="p">(</span><span class="s">&quot;Select base font&quot;</span><span class="p">)</span>
+<span class="n">font2</span> <span class="o">=</span> <span class="n">SelectFont</span><span class="p">(</span><span class="s">&quot;Select alternate font&quot;</span><span class="p">)</span>
+ 
+<span class="n">font1Names</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">font1</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">font2Names</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">font2</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+ 
+<span class="n">commonNames</span> <span class="o">=</span> <span class="n">font1Names</span> <span class="o">&amp;</span> <span class="n">font2Names</span>
+<span class="n">uncommonNames</span> <span class="o">=</span> <span class="n">font2Names</span> <span class="o">-</span> <span class="n">font1Names</span>
+ 
+<span class="k">for</span> <span class="n">glyphName</span> <span class="ow">in</span> <span class="n">commonNames</span><span class="p">:</span>
+    <span class="n">glyph1</span> <span class="o">=</span> <span class="n">font1</span><span class="p">[</span><span class="n">glyphName</span><span class="p">]</span>
+    <span class="n">pointPen</span> <span class="o">=</span> <span class="n">DigestPointPen</span><span class="p">()</span>
+    <span class="n">glyph1</span><span class="o">.</span><span class="n">drawPoints</span><span class="p">(</span><span class="n">pointPen</span><span class="p">)</span>
+    <span class="n">digest1</span> <span class="o">=</span> <span class="n">pointPen</span><span class="o">.</span><span class="n">getDigest</span><span class="p">()</span>
+    
+    <span class="n">glyph2</span> <span class="o">=</span> <span class="n">font2</span><span class="p">[</span><span class="n">glyphName</span><span class="p">]</span>
+    <span class="n">pointPen</span> <span class="o">=</span> <span class="n">DigestPointPen</span><span class="p">()</span>
+    <span class="n">glyph2</span><span class="o">.</span><span class="n">drawPoints</span><span class="p">(</span><span class="n">pointPen</span><span class="p">)</span>
+    <span class="n">digest2</span> <span class="o">=</span> <span class="n">pointPen</span><span class="o">.</span><span class="n">getDigest</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="n">digest1</span> <span class="o">!=</span> <span class="n">digest2</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;&gt; alt &gt;&#39;</span><span class="p">,</span> <span class="n">glyphName</span>
+        <span class="n">glyph3</span> <span class="o">=</span> <span class="n">font1</span><span class="o">.</span><span class="n">insertGlyph</span><span class="p">(</span><span class="n">glyph2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">glyphName</span><span class="o">+</span><span class="s">&#39;.alt&#39;</span><span class="p">)</span>
+        <span class="n">glyph3</span><span class="o">.</span><span class="n">mark</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">glyph3</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+ 
+<span class="k">for</span> <span class="n">glyphName</span> <span class="ow">in</span> <span class="n">uncommonNames</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&#39;&gt;&#39;</span><span class="p">,</span> <span class="n">glyphName</span>
+    <span class="n">glyph</span> <span class="o">=</span> <span class="n">font1</span><span class="o">.</span><span class="n">insertGlyph</span><span class="p">(</span><span class="n">font2</span><span class="p">[</span><span class="n">glyphName</span><span class="p">])</span>
+    <span class="n">glyph</span><span class="o">.</span><span class="n">mark</span> <span class="o">=</span> <span class="mi">60</span>
+    <span class="n">glyph</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    
+<span class="n">font1</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_08.py">open or download this file: session6_08.py</a></div></div>
+<div class="section" id="dealing-with-robofab-limitations">
+<h2>Dealing with Robofab limitations<a class="headerlink" href="#dealing-with-robofab-limitations" title="Permalink to this headline">¶</a></h2>
+<p>A handful of FontLab&#8217;s own glyph and font methods are not supported in RoboFab. The reasons for this vary, some of them are very FontLab specific (for instance <code class="docutils literal"><span class="pre">fl.productnumber</span></code> or <code class="docutils literal"><span class="pre">fl.username</span></code>), but most of the missing stuff was just not needed very often &#8211; the following examples show how to get access to all functionality and attributes in the FontLab layer.</p>
+</div>
+<div class="section" id="fontlab-layer">
+<h2>FontLab layer<a class="headerlink" href="#fontlab-layer" title="Permalink to this headline">¶</a></h2>
+<p>To get to the FontLab layer, Robofab&#8217;s Font and Glyph objects have a <code class="docutils literal"><span class="pre">naked()</span></code> method which returns the FontLab object. Note that you can still use the Robofab functionality like <code class="docutils literal"><span class="pre">CurrentFont</span></code>, <code class="docutils literal"><span class="pre">CurrentGlyph</span></code>, pens etc. The FontLab layer is documented <a class="reference external" href="http://dev.fontlab.net/flpydoc/view_html.html">here</a>. Maybe you remember the <code class="docutils literal"><span class="pre">naked()</span></code> method from the cookie cutter example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># show the objects from the fontlab layer</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">naked</span><span class="p">()</span>
+
+<span class="n">g</span> <span class="o">=</span>  <span class="n">f</span><span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">g</span><span class="o">.</span><span class="n">naked</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_09.py">open or download this file: session6_09.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt;Font: &#39;MyFont&#39;&gt;
+&lt;Glyph: &#39;A&#39;, 0 nodes, parent: &#39;MyFont&#39;&gt;
+</pre></div>
+</div>
+<p>Other things you need to dig deeper for. Note that some of these objects appear to be broken.</p>
+<div class="section" id="postscript-hints">
+<h3>PostScript hints<a class="headerlink" href="#postscript-hints" title="Permalink to this headline">¶</a></h3>
+<p>The vertical and horizontal hint zones as well as blue values can be read and set:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># show vhints for current glyph</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">CurrentGlyph</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">naked</span><span class="p">()</span><span class="o">.</span><span class="n">vhints</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_10.py">open or download this file: session6_10.py</a></div><div class="code highlight-python"><div class="highlight"><pre>[&lt;VHint: p=25, w=163, parent: &quot;a&quot;&gt;,&lt;VHint: p=42, w=146, parent: &quot;a&quot;&gt;]
+</pre></div>
+</div>
+</div>
+<div class="section" id="all-name-fields">
+<h3>All name fields<a class="headerlink" href="#all-name-fields" title="Permalink to this headline">¶</a></h3>
+<p>The FontLab table of OpenType names, the naming record, is available. See also the <a class="reference external" href="http://dev.fontlab.net/flpydoc/html/NameRecord.xml.html">FontLab reference for NameRecord</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># show OpenType naming records</span>
+<span class="c"># in the fontlab API</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">naked</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">fn</span><span class="o">.</span><span class="n">fontnames</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">nid</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">pid</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">eid</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">lid</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_11.py">open or download this file: session6_11.py</a></div><div class="code highlight-python"><div class="highlight"><pre>256 1 0 0 Bold
+256 3 1 1033 Bold
+</pre></div>
+</div>
+</div>
+<div class="section" id="encodings">
+<h3>Encodings<a class="headerlink" href="#encodings" title="Permalink to this headline">¶</a></h3>
+<p>The FontLab <code class="docutils literal"><span class="pre">Encoding</span></code> object. See also the <a class="reference external" href="http://dev.fontlab.net/flpydoc/html/Encoding.xml.html">FontLab reference for Encoding</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robothon06</span>
+<span class="c"># show encoding </span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">naked</span><span class="p">()</span>
+
+<span class="c"># object containing encoding records.</span>
+<span class="c"># you can iterate through it by using an index.</span>
+<span class="k">print</span> <span class="n">fn</span><span class="o">.</span><span class="n">encoding</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">encoding</span><span class="p">)):</span>
+    <span class="n">er</span> <span class="o">=</span> <span class="n">fn</span><span class="o">.</span><span class="n">encoding</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">print</span> <span class="n">er</span><span class="p">,</span> <span class="n">er</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">er</span><span class="o">.</span><span class="n">unicode</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/session6_12.py">open or download this file: session6_12.py</a></div><div class="code highlight-python"><div class="highlight"><pre>&lt;Encoding: parent: &quot;MyDemoRegular&quot;&gt;
+...
+&lt;EncodingRecord: &quot;eacute&quot;, unicode: 233&gt; eacute 233
+&lt;EncodingRecord: &quot;ecircumflex&quot;, unicode: 234&gt; ecircumflex 234
+&lt;EncodingRecord: &quot;edieresis&quot;, unicode: 235&gt; edieresis 235
+&lt;EncodingRecord: &quot;igrave&quot;, unicode: 236&gt; igrave 236
+&lt;EncodingRecord: &quot;iacute&quot;, unicode: 237&gt; iacute 237
+&lt;EncodingRecord: &quot;icircumflex&quot;, unicode: 238&gt; icircumflex 238
+..etc..
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

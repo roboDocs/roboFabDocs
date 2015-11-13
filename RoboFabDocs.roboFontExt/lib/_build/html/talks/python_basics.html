@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Basic Python &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Step-by-step" href="index.html" />
+    <link rel="next" title="Font &amp; Info objects" href="session1.html" />
+    <link rel="prev" title="Python, RoboFab, FontLab, Editors" href="editors.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="editors.html" title="previous chapter">Python, RoboFab, FontLab, Editors</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="session1.html" title="next chapter">Font &amp; Info objects</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="basic-python">
+<h1>Basic Python<a class="headerlink" href="#basic-python" title="Permalink to this headline">¶</a></h1>
+<p>In these and following examples we&#8217;ll be using a couple of programming things which are simple enough that, should you not be familiar with them, you might be able to figure out from the contect. While the experienced programmers will tap their feet impatiently for this to finish, and the newbies are struggling to pick their dicts from their strings: a very short overview of the stuff you&#8217;re missing.</p>
+<div class="section" id="conditional-statements">
+<h2>Conditional statements<a class="headerlink" href="#conditional-statements" title="Permalink to this headline">¶</a></h2>
+<p>If some condition is met: execute a separate block of your script:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;still true&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;oops&quot;</span>
+<span class="go">still true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="compound-statements">
+<h2>Compound statements<a class="headerlink" href="#compound-statements" title="Permalink to this headline">¶</a></h2>
+<p>For each item in this list: execute a seperate block of your script:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">item</span>
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="go">&quot;a&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="assignment">
+<h2>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">¶</a></h2>
+<p>This is basically setting something to a new value, or attaching a name to something:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">a</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+<p>The information that you want to work with in programming comes in different forms and colors: text, numbers, sequences of things. Python offers a nice range of tupperware boxes to stick them in. More things to keep track of, but: useful and these will be your friends.</p>
+</div>
+<div class="section" id="strings">
+<h2>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h2>
+<p>Text, letters, words, are called strings and they live between quotes. In order to allow quotes in strings you have several quote alternatives:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># examples of strings</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s">&quot;a string&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s">&#39;a string too&#39;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s">&#39;a &quot;string&quot; too&#39;</span>
+<span class="n">d</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;a triple quoted string - but still just a string.&quot;&quot;&quot;</span>
+<span class="n">e</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;a triple quoted string - but still just a string.&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="numbers">
+<h2>Numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h2>
+<p>Whole numbers, decimal numbers. You don&#8217;t need to do anything special to make them, just write them:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># examples of numbers</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1900</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">239345</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">1.349683</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+<p>Sequences can be written between brackets. You&#8217;ve seen one earlier. Lists are powerful things to keep stuff in order. Some objects can behave like lists. List objects have useful methods to manipulate them:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># examples of lists</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aListInAList</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">aList</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sort</span><span class="p">(</span><span class="n">aList</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">aList</span>
+<span class="go">4</span>
+<span class="go">[1, 2, 4, &#39;a&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dictionaries">
+<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h2>
+<p>These are similar to lists, but rather than just store a sequence, a dictionary stores a <code class="docutils literal"><span class="pre">key:</span> <span class="pre">value</span></code> pair. In order to get the value, you need to provide the key. Dictionaries are written between {braces}. Some objects can behave like dictionaries. Dictionary objects have useful methods to manipulate them. While lists have their sequencential order, dictionaries don&#8217;t, something to remember when you&#8217;re iterating:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># examples of dicts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aDict</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;key&quot;</span><span class="p">:</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">aDict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">aDict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">aDict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">aDict</span><span class="p">)</span>
+<span class="go">[100, &#39;key&#39;]</span>
+<span class="go">[200, &#39;value&#39;]</span>
+<span class="go">[(100, 200), (&#39;key&#39;, &#39;value&#39;)]</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tuples">
+<h2>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h2>
+<p>Sequences between parentheses, rather than square brackets. Tuples are very much like lists, except that you can&#8217;t really change them. For instance a tuple can&#8217;t sort like a list can:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># examples of tuples</span>
+<span class="n">aTuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">aTuple</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And that&#8217;s really all we&#8217;re going to say about this. Figure out the rest yourself.</p>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

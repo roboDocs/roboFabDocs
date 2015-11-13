@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dialogs &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Introduction" href="index.html" />
+    <link rel="next" title="UFO Overview" href="ufo.html" />
+    <link rel="prev" title="Tools" href="tools.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="tools.html" title="previous chapter">Tools</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="ufo.html" title="next chapter">UFO Overview</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="dialogs">
+<h1>Dialogs<a class="headerlink" href="#dialogs" title="Permalink to this headline">¶</a></h1>
+<p>Sometimes you need simple dialogs to get scripts to talk to the user. As RoboFab can run in many different environments, this dialog module tries to offer consistent functionality in all worlds. Most of the dialogs work in FontLab Mac/Win and Python IDE Mac. Some dialogs also work in Windows. This module offers the right kind of dialog for the environment you call them in. A bit like <code class="docutils literal"><span class="pre">robofab.world</span></code> helps you out by finding the right objects.</p>
+<p>Availability:</p>
+<ul class="simple">
+<li>FontLab means that the dialogs are available in FontLab on either platform.</li>
+<li>Mac means that the dialogs are available in plain Python for OS9 as well as OSX.</li>
+<li>Windows means the dialogs are available in plain Python in Windows.</li>
+</ul>
+<dl class="function">
+<dt id="Message">
+<code class="descname">Message</code><span class="sig-paren">(</span><em>message</em>, <em>title='RoboFab'</em><span class="sig-paren">)</span><a class="headerlink" href="#Message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>A simple message dialog with just one OK button. It does not return any values:</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">Message</span>
+<span class="n">Message</span><span class="p">(</span><span class="s">&quot;A Message From RoboFab&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Available on FontLab, Macintosh.</p>
+<img alt="../_images/message_mac.jpg" src="../_images/message_mac.jpg" />
+<dl class="function">
+<dt id="AskString">
+<code class="descname">AskString</code><span class="sig-paren">(</span><em>prompt</em>, <em>value=''</em>, <em>title='RoboFab'</em><span class="sig-paren">)</span><a class="headerlink" href="#AskString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Asks for a string and return it. Returns <code class="docutils literal"><span class="pre">None</span></code> if the user cancelled.</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">AskString</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">AskString</span><span class="p">(</span><span class="s">&quot;Text for preview?&quot;</span><span class="p">)</span>
+<span class="go">&quot;hello&quot;</span>
+</pre></div>
+</div>
+<p>Available on FontLab, Macintosh.</p>
+<img alt="../_images/askstring_mac.jpg" src="../_images/askstring_mac.jpg" />
+<dl class="function">
+<dt id="AskYesNoCancel">
+<code class="descname">AskYesNoCancel</code><span class="sig-paren">(</span><em>prompt</em>, <em>title='RoboFab'</em>, <em>default=0</em><span class="sig-paren">)</span><a class="headerlink" href="#AskYesNoCancel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns <code class="docutils literal"><span class="pre">1</span></code> for &#8216;Yes&#8217;, <code class="docutils literal"><span class="pre">0</span></code> for &#8216;No&#8217; and <code class="docutils literal"><span class="pre">-1</span></code> for &#8216;Cancel&#8217;. <code class="docutils literal"><span class="pre">default</span></code> argument only available on Macintosh.</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">AskYesNoCancel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">AskYesNoCancel</span><span class="p">(</span><span class="s">&quot;Do you really want to continue?&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>      <span class="n">title</span><span class="o">=</span><span class="s">&#39;RoboFab&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">-1</span>
+</pre></div>
+</div>
+<p>Available on FontLab, Macintosh.</p>
+<img alt="../_images/askyesnocancel_mac.jpg" src="../_images/askyesnocancel_mac.jpg" />
+<dl class="function">
+<dt id="GetFile">
+<code class="descname">GetFile</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GetFile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>A standard select file dialog. Returns path if one is selected. Otherwise it returns <code class="docutils literal"><span class="pre">None</span></code>.</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">GetFile</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">GetFile</span><span class="p">(</span><span class="s">&quot;Open Master&quot;</span><span class="p">)</span>
+<span class="go">path/folder/something</span>
+</pre></div>
+</div>
+<p>Available on FontLab, Macintosh, PC.</p>
+<dl class="function">
+<dt id="GetFolder">
+<code class="descname">GetFolder</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GetFolder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>A standard select folder dialog. Returns path if one is selected. Otherwise it returns <code class="docutils literal"><span class="pre">None</span></code>.</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">GetFolder</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">GetFolder</span><span class="p">(</span><span class="s">&quot;Pick a directory...&quot;</span><span class="p">)</span>
+<span class="go">path/folder/something</span>
+</pre></div>
+</div>
+<p>Available on FontLab, Macintosh, PC.</p>
+<dl class="function">
+<dt id="PutFile">
+<code class="descname">PutFile</code><span class="sig-paren">(</span><em>message=None</em>, <em>defaultName=None</em><span class="sig-paren">)</span><a class="headerlink" href="#PutFile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Save file dialog. Returns path if one is entered. Otherwise it returns <code class="docutils literal"><span class="pre">None</span></code>.</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">PutFile</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">PutFile</span><span class="p">(</span><span class="s">&quot;Save this file as..&quot;</span><span class="p">)</span>
+<span class="go">path/folder/something</span>
+</pre></div>
+</div>
+<p>Available on FontLab, Macintosh, PC.</p>
+<dl class="function">
+<dt id="SelectFont">
+<code class="descname">SelectFont</code><span class="sig-paren">(</span><em>message=&quot;Select a font:&quot;</em>, <em>title='RoboFab'</em><span class="sig-paren">)</span><a class="headerlink" href="#SelectFont" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns font instance if there is one, otherwise it returns <code class="docutils literal"><span class="pre">None</span></code>.</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">SelectFont</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">SelectFont</span><span class="p">(</span><span class="s">&quot;Select a font:&quot;</span><span class="p">)</span>
+<span class="go">&lt; the font you selected &gt;</span>
+</pre></div>
+</div>
+<p>Available on FontLab.</p>
+<img alt="../_images/selectfont_fl.jpg" src="../_images/selectfont_fl.jpg" />
+<dl class="function">
+<dt id="SelectGlyph">
+<code class="descname">SelectGlyph</code><span class="sig-paren">(</span><em>font</em>, <em>message=&quot;Select a glyph:&quot;</em>, <em>title='RoboFab'</em><span class="sig-paren">)</span><a class="headerlink" href="#SelectGlyph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns glyph instance from font if a glyph is selected. Otherwise it returns <code class="docutils literal"><span class="pre">None</span></code>.</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">SelectGlyph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">f</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">print</span> <span class="n">SelectGlyph</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s">&quot;select a glyph&quot;</span><span class="p">)</span>
+<span class="go">&lt; the glyph you selected &gt;</span>
+</pre></div>
+</div>
+<p>Available on FontLab.</p>
+<img alt="../_images/selectglyph_fl.jpg" src="../_images/selectglyph_fl.jpg" />
+<dl class="function">
+<dt id="FindGlyph">
+<code class="descname">FindGlyph</code><span class="sig-paren">(</span><em>aFont</em>, <em>message=&quot;Search for a glyph:&quot;</em>, <em>title='RoboFab'</em><span class="sig-paren">)</span><a class="headerlink" href="#FindGlyph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The <code class="docutils literal"><span class="pre">FindGlyph</span></code> dialog offers a list of the glyphs present in a font. A name or partial name can be types to navigate to the wanted glyph quickly.</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">robofab.interface.all.dialogs</span> <span class="kn">import</span> <span class="n">FindGlyph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">f</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">print</span> <span class="n">FindGlyph</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s">&quot;select a glyph&quot;</span><span class="p">)</span>
+<span class="go">&lt; the glyph you selected &gt;</span>
+</pre></div>
+</div>
+<p>Available on FontLab.</p>
+<img alt="../_images/findglyph_fl.jpg" src="../_images/findglyph_fl.jpg" />
+<dl class="function">
+<dt>
+<code class="descname">GetFolder</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<p>Select folder dialog. Returns the selected path if one is picked. Otherwise it returns <code class="docutils literal"><span class="pre">None</span></code>.</p>
+<p>Available on FontLab, Macintosh, PC.</p>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

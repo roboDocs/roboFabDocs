@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Python, RoboFab, FontLab, Editors &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Step-by-step" href="index.html" />
+    <link rel="next" title="Basic Python" href="python_basics.html" />
+    <link rel="prev" title="Step-by-step" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="index.html" title="previous chapter">Step-by-step</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="python_basics.html" title="next chapter">Basic Python</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="python-robofab-fontlab-editors">
+<h1>Python, RoboFab, FontLab, Editors<a class="headerlink" href="#python-robofab-fontlab-editors" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="scripting">
+<h2>Scripting?<a class="headerlink" href="#scripting" title="Permalink to this headline">¶</a></h2>
+<p>These talks are about scripting. The term <em>scripting</em> is loosely defined as &#8220;writing small programs&#8221; without making it sound as difficult or complicated as &#8220;programming&#8221;. Scripting is programming of course, but you don&#8217;t have to tell anyone. You&#8217;re using a programming language, <em>Python</em>, to write a script (or whatever you want to call it), which is then acted out by the <em>Python interpreter</em>. This is a program which will try to follow your instructions, giving feedback when it runs into problems or finishing the job when it doesn&#8217;t. Running into problems is not something to be afraid of, Python does it very politely with a <em>traceback</em>, Python&#8217;s way of reporting what went wrong and roughly where it the code it happened. We&#8217;ll see a lot of these and we&#8217;ll learn how to read these reports and understand what went wrong.</p>
+</div>
+<div class="section" id="why">
+<h2>Why?<a class="headerlink" href="#why" title="Permalink to this headline">¶</a></h2>
+<p>Scripting is not type design. Or perhaps better: scripting is everything but typedesign. Scripts won&#8217;t help you find ideas or draw a better curve. But it might help you make simple tools for things you need to do often. Just like anything, it will get better with some experience, but even a badly written, simple script can save you lots of time. You don&#8217;t have to be (or become) a professional programmer to make it a useful skill.</p>
+</div>
+<div class="section" id="where">
+<h2>Where<a class="headerlink" href="#where" title="Permalink to this headline">¶</a></h2>
+<p>Python is a modern, open source, programming language which is relatively easy to work with. There are Pythons for all operating systems and it has many developers building many different tools for it. It is not just for fonts and glyphs, there are networking and scientific tools, games, web applications. Years ago <em>RoboFog</em> introduced Python to make tools for typedesign and the idea stuck. Now there is a range of type applications that use Python: FontLab, the Adobe FDK, MetricsMachine, RoboFab. Learning Python means you can use your skills in more than one application.</p>
+<p>There are several places where you can write your code. Each with their own purpose and use. We&#8217;ll look at some of them:</p>
+<dl class="docutils">
+<dt><strong>FontLab&#8217;s Macro panel</strong></dt>
+<dd>A simple code editor in FontLab where you can edit and run scripts. The advantage is that you&#8217;re in FontLab and can start work immediately, manipulating fonts and glyphs which are open. But the panel is lacking features which are useful when writing a lot of code, which is why FontLab includes the:</dd>
+<dt><strong>FontLab with &#8220;external editor&#8221;</strong></dt>
+<dd>In the FontLab preferences panel you can select another application as your python editor of choice. So when you hit the Macros button, this editor will pop up. This requires that your script is saved in a file somewhere on disk. You can use the editor to write the code, but FontLab will still run the program. FontLab doesn&#8217;t actually execute the Python code, but uses a system installed interpreter.</dd>
+<dt><strong>Python IDE, Win, Mac OSX</strong></dt>
+<dd>There are several IDE (&#8220;Integrated Development Environment&#8221;) programs for Python on Mac and Windows. This means basically a Python code editor which can also run your code. Some of them offer debugging tools, module browsers or even complete interface toolkits. These IDE&#8217;s are general programming tools and don&#8217;t know much about type specific things. More and more code editors offer Python execution, for instance in <strong>BBEdit</strong> and <strong>Textmate</strong> on OSX you can edit your code, hit a cmd key and have the code run in the OSX Python interpreter. This is similar to the FontLab-with-external-editor option.</dd>
+<dt><strong>Command-line Python interpreter</strong></dt>
+<dd>A form of Python where you write a line of code at a prompt and it is immediately executed. Useful to test simple problems, but not for anything over a couple of lines of code.</dd>
+<dt><strong>Command-line Python</strong></dt>
+<dd><p class="first">Use the installed command-line Python interpreter to execute files. The interpreter is called with the filename as an argument:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">myCode</span><span class="o">.</span><span class="n">py</span>
+<span class="go">...does stuff...</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="objects">
+<h2>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h2>
+<p>Perhaps the most useful invention in programming since the paper-punch card is called <strong>object oriented programming</strong>. The term is used to describe a way of programming in which the data you&#8217;re working on, and the code which belongs to that data are kept together, much like a person holding a handful of balloons on strings, in a single <em>object</em>, the cluster of balloons. This may sound a bit abstract. But it&#8217;s a way to keep all the code and data sorted in a useful way. Otherwise there will be too much stuff very quickly. More terminology:</p>
+<dl class="docutils">
+<dt><strong>attributes</strong></dt>
+<dd>The things an object knows about, its data or value. An object&#8217;s data is stored in its attributes.</dd>
+<dt><strong>methods</strong></dt>
+<dd>The things an object can do. The code to manipulate an object, its functions.</dd>
+</dl>
+<p>Risking an example: an object of the class <em>car</em> has an attribute <em>color</em> (blue) and a method <em>drive</em> (slow). Big objects are usually split up into smaller, more specific objects. For instance, a <em>Font</em> object offers access to <em>Glyph</em> objects. The way the various objects relate, wich object contains what etc. — the way something is abstracted — is called an <em>object model</em>. A map of the object model used in RoboFab is in <a class="reference internal" href="../objects/model.html"><em>the Fab docs</em></a>. An object model is also called <em>API</em> for Application Programming Interface.</p>
+<p>FontLab objects? RoboFab objects? Are there different flavors of objects? Doesn&#8217;t that confuse things? FontLab has its own object model. There are FontLab Font objects and FontLab Glyph objects. But these objects are relatively low-level, that means that while using these objects, you have to keep track of a lot of things yourself and understand some FontLab peculiarities. This makes it difficult to write code efficiently. RoboFab is a layer of objects built on top of the FontLab objects, making it a lot easier to work with the data, fewer things to memorise and that means faster development. FontLab now comes bundled with RoboFab. In this conference we focus mainly on the RoboFab objects, but for some things the FontLab objects are needed.</p>
+<p>Back to Python. Objects, attributes and methods follow the <strong>dot separated syntax</strong> which is a handy way to clearly state what method or attribute you want to talk to. Other programming languages use dot syntax as well, for instance JavaScript or PHP.</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="c"># attribute</span>
+<span class="n">someObject</span><span class="o">.</span><span class="n">someAttribute</span>
+<span class="n">someObject</span><span class="o">.</span><span class="n">anotherAttribute</span>
+<span class="n">font</span><span class="o">.</span><span class="n">path</span>
+<span class="n">glyph</span><span class="o">.</span><span class="n">width</span>
+
+<span class="c"># method</span>
+<span class="n">someObject</span><span class="o">.</span><span class="n">someMethod</span><span class="p">(</span><span class="n">aParameter</span><span class="p">)</span>
+<span class="n">someObject</span><span class="o">.</span><span class="n">anotherMethod</span><span class="p">()</span>
+<span class="n">font</span><span class="o">.</span><span class="n">generate</span><span class="p">()</span>
+<span class="n">glyph</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>See how the dot connects the names? But this can go deeper than one level as well. Sometimes objects contain other objects, which in turn can have.. etc. Dont&#8217; worry about getting lost, this is why there is documentation.</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="c"># attribute</span>
+<span class="n">someObject</span><span class="o">.</span><span class="n">someOtherObject</span><span class="o">.</span><span class="n">theOtherObjectsAttribute</span>
+<span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">fullName</span>
+<span class="n">font</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">familyName</span>
+
+<span class="c"># method</span>
+<span class="n">someObject</span><span class="o">.</span><span class="n">someOtherObject</span><span class="o">.</span><span class="n">theOtherObjectsMethod</span><span class="p">(</span><span class="n">aParameter</span><span class="p">)</span>
+<span class="n">font</span><span class="o">.</span><span class="n">kerning</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Did you notice some lines has parentheses after them, and others don&#8217;t? Writing <cite>()</cite> means you want to use the method and execute it. In Python terms: the <strong>method</strong> is <strong>called</strong>.</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="c"># a method but not called, you&#39;re looking at</span>
+<span class="c"># the python object which contains the method.</span>
+<span class="n">font</span><span class="o">.</span><span class="n">update</span>
+
+<span class="c"># but calling a method is more useful,</span>
+<span class="c"># it means: take this code and run it.</span>
+<span class="n">font</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="names-of-variables-and-methods">
+<h2>Names of variables and methods<a class="headerlink" href="#names-of-variables-and-methods" title="Permalink to this headline">¶</a></h2>
+<p>In Robofab we have a couple of conventions for naming classes, attributes, methods and functions. These make it easier to predict what something is called and that means fewer trips to the documentation. This is what we&#8217;re talking about:</p>
+<dl class="docutils">
+<dt><strong>camelCase</strong></dt>
+<dd>This means that when a name is made up from several words, eachAdditionalWordStartsWithACap. Examples: <code class="docutils literal"><span class="pre">glyphName</span></code>, <code class="docutils literal"><span class="pre">kernTable</span></code>, <code class="docutils literal"><span class="pre">groupList</span></code>, <code class="docutils literal"><span class="pre">fontTools</span></code>.</dd>
+<dt><strong>class names</strong></dt>
+<dd>Always start with an uppercase, then camelCase. Examples: <code class="docutils literal"><span class="pre">RFont</span></code>, <code class="docutils literal"><span class="pre">RGlyph</span></code>, <code class="docutils literal"><span class="pre">RKerning</span></code>.</dd>
+<dt><strong>attribute and method names</strong></dt>
+<dd>Always start with a lowercase, then camelCase. Examples: <code class="docutils literal"><span class="pre">kerning.importAFM()</span></code>, <code class="docutils literal"><span class="pre">glyph.drawPoints()</span></code>.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>These are our conventions, we do it this way because we prefer it. But that does not mean that Python requires it, as long as your names are legal Python you can write whatever you want. It&#8217;s just useful to stick to a predictable method one way or the other. Please look at the standard <a class="reference external" href="http://python.org/doc/">Python documentation</a> for a full description of the language. Some rules about legal Python names:</p>
+<ul class="last simple">
+<li>Names can be arbitrarily long.</li>
+<li>Names can contain letters and numbers.</li>
+<li>The first character has to be a letter.</li>
+<li>Names can contain upper and lower case letters.</li>
+<li>Upper and lower case letters are different.</li>
+<li><code class="docutils literal"><span class="pre">bruce</span></code> and <code class="docutils literal"><span class="pre">Bruce</span></code> are different variable names</li>
+<li>The underscore character <code class="docutils literal"><span class="pre">_</span></code> is legal. ex: <code class="docutils literal"><span class="pre">my_name</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="installing-robofab">
+<h2>Installing RoboFab<a class="headerlink" href="#installing-robofab" title="Permalink to this headline">¶</a></h2>
+<p>Installing RoboFab is usually straightforward. There are quite a few combinations of operating system, FontLab version and Python version possible, some with their own pecularities. There&#8217;s not much we can do about that, you just have to get it sorted.</p>
+<p>More <a class="reference internal" href="../intro/install.html"><em>installation notes</em></a> in the RoboFab documentation.</p>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>There is a lot of documentation available on the internet. When writing code, <a class="reference external" href="http://google.com">Google</a> is your best friend &#8211; there is almost always someone else who has dealt with or written about the same problem. Reading the documentation is always a good idea. Looking at code snippets is useful too because it will explain how other people have solved problems. Even if a particular bit of code doesn&#8217;t do what you&#8217;re looking for, it can give you ideas.</p>
+<ul class="simple">
+<li><a class="reference internal" href="../objects/objects.html"><em>RoboFab objects</em></a>: the RoboFab API and reference.</li>
+<li><a class="reference external" href="http://dev.fontlab.net/flpydoc/">FontLab objects</a>: the FontLab documentation. API and reference for the FontLab objects.</li>
+<li><a class="reference internal" href="../howtos/scripting.html"><em>RoboFab introduction to Scripting</em></a>: RoboFab scripting intro.</li>
+<li><a class="reference external" href="http://www.greenteapress.com/thinkpython/">How to think like a computer scientist</a>: an introduction into learning Python. Not specifically about typedesign, but general Python programming, lists, dicts, variables, stuff like that.</li>
+<li><a class="reference internal" href="python_basics.html"><em>Emergency Python Basics</em></a>: elsewhere on this site an short overview of some of Python&#8217;s basic stuff.</li>
+</ul>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RGlyph &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Objects" href="index.html" />
+    <link rel="next" title="RContour" href="RContour.html" />
+    <link rel="prev" title="RInfo" href="RInfo.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="RInfo.html" title="previous chapter">RInfo</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="RContour.html" title="next chapter">RContour</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="rglyph">
+<h1>RGlyph<a class="headerlink" href="#rglyph" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/RGlyph.gif" src="../_images/RGlyph.gif" />
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Glyph object</span>
+<span class="c"># Usage examples</span>
+
+<span class="c"># start using the current font</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentGlyph</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">CurrentGlyph</span><span class="p">()</span>
+
+<span class="c"># suppose you&#39;ve done the right imports</span>
+<span class="c"># different ways of creating glyphs</span>
+<span class="c"># a new empty glyph object</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">robofab</span><span class="o">.</span><span class="n">world</span><span class="o">.</span><span class="n">RGlyph</span><span class="p">()</span>
+
+<span class="c"># a new empty fontlab glyph object</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">robofab</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">objectsFL</span><span class="o">.</span><span class="n">RGlyph</span><span class="p">()</span>
+
+<span class="c"># a new empty robofab glyph object</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">robofab</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">objectsRF</span><span class="o">.</span><span class="n">RGlyph</span><span class="p">()</span>
+
+<span class="c"># the easiest way to get a new glyph</span>
+<span class="c"># is to ask a font to make you one:</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">aFontObject</span><span class="p">[</span><span class="n">glyphName</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RGlyph_00.py">open or download this file: RGlyph_00.py</a></div></div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">RGlyph</span></code> object represents a glyph, its parts and associated data. In FontLab <code class="docutils literal"><span class="pre">RGlyph</span></code> talks directly to a glyph in an open font. In NoneLab the <code class="docutils literal"><span class="pre">RGlyph</span></code> refers to data read from (and written to) a specific glif file in a UFO. <code class="docutils literal"><span class="pre">RGlyph</span></code> can be used as a list of <code class="docutils literal"><span class="pre">RContour</span></code>. When <code class="docutils literal"><span class="pre">RGlyph</span></code> is obtained from a RoboFab font object (see examples), the font is the parent object of the glyph.</p>
+</div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="components">
+<code class="descname">components</code><a class="headerlink" href="#components" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>A list of the <a class="reference internal" href="RComponent.html"><em>Components</em></a> in this glyph.</p>
+<dl class="attribute">
+<dt id="anchors">
+<code class="descname">anchors</code><a class="headerlink" href="#anchors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>A list of the <a class="reference internal" href="RAnchor.html"><em>Anchors</em></a> in this glyph.</p>
+<dl class="attribute">
+<dt id="len">
+<code class="descname">len</code><span class="sig-paren">(</span><em>aGlyph</em><span class="sig-paren">)</span><a class="headerlink" href="#len" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The number of contours.</p>
+<dl class="attribute">
+<dt>
+<code class="descname">aGlyph[index]</code></dt>
+<dd></dd></dl>
+
+<p>Get the <a class="reference internal" href="RContour.html"><em>Contour</em></a> object at index.</p>
+<dl class="attribute">
+<dt id="width">
+<code class="descname">width</code><a class="headerlink" href="#width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The horizontal advance width of the glyph.</p>
+<dl class="attribute">
+<dt id="leftMargin">
+<code class="descname">leftMargin</code><a class="headerlink" href="#leftMargin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The left margin of the glyph.</p>
+<dl class="attribute">
+<dt id="rightMargin">
+<code class="descname">rightMargin</code><a class="headerlink" href="#rightMargin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The right margin of the glyph.</p>
+<dl class="attribute">
+<dt id="name">
+<code class="descname">name</code><a class="headerlink" href="#name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The glyph name.</p>
+<dl class="attribute">
+<dt id="unicode">
+<code class="descname">unicode</code><a class="headerlink" href="#unicode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The unicode value for this glyph, integer.</p>
+<dl class="attribute">
+<dt id="note">
+<code class="descname">note</code><a class="headerlink" href="#note" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>A place for a short string, a note about this glyph.</p>
+<dl class="attribute">
+<dt id="unicodes">
+<code class="descname">unicodes</code><a class="headerlink" href="#unicodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>A list of unicodes value for this glyph. Not all applications and editors support multiple unicode values for a glyph. Assume that <code class="docutils literal"><span class="pre">glyph.unicode</span> <span class="pre">==</span> <span class="pre">glyph.unicodes[0]</span></code>.</p>
+<dl class="attribute">
+<dt id="box">
+<code class="descname">box</code><a class="headerlink" href="#box" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The bounding box. The values are <code class="docutils literal"><span class="pre">(xMin,</span> <span class="pre">yMin,</span> <span class="pre">xMax,</span> <span class="pre">yMax)</span></code>. Note: these values represent the actual measurements of the shape of the glyph. They&#8217;re usually different from the rectangle described by <code class="docutils literal"><span class="pre">glyph.width</span></code> / <code class="docutils literal"><span class="pre">font.info.unitsPerEm</span></code>.</p>
+<dl class="attribute">
+<dt>
+<code class="descname">+ - *</code></dt>
+<dd></dd></dl>
+
+<p>Math operators work on glyphs.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="../howtos/glyphmath.html"><em>how to glyphmath</em></a>.</p>
+</div>
+<dl class="attribute">
+<dt id="lib">
+<code class="descname">lib</code><a class="headerlink" href="#lib" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The glyph&#8217;s lib, an <a class="reference internal" href="libs.html"><em>RLib</em></a>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="../howtos/use_lib.html"><em>how to use the lib</em></a>.</p>
+</div>
+<dl class="attribute">
+<dt id="psHints">
+<code class="descname">psHints</code><a class="headerlink" href="#psHints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>A <a class="reference internal" href="psHintsGlyph.html"><em>PostScriptGlyphHintValues</em></a> object with all glyph level PostScript hints, vertical and horizontal.</p>
+</div>
+<div class="section" id="attribute-examples">
+<h2>Attribute examples<a class="headerlink" href="#attribute-examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Glyph object</span>
+<span class="c"># attribute examples</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span><span class="p">,</span> <span class="n">CurrentGlyph</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="c"># create a glyph object by asking the font</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;Adieresis&quot;</span><span class="p">]</span>
+
+<span class="c"># alternatively, create a glyph object for the current glyph</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">CurrentGlyph</span><span class="p">()</span>
+
+<span class="c"># get the width</span>
+<span class="k">print</span> <span class="n">g</span><span class="o">.</span><span class="n">width</span>
+
+<span class="c"># get the name</span>
+<span class="k">print</span> <span class="n">g</span><span class="o">.</span><span class="n">name</span>
+
+<span class="c"># a  list of unicode values for this glyph. Can be more than 1!</span>
+<span class="k">print</span> <span class="n">g</span><span class="o">.</span><span class="n">unicodes</span>
+
+<span class="c"># set the width</span>
+<span class="n">g</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="k">print</span> <span class="n">g</span><span class="o">.</span><span class="n">width</span>
+
+<span class="c"># get the number of contours in a glyph by getting its length</span>
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RGlyph_01.py">open or download this file: RGlyph_01.py</a></div><div class="code highlight-python"><div class="highlight"><pre><span class="mi">230</span>
+<span class="n">Adieresis</span>
+<span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="mi">345</span><span class="p">]</span>
+<span class="mi">1000</span>
+<span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="getParent">
+<code class="descname">getParent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#getParent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return the parent of this glyph, the font object it belongs to. The method returns <code class="docutils literal"><span class="pre">None</span></code> if there is none.</p>
+<dl class="function">
+<dt id="appendComponent">
+<code class="descname">appendComponent</code><span class="sig-paren">(</span><em>glyphName</em>, <em>(offsetX=0</em>, <em>offsetY=0)</em>, <em>(scaleX=1</em>, <em>scaleY=1)</em><span class="sig-paren">)</span><a class="headerlink" href="#appendComponent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Add a component to the glyph. Optional values for <code class="docutils literal"><span class="pre">offset</span></code> and <code class="docutils literal"><span class="pre">scale</span></code>.</p>
+<dl class="function">
+<dt id="appendContour">
+<code class="descname">appendContour</code><span class="sig-paren">(</span><em>aContour</em><span class="sig-paren">)</span><a class="headerlink" href="#appendContour" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Add a contour to the glyph.</p>
+<dl class="function">
+<dt id="removeComponent">
+<code class="descname">removeComponent</code><span class="sig-paren">(</span><em>componentObject</em><span class="sig-paren">)</span><a class="headerlink" href="#removeComponent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Remove a component from the glyph.</p>
+<dl class="function">
+<dt id="appendGlyph">
+<code class="descname">appendGlyph</code><span class="sig-paren">(</span><em>aGlyph</em>, <em>(offsetX=0</em>, <em>offsetY=0)</em><span class="sig-paren">)</span><a class="headerlink" href="#appendGlyph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Add a whole glyph. This adds all the contours, anchors and components to the glyph.</p>
+<dl class="function">
+<dt id="appendAnchor">
+<code class="descname">appendAnchor</code><span class="sig-paren">(</span><em>name</em>, <em>position</em><span class="sig-paren">)</span><a class="headerlink" href="#appendAnchor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Create a new anchor in this glyph with name at position.</p>
+<dl class="function">
+<dt id="removeAnchor">
+<code class="descname">removeAnchor</code><span class="sig-paren">(</span><em>anchor</em><span class="sig-paren">)</span><a class="headerlink" href="#removeAnchor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Remove this anchor from the glyph. This only works if the glyph does not have anchors with duplicate names in exactly the same location with the same mark.</p>
+<dl class="function">
+<dt id="autoUnicodes">
+<code class="descname">autoUnicodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autoUnicodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Try to find unicode values for this glyph. This method tries to match the glyph name to a known value.</p>
+<dl class="function">
+<dt id="copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns a deep copy of this glyph. That means that all parts of the glyph: contours, components, anchors etc. are duplicated.</p>
+<dl class="function">
+<dt id="correctDirection">
+<code class="descname">correctDirection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#correctDirection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Correct the direction of all contours in this glyphs.</p>
+<dl class="function">
+<dt id="autoContourOrder">
+<code class="descname">autoContourOrder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autoContourOrder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Automatically order the contours based on (in this order):</p>
+<ol class="arabic simple">
+<li>the point count of the contours</li>
+<li>the segment count of the contours</li>
+<li>the <code class="docutils literal"><span class="pre">x</span></code> value of the center of the contours</li>
+<li>the <code class="docutils literal"><span class="pre">y</span></code> value of the center of the contours</li>
+<li>the surface of the bounding box of the contours</li>
+</ol>
+<dl class="function">
+<dt id="pointInside">
+<code class="descname">pointInside</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em><span class="sig-paren">)</span><a class="headerlink" href="#pointInside" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns <code class="docutils literal"><span class="pre">True</span></code> if the point is inside the &#8220;black&#8221; area of the glyph or <code class="docutils literal"><span class="pre">False</span></code> if the point is inside the &#8220;white&#8221; area of the glyph.</p>
+<dl class="function">
+<dt id="draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>aPen</em><span class="sig-paren">)</span><a class="headerlink" href="#draw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Get this glyph to draw itself with the pen on offer.</p>
+<dl class="function">
+<dt id="drawPoints">
+<code class="descname">drawPoints</code><span class="sig-paren">(</span><em>aPointsPen</em><span class="sig-paren">)</span><a class="headerlink" href="#drawPoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Get this glyph to draw itself with the points pen on offer. For differences between <code class="docutils literal"><span class="pre">Pen</span></code> and <code class="docutils literal"><span class="pre">PointsPen</span></code> see here <code class="xref doc docutils literal"><span class="pre">Pens</span></code>.</p>
+<dl class="function">
+<dt id="getPen">
+<code class="descname">getPen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#getPen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns an appropriate <code class="docutils literal"><span class="pre">Pen</span></code> object to draw in this glyph.</p>
+<dl class="function">
+<dt id="getPointPen">
+<code class="descname">getPointPen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#getPointPen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns an appropriate <code class="docutils literal"><span class="pre">PointPen</span></code> object to draw in this glyph.</p>
+<dl class="function">
+<dt id="interpolate">
+<code class="descname">interpolate</code><span class="sig-paren">(</span><em>factor</em>, <em>minGlyph</em>, <em>maxGlyph</em>, <em>suppressError=True</em>, <em>analyzeOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#interpolate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Make this glyph the interpolation between <code class="docutils literal"><span class="pre">minGlyph</span></code> and <code class="docutils literal"><span class="pre">maxGlyph</span></code> by factor. When <code class="docutils literal"><span class="pre">suppressError</span></code> is <code class="docutils literal"><span class="pre">True</span></code> (the default value) this method will not complain if the interpolation is not possible. When <code class="docutils literal"><span class="pre">analyzeOnly</span></code> is <code class="docutils literal"><span class="pre">True</span></code> (default is <code class="docutils literal"><span class="pre">False</span></code>), this method will only analyze if the interpolation is possible and provide a report if something is wrong.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="../howtos/interpolate.html"><em>how to interpolate</em></a>.</p>
+</div>
+<dl class="function">
+<dt id="isCompatible">
+<code class="descname">isCompatible</code><span class="sig-paren">(</span><em>anotherGlyph</em>, <em>report=True</em><span class="sig-paren">)</span><a class="headerlink" href="#isCompatible" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns <code class="docutils literal"><span class="pre">True</span></code> if the glyph has a compatible point structure as <code class="docutils literal"><span class="pre">anotherGlyph</span></code>. When report is <code class="docutils literal"><span class="pre">True</span></code>, <code class="docutils literal"><span class="pre">isCompatible</span></code> also returns a report on what the problems could be.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="../howtos/interpolate.html"><em>how to interpolate</em></a>.</p>
+</div>
+<dl class="function">
+<dt id="isEmpty">
+<code class="descname">isEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#isEmpty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns <code class="docutils literal"><span class="pre">True</span></code> when the glyph does not contain any contours, components or anchors.</p>
+<dl class="function">
+<dt id="move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>x</em>, <em>y)</em>, <em>contours=True</em>, <em>components=True</em>, <em>anchors=True</em><span class="sig-paren">)</span><a class="headerlink" href="#move" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Move a glyph&#8217;s items that are flagged as <code class="docutils literal"><span class="pre">True</span></code>.</p>
+<dl class="function">
+<dt id="scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>(x</em>, <em>y)</em>, <em>center=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Scale the glyph by <cite>x</cite> and <cite>y</cite>. Optionally set the center of the scale.</p>
+<dl class="function">
+<dt id="rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#rotate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Rotate the glyph by <code class="docutils literal"><span class="pre">angle</span></code> (in degrees). Optionally set an <code class="docutils literal"><span class="pre">offset</span></code> value.</p>
+<dl class="function">
+<dt id="skew">
+<code class="descname">skew</code><span class="sig-paren">(</span><em>angle</em>, <em>offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skew" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Skew the glyph by <code class="docutils literal"><span class="pre">angle</span></code> (in degrees). Optionally set an <code class="docutils literal"><span class="pre">offset</span></code> value.</p>
+<dl class="function">
+<dt id="rasterize">
+<code class="descname">rasterize</code><span class="sig-paren">(</span><em>cellSize=50</em>, <em>xMin=None</em>, <em>yMin=None</em>, <em>xMax=None</em>, <em>yMax=None</em><span class="sig-paren">)</span><a class="headerlink" href="#rasterize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Slice the glyph into a grid based on the cell size. It returns a list of lists containing bool values that indicate the black (<code class="docutils literal"><span class="pre">True</span></code>) or white (<code class="docutils literal"><span class="pre">False</span></code>) value of that particular cell. These lists are arranged from top to bottom of the glyph and proceed from left to right. This is an expensive operation!</p>
+</div>
+<div class="section" id="method-examples">
+<h2>Method examples<a class="headerlink" href="#method-examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Glyph object</span>
+<span class="c"># method examples</span>
+
+<span class="c"># get a glyph object from a font</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">g</span>
+
+<span class="c"># move the glyph 10 units to the right, and 200 units up:</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">]</span>
+<span class="n">g</span><span class="o">.</span><span class="n">move</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RGlyph_02.py">open or download this file: RGlyph_02.py</a></div></div>
+<div class="section" id="fontlab">
+<h2>FontLab<a class="headerlink" href="#fontlab" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Methods<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Glyph methods only available in FontLab.</p>
+<dl class="function">
+<dt id="removeOverlap">
+<code class="descname">removeOverlap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#removeOverlap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Remove overlap in this glyph.</p>
+<dl class="function">
+<dt id="naked">
+<code class="descname">naked</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#naked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return the wrapped FontLab glyph object itself. This can be useful if you want to set very specific values in the FontLab font that aren&#8217;t wrapped or handled by RoboFab objects.</p>
+<dl class="function">
+<dt id="update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Tell FontLab to update all references to this glyph. Call this after you&#8217;ve changed something in the glyph object and you want these changes to be seen in the application. If you&#8217;re calling <code class="docutils literal"><span class="pre">glyph.update()</span></code> a lot, for instance in a loop, consider calling it only once after the loop is done. You can also call <code class="docutils literal"><span class="pre">font.update()</span></code> if you&#8217;ve changed several glyphs at once. Calling <code class="docutils literal"><span class="pre">update()</span></code> makes a script slower.</p>
+<dl class="function">
+<dt id="getVGuides">
+<code class="descname">getVGuides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#getVGuides" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a list of wrapped vertical guides in this <code class="docutils literal"><span class="pre">RGlyph</span></code>.</p>
+<dl class="function">
+<dt id="getHGuides">
+<code class="descname">getHGuides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#getHGuides" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a list of wrapped horizontal guides in this <code class="docutils literal"><span class="pre">RGlyph</span></code>.</p>
+<dl class="function">
+<dt id="appendVGuide">
+<code class="descname">appendVGuide</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#appendVGuide" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Add a vertical guide at <code class="docutils literal"><span class="pre">x</span></code> in this <code class="docutils literal"><span class="pre">RGlyph</span></code>.</p>
+<dl class="function">
+<dt id="appendHGuide">
+<code class="descname">appendHGuide</code><span class="sig-paren">(</span><em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#appendHGuide" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Add a horizontal guide at <code class="docutils literal"><span class="pre">y</span></code> in this <code class="docutils literal"><span class="pre">RGlyph</span></code>.</p>
+<dl class="function">
+<dt id="clearVGuides">
+<code class="descname">clearVGuides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#clearVGuides" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Remove vertical guides from this <code class="docutils literal"><span class="pre">RGlyph</span></code>.</p>
+<dl class="function">
+<dt id="clearHGuides">
+<code class="descname">clearHGuides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#clearHGuides" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Remove horizontal guides from this <code class="docutils literal"><span class="pre">RGlyph</span></code>.</p>
+</div>
+</div>
+<div class="section" id="useful">
+<h2>Useful<a class="headerlink" href="#useful" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre># robofab manual
+# Glyph object
+# method examples
+
+# In FontLab the baseglyph of a component can&#39;t be changed easily.
+# This assumes that there will only be
+# one component that needs to be remapped.
+
+def remapComponent(glyph, oldBaseGlyph, newBaseGlyph):
+    foundComponent = None
+    for component in glyph.components:
+        if component.baseGlyph = oldBaseGlyph:
+            foundComponent = component
+            break
+    if foundComponent is None:
+        return
+    offset = foundComponent.offset
+    scale = foundComponent.scale
+    glyph.removeComponent(component)
+    glyph.appendComponent(newBaseGlyph, offset=offset, scale=scale)
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RGlyph_03.py">open or download this file: RGlyph_03.py</a></div></div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

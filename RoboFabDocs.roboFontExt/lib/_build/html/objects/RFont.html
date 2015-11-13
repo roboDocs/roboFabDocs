@@ -1,0 +1,496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RFont &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Objects" href="index.html" />
+    <link rel="next" title="RInfo" href="RInfo.html" />
+    <link rel="prev" title="RoboFab Object Model" href="model.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="../intro/download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="model.html" title="previous chapter">RoboFab Object Model</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="RInfo.html" title="next chapter">RInfo</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="rfont">
+<h1>RFont<a class="headerlink" href="#rfont" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/RFont.gif" src="../_images/RFont.gif" />
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Font object</span>
+<span class="c"># Usage examples</span>
+
+<span class="c"># start using the current font</span>
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="c"># get a clean, empty new font object,</span>
+<span class="c"># appropriate for the current environment</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">robofab</span><span class="o">.</span><span class="n">world</span><span class="o">.</span><span class="n">RFont</span><span class="p">()</span>
+
+<span class="c"># get an open dialog and start a new font</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">()</span>
+
+<span class="c"># open the font at path</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">OpenFont</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RFont_00.py">open or download this file: RFont_00.py</a></div></div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Perhaps the first object you get to play with. The <code class="docutils literal"><span class="pre">RFont</span></code> object is the central part that connects all glyphs with font information (like names, key dimensions etc.). In FontLab the <code class="docutils literal"><span class="pre">RFont</span></code> object talks directly to the glyphs and font data in the FontLab font it belongs to. In UFO or NoneLab use, the <code class="docutils literal"><span class="pre">RFont</span></code> object contains the data and saves it to UFO. <code class="docutils literal"><span class="pre">RFont</span></code> object behave like dictionaries: the glyphname is the key and the returned value is a <a class="reference internal" href="RGlyph.html"><em>RGlyph</em></a> object for that glyph. If the glyph does not exist <code class="docutils literal"><span class="pre">RFont</span></code> will raise an <code class="docutils literal"><span class="pre">IndexError</span></code>.</p>
+<p><code class="docutils literal"><span class="pre">RFont</span></code> has a couple of important sub-objects which are worth checking out. The font&#8217;s kerning is stored in a <a class="reference internal" href="RKerning.html"><em>RKerning</em></a> object and can be reached as an attribute at <code class="docutils literal"><span class="pre">RFont.kerning</span></code>. Fontnames, key dimensions, flags etc are stored in a <a class="reference internal" href="RInfo.html"><em>RInfo</em></a> object which is available through <code class="docutils literal"><span class="pre">RFont.info</span></code>. The <code class="docutils literal"><span class="pre">RFont.lib</span></code> is an <a class="reference internal" href="libs.html"><em>RLib</em></a> object which behaves as a dictionary.</p>
+</div>
+<div class="section" id="iterating">
+<h2>Iterating<a class="headerlink" href="#iterating" title="Permalink to this headline">¶</a></h2>
+<p>One of the most important uses of the <code class="docutils literal"><span class="pre">RFont</span></code> object is that it makes it really easy to iterate (&#8220;step through&#8221;) the glyphs in the font.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Font object</span>
+<span class="c"># Iterate through the font object to get to the glyphs.</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">glyph</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">glyph</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RFont_01.py">open or download this file: RFont_01.py</a></div><p>This makes the code clear and simple.</p>
+</div>
+<div class="section" id="fontlab-ufo">
+<h2>FontLab / UFO<a class="headerlink" href="#fontlab-ufo" title="Permalink to this headline">¶</a></h2>
+<p>All basic attributes, methods and behaviour for <code class="docutils literal"><span class="pre">RFont</span></code> objects created in FontLab or in NoneLab are identical. However, the <code class="docutils literal"><span class="pre">RFont</span></code> objects in FontLab have some additional attributes and methods that make special FontLab functionality available. These extra methods and attributes are listed seperately below.</p>
+</div>
+<div class="section" id="rfont-attributes">
+<h2>RFont Attributes<a class="headerlink" href="#rfont-attributes" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="path">
+<code class="descname">path</code><a class="headerlink" href="#path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The path to the font. (read only)</p>
+<dl class="attribute">
+<dt id="kerning">
+<code class="descname">kerning</code><a class="headerlink" href="#kerning" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The <a class="reference internal" href="RKerning.html"><em>RKerning</em></a> object. Cache the <code class="docutils literal"><span class="pre">font.kerning</span></code> object to optimise your script for speed:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># cache the kerning object for speed</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="n">cachedKerning</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">kerning</span>
+<span class="c"># continue to use cachedKerning, not f.kerning.</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RFont_02.py">open or download this file: RFont_02.py</a></div><dl class="attribute">
+<dt id="info">
+<code class="descname">info</code><a class="headerlink" href="#info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The <a class="reference internal" href="RInfo.html"><em>RInfo</em></a> object with all the font&#8217;s names and key dimensions.</p>
+<dl class="attribute">
+<dt id="lib">
+<code class="descname">lib</code><a class="headerlink" href="#lib" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The lib object which behaves like a dictionary for arbitrary data that needs to be stored with the font. In FontLab the lib is stored in the <code class="docutils literal"><span class="pre">.vfb</span></code> file. In UFO based fonts the lib is a separate <code class="docutils literal"><span class="pre">.plist</span></code> file. Have a look at how to use the lib.</p>
+<dl class="attribute">
+<dt id="fileName">
+<code class="descname">fileName</code><a class="headerlink" href="#fileName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The filename and path of this font.</p>
+<dl class="attribute">
+<dt id="psHints">
+<code class="descname">psHints</code><a class="headerlink" href="#psHints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>A <a class="reference internal" href="psHints.html"><em>PostScriptFontHintValues</em></a> object with all font level PostScript hinting information, such as the blue values and stems.</p>
+</div>
+<div class="section" id="attribute-examples">
+<h2>Attribute examples<a class="headerlink" href="#attribute-examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Font object</span>
+<span class="c"># attribute examples</span>
+<span class="c"># Most useful attributes of RFont</span>
+<span class="c"># are actually stored in RFont.info</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">unitsPerEm</span>
+
+<span class="c"># kerning data is available in the kerning object:</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">kerning</span>
+
+<span class="c"># len() gives you the &quot;length&quot; of the font, i.e. the number of glyphs</span>
+<span class="k">print</span> <span class="s">&quot;glyphs in this font:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="c"># treat a font object as a dictionary to get to the glyphs</span>
+<span class="k">print</span> <span class="n">f</span><span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RFont_03.py">open or download this file: RFont_03.py</a></div></div>
+<div class="section" id="rfont-methods-available-in-fontlab-and-ufo">
+<h2>RFont Methods available in FontLab and UFO<a class="headerlink" href="#rfont-methods-available-in-fontlab-and-ufo" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="descname">RFont[glyphName]</code></dt>
+<dd></dd></dl>
+
+<p>Asking the font for a glyph by <code class="docutils literal"><span class="pre">glyphName</span></code> like a dictionary.</p>
+<dl class="function">
+<dt id="has_key">
+<code class="descname">has_key</code><span class="sig-paren">(</span><em>glyphName</em><span class="sig-paren">)</span><a class="headerlink" href="#has_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return <code class="docutils literal"><span class="pre">True</span></code> if <code class="docutils literal"><span class="pre">glyphName</span></code> is present in the font.</p>
+<dl class="function">
+<dt id="keys">
+<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return a list of all glyph names in this font.</p>
+<dl class="function">
+<dt id="newGlyph">
+<code class="descname">newGlyph</code><span class="sig-paren">(</span><em>glyphName</em>, <em>clear=True</em><span class="sig-paren">)</span><a class="headerlink" href="#newGlyph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Create a new, empty glyph in the font with <code class="docutils literal"><span class="pre">glyphName</span></code>. If clear is <code class="docutils literal"><span class="pre">True</span></code> (by default) this will clear the glyph if it already exists under this name.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">clear=True</span></code> is now default in both FontLab and NoneLab implementations.</p>
+</div>
+<dl class="function">
+<dt id="removeGlyph">
+<code class="descname">removeGlyph</code><span class="sig-paren">(</span><em>glyphName</em><span class="sig-paren">)</span><a class="headerlink" href="#removeGlyph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Remove a glyph from the font. This method will show a slightly different behaviour in FontLab and pure Python. In FontLab, components that reference the glyph that is being removed will be decomposed. In plain Python, the components will continue to point to the glyph.</p>
+<dl class="function">
+<dt id="insertGlyph">
+<code class="descname">insertGlyph</code><span class="sig-paren">(</span><em>aGlyph</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#insertGlyph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Inserts <code class="docutils literal"><span class="pre">aGlyph</span></code> in the font, the new glyph object is returned. If the font already has a glyph with the same name the exisiting data is deleted. The optional as parameter is an alternative glyph name, to be used if you want to insert the glyph with a different name.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As of robofab svn version 200, the <code class="docutils literal"><span class="pre">as</span></code> argument in <code class="docutils literal"><span class="pre">insertGlyph</span></code> has changed to <code class="docutils literal"><span class="pre">name</span></code>. Python2.6+ uses <code class="docutils literal"><span class="pre">as</span></code> as a keyword so it can no longer be used.</p>
+</div>
+<dl class="function">
+<dt id="compileGlyph">
+<code class="descname">compileGlyph</code><span class="sig-paren">(</span><em>glyphName</em>, <em>baseName</em>, <em>accentNames</em>, <em>adjustWidth=False</em>, <em>preflight=False</em>, <em>printErrors=True</em><span class="sig-paren">)</span><a class="headerlink" href="#compileGlyph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Compile components into a new glyph using components and anchorpoints.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">glyphName</span></code></dt>
+<dd>The name of the glyph where it all needs to go.</dd>
+<dt><code class="docutils literal"><span class="pre">baseName</span></code></dt>
+<dd>The name of the base glyph.</dd>
+<dt><code class="docutils literal"><span class="pre">accentNames</span></code></dt>
+<dd>A list of <code class="docutils literal"><span class="pre">accentName</span></code>, <code class="docutils literal"><span class="pre">anchorName</span></code> tuples: <code class="docutils literal"><span class="pre">[('acute',</span> <span class="pre">'top'),</span> <span class="pre">etc]</span></code>.</dd>
+</dl>
+<dl class="function">
+<dt id="generateGlyph">
+<code class="descname">generateGlyph</code><span class="sig-paren">(</span><em>glyphName</em>, <em>replace=True</em>, <em>preflight=False</em>, <em>printErrors=True</em><span class="sig-paren">)</span><a class="headerlink" href="#generateGlyph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Generate a glyph and return it. Assembled from <code class="docutils literal"><span class="pre">GlyphConstruction.txt</span></code>.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">replace=True</span></code></dt>
+<dd>The font will replace the glyph if there is already one with this name.</dd>
+<dt><code class="docutils literal"><span class="pre">preflight=True</span></code></dt>
+<dd>The font will attempt to generate the glyph without adding it to the font.</dd>
+</dl>
+<p>Do this to find out if there are any problems to make this glyph. For instance missing glyphs or components could be a problem. See <a class="reference internal" href="../howtos/building_accents.html"><em>building accents</em></a>.</p>
+<dl class="function">
+<dt id="getReverseComponentMapping">
+<code class="descname">getReverseComponentMapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#getReverseComponentMapping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Get a reversed map of component references in the font:</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+    &#39;A&#39; : [&#39;Aacute&#39;, &#39;Aring&#39;]
+    &#39;acute&#39; : [&#39;Aacute&#39;]
+    &#39;ring&#39; : [&#39;Aring&#39;]
+    #etc.
+}
+</pre></div>
+</div>
+<dl class="function">
+<dt id="save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>destDir=None</em>, <em>doProgress=False</em>, <em>saveNow=False</em><span class="sig-paren">)</span><a class="headerlink" href="#save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Save the font.</p>
+<dl class="function">
+<dt id="autoUnicodes">
+<code class="descname">autoUnicodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autoUnicodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Using <code class="docutils literal"><span class="pre">fontTools.agl</span></code>, assign Unicode lists to all glyphs in the font.</p>
+<dl class="function">
+<dt id="interpolate">
+<code class="descname">interpolate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#interpolate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>See <a class="reference internal" href="../howtos/interpolate.html"><em>how to interpolate</em></a> for a detailed description of the interpolate method in <code class="docutils literal"><span class="pre">RFont</span></code>.</p>
+<dl class="function">
+<dt id="round">
+<code class="descname">round</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#round" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Round all of the coordinates in all of the glyphs to whole integer numbers. For instance a point at <code class="docutils literal"><span class="pre">(12.3,</span> <span class="pre">-10.99)</span></code> becomes <code class="docutils literal"><span class="pre">(12,</span> <span class="pre">-11)</span></code>. UFO based fonts can deal with floating point coordinates, but for use in FontLab everything needs to be rounded otherwise bad things happen.</p>
+<dl class="function">
+<dt id="update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Call to FontLab to refresh the font. You call <code class="docutils literal"><span class="pre">update()</span></code> after doing lots of manipulating and editing. In UFO based <code class="docutils literal"><span class="pre">RFont</span></code> objects <code class="docutils literal"><span class="pre">update()</span></code> doesn&#8217;t do anything, but it exists.</p>
+<dl class="function">
+<dt id="copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns a deep copy of the font, i.e. all glyphs and all associated data is duplicated.</p>
+<dl class="function">
+<dt id="getCharacterMapping">
+<code class="descname">getCharacterMapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#getCharacterMapping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns a dict of unicode values to glyph names.</p>
+</div>
+<div class="section" id="method-examples">
+<h2>Method examples<a class="headerlink" href="#method-examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Font object</span>
+<span class="c"># method examples</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="c"># the keys() method returns a list of glyphnames:</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+<span class="c"># find unicodes for each glyph by using the postscript name:</span>
+<span class="n">f</span><span class="o">.</span><span class="n">autoUnicodes</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RFont_04.py">open or download this file: RFont_04.py</a></div></div>
+<div class="section" id="fontlab">
+<h2>FontLab<a class="headerlink" href="#fontlab" title="Permalink to this headline">¶</a></h2>
+<p>The following attributes and methods are only available to RoboFab objects in FontLab as they&#8217;re based on application specific features.</p>
+<div class="section" id="rfont-methods-only-available-in-fontlab">
+<h3>RFont Methods only available in FontLab<a class="headerlink" href="#rfont-methods-only-available-in-fontlab" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="naked">
+<code class="descname">naked</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#naked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Return the wrapped fontlab font object itself. This can be useful if you want to set very specific values in the fontlab font that aren&#8217;t wrapped or handled by RoboFab objects.</p>
+<dl class="function">
+<dt id="writeUFO">
+<code class="descname">writeUFO</code><span class="sig-paren">(</span><em>self</em>, <em>path=None</em>, <em>doProgress=False</em>, <em>glyphNameToFileNameFunc=None</em>, <em>doHints=False</em>, <em>doInfo=True</em>, <em>doKerning=True</em>, <em>doGroups=True</em>, <em>doLib=True</em>, <em>doFeatures=True</em>, <em>glyphs=None</em>, <em>formatVersion=2</em><span class="sig-paren">)</span><a class="headerlink" href="#writeUFO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Write the font to UFO at path.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">doProgress=True</span></code></dt>
+<dd>Gives you a progressbar if you want.</dd>
+<dt><code class="docutils literal"><span class="pre">glyphNameToFileNameFunc</span></code></dt>
+<dd>An optional callback for alternative naming schemes. See <a class="reference internal" href="../howtos/glifnames.html"><em>How to use glyph naming schemes</em></a>.</dd>
+</dl>
+<p>The other flags are new in RoboFab 1.2 and give you detailed control of what should and should not be written to UFO. The <code class="docutils literal"><span class="pre">formatVersion</span></code> flag determines the format of the UFO, <code class="docutils literal"><span class="pre">1</span></code> for UFO1, <code class="docutils literal"><span class="pre">2</span></code> for UFO2.</p>
+<dl class="function">
+<dt id="close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Close the font object and the font window in FontLab.</p>
+<dl class="function">
+<dt id="appendHGuide">
+<code class="descname">appendHGuide</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#appendHGuide" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Append a horizontal guide.</p>
+<dl class="function">
+<dt id="appendVGuide">
+<code class="descname">appendVGuide</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#appendVGuide" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Append a vertical guide.</p>
+<dl class="function">
+<dt id="clearHGuides">
+<code class="descname">clearHGuides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#clearHGuides" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Clear all horizontal guides.</p>
+<dl class="function">
+<dt id="clearVGuides">
+<code class="descname">clearVGuides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#clearVGuides" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Clear all vertical guides.</p>
+<dl class="function">
+<dt id="generate">
+<code class="descname">generate</code><span class="sig-paren">(</span><em>outputType</em>, <em>path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#generate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Call FontLab to generate fonts with these parameters and location. Have a look at <a class="reference internal" href="../howtos/generating_fonts.html"><em>generate fonts</em></a> for a more detailed description of this method and how to use it.</p>
+</div>
+<div class="section" id="rfont-attributes-available-in-fontlab-only">
+<h3>RFont Attributes available in FontLab only<a class="headerlink" href="#rfont-attributes-available-in-fontlab-only" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="selection">
+<code class="descname">selection</code><a class="headerlink" href="#selection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>A list of selected glyph names in the font window.</p>
+</div>
+<div class="section" id="id1">
+<h3>Attribute examples<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># robofab manual</span>
+<span class="c"># Font object</span>
+<span class="c"># method examples, available in FontLab</span>
+
+<span class="kn">from</span> <span class="nn">robofab.world</span> <span class="kn">import</span> <span class="n">CurrentFont</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">CurrentFont</span><span class="p">()</span>
+
+<span class="c"># the keys() method returns a list of glyphnames:</span>
+<span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">selection</span>
+
+<span class="c"># generate font binaries</span>
+<span class="n">f</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s">&#39;otfcff&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="downloadlink"><a class="reference internal" href="../_downloads/RFont_05.py">open or download this file: RFont_05.py</a></div></div>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>

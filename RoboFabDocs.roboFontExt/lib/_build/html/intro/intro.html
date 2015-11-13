@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RoboFab Intro &mdash; RoboFab 599 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/robofab.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '599',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="RoboFab 599 documentation" href="../index.html" />
+    <link rel="up" title="Introduction" href="index.html" />
+    <link rel="next" title="Executive Summary" href="summary.html" />
+    <link rel="prev" title="Introduction" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  </head>
+  <body role="document">
+<div id='header'>
+<!--<h1><a href="../index.html">RoboFab</a></h1>-->
+<a href='#'>
+    <img id='map-link' src="../_static/_img/logo.gif" />
+</a>
+</div>
+
+<!-- horizontal -->
+
+
+<div class="navbar">
+
+<ul>
+<li><a href="../index.html">home</a> </li>
+<!--
+<li><a href="../content/quickReference.html">reference</a></li>
+-->
+<li><a href="download.html">download</a></li>
+<li><a href="../genindex.html">index</a></li>
+</ul><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+</div>
+
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects/index.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/index.html">How To&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talks/index.html">Step-by-step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Docs</a></li>
+</ul>
+
+
+  <div class="canhide">
+    <h4>Previous</h4>
+    <p class="topless">
+      <a href="index.html" title="previous chapter">Introduction</a>
+    </p>
+  </div>
+  <div class="canhide">
+    <h4>Next</h4>
+    <p class="topless">
+      <a href="summary.html" title="next chapter">Executive Summary</a>
+    </p>
+  </div><div id="searchbox" style="display: none">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+
+    <div class="document">
+<div class="documentwrapper">
+<div class="bodywrapper">
+<div class="body" id="content">
+
+  <div class="section" id="robofab-intro">
+<h1>RoboFab Intro<a class="headerlink" href="#robofab-intro" title="Permalink to this headline">¶</a></h1>
+<p>RoboFab is a <strong>library</strong> of Python code for manipulation and storage of font and glyph related data. RoboFab implements a new font file format, the <a class="reference internal" href="ufo.html"><em>Unified Font Objects</em></a> or .ufo for short. UFO is a format for <strong>font sources</strong> (similar to something like .fog or .vfb) except that UFO is XML based (see <a class="reference internal" href="ufo.html#glif"><span>Glyph Interchange Format</span></a>), readable, well documented and easily extended to contain different kinds of data.</p>
+<div class="section" id="long-term-sources">
+<h2>Long term sources<a class="headerlink" href="#long-term-sources" title="Permalink to this headline">¶</a></h2>
+<p>Traditionally, font editors have their own file formats to store the work in progress. Generated fonts are optimised for size and speed and they have no extra room to store all the additional information one needs during the design of a font (for instance background layers, notes, information for other font formats). When a company stops working on their application (it happens), the binary source files become a burden. Not immediately, but soon enough as system updates make the last version of the program impossible to run. When that happens, all the binary source files are impossible to read. The formats are not or badly documented. They&#8217;ve locked themselves and your work is gone. Type design is a long term endeavour and it makes sense to store font source material in a long term format. UFO is our idea of how such a format should look like: XML based, object oriented and flexible. Text is just so much easier to handle.</p>
+<div class="section" id="unified-font-objects">
+<h3>Unified Font Objects<a class="headerlink" href="#unified-font-objects" title="Permalink to this headline">¶</a></h3>
+<p>RoboFab reads and writes UFO, but it also provides a range of Python objects to work with these Unified Font Objects. We have implemented the UFO objects for use in FontLab (based on top of FontLab&#8217;s own objects) and another one which implements the UFO objects for use in a plain-Python environment, NoneLab. That means you can access and manipulate font and glyph data in Python without running a font editor (but it has some other drawbacks). It&#8217;s possible to write scripts with RoboFab that work the same in FontLab as they do in a plain Python environment. Unified Font Objects can store quadratic and bezier splines.</p>
+</div>
+</div>
+<div class="section" id="robofab-environments">
+<h2>RoboFab environments<a class="headerlink" href="#robofab-environments" title="Permalink to this headline">¶</a></h2>
+<p>Parts of RoboFab can be used in FontLab, other parts work outside FontLab, in normal Python interpreters. Some parts work in both. This is a powerful feature of RoboFab, but it can sometimes be a bit confusing. Have a look at <a class="reference internal" href="../howtos/world.html"><em>the world module</em></a> for some help in making scripts that work everywhere.</p>
+<div class="section" id="robofab-in-plain-python">
+<h3>RoboFab in plain Python<a class="headerlink" href="#robofab-in-plain-python" title="Permalink to this headline">¶</a></h3>
+<p>After RoboFab is installed you can write plain non-FontLab Python scripts that open, manipulate and save .ufo files. Through the RoboFab <a class="reference internal" href="../objects/objects.html"><em>objects</em></a> you have access to all data in the font: names, glyphs, contours, widths, kerning, the lot. Use the <a class="reference internal" href="../objects/objects.html"><em>objects overview</em></a> or the <a class="reference internal" href="../objects/model.html"><em>objects map</em></a> to get an idea of what these things can do. Plain Python can be a Python IDE, or a python command line interpreter. RoboFab runs on any Python 2.2.1+ installation, Linux, Unix, Mac OSX, MacOS9, Windows. <a class="reference external" href="http://python.org/download/">Python ports to lots of platforms</a> and so does RoboFab.</p>
+</div>
+<div class="section" id="robofab-in-fontlab-s-python">
+<h3>RoboFab in FontLab&#8217;s Python<a class="headerlink" href="#robofab-in-fontlab-s-python" title="Permalink to this headline">¶</a></h3>
+<p>RoboFab can also run in FontLab and transparently implements the RoboFab object structure on top of the FontLab objects. That means that with RoboFab installed you can talk to FontLab fonts using the same methods and attributes as you use to write scripts for UFO fonts. The RoboFab objects in FontLab can manipulate the font data you see in the FontLab windows. Some RoboFab objects in FontLab have extra attributes and methods to deal with FontLab specific functionality. For example font generation, guides and access to the underlying FontLab objects.</p>
+</div>
+<div class="section" id="robofab-and-ufo">
+<h3>RoboFab and UFO<a class="headerlink" href="#robofab-and-ufo" title="Permalink to this headline">¶</a></h3>
+<p>RoboFab Font objects can export and import the UFO format. So you can write scripts in FontLab that export data to UFO, and other scripts that edit these UFO&#8217;s, and then later import the UFO back into FontLab.</p>
+</div>
+</div>
+<div class="section" id="what-robofab-is-not">
+<h2>What RoboFab is not..<a class="headerlink" href="#what-robofab-is-not" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="not-entirely-robofog-mkii">
+<h3>Not entirely RoboFog MkII<a class="headerlink" href="#not-entirely-robofog-mkii" title="Permalink to this headline">¶</a></h3>
+<p>RoboFab is not a port of <strong>RoboFog</strong> to OSX, nor is it a complete font editor with interfaces, font and glyph windows etc. It is a toolkit that you can use to build your tools with. You can start by using RoboFab to make scripting in FontLab easier. But you can also use RoboFab to build elaborate tools (for instance <strong>MetricsMachine</strong>) that read and write UFO fonts and work on the data. Other RoboFab based tools are under construction.</p>
+</div>
+<div class="section" id="not-entirely-robofog-compatible">
+<h3>Not entirely RoboFog Compatible<a class="headerlink" href="#not-entirely-robofog-compatible" title="Permalink to this headline">¶</a></h3>
+<p>We&#8217;ve poured all our experience from writing RoboFog into the RoboFab objects. You will recognise a lot. But the font world has grown a lot more complex since Fontographer 3.5 so RoboFab objects need to deal with a lot more than their RoboFog ancestors. Your RoboFog scripts won&#8217;t work with RoboFab, sorry. But they&#8217;re structured quite similarly and you won&#8217;t have much trouble adapting. We thought about building objects with the RoboFab API for RoboFog, but their functionality depends too much on features that were introduced after Python 1.5.2. It would be too complex. But we&#8217;ve provided an alternative: export scripts for RoboFog to UFO format, so that you can write UFOs for all your RoboFog sources and use them in the new UFO tools.</p>
+</div>
+</div>
+<div class="section" id="where-next">
+<h2>Where next?<a class="headerlink" href="#where-next" title="Permalink to this headline">¶</a></h2>
+<p>First you could <a class="reference internal" href="download.html"><em>Download RoboFab</em></a> the library and install it. Then you could browse through this documentation and see what the various <a class="reference internal" href="../objects/index.html"><em>objects</em></a> are, what they can do etc. You could have a look at <a class="reference internal" href="../howtos/scripting.html"><em>a discussion on scripting</em></a>.</p>
+</div>
+</div>
+
+
+</div>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+<div id='tocsidebar'>
+<h3>links</h3>
+<ul>
+<li><a href='https://github.com/robofab-developers/robofab'>robofab source</a></li>
+<li><a href='http://groups.google.com/group/robofab'>mailing list</a></li>
+</ul>
+<h3>more links</h3>
+<ul>
+<li><a href='http://sourceforge.net/projects/fonttools/'>FontTools/TTX</a></li>
+<li><a href='http://tools.typesupply.com/'>TypeSupply</a></li>
+<li><a href='http://superpolator.com/'>Superpolator</a></li>
+<li><a href='http://letterror.com/'>LettError</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>
+    <a href="http://letterror.com/">Just van Rossum</a>, <a href="http://letterror.com/">Erik van Blokland</a>, <a href="http://typesupply.com/">Tal Leming</a>.</p>
+<p>
+Last updated on Nov 13, 2015. 
+Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+</p>
+</div>
+  </body>
+</html>
